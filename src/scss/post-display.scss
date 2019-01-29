@@ -1,0 +1,88 @@
+//
+// Features
+//
+
+// Base
+
+.feature {
+  display: flex;
+}
+
+// Inner components
+
+.feature-link {
+  display: block;
+
+  @include hover-focus-active {
+    text-decoration: none;
+  }
+}
+
+.feature-thumbnail-wrap {
+  // Adjust height via padding-bottom per layout
+  height: 0;
+  width: 100%;
+
+  .feature-horizontal & {
+    padding-bottom: 100%;
+  }
+
+  .feature-horizontal.feature-primary &,
+  .feature-vertical & {
+    padding-bottom: 65%;
+  }
+
+  .feature-vertical.feature-secondary & {
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 45%;
+    }
+  }
+}
+
+.feature-thumbnail {
+
+}
+
+.feature-title {
+  font-size: 1.15rem;
+
+  .feature-primary & {
+    font-size: 1.5rem;
+  }
+
+  .feature-headline & {
+    font-size: 1rem;
+  }
+}
+
+.feature-subhead {
+  color: $brand-default-aw;
+  font-size: .85rem;
+}
+
+.feature-excerpt {
+  .feature-secondary & {
+    font-size: .85rem;
+  }
+}
+
+// Feature Layouts
+
+.feature-horizontal {
+}
+
+.feature-vertical {
+}
+
+.feature-condensed {
+}
+
+// Feature Types
+
+.feature-primary {
+
+}
+
+.feature-secondary {
+
+}
