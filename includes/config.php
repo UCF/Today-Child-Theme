@@ -62,6 +62,9 @@ add_action( 'init', 'today_kill_link_notifications' );
 
 /**
  * Kill comments on attachments.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
  */
 function today_kill_attachment_comments() {
 	// Remove post type support.
