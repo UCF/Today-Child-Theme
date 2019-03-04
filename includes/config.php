@@ -181,7 +181,7 @@ add_filter( 'redirect_canonical', 'today_no_redirect_on_404' );
  * Returns legacy rewrite rules for the transition from
  * pre-Today theme to Today theme (https://github.com/UCF/Today)
  *
- * Retained for backwards compatibility
+ * Retained for backward compatibility
  *
  * Ported from Today-Bootstrap
  *
