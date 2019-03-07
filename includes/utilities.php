@@ -4,22 +4,6 @@
  */
 
 /**
- * Returns the post excerpt. Handles necessary postdata setup.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post A WP_Post object
- * @return string Sanitized post excerpt
- */
-function today_get_excerpt( $post ) {
-	if ( ! ( $post instanceof WP_Post ) ) return '';
-
-	setup_postdata( $post );
-	return wp_strip_all_tags( get_the_excerpt( $post ) );
-}
-
-
-/**
  * Returns an attachment ID for the desired thumbnail
  * image of a given post.  Returns a fallback if no image
  * is available.
