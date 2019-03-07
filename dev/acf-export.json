@@ -677,7 +677,7 @@
                 "key": "field_5c8140a1c81bd",
                 "label": "Primary Tag",
                 "name": "post_primary_tag",
-                "type": "select",
+                "type": "taxonomy",
                 "instructions": "Select the primary tag that will be used to populate the Related Stories section.",
                 "required": 0,
                 "conditional_logic": 0,
@@ -686,16 +686,14 @@
                     "class": "",
                     "id": ""
                 },
-                "choices": {
-                    "todo": "todo"
-                },
-                "default_value": [],
+                "taxonomy": "post_tag",
+                "field_type": "select",
                 "allow_null": 0,
-                "multiple": 0,
-                "ui": 0,
-                "ajax": 0,
-                "return_format": "value",
-                "placeholder": ""
+                "add_term": 0,
+                "save_terms": 1,
+                "load_terms": 1,
+                "return_format": "id",
+                "multiple": 0
             },
             {
                 "key": "field_5c8140dec81be",
