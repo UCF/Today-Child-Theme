@@ -11,10 +11,16 @@
 // Inner components
 
 .feature-link {
+  color: inherit;
   display: block;
 
   @include hover-focus-active {
+    color: inherit;
     text-decoration: none;
+
+    .feature-title {
+      text-decoration: underline;
+    }
   }
 }
 
