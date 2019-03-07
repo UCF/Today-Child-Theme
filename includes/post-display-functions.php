@@ -1,5 +1,18 @@
 <?php
+/**
+ * Foundational display functions for displaying links to articles in lists.
+ */
 
+/**
+ * Displays an article link in a horizontal orientation.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param object $post A WP_Post object
+ * @param string $type A unique layout modifier name
+ * @param bool $use_thumbnail Whether or not a thumbnail should be displayed
+ * @return string HTML markup
+ */
 function today_display_feature_horizontal( $post, $type='secondary', $use_thumbnail=true ) {
 	if ( ! $post instanceof WP_Post ) { return; }
 
@@ -47,6 +60,16 @@ function today_display_feature_horizontal( $post, $type='secondary', $use_thumbn
 	return ob_get_clean();
 }
 
+
+/**
+ * Displays an article link in a vertical orientation.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param object $post A WP_Post object
+ * @param string $type A unique layout modifier name
+ * @return string HTML markup
+ */
 function today_display_feature_vertical( $post, $type='secondary' ) {
 	if ( ! $post instanceof WP_Post ) { return; }
 
@@ -73,6 +96,15 @@ function today_display_feature_vertical( $post, $type='secondary' ) {
 	return ob_get_clean();
 }
 
+
+/**
+ * Displays a condensed, simplified article link.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param object $post A WP_Post object
+ * @return string HTML markup
+ */
 function today_display_feature_condensed( $post ) {
 	if ( ! $post instanceof WP_Post ) { return; }
 
