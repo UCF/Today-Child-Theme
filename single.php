@@ -2,7 +2,14 @@
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
 	<div class="container mt-4 mt-sm-5 mb-5 pb-sm-4">
-		<?php the_content(); ?>
+		<div class="row">
+			<div class="col-lg-8">
+				<?php the_content(); ?>
+			</div>
+			<div class="col-lg-4 pl-5">
+				TODO sidebar content here
+			</div>
+		</div>
 	</div>
 </article>
 
