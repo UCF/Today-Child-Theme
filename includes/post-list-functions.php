@@ -136,20 +136,20 @@ function today_post_list_display_feature( $content, $posts, $atts ) {
 			switch ( $atts['layout'] ) {
 				case 'horizontal':
 					echo '<div class="' . $item_col . ' mb-4">';
-					echo today_display_feature_horizontal( $item, $atts['layout__type'], $atts['show_image'] );
+					echo today_display_feature_horizontal( $item, $atts );
 					echo '</div>';
 
 					break;
 				case 'vertical':
 					echo '<div class="' . $item_col . ' mb-4">';
-					echo today_display_feature_vertical( $item, $atts['layout__type'] );
+					echo today_display_feature_vertical( $item, $atts );
 					echo '</div>';
 
 					break;
 				case 'condensed':
 				default:
 					echo '<div class="' . $item_col . ' mb-3">';
-					echo today_display_feature_condensed( $item );
+					echo today_display_feature_condensed( $item, $atts );
 					echo '</div>';
 					break;
 			}

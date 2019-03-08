@@ -58,16 +58,19 @@ function today_get_feature_subhead( $post ) {
 
 /**
  * Displays an article link in a horizontal orientation.
+ * Optionally displays a thumbnail (enabled by default).
  *
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post A WP_Post object
- * @param string $type A unique layout modifier name
- * @param bool $use_thumbnail Whether or not a thumbnail should be displayed
+ * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_horizontal( $post, $type='secondary', $use_thumbnail=true ) {
+function today_display_feature_horizontal( $post, $args ) {
 	if ( ! $post instanceof WP_Post ) return;
+
+	$type          = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
+	$use_thumbnail = isset( $args['show_image'] ) ? $args['show_image'] : true;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
@@ -115,15 +118,18 @@ function today_display_feature_horizontal( $post, $type='secondary', $use_thumbn
 
 /**
  * Displays an article link in a vertical orientation.
+ * Always displays a thumbnail.
  *
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post A WP_Post object
- * @param string $type A unique layout modifier name
+ * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_vertical( $post, $type='secondary' ) {
+function today_display_feature_vertical( $post, $args ) {
 	if ( ! $post instanceof WP_Post ) return;
+
+	$type = $args['layout__type'] ?: 'secondary';
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
@@ -155,9 +161,10 @@ function today_display_feature_vertical( $post, $type='secondary' ) {
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post A WP_Post object
+ * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_condensed( $post ) {
+function today_display_feature_condensed( $post, $args ) {
 	if ( ! $post instanceof WP_Post ) return;
 
 	$permalink = get_permalink( $post );
