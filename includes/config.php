@@ -185,3 +185,33 @@ function today_rewrite_rules( $rules ) {
 }
 
 add_filter( 'rewrite_rules_array', 'today_rewrite_rules' );
+
+
+/**
+ * Removed undesired templates for the generic 'post' post type
+ * inherited from the UCF WordPress Theme.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param array $post_templates Array of templates. Keys are filenames, values are translated names.
+ * @param object $theme_obj WP_Theme object
+ * @param mixed $post The post being edited, provided for context, or null.
+ * @param string $post_type Post type to get the templates for.
+ * @return array Modified array of available templates
+ */
+function today_available_ucfwp_post_templates( $post_templates, $theme_obj, $post, $post_type ) {
+	$unused = array(
+		'template-fullscreen.php',
+		'template-narrow.php'
+	);
+
+	foreach ( $unused as $template_name ) {
+		if ( isset( $post_templates[$template_name] ) ) {
+			unset( $post_templates[$template_name] );
+		}
+	}
+
+	return $post_templates;
+}
+
+add_filter( 'theme_post_templates', 'today_available_ucfwp_post_templates', 10, 4 );
