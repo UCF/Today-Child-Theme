@@ -11,6 +11,9 @@ define( 'TODAY_THEME_IMG_URL', TODAY_THEME_STATIC_URL . '/img' );
 define( 'TODAY_THEME_CUSTOMIZER_PREFIX', 'today_' );
 
 
+// TODO update 'large' thumbnail dimensions to 1140px wide
+
+
 /**
  * Defines sections used in the WordPress Customizer.
  *

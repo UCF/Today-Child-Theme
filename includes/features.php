@@ -66,7 +66,7 @@ function today_get_feature_subhead( $post ) {
  * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_horizontal( $post, $args ) {
+function today_display_feature_horizontal( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
 	$type          = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
@@ -126,10 +126,10 @@ function today_display_feature_horizontal( $post, $args ) {
  * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_vertical( $post, $args ) {
+function today_display_feature_vertical( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$type = $args['layout__type'] ?: 'secondary';
+	$type = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
@@ -164,7 +164,7 @@ function today_display_feature_vertical( $post, $args ) {
  * @param array $args Additional arguments to modify the feature markup. Expects [ucf-post-list] attributes
  * @return string HTML markup
  */
-function today_display_feature_condensed( $post, $args ) {
+function today_display_feature_condensed( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
 	$permalink = get_permalink( $post );
