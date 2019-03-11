@@ -8,6 +8,7 @@ include_once 'includes/excerpts.php';
 include_once 'includes/features.php';
 include_once 'includes/nav-functions.php';
 include_once 'includes/header-functions.php';
+include_once 'includes/post-functions.php';
 
 
 // Plugin extras/overrides
