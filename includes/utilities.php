@@ -52,7 +52,7 @@ function today_get_thumbnail_id( $post ) {
  * @return mixed WP_Term object, or null on failure
  */
 function today_get_primary_category( $post ) {
-	if ( ! $post instanceof WP_Post ) return;
+	if ( ! $post instanceof WP_Post ) return null;
 
 	$primary = null;
 	$cats    = wp_get_post_categories( $post->ID, array(
@@ -86,7 +86,7 @@ function today_get_primary_category( $post ) {
  * @return mixed WP_Term object, or null on failure
  */
 function today_get_primary_tag( $post ) {
-	if ( ! $post instanceof WP_Post ) return;
+	if ( ! $post instanceof WP_Post ) return null;
 
 	$primary = null;
 
