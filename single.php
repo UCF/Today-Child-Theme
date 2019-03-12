@@ -9,7 +9,7 @@ $related      = today_get_post_related( $post );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
-	<div class="container mt-3 mt-sm-4 mb-4 mb-md-5">
+	<div class="container mt-3 mt-sm-4">
 		<?php echo $header_media; ?>
 	</div>
 	<div class="container mb-5 pb-sm-4">

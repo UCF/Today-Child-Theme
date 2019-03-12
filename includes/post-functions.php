@@ -22,7 +22,7 @@ function today_get_post_header_media( $post ) {
 			if ( $video ) {
 				ob_start();
 ?>
-				<div class="embed-responsive embed-responsive-16by9 mb-4">
+				<div class="embed-responsive embed-responsive-16by9 mb-4 mb-md-5">
 					<?php echo $video; ?>
 				</div>
 <?php
@@ -34,18 +34,40 @@ function today_get_post_header_media( $post ) {
 			$img        = get_field( 'post_header_image', $post );
 			$thumb_size = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
 			$img_html   = '';
+			$min_width  = 730;  // Minimum acceptable, non-fluid width of a <figure>.
+								// Loosely based on maximum size of post content column in default and two-col templates.
+								// Should be a width that comfortably fits one or more lines of an image caption.
+			$max_width  = 1140; // Default max-width value for <figure>
 			$caption    = '';
 
 			if ( $img ) {
-				$img_html = wp_get_attachment_image( $img['ID'], $thumb_size, false, array( 'class' => 'img-fluid' ) );
+				$img_html  = wp_get_attachment_image( $img['ID'], $thumb_size, false, array( 'class' => 'img-fluid' ) );
+
+				// Calculate a max-width for the <figure> here so that
+				// an included image caption doesn't exceed the width
+				// of the image.
+				//
+				// Allow larger images (those above the $min_width threshold)
+				// to be centered in the story without a visible gray
+				// background.
+				// For smaller images, display them centered within a
+				// full-width div with a gray bg.
+				if (
+					isset( $img['sizes'][$thumb_size . '-width'] )
+					&& intval( $img['sizes'][$thumb_size . '-width'] ) > $min_width
+				) {
+					$max_width = $img['sizes'][$thumb_size . '-width'];
+				}
 			}
 
 			if ( $img_html ) {
 				ob_start();
 				$caption = wptexturize( $img['caption'] );
 ?>
-				<figure class="figure mb-4">
-					<?php echo $img_html; ?>
+				<figure class="figure d-block mb-4 mb-md-5 mx-auto" style="max-width: <?php echo $max_width; ?>px;">
+					<div class="bg-faded text-center">
+						<?php echo $img_html; ?>
+					</div>
 
 					<?php if ( $caption ): ?>
 					<figcaption class="figure-caption mt-2">
