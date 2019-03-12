@@ -15,6 +15,11 @@
 		'layout'        => 'vertical',
 		'layout__type'  => 'primary'
 	);
+
+	if( class_exists( 'UCF_Events_Config' ) ) {
+		$events_feed_url = UCF_Events_Config::get_option_or_default( 'feed_url' );
+		$all_events_link = str_replace( 'feed.json', '', $events_feed_url );
+	}
 ?>
 
 <div class="container mt-4 mb-5 pb-sm-4">
@@ -40,8 +45,8 @@
 		</div>
 		<div class="col-md-4">
 			<h2 class="h6 text-uppercase text-default-aw mb-4">Events at UCF</h2>
-			<?php echo do_shortcode('[ucf-events feed_url="https://events.ucf.edu/upcoming/feed.json" layout="classic" offset="1" limit="4" title=""]'); ?>
-			<a href="https://events.ucf.edu/upcoming/">View All Events</a>
+			<?php echo do_shortcode('[ucf-events feed_url="' . $events_feed_url . '" layout="classic" offset="1" limit="4" title=""]'); ?>
+			<a href="<?php echo $all_events_link; ?>">View All Events</a>
 
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF In the News</h2>
 			<?php echo do_shortcode('[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]'); ?>
