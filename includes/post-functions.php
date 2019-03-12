@@ -206,7 +206,7 @@ function today_get_post_more_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 heading-underline mb-4">More Headlines</h2>
+	<h2 class="h6 text-uppercase text-default-aw mb-4">More Headlines</h2>
 	<?php
 	foreach ( $posts as $p ) {
 		echo today_display_feature_condensed( $p );
@@ -240,7 +240,7 @@ function today_get_post_cat_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 heading-underline mb-4">
+	<h2 class="h6 text-uppercase text-default-aw mb-4">
 		More About <?php echo wptexturize( $primary_cat->name ); ?>
 	</h2>
 	<?php
@@ -276,7 +276,7 @@ function today_get_post_tag_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 heading-underline mb-4">
+	<h2 class="h6 text-uppercase text-default-aw mb-4">
 		More About <?php echo wptexturize( $primary_tag->name ); ?>
 	</h2>
 	<?php
@@ -310,7 +310,7 @@ function today_get_post_topics_list( $post ) {
 	ob_start();
 	if ( $topics ):
 ?>
-	<h2 class="h6 heading-underline mb-4">More Topics</h2>
+	<h2 class="h6 text-uppercase text-default-aw mb-4">More Topics</h2>
 	<ul class="nav d-flex flex-column align-items-start">
 		<?php
 		foreach ( $topics as $t ):
