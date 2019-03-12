@@ -3,7 +3,6 @@
  * Functions related to the display of single posts (stories).
  */
 
-
 /**
  * Returns either an image or video to display at the top of a
  * story, depending on meta field settings.
@@ -33,7 +32,7 @@ function today_get_post_header_media( $post ) {
 		case 'image':
 		default:
 			$img        = get_field( 'post_header_image', $post );
-			$thumb_size = get_post_meta( $post->ID, '_wp_page_template', true ) === 'template-featured.php' ? 'large' : 'medium_large';
+			$thumb_size = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
 			$img_html   = '';
 			$caption    = '';
 
