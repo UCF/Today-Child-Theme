@@ -218,3 +218,14 @@ function today_available_ucfwp_post_templates( $post_templates, $theme_obj, $pos
 }
 
 add_filter( 'theme_post_templates', 'today_available_ucfwp_post_templates', 10, 4 );
+
+
+/**
+ * Modifies the dimensions for WordPress's default 'large' image size.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+add_filter( 'pre_option_large_size_w', function( $value ) {
+	return 1200;
+} );
