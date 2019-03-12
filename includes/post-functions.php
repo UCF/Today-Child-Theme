@@ -190,7 +190,6 @@ function today_get_post_author_bio( $post ) {
 /**
  * Returns source markup for the given post.
  *
- * TODO
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -198,7 +197,17 @@ function today_get_post_author_bio( $post ) {
  * @return string HTML markup for the source content
  */
 function today_get_post_source( $post ) {
-	return '';
+	$source = get_field( 'post_source', $post );
+
+	ob_start();
+	if ( $source ):
+?>
+	<div class="small mt-4 mt-md-5 mb-5">
+		<?php echo $source; ?>
+	</div>
+<?php
+	endif;
+	return ob_get_clean();
 }
 
 
