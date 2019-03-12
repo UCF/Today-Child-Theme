@@ -24,10 +24,6 @@ $topics_list    = today_get_post_topics_list( $post );
 			<div class="col-lg-8">
 				<?php echo $header_media; ?>
 
-				<?php
-				// TODO is this necessary anymore?
-				// echo strip_tags( $content, '<p><a><ol><ul><li><em><strong><img><blockquote><div>' );
-				?>
 				<?php the_content(); ?>
 
 				<?php echo $source; ?>
