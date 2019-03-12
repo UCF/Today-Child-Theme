@@ -10,12 +10,6 @@
 		$first_post = array_shift( $posts );
 	}
 
-	$atts = array(
-		'posts_per_row' => 1,
-		'layout'        => 'vertical',
-		'layout__type'  => 'primary'
-	);
-
 	if( class_exists( 'UCF_Events_Config' ) ) {
 		$events_feed_url = UCF_Events_Config::get_option_or_default( 'feed_url' );
 		$all_events_link = str_replace( 'feed.json', '', $events_feed_url );
