@@ -14,6 +14,8 @@
 		$events_feed_url = UCF_Events_Config::get_option_or_default( 'feed_url' );
 		$all_events_link = str_replace( 'feed.json', '', $events_feed_url );
 	}
+
+	$all_news_link = ( $page = get_page_by_title( "UCF in the News" ) ) ? get_permalink( $page ) : null;
 ?>
 
 <div class="container mt-4 mb-5 pb-sm-4">
@@ -38,13 +40,19 @@
 			<?php endif; ?>
 		</div>
 		<div class="col-md-4">
+
+		<?php if( isset ( $events_feed_url ) && isset( $all_events_link ) ) : ?>
 			<h2 class="h6 text-uppercase text-default-aw mb-4">Events at UCF</h2>
 			<?php echo do_shortcode('[ucf-events feed_url="' . $events_feed_url . '" layout="classic" offset="1" limit="4" title=""]'); ?>
 			<a href="<?php echo $all_events_link; ?>">View All Events</a>
+		<?php endif; ?>
 
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF In the News</h2>
 			<?php echo do_shortcode('[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]'); ?>
-			<a href="<?php echo get_permalink( get_page_by_title( "UCF in the News" ) ); ?>">View All</a>
+
+		<?php if( isset ( $all_news_link ) ) : ?>
+			<a href="<?php echo $all_news_link; ?>">View All</a>
+		<?php endif; ?>
 
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">Resources</h2>
 			<?php
