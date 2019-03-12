@@ -1,6 +1,6 @@
 <?php
 /**
- * Header content template for Posts
+ * Header content template for Posts (both templates)
  */
 ?>
 

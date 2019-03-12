@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template for Posts with the 'Default' page template
+ * Header template for Posts (both templates)
  */
 ?>
 
