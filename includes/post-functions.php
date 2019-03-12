@@ -3,7 +3,6 @@
  * Functions related to the display of single posts (stories).
  */
 
-
 /**
  * Returns either an image or video to display at the top of a
  * story, depending on meta field settings.
@@ -33,7 +32,7 @@ function today_get_post_header_media( $post ) {
 		case 'image':
 		default:
 			$img        = get_field( 'post_header_image', $post );
-			$thumb_size = get_post_meta( $post->ID, '_wp_page_template', true ) === 'template-featured.php' ? 'large' : 'medium_large';
+			$thumb_size = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
 			$img_html   = '';
 			$caption    = '';
 
@@ -153,47 +152,6 @@ function today_get_post_source( $post ) {
 
 
 /**
- * Returns a comment form for a post.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post WP_Post object
- * @return string HTML markup for the comment form
- */
-function today_get_post_comment_form( $post ) {
-	$form_args = array(
-		'fields' => array(
-			'<label for="share_name">Name</label><input type="text" id="share_name" name="author">',
-			'<label for="share_email">Email</label>
-			<input type="text" id="share_email" name="email">'
-		),
-		'comment_field' => '<label for="share_comment">Your Comment</label><textarea id="share_comment" name="comment"></textarea>',
-		'comment_notes_after' => '',
-		'comment_notes_before' => '',
-		'title_reply' => 'Share Your Thoughts',
-	);
-
-	ob_start();
-	comment_form( $form_args, $post->ID );
-	return ob_get_clean();
-}
-
-
-/**
- * Returns recent comments for a given post.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post WP_Post object
- * @return string HTML markup for the post's comments
- */
-function today_get_post_comments( $post ) {
-	// max 3; approved only
-	return '';
-}
-
-
-/**
  * Returns a stylized list of related stories for a given post.
  *
  * @since 1.0.0
@@ -214,7 +172,7 @@ function today_get_post_related( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="text-center h6 text-uppercase mb-4 mb-md-5">
+	<h2 class="text-center h6 text-uppercase mb-4 pb-2">
 		Related Stories
 	</h2>
 	<div class="row">
@@ -248,7 +206,7 @@ function today_get_post_more_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 text-uppercase mb-4">More Headlines</h2>
+	<h2 class="h6 heading-underline mb-4">More Headlines</h2>
 	<?php
 	foreach ( $posts as $p ) {
 		echo today_display_feature_condensed( $p );
@@ -282,7 +240,7 @@ function today_get_post_cat_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 text-uppercase mb-4">
+	<h2 class="h6 heading-underline mb-4">
 		More About <?php echo wptexturize( $primary_cat->name ); ?>
 	</h2>
 	<?php
@@ -318,7 +276,7 @@ function today_get_post_tag_headlines( $post ) {
 	ob_start();
 	if ( $posts ):
 ?>
-	<h2 class="h6 text-uppercase mb-4">
+	<h2 class="h6 heading-underline mb-4">
 		More About <?php echo wptexturize( $primary_tag->name ); ?>
 	</h2>
 	<?php
@@ -352,7 +310,7 @@ function today_get_post_topics_list( $post ) {
 	ob_start();
 	if ( $topics ):
 ?>
-	<h2 class="h6 text-uppercase mb-4">More Topics</h2>
+	<h2 class="h6 heading-underline mb-4">More Topics</h2>
 	<ul class="nav d-flex flex-column align-items-start">
 		<?php
 		foreach ( $topics as $t ):
