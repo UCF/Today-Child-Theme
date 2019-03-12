@@ -18,7 +18,7 @@
 
 <div class="container mt-4 mb-5 pb-sm-4">
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-lg-8">
 			<?php if ( $first_post ): ?>
 				<?php echo today_display_feature_vertical( $first_post, array( 'layout__type' => 'primary' ) ); ?>
 			<?php endif; ?>
