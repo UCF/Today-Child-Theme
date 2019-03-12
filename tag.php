@@ -42,7 +42,7 @@
 			<?php echo do_shortcode('[ucf-events feed_url="' . $events_feed_url . '" layout="classic" offset="1" limit="4" title=""]'); ?>
 			<a href="<?php echo $all_events_link; ?>">View All Events</a>
 
-			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF In the News</h2>
+			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF in the News</h2>
 			<?php echo do_shortcode('[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]'); ?>
 			<a href="<?php echo get_permalink( get_page_by_title( "UCF in the News" ) ); ?>">View All</a>
 
