@@ -37,7 +37,7 @@
 				<p>No results found.</p>
 			<?php endif; ?>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<h2 class="h6 text-uppercase text-default-aw mb-4">Events at UCF</h2>
 			<?php echo do_shortcode('[ucf-events feed_url="' . $events_feed_url . '" layout="classic" offset="1" limit="4" title=""]'); ?>
 			<a href="<?php echo $all_events_link; ?>">View All Events</a>
