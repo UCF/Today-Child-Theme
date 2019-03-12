@@ -46,9 +46,12 @@ function today_get_post_header_media( $post ) {
 ?>
 				<figure class="figure mb-4">
 					<?php echo $img_html; ?>
+
+					<?php if ( $caption ): ?>
 					<figcaption class="figure-caption mt-2">
 						<?php echo $caption; ?>
 					</figcaption>
+					<?php endif; ?>
 				</figure>
 <?php
 				$media = ob_get_clean();
