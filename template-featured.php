@@ -11,8 +11,6 @@
 $header_media = today_get_post_header_media( $post );
 $source       = today_get_post_source( $post );
 $author_bio   = today_get_post_author_bio( $post );
-$comment_form = today_get_post_comment_form( $post );
-$comments     = today_get_post_comments( $post );
 $related      = today_get_post_related( $post );
 ?>
 
@@ -36,8 +34,6 @@ $related      = today_get_post_related( $post );
 			<hr class="my-4 my-md-5">
 		<?php endif; ?>
 
-		<?php echo $comment_form; ?>
-		<?php echo $comments; ?>
 		<?php echo $related; ?>
 	</div>
 </article>

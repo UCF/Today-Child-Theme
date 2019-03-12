@@ -4,8 +4,6 @@
 $header_media   = today_get_post_header_media( $post );
 $source         = today_get_post_source( $post );
 $author_bio     = today_get_post_author_bio( $post );
-$comment_form   = today_get_post_comment_form( $post );
-$comments       = today_get_post_comments( $post );
 $more_headlines = today_get_post_more_headlines( $post );
 $cat_headlines  = today_get_post_cat_headlines( $post );
 $tag_headlines  = today_get_post_tag_headlines( $post );
@@ -25,12 +23,10 @@ $topics_list    = today_get_post_topics_list( $post );
 				<?php the_content(); ?>
 
 				<?php if ( $author_bio ): ?>
-					<hr class="my-4">
+					<hr class="my-4 my-md-5">
 					<?php echo $author_bio; ?>
-					<hr class="my-4">
+					<hr class="my-4 my-md-5 hidden-lg-up">
 				<?php endif; ?>
-
-				<?php echo $comment_form; ?>
 			</div>
 			<div class="col-lg-4 pl-lg-5">
 				<?php echo $source; ?>
@@ -39,7 +35,6 @@ $topics_list    = today_get_post_topics_list( $post );
 				<?php echo $tag_headlines; ?>
 				<?php echo $cat_headlines; ?>
 				<?php echo $topics_list; ?>
-				<?php echo $comments; ?>
 			</div>
 		</div>
 	</div>

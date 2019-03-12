@@ -153,47 +153,6 @@ function today_get_post_source( $post ) {
 
 
 /**
- * Returns a comment form for a post.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post WP_Post object
- * @return string HTML markup for the comment form
- */
-function today_get_post_comment_form( $post ) {
-	$form_args = array(
-		'fields' => array(
-			'<label for="share_name">Name</label><input type="text" id="share_name" name="author">',
-			'<label for="share_email">Email</label>
-			<input type="text" id="share_email" name="email">'
-		),
-		'comment_field' => '<label for="share_comment">Your Comment</label><textarea id="share_comment" name="comment"></textarea>',
-		'comment_notes_after' => '',
-		'comment_notes_before' => '',
-		'title_reply' => 'Share Your Thoughts',
-	);
-
-	ob_start();
-	comment_form( $form_args, $post->ID );
-	return ob_get_clean();
-}
-
-
-/**
- * Returns recent comments for a given post.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post WP_Post object
- * @return string HTML markup for the post's comments
- */
-function today_get_post_comments( $post ) {
-	// max 3; approved only
-	return '';
-}
-
-
-/**
  * Returns a stylized list of related stories for a given post.
  *
  * @since 1.0.0
