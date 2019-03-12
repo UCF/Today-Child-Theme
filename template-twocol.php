@@ -36,11 +36,12 @@ $topics_list    = today_get_post_topics_list( $post );
 				<footer>
 					<hr class="my-4 my-md-5">
 					<?php echo $author_bio; ?>
-					<hr class="my-4 my-md-5 hidden-lg-up">
 				</footer>
 				<?php endif; ?>
 			</div>
 			<div class="col-lg-4 pl-lg-5">
+				<hr class="mt-4 mt-md-5 mb-5 hidden-lg-up">
+
 				<?php if ( $social ): ?>
 				<div class="mb-5">
 					<?php echo $social; ?>
