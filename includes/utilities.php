@@ -16,10 +16,17 @@
 function today_get_thumbnail_id( $post ) {
 	if ( ! $post instanceof WP_Post ) return null;
 
-	// NOTE: returned value for posts will NOT use the
-	// standard post thumbnail/featured image value.
-	// See `today_modify_post_thumbnail_id()`
-	$attachment_id = get_post_thumbnail_id( $post );
+	$attachment_id = null;
+
+	// Return the post's header image on posts
+	if ( $post->post_type === 'post' ) {
+		$attachment = get_field( 'post_header_image', $post );
+		$attachment_id = isset( $attachment['id'] ) ? $attachment['id'] : null;
+	}
+	// Use standard thumbnails for everything else
+	else {
+		$attachment_id = get_post_thumbnail_id( $post );
+	}
 
 	// Get fallback if necessary
 	if ( ! $attachment_id ) {
