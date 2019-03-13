@@ -6,7 +6,7 @@
         float: left;
         font-size: 3rem;
         font-weight: 700;
-        // Chrome requires rem units on the line height specifically for whatever reason
+        // Chrome requires an explicit unit on the line height for whatever reason
         line-height: 2.75rem; // sass-lint:disable-line property-units
         margin-right: .25rem;
 
