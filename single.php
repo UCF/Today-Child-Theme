@@ -3,7 +3,7 @@
 <?php
 $header_media = today_get_post_header_media( $post );
 $source       = today_get_post_source( $post );
-$social       = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links]' ) : '';
+$social       = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
 $author_bio   = today_get_post_author_bio( $post );
 $related      = today_get_post_related( $post );
 ?>
@@ -13,17 +13,15 @@ $related      = today_get_post_related( $post );
 		<?php echo $header_media; ?>
 	</div>
 	<div class="container mb-5 pb-sm-4">
-		<div class="row mb-4 mb-md-5">
+		<div class="row mb-4">
 			<div class="col-lg-10 offset-lg-1 px-lg-5 col-xl-8 offset-xl-2 px-xl-3">
-				<?php the_content(); ?>
+				<div class="post-content">
+					<?php the_content(); ?>
+				</div>
 
 				<?php echo $source; ?>
 
-				<?php if ( $social ): ?>
-				<div class="mt-5">
-					<?php echo $social; ?>
-				</div>
-				<?php endif; ?>
+				<?php echo $social; ?>
 			</div>
 		</div>
 
@@ -32,7 +30,7 @@ $related      = today_get_post_related( $post );
 			<?php if ( $author_bio ): ?>
 			<div class="row mb-4 mb-md-5">
 				<div class="col-lg-10 offset-lg-1 px-lg-5 col-xl-8 offset-xl-2 px-xl-3">
-					<hr class="mb-4 mb-md-5">
+					<hr class="mt-0 mb-4 mb-md-5">
 					<?php echo $author_bio; ?>
 				</div>
 			</div>
