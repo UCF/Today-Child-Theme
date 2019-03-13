@@ -43,12 +43,12 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 		<div class="row justify-content-around mt-3 mb-5">
 			<?php if ( $prev_have_posts ) : ?>
 			<div class="col">
-				<a href="<?php echo $prev_url; ?>" class="btn btn-primary"><span class="fa fa-arrow-left"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
+				<a href="<?php echo $prev_url; ?>" class="btn btn-primary"><span class="fa fa-arrow-left" aria-hidden="true"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
 			</div>
 			<?php endif; ?>
 			<?php if ( $next_have_posts ) : ?>
 			<div class="col text-right">
-				<a href="<?php echo $next_url; ?>" class="btn btn-primary"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right"></span> </a>
+				<a href="<?php echo $next_url; ?>" class="btn btn-primary"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right" aria-hidden="true"></span> </a>
 			</div>
 			<?php endif; ?>
 			<hr>
