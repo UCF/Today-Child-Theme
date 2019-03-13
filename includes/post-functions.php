@@ -224,7 +224,7 @@ function today_get_post_related( $post ) {
 	if ( ! $primary_tag ) return;
 
 	$posts = get_posts( array(
-		'numberposts'  => 3,
+		'numberposts'  => 8,
 		'post__not_in' => array( $post->ID ),
 		'tag_id'       => $primary_tag->term_id
 	) );
@@ -237,7 +237,7 @@ function today_get_post_related( $post ) {
 	</h2>
 	<div class="row">
 	<?php foreach ( $posts as $p ): ?>
-		<div class="col-md-6 col-lg-4">
+		<div class="col-md-6 col-lg-3">
 			<?php echo today_display_feature_vertical( $p ); ?>
 		</div>
 	<?php endforeach; ?>
