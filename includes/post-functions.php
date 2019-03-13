@@ -224,7 +224,7 @@ function today_get_post_related( $post ) {
 	if ( ! $primary_tag ) return;
 
 	$posts = get_posts( array(
-		'numberposts'  => 3,
+		'numberposts'  => 8,
 		'post__not_in' => array( $post->ID ),
 		'tag_id'       => $primary_tag->term_id
 	) );
