@@ -557,7 +557,7 @@
                 "min_size": "",
                 "max_width": 1200,
                 "max_height": 800,
-                "max_size": "",
+                "max_size": "0.5",
                 "mime_types": "jpg, jpeg"
             },
             {
