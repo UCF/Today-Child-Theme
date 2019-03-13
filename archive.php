@@ -20,15 +20,12 @@ get_header();
 		</div>
 		<div class="col-md-4">
 		<h2 class="h6 text-uppercase text-default-aw mb-4">Resources</h2>
-		<ul class="list-unstyled">
-			<li><a href="about-ucf-today/">About UCF Today</a></li>
-			<li><a href="reporting-on-ucf/">Reporting on UCF</a></li>
-			<li><a href="news-archive/">Recent News Stories</a></li>
-			<li><a href="https://newsarchive.smca.ucf.edu/" target="_blank">Previous News Archives</a></li>
-			<li><a href="https://www.ucf.edu/pegasus" target="_blank">Pegasus Magazine</a></li>
-			<li><a href="https://www.ucf.edu/downtown/" target="_blank">UCF Downtown Orlando</a></li>
-			<li><a href="https://www.ucf.edu/impact/" target="_blank">UCF Impact - Transforming Lives</a></li>
-		</ul>
+		<?php
+		wp_nav_menu( array(
+			'menu'       => 'Resources',
+			'menu_class' => 'list-unstyled'
+		) );
+		?>
 		</div>
 	</div>
 </div>
