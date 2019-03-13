@@ -11,7 +11,7 @@
 $header_media   = today_get_post_header_media( $post );
 $source         = today_get_post_source( $post );
 $author_bio     = today_get_post_author_bio( $post );
-$social         = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links]' ) : '';
+$social         = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
 $more_headlines = today_get_post_more_headlines( $post );
 $cat_headlines  = today_get_post_cat_headlines( $post );
 $tag_headlines  = today_get_post_tag_headlines( $post );
@@ -31,20 +31,16 @@ $topics_list    = today_get_post_topics_list( $post );
 				<?php echo $source; ?>
 
 				<?php if ( $author_bio ): ?>
+				<hr class="my-4 my-md-5">
 				<footer>
-					<hr class="my-4 my-md-5">
 					<?php echo $author_bio; ?>
 				</footer>
 				<?php endif; ?>
 			</div>
 			<div class="col-lg-4 pl-lg-5">
-				<hr class="mt-4 mt-md-5 mb-5 hidden-lg-up">
+				<hr class="mt-4 mb-5 mt-md-5 hidden-lg-up">
 
-				<?php if ( $social ): ?>
-				<div class="mb-5">
-					<?php echo $social; ?>
-				</div>
-				<?php endif; ?>
+				<?php echo $social; ?>
 
 				<?php if ( $more_headlines ): ?>
 				<div class="mb-5">
