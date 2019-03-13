@@ -202,7 +202,7 @@ function today_get_post_source( $post ) {
 	ob_start();
 	if ( $source ):
 ?>
-	<div class="small mt-4 mt-md-5 mb-5">
+	<div class="small my-4 my-md-5">
 		<?php echo $source; ?>
 	</div>
 <?php
