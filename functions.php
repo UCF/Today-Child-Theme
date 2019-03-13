@@ -9,6 +9,7 @@ include_once 'includes/features.php';
 include_once 'includes/nav-functions.php';
 include_once 'includes/header-functions.php';
 include_once 'includes/post-functions.php';
+include_once 'includes/archive-functions.php';
 
 
 // Plugin extras/overrides
