@@ -51,7 +51,6 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 				<a href="<?php echo $next_url; ?>" class="btn btn-primary"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right" aria-hidden="true"></span> </a>
 			</div>
 			<?php endif; ?>
-			<hr>
 		</div>
 	<?php
 		echo ob_get_clean();
