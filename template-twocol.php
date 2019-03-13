@@ -24,7 +24,9 @@ $topics_list    = today_get_post_topics_list( $post );
 			<div class="col-lg-8">
 				<?php echo $header_media; ?>
 
-				<?php the_content(); ?>
+				<div class="post-content">
+					<?php the_content(); ?>
+				</div>
 
 				<?php echo $source; ?>
 

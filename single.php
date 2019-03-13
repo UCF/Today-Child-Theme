@@ -15,7 +15,9 @@ $related      = today_get_post_related( $post );
 	<div class="container mb-5 pb-sm-4">
 		<div class="row mb-4 mb-md-5">
 			<div class="col-lg-10 offset-lg-1 px-lg-5 col-xl-8 offset-xl-2 px-xl-3">
-				<?php the_content(); ?>
+				<div class="post-content">
+					<?php the_content(); ?>
+				</div>
 
 				<?php echo $source; ?>
 
