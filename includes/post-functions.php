@@ -237,7 +237,7 @@ function today_get_post_related( $post ) {
 	</h2>
 	<div class="row">
 	<?php foreach ( $posts as $p ): ?>
-		<div class="col-md-6 col-lg-4">
+		<div class="col-md-6 col-lg-3">
 			<?php echo today_display_feature_vertical( $p ); ?>
 		</div>
 	<?php endforeach; ?>
