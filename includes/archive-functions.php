@@ -40,24 +40,19 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 
 		ob_start();
 	?>
-	<div class="card mb-4">
-		<div class="card-block">
-			<div class="row">
-				<?php if ( $prev_have_posts ) : ?>
-				<div class="col-12 col-sm-6">
-					<a href="<?php echo $prev_url; ?>" class="btn btn-primary">Previous Month</a>
-				</div>
-				<?php endif; ?>
-				<div class="col-12 col-sm-6">
-				<?php if ( $next_have_posts ) : ?>
-				<div class="col-12 col-sm-6">
-					<a href="<?php echo $next_url; ?>" class="btn btn-primary">Next Month</a>
-				</div>
-				<?php endif; ?>
-				</div>
+		<div class="row justify-content-around mt-3 mb-5">
+			<?php if ( $prev_have_posts ) : ?>
+			<div class="col">
+				<a href="<?php echo $prev_url; ?>" class="btn btn-primary"><span class="fa fa-arrow-left"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
 			</div>
+			<?php endif; ?>
+			<?php if ( $next_have_posts ) : ?>
+			<div class="col text-right">
+				<a href="<?php echo $next_url; ?>" class="btn btn-primary"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right"></span> </a>
+			</div>
+			<?php endif; ?>
+			<hr>
 		</div>
-	</div>
 	<?php
 		echo ob_get_clean();
 	}
