@@ -48,6 +48,3 @@ $related      = today_get_post_related( $post );
 </article>
 
 <?php get_footer(); ?>
-
-
-
