@@ -229,47 +229,6 @@ add_filter( 'pre_option_large_size_w', function( $value ) {
 
 
 /**
- * Modifies returned value for a generic post's thumbnail ID fetched
- * via `get_post_thumbnail_id()` (or by other dependent functions) to use
- * the `post_header_image`'s ID instead.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param null|array|string $value The value get_metadata() should return - a single metadata value, or an array of values.
- * @param int $object_id ID of the object metadata is for
- * @param string $meta_key Metadata key
- * @param bool $single Whether to return only the first value of the specified $meta_key.
- */
-function today_modify_post_thumbnail_id( $value, $object_id, $meta_key, $single ) {
-	// Make sure the passed-in $object_id represents a post.
-	// Exit early otherwise
-	$obj = get_post( $object_id );
-	if ( ! $obj || $obj->post_type !== 'post' ) return $value;
-
-	// Fetch the post_header_image value. Exit early, returning
-	// an empty string, if it's not set.
-	//
-	// Un-add and re-add the current filter here to avoid recursion
-	// when calling `get_field()`.
-	remove_filter( 'get_post_metadata', 'today_modify_post_thumbnail_id' );
-	$img_id = '';
-	$img = get_field( 'post_header_image', $obj );
-	if ( isset( $img['ID'] ) ) {
-		$img_id = $img['ID'];
-	}
-	add_filter( 'get_post_metadata', 'today_modify_post_thumbnail_id', 10, 4 );
-
-	if ( $meta_key && $meta_key === '_thumbnail_id' ) {
-		$value = $img_id;
-	}
-
-	return $value;
-}
-
-add_filter( 'get_post_metadata', 'today_modify_post_thumbnail_id', 10, 4 );
-
-
-/**
  * Hides the featured image metabox for standard posts in the WordPress admin.
  *
  * @since 1.0.0
