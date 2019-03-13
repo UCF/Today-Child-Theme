@@ -43,14 +43,18 @@
 		<?php if( isset ( $events_feed_url ) && isset( $all_events_link ) ) : ?>
 			<h2 class="h6 text-uppercase text-default-aw mb-4">Events at UCF</h2>
 			<?php echo do_shortcode('[ucf-events feed_url="' . $events_feed_url . '" layout="classic" offset="1" limit="4" title=""]'); ?>
-			<a href="<?php echo $all_events_link; ?>" class="d-block text-right">View All Events</a>
+			<div class="text-right">
+				<a href="<?php echo $all_events_link; ?>">View All Events</a>
+			</div>
 		<?php endif; ?>
 
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF in the News</h2>
 			<?php echo do_shortcode('[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]'); ?>
 
 		<?php if( isset ( $all_news_link ) ) : ?>
-			<a href="<?php echo $all_news_link; ?>" class="d-block text-right">View All</a>
+			<div class="text-right">
+				<a href="<?php echo $all_news_link; ?>">View All</a>
+			</div>
 		<?php endif; ?>
 
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">Resources</h2>
