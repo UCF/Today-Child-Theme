@@ -16,3 +16,7 @@ include_once 'includes/post-functions.php';
 if ( class_exists( 'UCF_Post_List_Common' ) ) {
 	include_once 'includes/post-list-functions.php';
 }
+
+if ( class_exists( 'UCF_Social_Common' ) ) {
+	include_once 'includes/ucf-social-functions.php';
+}
