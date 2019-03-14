@@ -226,3 +226,16 @@ add_filter( 'theme_post_templates', 'today_available_ucfwp_post_templates', 10, 
 add_filter( 'pre_option_large_size_w', function( $value ) {
 	return 1200;
 } );
+
+
+/**
+ * Hides the featured image metabox for standard posts in the WordPress admin.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_remove_post_thumbnail_box() {
+    remove_meta_box( 'postimagediv', 'post', 'side' );
+}
+
+add_action( 'do_meta_boxes', 'today_remove_post_thumbnail_box' );
