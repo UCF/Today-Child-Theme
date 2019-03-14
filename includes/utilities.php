@@ -3,7 +3,6 @@
  * General utilities unique to the Today Child Theme
  */
 
-
 /**
  * Returns an attachment ID for the desired thumbnail
  * image of a given post.  Returns a fallback if no image
