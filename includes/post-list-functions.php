@@ -28,10 +28,15 @@ add_filter( 'ucf_post_list_get_layouts', 'today_post_list_layouts' );
  * @since 1.0.0
  */
 function today_post_list_sc_atts( $atts, $layout ) {
-	// Create new `layout__type` attribute for horizontal and
-	// vertical feature layouts to specify primary/secondary types
+	// Add new attributes for horizontal and vertical feature layouts:
 	if ( in_array( $layout, array( 'horizontal', 'vertical' ) ) ) {
+		// Create new `layout__type` attribute for horizontal and
+		// vertical feature layouts to specify primary/secondary types
 		$atts['layout__type'] = 'secondary';
+
+		// Create new `show_excerpt` attribute that toggles
+		// the post's excerpt display
+		$atts['show_excerpt'] = true;
 	}
 
 	// Force thumbnail to display by default for horizontal features
