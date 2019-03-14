@@ -38,7 +38,9 @@ $menu = wp_nav_menu( array(
 	</div>
 	<nav class="today-site-nav navbar navbar-light d-block p-0" id="header-menu" role="navigation">
 		<div class="container">
-			<button class="close-icon p-3"><span class="sr-only">Close Menu</span><span aria-hidden="true">&times;</span></button>
+			<button type="button" class="close p-3 hidden-lg-up" aria-label="Close Menu">
+				<span aria-hidden="true">&times;</span>
+			</button>
 			<div class="hidden-lg-up mt-4 px-4">
 				<a href="<?php echo get_home_url(); ?>">
 					<img src="<?php echo TODAY_THEME_IMG_URL . '/ucf-today-logo.svg'; ?>" alt="<?php echo get_bloginfo( 'name' ); ?>">
