@@ -24,7 +24,7 @@ $menu = wp_nav_menu( array(
 					<img src="<?php echo TODAY_THEME_IMG_URL . '/ucf-today-logo.svg'; ?>" alt="<?php echo get_bloginfo( 'name' ); ?>">
 				</a>
 			</<?php echo $title_elem; ?>>
-			<div class="today-nav-desc ml-2 text-muted letter-spacing-1 text-uppercase hidden-md-down"><?php echo wptexturize( get_bloginfo( 'description' )); ?></div>
+			<div class="today-nav-desc ml-2 text-muted letter-spacing-1 text-uppercase hidden-md-down"><?php echo wptexturize( get_bloginfo( 'description' ) ); ?></div>
 		</div>
 		<div class="today-nav-actions d-flex flex-row align-items-center ml-auto">
 			<?php if ( disable_md_nav_toggle() ) : ?>
@@ -43,7 +43,7 @@ $menu = wp_nav_menu( array(
 				<a href="<?php echo get_home_url(); ?>">
 					<img src="<?php echo TODAY_THEME_IMG_URL . '/ucf-today-logo.svg'; ?>" alt="<?php echo get_bloginfo( 'name' ); ?>">
 				</a>
-				<div class="today-nav-desc mt-2 text-muted letter-spacing-1 text-uppercase"><?php echo wptexturize( get_bloginfo( 'description' )); ?></div>
+				<div class="today-nav-desc mt-2 text-muted letter-spacing-1 text-uppercase"><?php echo wptexturize( get_bloginfo( 'description' ) ); ?></div>
 			</div>
 			<?php echo $menu; ?>
 			<div class="hidden-lg-up w-100 px-4">
