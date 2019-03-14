@@ -1,0 +1,32 @@
+.weather-today-nav {
+  @include media-breakpoint-down(md) {
+    border-bottom: 1px solid $gray-lighter;
+    border-top: 1px solid $gray-lighter;
+  }
+
+  .weather-date {
+    color: $gray-dark;
+    font-size: .8rem;
+  }
+
+  .weather-icon {
+    font-size: 1.75rem;
+
+    @media (max-width: 979px) {
+      font-size: 2.75rem;
+    }
+  }
+
+  .weather-temp {
+    font-size: 1.25rem;
+    line-height: 1;
+
+    @media (max-width: 979px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .weather-condition {
+    font-size: .8rem;
+  }
+}
