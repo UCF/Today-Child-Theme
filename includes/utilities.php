@@ -109,7 +109,7 @@ function today_get_primary_tag( $post ) {
 
 
 /**
- * Adds a class to the body element to pages that
+ * Adds a class to the body element for pages that
  * return disable_md_nav_toggle() as true.
  *
  * @since 1.0.0
