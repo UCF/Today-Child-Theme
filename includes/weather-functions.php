@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle all UCF Weather Shortcode related functions here
+ * UCF Weather Shortcode Related Functions
  */
 
 
