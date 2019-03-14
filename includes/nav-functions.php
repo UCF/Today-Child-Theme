@@ -22,7 +22,7 @@ add_filter( 'ucfwp_get_nav_type', 'today_get_nav_type' );
  * returning a string, because we register this function as an action on the
  * `after_body_open` hook.
  *
- * @author Jo Dickson
+ * @author Cadie Brown
  * @since 1.0.0
  * @return void
  **/
