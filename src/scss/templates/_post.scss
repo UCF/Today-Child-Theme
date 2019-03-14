@@ -1,0 +1,34 @@
+.single-post {
+  .post-content {
+    > p:first-of-type {
+      &::first-letter {
+        display: block;
+        float: left;
+        font-size: 3rem;
+        font-weight: 700;
+        // Chrome requires an explicit unit on the line height for whatever reason
+        line-height: 2.75rem; // sass-lint:disable-line property-units
+        margin-right: .25rem;
+
+        @include media-breakpoint-up(md) {
+          font-size: 3.5rem;
+          line-height: 3.25rem; // sass-lint:disable-line property-units
+        }
+      }
+
+      &:first-child {
+        &::after {
+          clear: both;
+          content: '';
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.post-template-template-twocol {
+  .ucf-social-links-affixed {
+    margin-bottom: 2.5rem;
+  }
+}

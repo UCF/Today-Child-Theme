@@ -21,6 +21,10 @@
 //
 
 // Add/import your theme's custom styles here
+@import 'features';
 @import 'nav';
 
+@import 'components/ucf-social';
 @import 'components/weather';
+
+@import 'templates/post';
