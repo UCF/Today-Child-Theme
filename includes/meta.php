@@ -15,6 +15,8 @@ function today_enqueue_frontend_assets() {
 	$theme_version = $theme->get( 'Version' );
 
 	wp_enqueue_style( 'style-child', TODAY_THEME_CSS_URL . '/style.min.css', array( 'style' ), $theme_version );
+
+	wp_enqueue_script( 'script-child', TODAY_THEME_JS_URL . '/script.min.js', array( 'jquery', 'script' ), $theme_version, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'today_enqueue_frontend_assets', 11 );
