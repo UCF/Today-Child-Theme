@@ -70,7 +70,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
 	$type          = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
-	$use_thumbnail = isset( $args['show_image'] ) ? $args['show_image'] : true;
+	$use_thumbnail = isset( $args['show_image'] ) ? filter_var( $args['show_image'], FILTER_VALIDATE_BOOLEAN ) : true;
 	$use_excerpt   = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
