@@ -51,12 +51,17 @@
 }
 
 .feature-title {
-  font-size: 1.15rem;
-
   .feature-primary & {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.5rem;
+    }
   }
 
+  // NOTE: a more specific selector is necessary here to
+  // override Athena's selector specificity for h2/.h2's
+  .feature-secondary &,
   .feature-condensed & {
     font-size: 1rem;
   }
