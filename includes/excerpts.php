@@ -9,13 +9,24 @@
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post A WP_Post object
+ * @param int $length Specify a custom length for the excerpt.
  * @return string Sanitized post excerpt
  */
-function today_get_excerpt( $post ) {
+function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
 	if ( ! ( $post instanceof WP_Post ) ) return '';
 
+	$excerpt = '';
+	$custom_filter = function( $l ) use ( $length ) {
+		return $length;
+	};
+
 	setup_postdata( $post );
-	return wp_strip_all_tags( get_the_excerpt( $post ) );
+
+	add_filter( 'excerpt_length', $custom_filter, 99 );
+	$excerpt = wp_strip_all_tags( get_the_excerpt( $post ) );
+	remove_filter( 'excerpt_length', $custom_filter, 99 );
+
+	return $excerpt;
 }
 
 
@@ -25,11 +36,11 @@ function today_get_excerpt( $post ) {
  * @since 1.0.0
  * @author Jo Dickson
  */
-function today_excerpt_length( $length ) {
-	return 30;
+function today_default_excerpt_length( $length ) {
+	return TODAY_DEFAULT_EXCERPT_LENGTH;
 }
 
-add_filter( 'excerpt_length', 'today_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'today_default_excerpt_length', 98 );
 
 
 /**
