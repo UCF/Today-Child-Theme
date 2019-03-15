@@ -30,6 +30,7 @@ function today_output_nav_weather_data() {
  */
 function today_weather_default_today_nav( $data, $output ) {
 	if ( ! class_exists( 'UCF_Weather_Common' ) ) return;
+	if ( ! is_object( $data ) || property_exists( $data->condition ) ) return;
 
 	ob_start();
 	$icon = UCF_Weather_Common::get_weather_icon( $data->condition );
