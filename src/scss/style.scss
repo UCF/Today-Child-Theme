@@ -20,7 +20,11 @@
 // Project-specific styles and overrides
 //
 
+// Add/import your theme's custom styles here
+@import 'nav';
+
 @import 'components/features';
 @import 'components/ucf-social';
+@import 'components/weather';
 
 @import 'templates/post';

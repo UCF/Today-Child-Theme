@@ -31,6 +31,32 @@ add_action( 'customize_register', 'today_define_customizer_sections', 11 );
 
 
 /**
+ * Defines custom settings and controls used in the WordPress Customizer.
+ *
+ * @author Cadie Brown
+ * @since 1.0.0
+ */
+function today_define_customizer_fields( $wp_customize ) {
+	// Site Subtitle
+	$wp_customize->add_setting(
+		'site_subtitle'
+	);
+
+	$wp_customize->add_control(
+		'site_subtitle',
+		array(
+			'type'        => 'text',
+			'label'       => 'Site Subtitle',
+			'description' => 'Descriptive text to display next to the UCF Today logo in the site header.',
+			'section'     => 'title_tagline'
+		)
+	);
+}
+
+add_action( 'customize_register', 'today_define_customizer_fields' );
+
+
+/**
  * Disable the UCF WP Theme's template redirect overrides so that we can
  * define our own in this theme.
  *
