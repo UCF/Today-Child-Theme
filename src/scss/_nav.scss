@@ -17,7 +17,7 @@
 
 .disable-md-navbar-toggle {
   .navbar-toggler {
-    display: block;
+    display: flex;
 
     @include media-breakpoint-up(lg) {
       display: none;
