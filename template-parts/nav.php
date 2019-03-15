@@ -31,8 +31,8 @@ $menu = wp_nav_menu( array(
 			<?php endif; ?>
 		</div>
 		<div class="today-nav-actions d-flex flex-row align-items-center ml-auto">
-			<?php if ( disable_md_nav_toggle() ) : ?>
-				<?php echo output_nav_weather_data(); ?>
+			<?php if ( today_disable_md_nav_toggle() ) : ?>
+				<?php echo today_output_nav_weather_data(); ?>
 			<?php endif; ?>
 			<button class="navbar-toggler ml-auto align-self-start collapsed align-items-center" type="button" aria-controls="header-menu" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-text mr-1">Sections</span>
@@ -55,7 +55,7 @@ $menu = wp_nav_menu( array(
 			</div>
 			<?php echo $menu; ?>
 			<div class="hidden-lg-up w-100 px-4">
-				<?php echo output_nav_weather_data(); ?>
+				<?php echo today_output_nav_weather_data(); ?>
 			</div>
 		</div>
 	</nav>

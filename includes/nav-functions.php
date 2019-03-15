@@ -43,6 +43,6 @@ add_action( 'after_body_open', 'today_nav_markup', 10, 0 );
  * @since 1.0.0
  * @return bool
  */
-function disable_md_nav_toggle() {
+function today_disable_md_nav_toggle() {
 	return is_home() || is_front_page() || is_category() || is_tag() || is_page();
 }
