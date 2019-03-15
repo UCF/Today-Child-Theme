@@ -41,7 +41,7 @@
   }
 
   function closeMobileMenuIconHandler() {
-    $menu.find(menuCloseSelector).click(closeMenu);
+    menuCloseSelector.click(closeMenu);
   }
 
   function setupEventHandlers() {
@@ -55,7 +55,7 @@
     menuTriggerClass = 'active';
     $menu = $(menuSelector);
     menuSlideoutClass = 'slideout';
-    menuCloseSelector = '.close';
+    menuCloseSelector = $menu.find('.close');
     $bodyOverlay = $('#nav-overlay');
     bodyOverlayClass = 'in';
     bodyNavOpenClass = 'mobile-nav-open';
