@@ -12,7 +12,7 @@
  * @since 1.0.0
  * @return string
  **/
-function output_nav_weather_data() {
+function today_output_nav_weather_data() {
 	return do_shortcode( '[ucf-weather feed="default" layout="today_nav"]' );
 }
 
@@ -28,7 +28,7 @@ function output_nav_weather_data() {
  * @param string $output HTML output
  * @return string HTML markup
  */
-function ucf_weather_default_today_nav( $data, $output ) {
+function today_weather_default_today_nav( $data, $output ) {
 	if ( ! class_exists( 'UCF_Weather_Common' ) ) return;
 
 	ob_start();
@@ -48,4 +48,4 @@ function ucf_weather_default_today_nav( $data, $output ) {
 	return ob_get_clean();
 }
 
-add_filter( 'ucf_weather_default_today_nav', 'ucf_weather_default_today_nav', 10, 2 );
+add_filter( 'today_weather_default_today_nav', 'today_weather_default_today_nav', 10, 2 );
