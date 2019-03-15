@@ -110,7 +110,7 @@ function today_get_primary_tag( $post ) {
 
 /**
  * Adds a class to the body element for pages that
- * return disable_md_nav_toggle() as true.
+ * return today_disable_md_nav_toggle() as true.
  *
  * @since 1.0.0
  * @author Cadie Brown
@@ -118,7 +118,7 @@ function today_get_primary_tag( $post ) {
  * @return array $classes Array of class names
  **/
 function today_navbar_body_class( $classes ) {
-	if ( disable_md_nav_toggle() ) {
+	if ( today_disable_md_nav_toggle() ) {
 		$classes[] = 'disable-md-navbar-toggle';
     }
 

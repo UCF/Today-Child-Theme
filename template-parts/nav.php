@@ -31,7 +31,7 @@ $menu = wp_nav_menu( array(
 			<?php endif; ?>
 		</div>
 		<div class="today-nav-actions d-flex flex-row align-items-center ml-auto">
-			<?php if ( disable_md_nav_toggle() ) : ?>
+			<?php if ( today_disable_md_nav_toggle() ) : ?>
 				<?php echo today_output_nav_weather_data(); ?>
 			<?php endif; ?>
 			<button class="navbar-toggler ml-auto align-self-start collapsed align-items-center" type="button" aria-controls="header-menu" aria-expanded="false" aria-label="Toggle navigation">
