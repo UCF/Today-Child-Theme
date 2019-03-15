@@ -1,3 +1,8 @@
+.mobile-nav-open {
+  overflow-y: scroll;
+  position: fixed;
+}
+
 .navbar-toggler {
   border-color: $black;
   color: $black;
@@ -90,8 +95,8 @@
   position: relative;
 
   @include media-breakpoint-up(lg) {
-    padding: 1rem .6rem;
     height: 100%;
+    padding: 1rem .6rem;
 
     &::after {
       border-bottom: 2px solid transparent;

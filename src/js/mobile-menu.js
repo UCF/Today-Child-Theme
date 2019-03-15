@@ -10,18 +10,21 @@
   let menuCloseSelector;
   let $bodyOverlay;
   let bodyOverlayClass;
+  let bodyNavOpenClass;
 
 
   function closeMenu() {
     $menu.removeClass(menuSlideoutClass);
     $menuTrigger.removeClass(menuTriggerClass);
     $bodyOverlay.removeClass(bodyOverlayClass);
+    $('body').removeClass(bodyNavOpenClass);
   }
 
   function toggleMenu() {
     $menu.toggleClass(menuSlideoutClass);
     $menuTrigger.toggleClass(menuTriggerClass);
     $bodyOverlay.toggleClass(bodyOverlayClass);
+    $('body').toggleClass(bodyNavOpenClass);
   }
 
   function closeMobileMenuHandler() {
@@ -55,6 +58,7 @@
     menuCloseSelector = '.close';
     $bodyOverlay = $('#nav-overlay');
     bodyOverlayClass = 'in';
+    bodyNavOpenClass = 'mobile-nav-open';
 
     setupEventHandlers();
     closeMobileMenuHandler();
