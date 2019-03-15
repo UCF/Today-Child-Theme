@@ -33,7 +33,7 @@
 
       // Hide the mobile menu when anything else is clicked
       if (!$target.closest(menuSelector).length && !$target.closest(menuTriggerSelector).length) {
-        if ($menu.width() > 200) {
+        if ($menu.width() < 977 && $menu.width() > 200) {
           closeMenu();
         }
       }
