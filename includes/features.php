@@ -14,20 +14,40 @@
  * @return string HTML <img> tag
  */
 function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
-	$thumbnail    = '';
-	$thumbnail_id = today_get_thumbnail_id( $post );
+	$thumbnail         = '';
+	$thumbnail_class   = 'media-background object-fit-cover feature-thumbnail';
+	$header_media_type = get_field( 'header_media_type', $post );
 
-	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
-			'class' => 'media-background object-fit-cover feature-thumbnail',
-			'alt' => ''
-		) );
+	switch ( $header_media_type ) {
+		case 'video':
+			// Get video url (prevent ACF oEmbed processing)
+			$video_url           = get_field( 'post_header_video_url', $post, false );
+			$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
+			$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
+			$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
+
+			if ( $video_thumbnail_url ) {
+				$thumbnail = '<img class="' . $thumbnail_class . '" src="' . $video_thumbnail_url . '" alt="">';
+			}
+			break;
+		case 'image':
+			$thumbnail_id = today_get_thumbnail_id( $post );
+
+			if ( $thumbnail_id ) {
+				$thumbnail = wp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
+					'class' => $thumbnail_class,
+					'alt' => ''
+				) );
+			}
+			break;
+		default:
+			break;
 	}
 
 	// Use a fallback if the user requested a thumbnail, but
 	// one isn't available for the post
 	if ( ! $thumbnail ) {
-		$thumbnail = '<img class="media-background object-fit-cover feature-thumbnail" src="' . TODAY_THEME_IMG_URL . '/default-thumb.jpg" alt="">';
+		$thumbnail = '<img class="' . $thumbnail_class . '" src="' . TODAY_THEME_IMG_URL . '/default-thumb.jpg" alt="">';
 	}
 
 	return $thumbnail;
