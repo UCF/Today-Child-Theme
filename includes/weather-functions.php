@@ -48,4 +48,4 @@ function today_weather_default_today_nav( $data, $output ) {
 	return ob_get_clean();
 }
 
-add_filter( 'today_weather_default_today_nav', 'today_weather_default_today_nav', 10, 2 );
+add_filter( 'ucf_weather_default_today_nav', 'today_weather_default_today_nav', 10, 2 );
