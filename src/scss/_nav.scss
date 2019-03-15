@@ -90,11 +90,12 @@
   position: relative;
 
   @include media-breakpoint-up(lg) {
-    padding: 0 .6rem;
+    padding: 1rem .6rem;
+    height: 100%;
 
     &::after {
       border-bottom: 2px solid transparent;
-      bottom: -1rem;
+      bottom: 0;
       content: '';
       left: 0;
       opacity: 0;
