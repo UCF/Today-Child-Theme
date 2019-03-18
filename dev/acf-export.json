@@ -565,7 +565,7 @@
                 "label": "Header Video",
                 "name": "post_header_video_url",
                 "type": "oembed",
-                "instructions": "Paste in a YouTube video URL to display in place of a header image.",
+                "instructions": "Paste in a video URL from YouTube, Vimeo, etc. to display in place of a header image.",
                 "required": 0,
                 "conditional_logic": [
                     [
