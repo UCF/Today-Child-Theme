@@ -60,15 +60,15 @@ function today_get_oembed_thumbnail( $embed_url, $max_width=null, $max_height=nu
 	if ( ! $embed_url ) return null;
 
 	$retval        = null;
-	$transient_key = 'today_oembed_thumb_' . md5( $embed_url );
+	$max_width     = ( $max_width && is_numeric( $max_width ) ) ? intval( $max_width ) : 0;
+	$max_height    = ( $max_height && is_numeric( $max_height ) ) ? intval( $max_height ) : 0;
+	$transient_key = 'today_oembed_thumb_' . md5( $embed_url . $max_width . $max_height );
 	$transient     = get_transient( $transient_key );
 
 	if ( $transient !== false ) {
 		$retval = $transient;
 	}
 	else {
-		$max_width       = ( $max_width && is_numeric( $max_width ) ) ? intval( $max_width ) : null;
-		$max_height      = ( $max_height && is_numeric( $max_height ) ) ? intval( $max_height ) : null;
 		$oembed          = new WP_oEmbed();
 		$oembed_data     = null;
 		$oembed_provider = $oembed->get_provider( $embed_url );
@@ -77,10 +77,10 @@ function today_get_oembed_thumbnail( $embed_url, $max_width=null, $max_height=nu
 
 		// Not all oembed providers will support this, but try
 		// to define a desired set of thumbnail dimensions:
-		if ( $max_width && $max_width > 0 ) {
+		if ( $max_width > 0 ) {
 			$oembed_args['width'] = $max_width;
 		}
-		if ( $max_height && $max_height > 0 ) {
+		if ( $max_height > 0 ) {
 			$oembed_args['height'] = $max_height;
 		}
 
