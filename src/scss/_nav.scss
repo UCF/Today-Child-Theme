@@ -1,0 +1,158 @@
+.mobile-nav-open.disable-md-navbar-toggle {
+  overflow-y: scroll;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-toggler {
+  border-color: $black;
+  color: $black;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $ucf-gold;
+    border-color: $ucf-gold;
+    color: $black;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: $navbar-light-toggler-bg;
+}
+
+.disable-md-navbar-toggle {
+  .navbar-toggler {
+    display: flex;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
+
+.today-nav-desc {
+  font-size: 80%;
+}
+
+.today-nav-wrapper {
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.today-site-nav {
+  background-color: $gray-lighter;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity .3s cubic-bezier(.25, .5, .5, .9);
+
+  .disable-md-navbar-toggle &,
+  &.slideout {
+    height: auto;
+    opacity: 1;
+
+    @include media-breakpoint-down(md) {
+      height: 100%;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    background-color: $white;
+    height: 100%;
+    left: -75%;
+    opacity: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    transition: left .3s cubic-bezier(.25, .5, .5, .9), opacity .3s cubic-bezier(.25, .5, .5, .9);
+    width: 75%;
+    z-index: 100000;
+
+    .container {
+      padding: 0;
+    }
+
+    .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &.slideout {
+      left: 0;
+      opacity: 1;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    left: -85%;
+    width: 85%;
+  }
+}
+
+// Overrides the UCF WordPress Theme nav link styles.
+.today-site-nav .navbar-nav .nav-link {
+  padding: 1rem 1.5rem;
+  position: relative;
+
+  @include media-breakpoint-up(lg) {
+    height: 100%;
+    padding: 1rem .6rem;
+
+    &::after {
+      border-bottom: 2px solid transparent;
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity .25s ease-in-out;
+      width: 100%;
+    }
+
+    &:hover::after {
+      border-color: $gray-light;
+      opacity: 1;
+    }
+
+    &.active::after {
+      border-color: $ucf-gold;
+      opacity: 1;
+    }
+
+    &.active,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $gray-lighter;
+    }
+
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.site-nav-overlay {
+  background-color: rgba($black, .5);
+  content: '';
+  opacity: 0;
+
+  @include media-breakpoint-down(md) {
+    &.in {
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 99999;
+    }
+  }
+}
+
+.today-nav-actions .weather {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
