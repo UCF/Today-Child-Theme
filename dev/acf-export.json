@@ -223,13 +223,6 @@
                     "operator": "!=",
                     "value": "template-section.php"
                 }
-            ],
-            [
-                {
-                    "param": "taxonomy",
-                    "operator": "==",
-                    "value": "all"
-                }
             ]
         ],
         "menu_order": 0,
