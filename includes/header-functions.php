@@ -13,8 +13,19 @@
  * @return string The determined header type
  */
 function today_get_header_type( $header_type, $obj ) {
-	if ( $obj instanceof WP_Post && $obj->post_type === 'post' ) {
-		$header_type = 'post';
+	if ( $obj instanceof WP_Post ) {
+		$post_type     = $obj->post_type;
+		$post_template = get_page_template_slug( $obj->ID );
+
+		if ( $post_type === 'post' ) {
+			$header_type = 'post';
+		} elseif ( $post_type === 'page' && $post_template === 'template-section.php' ) {
+			$header_type = 'section';
+		}
+	}
+
+	if ( is_archive() ) {
+		$header_type = 'archive';
 	}
 
 	return $header_type;
@@ -33,8 +44,19 @@ add_filter( 'ucfwp_get_header_type', 'today_get_header_type', 11, 2 );
  * @return string The determined header content type
  */
 function today_get_header_content_type( $content_type, $obj ) {
-	if ( $obj instanceof WP_Post && $obj->post_type === 'post' ) {
-		$content_type = 'post';
+	if ( $obj instanceof WP_Post ) {
+		$post_type     = $obj->post_type;
+		$post_template = get_page_template_slug( $obj->ID );
+
+		if ( $post_type === 'post' ) {
+			$content_type = 'post';
+		} elseif ( $post_type === 'page' &&	$post_template === 'template-section.php' ) {
+			$content_type = 'section';
+		}
+	}
+
+	if ( is_archive() ) {
+		$content_type = 'archive';
 	}
 
 	return $content_type;
