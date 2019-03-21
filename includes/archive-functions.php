@@ -3,7 +3,10 @@
  * Provides functions specifically for archive pages
  */
 if ( ! function_exists( 'today_archive_pagination' ) ) {
-	function today_archive_pagination() {
+	/**
+	 * Returns archive pagination, inserting title if it exists
+	 */
+	function today_archive_pagination( $title='' ) {
 		if ( ! is_date() ) return;
 
 		global $wp_query;
@@ -40,17 +43,24 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 
 		ob_start();
 	?>
-		<div class="row justify-content-around mt-3 mb-5">
-			<?php if ( $prev_have_posts ) : ?>
-			<div class="col">
-				<a href="<?php echo $prev_url; ?>" class="btn btn-primary"><span class="fa fa-arrow-left" aria-hidden="true"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
+		<div class="bg-faded mt-2 mb-3 p-3">
+			<div class="row justify-content-around align-items-center">
+				<?php if ( $prev_have_posts ) : ?>
+				<div class="col">
+					<a href="<?php echo $prev_url; ?>" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left" aria-hidden="true"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
+				</div>
+				<?php endif; ?>
+				<?php if ( $title ) : ?>
+				<div class="col text-center">
+					<?php echo $title; ?>
+				</div>
+				<?php endif; ?>
+				<?php if ( $next_have_posts ) : ?>
+				<div class="col text-right">
+					<a href="<?php echo $next_url; ?>" class="btn btn-primary btn-sm"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right" aria-hidden="true"></span> </a>
+				</div>
+				<?php endif; ?>
 			</div>
-			<?php endif; ?>
-			<?php if ( $next_have_posts ) : ?>
-			<div class="col text-right">
-				<a href="<?php echo $next_url; ?>" class="btn btn-primary"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right" aria-hidden="true"></span> </a>
-			</div>
-			<?php endif; ?>
 		</div>
 	<?php
 		echo ob_get_clean();
