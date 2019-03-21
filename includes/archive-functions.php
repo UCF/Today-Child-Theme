@@ -46,12 +46,12 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 		<div class="bg-faded mt-2 mb-3 p-3">
 			<div class="row justify-content-between align-items-center">
 				<?php if ( $title ) : ?>
-				<div class="col-sm-auto col-12 mb-3 mb-sm-0 text-center col-sm-push">
+				<div class="col-sm-auto col-12 mb-3 mb-sm-0 text-center">
 					<?php echo $title; ?>
 				</div>
 				<?php endif; ?>
 				<?php if ( $prev_have_posts ) : ?>
-				<div class="col-sm-auto col col-sm-pull">
+				<div class="col-sm-auto col flex-sm-first text-left">
 					<a href="<?php echo $prev_url; ?>" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left" aria-hidden="true"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
 				</div>
 				<?php endif; ?>
