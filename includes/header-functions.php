@@ -24,6 +24,10 @@ function today_get_header_type( $header_type, $obj ) {
 		}
 	}
 
+	if ( is_archive() ) {
+		$header_type = 'archive';
+	}
+
 	return $header_type;
 }
 
@@ -49,6 +53,10 @@ function today_get_header_content_type( $content_type, $obj ) {
 		} elseif ( $post_type === 'page' &&	$post_template === 'template-section.php' ) {
 			$content_type = 'section';
 		}
+	}
+
+	if ( is_archive() ) {
+		$content_type = 'archive';
 	}
 
 	return $content_type;
