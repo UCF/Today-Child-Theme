@@ -44,19 +44,19 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 		ob_start();
 	?>
 		<div class="bg-faded mt-2 mb-3 p-3">
-			<div class="row justify-content-around align-items-center">
+			<div class="row justify-content-between align-items-center">
 				<?php if ( $prev_have_posts ) : ?>
-				<div class="col">
+				<div class="col-auto ">
 					<a href="<?php echo $prev_url; ?>" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left" aria-hidden="true"></span> <?php echo $prev_month->format( 'M Y' ); ?></a>
 				</div>
 				<?php endif; ?>
 				<?php if ( $title ) : ?>
-				<div class="col text-center">
+				<div class="col-auto">
 					<?php echo $title; ?>
 				</div>
 				<?php endif; ?>
 				<?php if ( $next_have_posts ) : ?>
-				<div class="col text-right">
+				<div class="col-auto">
 					<a href="<?php echo $next_url; ?>" class="btn btn-primary btn-sm"><?php echo $next_month->format( 'M Y' ); ?> <span class="fa fa-arrow-right" aria-hidden="true"></span> </a>
 				</div>
 				<?php endif; ?>
