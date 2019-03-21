@@ -5,7 +5,6 @@
 ?>
 
 <?php
-global $post;
 
 $title_string = ucfwp_get_header_title( null );
 
