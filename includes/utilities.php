@@ -185,9 +185,9 @@ function today_get_primary_tag( $post ) {
 function today_navbar_body_class( $classes ) {
 	if ( today_disable_md_nav_toggle() ) {
 		$classes[] = 'disable-md-navbar-toggle';
-		}
+	}
 
-		return $classes;
+	return $classes;
 }
 
 add_filter( 'body_class', 'today_navbar_body_class' );
