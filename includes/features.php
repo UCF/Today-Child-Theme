@@ -58,10 +58,6 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
  * Returns subhead text for the given post in a feature layout
  * that supports subheads.
  *
- * TODO once External Story support has been added to the theme,
- * make this function return the Story Source instead of the
- * publish date for External Stories
- *
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
@@ -70,7 +66,14 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 function today_get_feature_subhead( $post ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$subhead = get_the_date( get_option( 'date_format' ), $post );
+	$subhead = '';
+
+	if ( $post->post_type === 'ucf_resource_link' && function_exists( 'today_get_resource_link_source' ) ) {
+		$subhead = today_get_resource_link_source( $post );
+	}
+	else {
+		$subhead = get_the_date( get_option( 'date_format' ), $post );
+	}
 
 	return $subhead;
 }
@@ -187,6 +190,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 
 /**
  * Displays a condensed, simplified article link.
+ * Will not display a Resource Link without a valid permalink.
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -198,10 +202,19 @@ function today_display_feature_condensed( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
 	$permalink = get_permalink( $post );
+	if (
+		$post->post_type === 'ucf_resource_link'
+		&& function_exists( 'today_resource_link_permalink_is_valid' )
+		&& ! today_resource_link_permalink_is_valid( $post )
+	) {
+		$permalink = null;
+	}
+
 	$title     = wptexturize( $post->post_title );
 	$subhead   = today_get_feature_subhead( $post );
 
 	ob_start();
+	if ( $permalink ):
 ?>
 	<article class="d-flex flex-column align-items-start feature feature-condensed mb-3">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
@@ -213,5 +226,6 @@ function today_display_feature_condensed( $post, $args=array() ) {
 		<?php endif; ?>
 	</article>
 <?php
+	endif;
 	return ob_get_clean();
 }
