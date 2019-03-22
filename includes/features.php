@@ -58,10 +58,6 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
  * Returns subhead text for the given post in a feature layout
  * that supports subheads.
  *
- * TODO once External Story support has been added to the theme,
- * make this function return the Story Source instead of the
- * publish date for External Stories
- *
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
@@ -70,7 +66,14 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 function today_get_feature_subhead( $post ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$subhead = get_the_date( get_option( 'date_format' ), $post );
+	$subhead = '';
+
+	if ( $post->post_type === 'ucf_resource_link' && function_exists( 'today_get_resource_link_source' ) ) {
+		$subhead = today_get_resource_link_source( $post );
+	}
+	else {
+		$subhead = get_the_date( get_option( 'date_format' ), $post );
+	}
 
 	return $subhead;
 }
