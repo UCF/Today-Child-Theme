@@ -35,11 +35,14 @@
 
 // sass-lint:disable no-qualifying-elements
 .figure,
-img[class*='wp-image-'] {
-  margin-bottom: $spacer-y;
+img[class*='wp-image-']:not(.figure-img) {
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 
   &.float-left,
   &.float-right {
+    margin-top: 0;
+
     @include media-breakpoint-only(xs) {
       display: block;
       float: none !important; // sass-lint:disable-line no-important
