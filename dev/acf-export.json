@@ -531,6 +531,70 @@
                 "maxlength": "",
                 "rows": "",
                 "new_lines": ""
+            },
+            {
+                "key": "field_5c98fd5aeb16b",
+                "label": "Tag Cloud",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5c98fd68eb16c",
+                "label": "Display Tag Cloud",
+                "name": "post_display_tag_cloud",
+                "type": "true_false",
+                "instructions": "Display a tag cloud under the post's content or source. Defaults to true.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5c98fdc5eb16d",
+                "label": "Tag Cloud Count",
+                "name": "post_tag_cloud_count",
+                "type": "number",
+                "instructions": "The number of tags to show in the tag cloud. Defaults to 5.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5c98fd68eb16c",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 5,
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": 1,
+                "max": "",
+                "step": 1
             }
         ],
         "location": [
