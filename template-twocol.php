@@ -15,8 +15,7 @@ $social         = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[u
 $more_headlines = today_get_post_more_headlines( $post );
 $cat_headlines  = today_get_post_cat_headlines( $post );
 $tag_headlines  = today_get_post_tag_headlines( $post );
-$topics_list    = today_get_post_topics_list( $post );
-$tag_cloud      = today_get_tag_cloud( $post, 'mt-4 mt-md-5' );
+$tag_cloud      = today_get_tag_cloud( $post, 'mb-5' );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
@@ -30,8 +29,6 @@ $tag_cloud      = today_get_tag_cloud( $post, 'mt-4 mt-md-5' );
 				</div>
 
 				<?php echo $source; ?>
-
-				<?php echo $tag_cloud; ?>
 
 				<?php if ( $author_bio ): ?>
 				<hr class="my-4 my-md-5">
@@ -63,11 +60,7 @@ $tag_cloud      = today_get_tag_cloud( $post, 'mt-4 mt-md-5' );
 				</div>
 				<?php endif; ?>
 
-				<?php if ( $topics_list ): ?>
-				<div class="mb-5">
-					<?php echo $topics_list; ?>
-				</div>
-				<?php endif; ?>
+				<?php echo $tag_cloud; ?>
 			</div>
 		</div>
 	</div>
