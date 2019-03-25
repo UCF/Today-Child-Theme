@@ -33,7 +33,7 @@
   }
 }
 
-// sass-lint:disable-block no-qualifying-elements
+// sass-lint:disable no-qualifying-elements
 .figure,
 img[class*='wp-image-'] {
   margin-bottom: $spacer-y;
@@ -68,3 +68,4 @@ img[class*='wp-image-'] {
     }
   }
 }
+// sass-lint:enable no-qualifying-elements
