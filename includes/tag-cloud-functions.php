@@ -8,8 +8,8 @@
  *
  * @author Cadie Brown
  * @since 1.0.0
- * @param string generated HTML tag cloud output
- * @return string generated HTML tag cloud output without inline styles
+ * @param string HTML tag cloud markup
+ * @return string HTML tag cloud markup without inline styles
  **/
 function today_remove_tag_cloud_inline_style( $tag_markup ){
 	return preg_replace( '/ style=("|\')(.*?)("|\')/', '' , $tag_markup );
@@ -22,8 +22,8 @@ add_filter( 'wp_generate_tag_cloud', 'today_remove_tag_cloud_inline_style', 10, 
  *
  * @author Cadie Brown
  * @since 1.0.0
- * @see today_display_tag_cloud()
- * @param
+ * @param object $post WP_Post object
+ * @param string $classes Classes for the wrapping div tag
  * @return string HTML markup for the tag cloud
  **/
 function today_get_tag_cloud( $post, $classes = '' ) {
