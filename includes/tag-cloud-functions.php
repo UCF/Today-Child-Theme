@@ -28,8 +28,8 @@ add_filter( 'wp_generate_tag_cloud', 'today_remove_tag_cloud_inline_style', 10, 
  **/
 function today_get_tag_cloud( $post, $classes = '' ) {
 	$display_tag_cloud = get_field( 'post_display_tag_cloud', $post );
+	$tag_cloud_count   = get_field( 'post_tag_cloud_count', $post ) ?: 5;
 
-	$tag_cloud_count          = get_field( 'post_tag_cloud_count', $post ) ?: 5;
 	$main_site_stories_tag_id = get_term_by( 'slug', 'main-site-stories', 'post_tag' )->term_id;
 	$pegasus_briefs_tag_id    = get_term_by( 'slug', 'pegasus-briefs', 'post_tag' )->term_id;
 	$post_tag_ids             = wp_get_post_tags( $post->ID, array(
@@ -52,7 +52,7 @@ function today_get_tag_cloud( $post, $classes = '' ) {
 	$tag_cloud_markup = wp_tag_cloud( $args );
 
 	ob_start();
-	if ( $display_tag_cloud && !empty( $tag_cloud_markup ) ) :
+	if ( $display_tag_cloud && !empty( $post_tag_ids ) && !empty( $tag_cloud_markup ) ) :
 ?>
 	<div class="today-tag-cloud <?php echo $classes; ?>">
 		<h2 class="h6 text-uppercase text-default-aw mb-4">More Topics</h2>
