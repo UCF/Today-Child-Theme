@@ -55,10 +55,6 @@ img[class*='wp-image-']:not(.figure-img) {
     @include media-breakpoint-between(sm, md) {
       max-width: 50% !important; // sass-lint:disable-line no-important
     }
-
-    @include media-breakpoint-only(lg) {
-      max-width: 60% !important; // sass-lint:disable-line no-important
-    }
   }
 
   &.float-left {
@@ -74,3 +70,7 @@ img[class*='wp-image-']:not(.figure-img) {
   }
 }
 // sass-lint:enable no-qualifying-elements
+
+.figure-img {
+  width: 100%;
+}
