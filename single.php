@@ -6,7 +6,7 @@ $source       = today_get_post_source( $post );
 $social       = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
 $author_bio   = today_get_post_author_bio( $post );
 $related      = today_get_post_related( $post );
-$tag_cloud    = today_get_tag_cloud( $post, 'mb-4' );
+$tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mt-4' );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
