@@ -37,11 +37,13 @@
 .figure,
 img[class*='wp-image-']:not(.figure-img) {
   margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 0;
 
   &.float-left,
   &.float-right {
-    margin-top: 0;
+    p + & {
+      margin-top: 1.5rem;
+    }
 
     @include media-breakpoint-only(xs) {
       display: block;
