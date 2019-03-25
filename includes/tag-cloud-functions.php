@@ -48,7 +48,7 @@ function today_get_tag_cloud( $post, $classes = '' ) {
 	$tag_cloud_markup = wp_tag_cloud( $args );
 
 	ob_start();
-	if ( $display_tag_cloud ) :
+	if ( $display_tag_cloud && !empty( $tag_cloud_markup ) ) :
 ?>
 	<div class="today-tag-cloud <?php echo $classes; ?>">
 		<?php echo $tag_cloud_markup; ?>
