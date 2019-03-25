@@ -51,6 +51,7 @@ function today_get_tag_cloud( $post, $classes = '' ) {
 	if ( $display_tag_cloud && !empty( $tag_cloud_markup ) ) :
 ?>
 	<div class="today-tag-cloud <?php echo $classes; ?>">
+		<span class="text-uppercase font-weight-bold d-block mb-3 text-default-aw">More Topics</span>
 		<?php echo $tag_cloud_markup; ?>
 	</div>
 <?php
