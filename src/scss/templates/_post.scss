@@ -4,6 +4,7 @@
       &::first-letter {
         display: block;
         float: left;
+        font-family: $font-family-sans-serif;
         font-size: 3rem;
         font-weight: 700;
         // Chrome requires an explicit unit on the line height for whatever reason
