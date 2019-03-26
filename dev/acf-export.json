@@ -253,25 +253,6 @@
                 "first_day": 1
             },
             {
-                "key": "field_5c813b75c81b0",
-                "label": "Subtitle",
-                "name": "post_header_subtitle",
-                "type": "text",
-                "instructions": "Appears below the post title.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
                 "key": "field_5c813eaac81b1",
                 "label": "Deck",
                 "name": "post_header_deck",
