@@ -22,7 +22,7 @@ function today_get_post_header_media( $post ) {
 			if ( $video ) {
 				ob_start();
 ?>
-				<div class="embed-responsive embed-responsive-16by9 mb-4 mb-md-5">
+				<div class="mb-4 mb-md-5">
 					<?php echo $video; ?>
 				</div>
 <?php
