@@ -24,7 +24,7 @@ $tag_cloud      = today_get_tag_cloud( $post, 'mb-5' );
 			<div class="col-lg-8">
 				<?php echo $header_media; ?>
 
-				<div class="post-content">
+				<div class="post-content font-serif">
 					<?php the_content(); ?>
 				</div>
 
