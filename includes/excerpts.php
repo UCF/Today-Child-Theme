@@ -20,7 +20,7 @@ function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
 	setup_postdata( $post );
 
 	if ( $deck = get_field( 'post_header_deck', $post ) ) {
-		$excerpt = $deck;
+		$excerpt = wp_strip_all_tags( $deck );
 	} else {
 		$custom_filter = function( $l ) use ( $length ) {
 			return $length;
