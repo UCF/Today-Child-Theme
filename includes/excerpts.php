@@ -16,15 +16,20 @@ function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
 	if ( ! ( $post instanceof WP_Post ) ) return '';
 
 	$excerpt = '';
-	$custom_filter = function( $l ) use ( $length ) {
-		return $length;
-	};
 
 	setup_postdata( $post );
 
-	add_filter( 'excerpt_length', $custom_filter, 99 );
-	$excerpt = wp_strip_all_tags( get_the_excerpt( $post ) );
-	remove_filter( 'excerpt_length', $custom_filter, 99 );
+	if ( $deck = get_field( 'post_header_deck', $post ) ) {
+		$excerpt = $deck;
+	} else {
+		$custom_filter = function( $l ) use ( $length ) {
+			return $length;
+		};
+
+		add_filter( 'excerpt_length', $custom_filter, 99 );
+		$excerpt = wp_strip_all_tags( get_the_excerpt( $post ) );
+		remove_filter( 'excerpt_length', $custom_filter, 99 );
+	}
 
 	return $excerpt;
 }
