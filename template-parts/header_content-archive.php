@@ -1,6 +1,6 @@
 <?php
 /**
- * Header content template for the 'Section' page template
+ * Header content template for the archive pages
  */
 ?>
 

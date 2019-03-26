@@ -202,7 +202,7 @@
                 {
                     "param": "post_template",
                     "operator": "!=",
-                    "value": "template-section.php"
+                    "value": "template-category.php"
                 }
             ]
         ],
