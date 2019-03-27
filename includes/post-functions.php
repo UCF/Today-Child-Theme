@@ -31,32 +31,50 @@ function today_get_post_header_media( $post ) {
 			break;
 		case 'image':
 		default:
-			$img         = get_field( 'post_header_image', $post );
-			$thumb_size  = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
-			$img_html    = '';
-			$min_width   = 730;  // Minimum acceptable, non-fluid width of a <figure>.
-								 // Loosely based on maximum size of post content column in default and two-col templates.
-								 // Should be a width that comfortably fits one or more lines of an image caption.
-			$max_width   = 1140; // Default max-width value for <figure>
-			$legacy_max  = 1200; // Old theme's recommended image dimensions for the 'featured' template
-			$thumb_width = 0;    // Default calculated width of the thumbnail at $thumb_size.
-			$caption     = '';
+			$thumb_dims_medium_large = array(
+				get_option( 'medium_large_size_w' ),
+				get_option( 'medium_large_size_h' )
+			);
+			$thumb_dims_large = array(
+				get_option( 'large_size_w' ),
+				get_option( 'large_size_h' )
+			);
+
+			$img             = get_field( 'post_header_image', $post );
+			$thumb_size      = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
+			$thumb_size_dims = ( $thumb_size === 'large' ) ? $thumb_dims_large : $thumb_dims_medium_large;
+			$img_html        = '';
+			$min_width       = 730;  // Minimum acceptable, non-fluid width of a <figure>.
+								     // Loosely based on maximum size of post content column in default and two-col templates.
+								     // Should be a width that comfortably fits one or more lines of an image caption.
+			$max_width       = 1140; // Default max-width value for <figure>
+			$thumb_width     = 0;    // Default calculated width of the thumbnail at $thumb_size.
+			$caption         = '';
 
 			if ( $img ) {
+				// Get the actual image HTML.
+				// NOTE: we pass in an array of dimensions ($thumb_size_dims),
+				// instead of a thumbnail size, to ensure that this theme's
+				// updated 'medium_large' and 'large' dimensions are respected
+				// on images generated using the Today-Bootstrap theme.
+				$img_html  = wp_get_attachment_image( $img['ID'], $thumb_size_dims, false, array(
+					'class' => 'img-fluid post-header-image'
+				) );
+
+				// Modify $thumb_size for quick reference below when
+				// determining $thumb_width.
 				if ( $thumb_size === 'large' ) {
-					// Prioritize a larger image size, as long as it is no
-					// wider than $legacy_max.
+					// If the 'full' width image's width doesn't exceed the new
+					// 'large' maximum width, set $thumb_size to 'full'.
 					// Useful for images uploaded using the old Today-Bootstrap
 					// theme, where the 'large' size was only 1024px wide.
 					if (
 						isset( $img['width'] )
-						&& intval( $img['width'] ) <= $legacy_max
+						&& intval( $img['width'] ) <= $thumb_dims_large[0]
 					) {
 						$thumb_size = 'full';
 					}
 				}
-
-				$img_html  = wp_get_attachment_image( $img['ID'], $thumb_size, false, array( 'class' => 'img-fluid' ) );
 
 				// Calculate a max-width for the <figure> here so that
 				// an included image caption doesn't exceed the width

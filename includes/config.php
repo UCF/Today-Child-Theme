@@ -321,13 +321,21 @@ add_filter( 'theme_post_templates', 'today_available_ucfwp_post_templates', 10, 
 
 
 /**
- * Modifies the dimensions for WordPress's default 'large' image size.
+ * Modifies the dimensions for WordPress's default image sizes.
  *
  * @since 1.0.0
  * @author Jo Dickson
  */
 add_filter( 'pre_option_large_size_w', function( $value ) {
 	return 1200;
+} );
+
+add_filter( 'pre_option_large_size_h', function( $value ) {
+	return 800;
+} );
+
+add_filter( 'pre_option_medium_large_size_h', function( $value ) {
+	return 512;
 } );
 
 
