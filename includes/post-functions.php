@@ -32,12 +32,12 @@ function today_get_post_header_media( $post ) {
 		case 'image':
 		default:
 			$thumb_dims_medium_large = array(
-				get_option( 'medium_large_size_w' ),
-				get_option( 'medium_large_size_h' )
+				intval( get_option( 'medium_large_size_w' ) ),
+				intval( get_option( 'medium_large_size_h' ) )
 			);
 			$thumb_dims_large = array(
-				get_option( 'large_size_w' ),
-				get_option( 'large_size_h' )
+				intval( get_option( 'large_size_w' ) ),
+				intval( get_option( 'large_size_h' ) )
 			);
 
 			$img             = get_field( 'post_header_image', $post );
@@ -52,7 +52,6 @@ function today_get_post_header_media( $post ) {
 			$caption         = '';
 
 			if ( $img ) {
-				// Get the actual image HTML.
 				// NOTE: we pass in an array of dimensions ($thumb_size_dims),
 				// instead of a thumbnail size, to ensure that this theme's
 				// updated 'medium_large' and 'large' dimensions are respected
