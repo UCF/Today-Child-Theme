@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Section
+ * Template Name: Category
  * Template Post Type: page
  */
 ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template for the 'Section' page template
+ * Header template for the 'Category' page template
  */
 ?>
 
