@@ -56,7 +56,7 @@ function today_get_post_header_media( $post ) {
 				// instead of a thumbnail size, to ensure that this theme's
 				// updated 'medium_large' and 'large' dimensions are respected
 				// on images generated using the Today-Bootstrap theme.
-				$img_html  = wp_get_attachment_image( $img['ID'], $thumb_size_dims, false, array(
+				$img_html  = ucfwp_get_attachment_image( $img['ID'], $thumb_size_dims, false, array(
 					'class' => 'img-fluid post-header-image'
 				) );
 
