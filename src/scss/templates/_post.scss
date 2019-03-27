@@ -34,6 +34,13 @@
   }
 }
 
+.post-header-image {
+  @include media-breakpoint-down(sm) {
+    max-height: 340px; // 1200x800 aspect ratio at -sm breakpoint (510x340)
+    width: auto;
+  }
+}
+
 // sass-lint:disable no-qualifying-elements
 .figure,
 img[class*='wp-image-']:not(.figure-img) {
