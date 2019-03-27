@@ -34,7 +34,7 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 			$thumbnail_id = today_get_thumbnail_id( $post );
 
 			if ( $thumbnail_id ) {
-				$thumbnail = wp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
+				$thumbnail = ucfwp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
 					'class' => $thumbnail_class,
 					'alt' => ''
 				) );
