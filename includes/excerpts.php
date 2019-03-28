@@ -20,7 +20,7 @@ function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
 	if ( $deck = get_field( 'post_header_deck', $post ) ) {
 		$excerpt = wp_strip_all_tags( $deck );
 	}
-	else if ( $resource_link_desc = get_field( 'ucf_resource_link_', $post ) ) {
+	else if ( $resource_link_desc = get_field( 'ucf_resource_link_description', $post ) ) {
 		$excerpt = wp_strip_all_tags( $resource_link_desc );
 	}
 	else {
