@@ -19,8 +19,8 @@ function today_get_header_type( $header_type, $obj ) {
 
 		if ( $post_type === 'post' ) {
 			$header_type = 'post';
-		} elseif ( $post_type === 'page' && $post_template === 'template-section.php' ) {
-			$header_type = 'section';
+		} elseif ( $post_type === 'page' && $post_template === 'template-category.php' ) {
+			$header_type = 'category';
 		}
 	}
 
@@ -50,8 +50,8 @@ function today_get_header_content_type( $content_type, $obj ) {
 
 		if ( $post_type === 'post' ) {
 			$content_type = 'post';
-		} elseif ( $post_type === 'page' &&	$post_template === 'template-section.php' ) {
-			$content_type = 'section';
+		} elseif ( $post_type === 'page' &&	$post_template === 'template-category.php' ) {
+			$content_type = 'category';
 		}
 	}
 

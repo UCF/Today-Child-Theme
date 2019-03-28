@@ -22,7 +22,7 @@ function today_get_post_header_media( $post ) {
 			if ( $video ) {
 				ob_start();
 ?>
-				<div class="embed-responsive embed-responsive-16by9 mb-4 mb-md-5">
+				<div class="mb-4 mb-md-5">
 					<?php echo $video; ?>
 				</div>
 <?php
@@ -31,32 +31,49 @@ function today_get_post_header_media( $post ) {
 			break;
 		case 'image':
 		default:
-			$img         = get_field( 'post_header_image', $post );
-			$thumb_size  = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
-			$img_html    = '';
-			$min_width   = 730;  // Minimum acceptable, non-fluid width of a <figure>.
-								 // Loosely based on maximum size of post content column in default and two-col templates.
-								 // Should be a width that comfortably fits one or more lines of an image caption.
-			$max_width   = 1140; // Default max-width value for <figure>
-			$legacy_max  = 1200; // Old theme's recommended image dimensions for the 'featured' template
-			$thumb_width = 0;    // Default calculated width of the thumbnail at $thumb_size.
-			$caption     = '';
+			$thumb_dims_medium_large = array(
+				intval( get_option( 'medium_large_size_w' ) ),
+				intval( get_option( 'medium_large_size_h' ) )
+			);
+			$thumb_dims_large = array(
+				intval( get_option( 'large_size_w' ) ),
+				intval( get_option( 'large_size_h' ) )
+			);
+
+			$img             = get_field( 'post_header_image', $post );
+			$thumb_size      = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
+			$thumb_size_dims = ( $thumb_size === 'large' ) ? $thumb_dims_large : $thumb_dims_medium_large;
+			$img_html        = '';
+			$min_width       = 730;  // Minimum acceptable, non-fluid width of a <figure>.
+								     // Loosely based on maximum size of post content column in default and two-col templates.
+								     // Should be a width that comfortably fits one or more lines of an image caption.
+			$max_width       = 1140; // Default max-width value for <figure>
+			$thumb_width     = 0;    // Default calculated width of the thumbnail at $thumb_size.
+			$caption         = '';
 
 			if ( $img ) {
+				// NOTE: we pass in an array of dimensions ($thumb_size_dims),
+				// instead of a thumbnail size, to ensure that this theme's
+				// updated 'medium_large' and 'large' dimensions are respected
+				// on images generated using the Today-Bootstrap theme.
+				$img_html  = ucfwp_get_attachment_image( $img['ID'], $thumb_size_dims, false, array(
+					'class' => 'img-fluid post-header-image'
+				) );
+
+				// Modify $thumb_size for quick reference below when
+				// determining $thumb_width.
 				if ( $thumb_size === 'large' ) {
-					// Prioritize a larger image size, as long as it is no
-					// wider than $legacy_max.
+					// If the 'full' width image's width doesn't exceed the new
+					// 'large' maximum width, set $thumb_size to 'full'.
 					// Useful for images uploaded using the old Today-Bootstrap
 					// theme, where the 'large' size was only 1024px wide.
 					if (
 						isset( $img['width'] )
-						&& intval( $img['width'] ) <= $legacy_max
+						&& intval( $img['width'] ) <= $thumb_dims_large[0]
 					) {
 						$thumb_size = 'full';
 					}
 				}
-
-				$img_html  = wp_get_attachment_image( $img['ID'], $thumb_size, false, array( 'class' => 'img-fluid' ) );
 
 				// Calculate a max-width for the <figure> here so that
 				// an included image caption doesn't exceed the width
@@ -344,48 +361,6 @@ function today_get_post_tag_headlines( $post ) {
 		echo today_display_feature_condensed( $p );
 	}
 	?>
-<?php
-	endif;
-	return ob_get_clean();
-}
-
-
-/**
- * Returns a list of links to tags (topics) archives
- * assigned to the given post.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param object $post WP_Post object
- * @return string HTML for the tag list
- */
-function today_get_post_topics_list( $post ) {
-	$primary_tag = today_get_primary_tag( $post );
-	$topics      = wp_get_post_terms( $post->ID, 'post_tag' );
-
-	if ( count( $topics ) === 1 && $topics[0]->term_id === $primary_tag->term_id ) {
-		$topics = null;
-	}
-
-	ob_start();
-	if ( $topics ):
-?>
-	<h2 class="h6 text-uppercase text-default-aw mb-4">More Topics</h2>
-	<ul class="nav d-flex flex-column align-items-start">
-		<?php
-		foreach ( $topics as $t ):
-			if ( $t->term_id !== $primary_tag->term_id ):
-		?>
-		<li class="nav-item">
-			<a class="nav-link" href="<?php echo get_tag_link( $t->term_id ); ?>">
-				<?php echo wptexturize( $t->name ); ?>
-			</a>
-		</li>
-		<?php
-			endif;
-		endforeach;
-		?>
-	</ul>
 <?php
 	endif;
 	return ob_get_clean();
