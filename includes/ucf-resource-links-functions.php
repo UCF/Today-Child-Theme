@@ -6,7 +6,6 @@
 
 /**
  * Returns a source for the given Resource Link post.
- * TODO how are we storing 'source's?
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -14,7 +13,14 @@
  * @return string The source value for the Resource Link
  */
 function today_get_resource_link_source( $post ) {
-	return '';
+	$source = '';
+	$sources = wp_get_post_terms( $post->ID, 'sources' );
+
+	if ( ! empty( $sources ) ) {
+		$source = wptexturize( $sources[0]->name );
+	}
+
+	return $source;
 }
 
 
