@@ -12,6 +12,7 @@ include_once 'includes/post-functions.php';
 include_once 'includes/archive-functions.php';
 include_once 'includes/weather-functions.php';
 include_once 'includes/tag-cloud-functions.php';
+include_once 'includes/category-functions.php';
 
 
 // Plugin extras/overrides
