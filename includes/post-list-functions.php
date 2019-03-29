@@ -44,10 +44,15 @@ function today_post_list_sc_atts( $atts, $layout ) {
 		$atts['show_image'] = true;
 	}
 
-	// Assign default `posts_per_row` for sane display
-	// of extensive feature lists
+	// Add new attributes for all feature layouts:
 	if ( in_array( $layout, array( 'horizontal', 'vertical', 'condensed' ) ) ) {
+		// Assign default `posts_per_row` for sane display
+		// of extensive feature lists
 		$atts['posts_per_row'] = 1;
+
+		// Create new `` attribute to toggle the post's
+		// subhead text
+		$atts['show_subhead'] = false;
 	}
 
 

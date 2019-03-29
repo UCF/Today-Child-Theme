@@ -95,12 +95,14 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	$type          = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
 	$use_thumbnail = isset( $args['show_image'] ) ? filter_var( $args['show_image'], FILTER_VALIDATE_BOOLEAN ) : true;
 	$use_excerpt   = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
+	$use_subhead   = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
+	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail      = '';
 	$thumbnail_col_class = 'col-4 col-sm-3'; // classes for assumed default $type of 'secondary'
 
@@ -132,8 +134,12 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 				<div class="col">
 					<h2 class="feature-title"><?php echo $title; ?></h2>
 
-					<?php if ( $use_excerpt ): ?>
+					<?php if ( $use_excerpt && $excerpt ): ?>
 					<div class="feature-excerpt"><?php echo $excerpt; ?></div>
+					<?php endif; ?>
+
+					<?php if ( $use_subhead && $subhead ): ?>
+					<div class="feature-subhead mt-2"><?php echo $subhead; ?></div>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -159,12 +165,14 @@ function today_display_feature_vertical( $post, $args=array() ) {
 
 	$type        = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
 	$use_excerpt = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
+	$use_subhead = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
+	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail_size = ( $type === 'primary' ) ? 'large' : 'medium_large';
 	$thumbnail      = today_get_feature_thumbnail( $post, $thumbnail_size );
 
@@ -178,8 +186,12 @@ function today_display_feature_vertical( $post, $args=array() ) {
 
 			<h2 class="feature-title"><?php echo $title; ?></h2>
 
-			<?php if ( $use_excerpt ): ?>
+			<?php if ( $use_excerpt && $excerpt ): ?>
 			<div class="feature-excerpt"><?php echo $excerpt; ?></div>
+			<?php endif; ?>
+
+			<?php if ( $use_subhead && $subhead ): ?>
+			<div class="feature-subhead mt-2"><?php echo $subhead; ?></div>
 			<?php endif; ?>
 		</a>
 	</article>
