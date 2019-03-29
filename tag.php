@@ -15,7 +15,7 @@
 		$all_events_link = str_replace( 'feed.json', '', $events_feed_url );
 	}
 
-	$all_news_link = ( $page = get_page_by_title( "UCF in the News" ) ) ? get_permalink( $page ) : null;
+	$all_news_link = today_get_external_stories_url();
 ?>
 
 <div class="container mt-4 mb-5 pb-sm-4">
@@ -51,7 +51,7 @@
 			<h2 class="h6 text-uppercase text-default-aw mb-4 mt-5">UCF in the News</h2>
 			<?php echo do_shortcode('[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]'); ?>
 
-		<?php if( isset ( $all_news_link ) ) : ?>
+		<?php if ( $all_news_link ) : ?>
 			<div class="text-right">
 				<a href="<?php echo $all_news_link; ?>">View All</a>
 			</div>
