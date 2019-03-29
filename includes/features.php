@@ -80,6 +80,24 @@ function today_get_feature_subhead( $post ) {
 
 
 /**
+ * Returns true/false if the post content can be linked to
+ * with a valid permalink.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @return bool
+ */
+function today_is_feature_linkable( $post ) {
+	return (
+		$post->post_type === 'ucf_resource_link'
+		&& function_exists( 'today_resource_link_permalink_is_valid' )
+		&& ! today_resource_link_permalink_is_valid( $post )
+	);
+}
+
+
+/**
  * Displays an article link in a horizontal orientation.
  * Optionally displays a thumbnail (enabled by default).
  *
@@ -99,6 +117,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
+	$is_linkable    = today_is_feature_linkable( $post );
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
@@ -119,6 +138,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	}
 
 	ob_start();
+	if ( $is_linkable ):
 ?>
 	<article class="feature feature-horizontal <?php echo $type_class; ?> mb-4">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
@@ -146,6 +166,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 		</a>
 	</article>
 <?php
+	endif;
 	return ob_get_clean();
 }
 
@@ -169,6 +190,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
+	$is_linkable    = today_is_feature_linkable( $post );
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
@@ -177,6 +199,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 	$thumbnail      = today_get_feature_thumbnail( $post, $thumbnail_size );
 
 	ob_start();
+	if ( $is_linkable ):
 ?>
 	<article class="feature feature-vertical <?php echo $type_class; ?> mb-4">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
@@ -196,13 +219,13 @@ function today_display_feature_vertical( $post, $args=array() ) {
 		</a>
 	</article>
 <?php
+	endif;
 	return ob_get_clean();
 }
 
 
 /**
  * Displays a condensed, simplified article link.
- * Will not display a Resource Link without a valid permalink.
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -213,20 +236,13 @@ function today_display_feature_vertical( $post, $args=array() ) {
 function today_display_feature_condensed( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$permalink = get_permalink( $post );
-	if (
-		$post->post_type === 'ucf_resource_link'
-		&& function_exists( 'today_resource_link_permalink_is_valid' )
-		&& ! today_resource_link_permalink_is_valid( $post )
-	) {
-		$permalink = null;
-	}
-
-	$title     = wptexturize( $post->post_title );
-	$subhead   = today_get_feature_subhead( $post );
+	$permalink   = get_permalink( $post );
+	$is_linkable = today_is_feature_linkable( $post );
+	$title       = wptexturize( $post->post_title );
+	$subhead     = today_get_feature_subhead( $post );
 
 	ob_start();
-	if ( $permalink ):
+	if ( $is_linkable ):
 ?>
 	<article class="d-flex flex-column align-items-start feature feature-condensed mb-3">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
