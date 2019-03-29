@@ -11,13 +11,13 @@
  * @author Cadie Brown
  * @return string HTML markup for the sidebar events section.
  **/
-function today_get_category_sidebar_events() {
+function today_get_category_sidebar_events( $feed_url, $layout, $num_posts, $view_link ) {
 	ob_start();
 	?>
 		<div class="mb-5">
 			<h2 class="h6 text-uppercase text-default-aw mb-3">Events at UCF</h2>
-			<?php echo do_shortcode( '[ucf-events feed_url="https://events.ucf.edu/upcoming/feed.json" layout="classic" limit="4" title=""]' ); ?>
-			<p class="text-right"><a href="https://events.ucf.edu/upcoming/">View All Events</a></p>
+			<?php echo do_shortcode( '[ucf-events feed_url="' . $feed_url . '" layout="' . $layout . '" limit="' . $num_posts . '" title=""]' ); ?>
+			<p class="text-right"><a href="<?php echo $view_link; ?>">View All Events</a></p>
 		</div>
 	<?php
 	return ob_get_clean();
@@ -31,12 +31,12 @@ function today_get_category_sidebar_events() {
  * @author Cadie Brown
  * @return string HTML markup for the sidebar news section.
  **/
-function today_get_category_sidebar_news() {
+function today_get_category_sidebar_news( $layout, $num_posts ) {
 	ob_start();
 	?>
 	<div class="mb-5">
 		<h2 class="h6 text-uppercase text-default-aw mb-3">UCF In the News</h2>
-		<?php echo do_shortcode( '[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]' ); ?>
+		<?php echo do_shortcode( '[ucf-post-list layout="' . $layout . '" post_type="ucf_resource_link" numberposts="' . $num_posts . '"]' ); ?>
 		<p class="text-right"><a href="<?php echo get_permalink( get_page_by_title( 'UCF in the News' ) ); ?>">View All UCF In The News</a></p>
 	</div>
 	<?php
@@ -51,14 +51,14 @@ function today_get_category_sidebar_news() {
  * @author Cadie Brown
  * @return string HTML markup for the sidebar resources menu.
  **/
-function today_get_category_sidebar_resources_menu() {
+function today_get_category_sidebar_resources_menu( $menu ) {
 	ob_start();
 	?>
 	<div class="mb-5">
 		<h2 class="h6 text-uppercase text-default-aw mb-3">Resources</h2>
 		<?php
 			wp_nav_menu( array(
-				'menu'       => 'Resources',
+				'menu'       => $menu,
 				'menu_class' => 'list-unstyled'
 			) );
 		?>
@@ -121,13 +121,23 @@ function today_get_category_sidebar_markup( $post_id ) {
 		while ( have_rows( 'sidebar_content', $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'category_sidebar_events' :
-					$markup .= today_get_category_sidebar_events();
+					$feed_url  = get_sub_field( 'events_feed_url' ) ?: 'https://events.ucf.edu/upcoming/feed.json';
+					$layout    = get_sub_field( 'events_layout' ) ?: 'classic';
+					$num_posts = get_sub_field( 'events_number_of_posts' ) ?: 4;
+					$view_link = get_sub_field( 'events_view_all_link' ) ?: 'https://events.ucf.edu/upcoming/';
+
+					$markup .= today_get_category_sidebar_events( $feed_url, $layout, $num_posts, $view_link );
 					break;
 				case 'category_sidebar_in_the_news' :
-					$markup .= today_get_category_sidebar_news();
+					$layout    = get_sub_field( 'news_layout' ) ?: 'condensed';
+					$num_posts = get_sub_field( 'news_number_of_posts' ) ?: 4;
+
+					$markup .= today_get_category_sidebar_news( $layout, $num_posts );
 					break;
 				case 'category_sidebar_resources_menu' :
-					$markup .= today_get_category_sidebar_resources_menu();
+					$menu = get_sub_field( 'resources_menu' ) ?: 'Resources';
+
+					$markup .= today_get_category_sidebar_resources_menu( $menu );
 					break;
 				case 'category_sidebar_spotlight' :
 					if ( $spotlight = get_sub_field( 'spotlight_object' ) ) {

@@ -51,21 +51,76 @@
                         "display": "block",
                         "sub_fields": [
                             {
-                                "key": "field_5c9cfecf0c56a",
-                                "label": "",
-                                "name": "",
-                                "type": "message",
-                                "instructions": "",
+                                "key": "field_5c9e1777455c7",
+                                "label": "Feed URL",
+                                "name": "events_feed_url",
+                                "type": "url",
+                                "instructions": "UCF Events feed. Defaults to https:\/\/events.ucf.edu\/upcoming\/feed.json.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "",
+                                    "width": "50",
                                     "class": "",
                                     "id": ""
                                 },
-                                "message": "Displays the events section in the sidebar.",
-                                "new_lines": "wpautop",
-                                "esc_html": 0
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/feed.json",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5c9e1793455c8",
+                                "label": "Layout",
+                                "name": "events_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used for displaying the events. Defaults to classic.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "classic",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e17cb455c9",
+                                "label": "Number of Posts",
+                                "name": "events_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of events to be displayed. Defaults to 4.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": 1,
+                                "max": "",
+                                "step": 1
+                            },
+                            {
+                                "key": "field_5c9e180b455ca",
+                                "label": "'View All' Link",
+                                "name": "events_view_all_link",
+                                "type": "url",
+                                "instructions": "The URL assigned to the 'View All Events' link. Defaults to https:\/\/events.ucf.edu\/upcoming\/.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/",
+                                "placeholder": ""
                             }
                         ],
                         "min": "",
@@ -78,21 +133,44 @@
                         "display": "block",
                         "sub_fields": [
                             {
-                                "key": "field_5c9cffe17e3a5",
-                                "label": "",
-                                "name": "",
-                                "type": "message",
-                                "instructions": "",
+                                "key": "field_5c9e1884455cb",
+                                "label": "Layout",
+                                "name": "news_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used to display the news stories. Defaults to condensed.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "",
+                                    "width": "50",
                                     "class": "",
                                     "id": ""
                                 },
-                                "message": "Displays the In The News section in the sidebar.",
-                                "new_lines": "wpautop",
-                                "esc_html": 0
+                                "default_value": "condensed",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e1900455cc",
+                                "label": "Number of Posts",
+                                "name": "news_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of news stories to be displayed. Defaults to 4.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": "",
+                                "max": "",
+                                "step": ""
                             }
                         ],
                         "min": "",
@@ -105,11 +183,11 @@
                         "display": "block",
                         "sub_fields": [
                             {
-                                "key": "field_5c9cffac7e3a4",
-                                "label": "",
-                                "name": "",
-                                "type": "message",
-                                "instructions": "",
+                                "key": "field_5c9e1b14455cf",
+                                "label": "Resources Menu",
+                                "name": "resources_menu",
+                                "type": "nav_menu",
+                                "instructions": "Select the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to 'Resources'.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -117,9 +195,9 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "message": "Displays the Resources menu in the sidebar.",
-                                "new_lines": "wpautop",
-                                "esc_html": 0
+                                "save_format": "id",
+                                "container": "div",
+                                "allow_null": 1
                             }
                         ],
                         "min": "",
