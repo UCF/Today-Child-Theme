@@ -51,14 +51,14 @@ function today_get_category_sidebar_news( $layout, $num_posts ) {
  * @author Cadie Brown
  * @return string HTML markup for the sidebar resources menu.
  **/
-function today_get_category_sidebar_resources_menu( $menu_name ) {
+function today_get_category_sidebar_resources_menu( $menu ) {
 	ob_start();
 	?>
 	<div class="mb-5">
 		<h2 class="h6 text-uppercase text-default-aw mb-3">Resources</h2>
 		<?php
 			wp_nav_menu( array(
-				'menu'       => $menu_name,
+				'menu'       => $menu,
 				'menu_class' => 'list-unstyled'
 			) );
 		?>
@@ -135,9 +135,9 @@ function today_get_category_sidebar_markup( $post_id ) {
 					$markup .= today_get_category_sidebar_news( $layout, $num_posts );
 					break;
 				case 'category_sidebar_resources_menu' :
-					$menu_name = get_sub_field( 'resources_menu_name' ) ?: 'Resources';
+					$menu = get_sub_field( 'resources_menu' ) ?: 'Resources';
 
-					$markup .= today_get_category_sidebar_resources_menu( $menu_name );
+					$markup .= today_get_category_sidebar_resources_menu( $menu );
 					break;
 				case 'category_sidebar_spotlight' :
 					if ( $spotlight = get_sub_field( 'spotlight_object' ) ) {
