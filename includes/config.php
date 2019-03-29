@@ -294,22 +294,3 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 }
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
-
-
-/**
- * Adds a custom ACF WYSIWYG toolbar called 'Inline Text - No Links' that
- * only includes simple inline text formatting tools.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param array $toolbars Array of toolbar information from ACF
- * @return array
- */
-function today_acf_inline_text_nolinks_toolbar( $toolbars ) {
-	$toolbars['Inline Text - No Links'] = array();
-	$toolbars['Inline Text - No Links'][1] = array( 'bold', 'italic', 'undo', 'redo' );
-
-	return $toolbars;
-}
-
-add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_nolinks_toolbar' );

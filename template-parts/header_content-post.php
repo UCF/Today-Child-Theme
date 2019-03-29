@@ -32,9 +32,9 @@ $meta             = today_get_post_meta_info( $post );
 	<?php endif; ?>
 
 	<?php if ( $deck ): ?>
-	<p class="lead mb-3">
+	<div class="lead mb-3">
 		<?php echo $deck; ?>
-	</p>
+	</div>
 	<?php endif; ?>
 
 	<?php if ( $meta ): ?>

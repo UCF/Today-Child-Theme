@@ -604,7 +604,7 @@
                 "key": "field_5c9d1e7a9ec0c",
                 "label": "Link Description",
                 "name": "ucf_resource_link_description",
-                "type": "wysiwyg",
+                "type": "textarea",
                 "instructions": "A brief summary of the content being linked to.",
                 "required": 0,
                 "conditional_logic": 0,
@@ -614,10 +614,10 @@
                     "id": ""
                 },
                 "default_value": "",
-                "tabs": "all",
-                "toolbar": "inline_text_no_links",
-                "media_upload": 0,
-                "delay": 0
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
             }
         ],
         "location": [
