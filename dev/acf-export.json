@@ -605,7 +605,7 @@
                 "label": "Promote on Main Site",
                 "name": "post_main_site_story",
                 "type": "true_false",
-                "instructions": "When checked, the story will appear in the news feed on the UCF.edu.",
+                "instructions": "When checked, the story will appear in the news feed on UCF.edu.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
