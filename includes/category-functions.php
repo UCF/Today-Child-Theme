@@ -117,7 +117,7 @@ function today_get_category_sidebar_custom_content( $custom_content ) {
 function today_get_category_sidebar_markup( $post_id ) {
 	$markup = '';
 
-	if ( have_rows( 'sidebar_content', $post_id ) ) :
+	if ( have_rows( 'sidebar_content', $post_id ) ) {
 		while ( have_rows( 'sidebar_content', $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'category_sidebar_events' :
@@ -143,9 +143,7 @@ function today_get_category_sidebar_markup( $post_id ) {
 					break;
 			}
 		endwhile;
-	else :
-		return;
-	endif;
+	}
 
 	return $markup;
 }
