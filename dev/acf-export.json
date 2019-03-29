@@ -1,5 +1,221 @@
 [
     {
+        "key": "group_5c9a8de9376a6",
+        "title": "Category Sidebar Fields",
+        "fields": [
+            {
+                "key": "field_5c9cdf1d61885",
+                "label": "Enable Sidebar",
+                "name": "category_enable_sidebar",
+                "type": "true_false",
+                "instructions": "Enable the sidebar with specific content for Category pages.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5c9cdf7861887",
+                "label": "Sidebar Content",
+                "name": "sidebar_content",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5c9cdf1d61885",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "5c9ce0103b79e": {
+                        "key": "5c9ce0103b79e",
+                        "name": "category_sidebar_events",
+                        "label": "Events",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9cfecf0c56a",
+                                "label": "",
+                                "name": "",
+                                "type": "message",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "Displays the events section in the sidebar.",
+                                "new_lines": "wpautop",
+                                "esc_html": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce14d63fdc": {
+                        "key": "layout_5c9ce14d63fdc",
+                        "name": "category_sidebar_in_the_news",
+                        "label": "In The News",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9cffe17e3a5",
+                                "label": "",
+                                "name": "",
+                                "type": "message",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "Displays the In The News section in the sidebar.",
+                                "new_lines": "wpautop",
+                                "esc_html": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce13363fdb": {
+                        "key": "layout_5c9ce13363fdb",
+                        "name": "category_sidebar_resources_menu",
+                        "label": "Resources Menu",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9cffac7e3a4",
+                                "label": "",
+                                "name": "",
+                                "type": "message",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "Displays the Resources menu in the sidebar.",
+                                "new_lines": "wpautop",
+                                "esc_html": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce1de68521": {
+                        "key": "layout_5c9ce1de68521",
+                        "name": "category_sidebar_spotlight",
+                        "label": "Spotlight",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9ce23ed7f46",
+                                "label": "Select Spotlight",
+                                "name": "spotlight_object",
+                                "type": "post_object",
+                                "instructions": "Select a spotlight to display in the sidebar.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "post_type": [
+                                    "ucf_spotlight"
+                                ],
+                                "taxonomy": "",
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "return_format": "object",
+                                "ui": 1
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce16b63fdd": {
+                        "key": "layout_5c9ce16b63fdd",
+                        "name": "category_sidebar_custom_content",
+                        "label": "Custom Content",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9ce0516188e",
+                                "label": "Custom Content",
+                                "name": "custom_content",
+                                "type": "wysiwyg",
+                                "instructions": "Insert custom content to display in the sidebar.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Row",
+                "min": "",
+                "max": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "post_template",
+                    "operator": "==",
+                    "value": "template-category.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
         "key": "group_58f7a73f5fecc",
         "title": "Page Header Fields",
         "fields": [
@@ -212,7 +428,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -593,7 +809,56 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5c9e1c1417520",
+        "title": "Syndication Fields",
+        "fields": [
+            {
+                "key": "field_5c9e1c1c15df3",
+                "label": "Promote on Main Site",
+                "name": "post_main_site_story",
+                "type": "true_false",
+                "instructions": "When checked, the story will appear in the news feed on the UCF.edu.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ],
+            [
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "administrator"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
         "description": ""
     }
 ]
