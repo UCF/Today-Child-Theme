@@ -257,7 +257,7 @@
                 "label": "Deck",
                 "name": "post_header_deck",
                 "type": "wysiwyg",
-                "instructions": "Appears below the subtitle.",
+                "instructions": "Appears below the title on a single post.  Is also used as excerpt text within lists of posts.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
