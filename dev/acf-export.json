@@ -842,9 +842,7 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "post"
-                }
-            ],
-            [
+                },
                 {
                     "param": "current_user_role",
                     "operator": "==",
