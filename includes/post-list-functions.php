@@ -50,8 +50,8 @@ function today_post_list_sc_atts( $atts, $layout ) {
 		// of extensive feature lists
 		$atts['posts_per_row'] = 1;
 
-		// Create new `` attribute to toggle the post's
-		// subhead text
+		// Create new `show_subhead` attribute to
+		// toggle the post's subhead text
 		$atts['show_subhead'] = false;
 	}
 
