@@ -5,21 +5,18 @@
 ?>
 
 <?php
-
 $title_string = ucfwp_get_header_title( null );
+$title = '';
+$header_content = '';
 
-ob_start();
-
+if ( is_date() ) {
+	$title = today_archive_pagination( '<h1 class="text-uppercase h4 mb-0">' . $title_string . '</h1>' );
+	$header_content = '<div class="container mt-3">' . $title . '<hr></div>';
+}
+else {
+	$title = '<h1 class="mb-3">' . $title_string . '</h1>';
+	$header_content = '<div class="container mt-4 mt-md-5">' . $title . '<hr></div>';
+}
 ?>
-<h1 class="text-uppercase h4 mb-0"><?php echo $title_string; ?></h1>
-<?php
 
-$title = ob_get_clean();
-
-?>
-<?php if ( $title ): ?>
-<div class="container mt-3 mt-md-3">
-	<?php echo today_archive_pagination( $title ); ?>
-	<hr>
-</div>
-<?php endif; ?>
+<?php echo $header_content; ?>
