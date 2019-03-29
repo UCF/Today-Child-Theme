@@ -23,3 +23,7 @@ if ( class_exists( 'UCF_Post_List_Common' ) ) {
 if ( class_exists( 'UCF_Social_Common' ) ) {
 	include_once 'includes/ucf-social-functions.php';
 }
+
+if ( class_exists( 'UCF_Resource_Link_PostType' ) ) {
+	include_once 'includes/ucf-resource-links-functions.php';
+}
