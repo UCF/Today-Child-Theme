@@ -89,11 +89,17 @@ function today_get_feature_subhead( $post ) {
  * @return bool
  */
 function today_is_feature_linkable( $post ) {
-	return (
+	$linkable = true;
+
+	if (
 		$post->post_type === 'ucf_resource_link'
 		&& function_exists( 'today_resource_link_permalink_is_valid' )
 		&& ! today_resource_link_permalink_is_valid( $post )
-	);
+	) {
+		$linkable = false;
+	}
+
+	return $linkable;
 }
 
 
