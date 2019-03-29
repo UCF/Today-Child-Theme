@@ -184,10 +184,10 @@
                         "sub_fields": [
                             {
                                 "key": "field_5c9e1b14455cf",
-                                "label": "Menu Name",
-                                "name": "resources_menu_name",
-                                "type": "text",
-                                "instructions": "The name of the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to Resources.",
+                                "label": "Resources Menu",
+                                "name": "resources_menu",
+                                "type": "nav_menu",
+                                "instructions": "Select the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to 'Resources'.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -195,11 +195,9 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "default_value": "Resources",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
+                                "save_format": "id",
+                                "container": "div",
+                                "allow_null": 1
                             }
                         ],
                         "min": "",
