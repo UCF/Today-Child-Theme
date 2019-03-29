@@ -144,7 +144,7 @@ function today_get_category_sidebar_markup( $post_id ) {
 			}
 		endwhile;
 	else :
-		return 'nothing';
+		return;
 	endif;
 
 	return $markup;
