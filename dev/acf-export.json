@@ -66,6 +66,78 @@
                                 "message": "Displays the events section in the sidebar.",
                                 "new_lines": "wpautop",
                                 "esc_html": 0
+                            },
+                            {
+                                "key": "field_5c9e1777455c7",
+                                "label": "Feed URL",
+                                "name": "events_feed_url",
+                                "type": "url",
+                                "instructions": "UCF Events feed. Defaults to <code>https:\/\/events.ucf.edu\/upcoming\/feed.json<\/code>",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/feed.json",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5c9e1793455c8",
+                                "label": "Layout",
+                                "name": "events_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used for displaying the events. Defaults to <code>classic<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "classic",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e17cb455c9",
+                                "label": "Number of Posts",
+                                "name": "events_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of events to be displayed. Defaults to <code>4<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": 1,
+                                "max": "",
+                                "step": 1
+                            },
+                            {
+                                "key": "field_5c9e180b455ca",
+                                "label": "'View All' Link",
+                                "name": "events_view_all_link",
+                                "type": "url",
+                                "instructions": "The URL assigned to the 'View All Events' link. Defaults to <code>https:\/\/events.ucf.edu\/upcoming\/<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/",
+                                "placeholder": ""
                             }
                         ],
                         "min": "",
@@ -93,6 +165,46 @@
                                 "message": "Displays the In The News section in the sidebar.",
                                 "new_lines": "wpautop",
                                 "esc_html": 0
+                            },
+                            {
+                                "key": "field_5c9e1884455cb",
+                                "label": "Layout",
+                                "name": "news_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used to display the news stories. Defaults to <code>condensed<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "condensed",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e1900455cc",
+                                "label": "Number of Posts",
+                                "name": "news_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of news stories to be displayed. Defaults to <code>4<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": "",
+                                "max": "",
+                                "step": ""
                             }
                         ],
                         "min": "",
@@ -120,6 +232,25 @@
                                 "message": "Displays the Resources menu in the sidebar.",
                                 "new_lines": "wpautop",
                                 "esc_html": 0
+                            },
+                            {
+                                "key": "field_5c9e1b14455cf",
+                                "label": "Menu Name",
+                                "name": "resources_menu_name",
+                                "type": "text",
+                                "instructions": "The name of the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to <code>Resources<\/code>.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "Resources",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
                             }
                         ],
                         "min": "",
