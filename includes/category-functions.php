@@ -37,7 +37,7 @@ function today_get_category_sidebar_news() {
 	<div class="mb-5">
 		<h2 class="h6 text-uppercase text-default-aw mb-3">UCF In the News</h2>
 		<?php echo do_shortcode( '[ucf-post-list layout="condensed" post_type="ucf_resource_link" numberposts="4"]' ); ?>
-		<p class="text-right"><a href="https://wwwdev.smca.ucf.edu/today/in-the-news/">View All UCF In The News</a></p>
+		<p class="text-right"><a href="<?php echo get_permalink( get_page_by_title( 'UCF in the News' ) ); ?>">View All UCF In The News</a></p>
 	</div>
 	<?php
 	return ob_get_clean();
