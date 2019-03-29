@@ -1,5 +1,299 @@
 [
     {
+        "key": "group_5c9a8de9376a6",
+        "title": "Category Sidebar Fields",
+        "fields": [
+            {
+                "key": "field_5c9cdf1d61885",
+                "label": "Enable Sidebar",
+                "name": "category_enable_sidebar",
+                "type": "true_false",
+                "instructions": "Enable the sidebar with specific content for Category pages.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5c9cdf7861887",
+                "label": "Sidebar Content",
+                "name": "sidebar_content",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5c9cdf1d61885",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "5c9ce0103b79e": {
+                        "key": "5c9ce0103b79e",
+                        "name": "category_sidebar_events",
+                        "label": "Events",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9e1777455c7",
+                                "label": "Feed URL",
+                                "name": "events_feed_url",
+                                "type": "url",
+                                "instructions": "UCF Events feed. Defaults to https:\/\/events.ucf.edu\/upcoming\/feed.json.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/feed.json",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5c9e1793455c8",
+                                "label": "Layout",
+                                "name": "events_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used for displaying the events. Defaults to classic.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "classic",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e17cb455c9",
+                                "label": "Number of Posts",
+                                "name": "events_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of events to be displayed. Defaults to 4.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": 1,
+                                "max": "",
+                                "step": 1
+                            },
+                            {
+                                "key": "field_5c9e180b455ca",
+                                "label": "'View All' Link",
+                                "name": "events_view_all_link",
+                                "type": "url",
+                                "instructions": "The URL assigned to the 'View All Events' link. Defaults to https:\/\/events.ucf.edu\/upcoming\/.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/",
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce14d63fdc": {
+                        "key": "layout_5c9ce14d63fdc",
+                        "name": "category_sidebar_in_the_news",
+                        "label": "In The News",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9e1884455cb",
+                                "label": "Layout",
+                                "name": "news_layout",
+                                "type": "text",
+                                "instructions": "Layout that will be used to display the news stories. Defaults to condensed.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "condensed",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5c9e1900455cc",
+                                "label": "Number of Posts",
+                                "name": "news_number_of_posts",
+                                "type": "number",
+                                "instructions": "The number of news stories to be displayed. Defaults to 4.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 4,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "min": "",
+                                "max": "",
+                                "step": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce13363fdb": {
+                        "key": "layout_5c9ce13363fdb",
+                        "name": "category_sidebar_resources_menu",
+                        "label": "Resources Menu",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9e1b14455cf",
+                                "label": "Resources Menu",
+                                "name": "resources_menu",
+                                "type": "nav_menu",
+                                "instructions": "Select the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to 'Resources'.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "save_format": "id",
+                                "container": "div",
+                                "allow_null": 1
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce1de68521": {
+                        "key": "layout_5c9ce1de68521",
+                        "name": "category_sidebar_spotlight",
+                        "label": "Spotlight",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9ce23ed7f46",
+                                "label": "Select Spotlight",
+                                "name": "spotlight_object",
+                                "type": "post_object",
+                                "instructions": "Select a spotlight to display in the sidebar.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "post_type": [
+                                    "ucf_spotlight"
+                                ],
+                                "taxonomy": "",
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "return_format": "object",
+                                "ui": 1
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_5c9ce16b63fdd": {
+                        "key": "layout_5c9ce16b63fdd",
+                        "name": "category_sidebar_custom_content",
+                        "label": "Custom Content",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5c9ce0516188e",
+                                "label": "Custom Content",
+                                "name": "custom_content",
+                                "type": "wysiwyg",
+                                "instructions": "Insert custom content to display in the sidebar.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Row",
+                "min": "",
+                "max": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "post_template",
+                    "operator": "==",
+                    "value": "template-category.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
         "key": "group_58f7a73f5fecc",
         "title": "Page Header Fields",
         "fields": [
@@ -626,9 +920,7 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "post"
-                }
-            ],
-            [
+                },
                 {
                     "param": "current_user_role",
                     "operator": "==",
