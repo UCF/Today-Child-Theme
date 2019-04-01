@@ -72,7 +72,7 @@ function today_display_sidebar_events( $args=array() ) {
 	$content = do_shortcode( '[ucf-events' . $sc_attr_str . ']' );
 
 	if ( $more_url && $more_text ) {
-		$content .= '<div class="text-right mt-4"><a href="' . $more_url . '" target="_blank">' . $more_text . '</a></div>';
+		$content .= '<div class="text-right"><a href="' . $more_url . '" target="_blank">' . $more_text . '</a></div>';
 	}
 
 	return today_display_sidebar_content( $title, $content );
@@ -111,7 +111,7 @@ function today_display_sidebar_external_stories( $args=array() ) {
 	$content = do_shortcode( '[ucf-post-list' . $sc_attr_str . ']' );
 
 	if ( $more_url ) {
-		$content .= '<div class="text-right mt-4"><a href="' . $more_url . '" target="_blank">View All<span class="sr-only"> Stories about UCF</span></a></div>';
+		$content .= '<div class="text-right"><a href="' . $more_url . '" target="_blank">View All<span class="sr-only"> Stories about UCF</span></a></div>';
 	}
 
 	return today_display_sidebar_content( $title, $content );
