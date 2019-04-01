@@ -81,9 +81,10 @@ add_action( 'after_setup_theme', 'today_reenable_templates' );
 function today_kill_unused_templates() {
 	global $wp_query, $post;
 
-	// NOTE: we only disable day-specific date archives (is_day()).
-	// Month + year archives are still enabled.
-	if ( is_author() || is_attachment() || is_day() || is_search() || is_comment_feed() ) {
+	// NOTE: we only disable day-specific date and year archives
+	// (is_day(), is_year()).
+	// Month archives are still enabled.
+	if ( is_author() || is_attachment() || is_day() || is_year() || is_search() || is_comment_feed() ) {
 		wp_redirect( home_url() );
 		exit();
 	}
