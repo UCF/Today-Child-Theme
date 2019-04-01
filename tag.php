@@ -15,7 +15,7 @@ if ( isset( $posts ) ) {
 	<div class="row">
 		<div class="col-lg-8">
 			<?php if ( $first_post ): ?>
-				<div class="mb-4">
+				<div class="pb-4">
 					<?php echo today_display_feature_vertical( $first_post, array( 'layout__type' => 'primary' ) ); ?>
 				</div>
 			<?php endif; ?>
