@@ -243,8 +243,7 @@ add_filter( 'wp_video_shortcode', 'today_responsive_videos', 10, 5 );
 
 
 /**
- * Returns the URL of the UCF In The News page
- * (resource links archive), or false.
+ * Returns the URL of the UCF In The News page, or false.
  *
  * @since 1.0.0
  * @author Jo Dickson
