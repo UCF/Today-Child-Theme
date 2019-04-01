@@ -1,10 +1,25 @@
 <?php get_header(); ?>
 
+<?php
+$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+$ext_stories_query = new WP_Query( array(
+	'paged'     => $paged,
+	'post_type' => 'ucf_resource_link',
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'resource_link_types',
+			'field'    => 'slug',
+			'terms'    => 'external-story'
+		)
+	)
+) );
+?>
+
 <div class="container mt-3 mt-md-4 mb-5 pb-sm-4">
 	<div class="row">
 		<div class="col-lg-8">
-			<?php if ( have_posts() ) : ?>
-				<?php while ( have_posts() ): the_post(); ?>
+			<?php if ( $ext_stories_query->have_posts() ) : ?>
+				<?php while ( $ext_stories_query->have_posts() ): $ext_stories_query->the_post(); ?>
 					<div class="pb-2">
 						<?php
 						echo today_display_feature_horizontal( $post, array(
@@ -16,7 +31,12 @@
 						?>
 					</div>
 				<?php endwhile; ?>
-				<?php ucfwp_the_posts_pagination(); ?>
+				<?php
+				ucfwp_the_posts_pagination( array(
+					'total' => $ext_stories_query->max_num_pages
+				) );
+				?>
+				<?php wp_reset_postdata(); ?>
 			<?php else : ?>
 				<div class="alert alert-info">
 					<p>No recent news articles found.</p>

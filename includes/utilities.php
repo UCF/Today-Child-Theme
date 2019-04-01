@@ -251,5 +251,6 @@ add_filter( 'wp_video_shortcode', 'today_responsive_videos', 10, 5 );
  * @return mixed URL string, or false upon failure
  */
 function today_get_external_stories_url() {
-	return get_post_type_archive_link( 'ucf_resource_link' );
+	$page = get_page_by_title( 'UCF in the News' );
+	return ( $page ) ? get_permalink( $page ) : false;
 }

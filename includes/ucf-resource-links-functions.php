@@ -85,8 +85,7 @@ add_filter( 'template_redirect', 'today_resource_link_redirect' );
 
 
 /**
- * Modifies the slug name of the UCF Resource Link CPT.
- * Used to modify the base slug of archives to '/in-the-news/'.
+ * Modifies post type registration arguments for the UCF Resource Link CPT.
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -94,9 +93,7 @@ add_filter( 'template_redirect', 'today_resource_link_redirect' );
  * @return array Array of post type registration arguments
  */
 function today_resource_link_post_type_args( $args ) {
-	$args['rewrite'] = array(
-		'slug' => 'in-the-news'
-	);
+	$args['has_archive'] = false;
 
 	return $args;
 }
