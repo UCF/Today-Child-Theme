@@ -63,7 +63,7 @@ function today_display_sidebar_events( $args=array() ) {
 		'layout'   => $layout,
 		'limit'    => $limit
 	) );
-	$sc_attr_str = '';
+	$sc_attr_str = ' title=""';
 
 	foreach ( $sc_attr as $key => $val ) {
 		$sc_attr_str .= ' ' . $key . '="' . $val . '"';
