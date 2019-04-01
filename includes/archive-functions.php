@@ -63,6 +63,6 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 			</div>
 		</div>
 	<?php
-		echo ob_get_clean();
+		return ob_get_clean();
 	}
 }

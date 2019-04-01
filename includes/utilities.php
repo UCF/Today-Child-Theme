@@ -240,3 +240,16 @@ function today_responsive_videos( $output, $atts, $video, $post_id, $library ) {
 }
 
 add_filter( 'wp_video_shortcode', 'today_responsive_videos', 10, 5 );
+
+
+/**
+ * Returns the URL of the UCF In The News page, or false.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @return mixed URL string, or false upon failure
+ */
+function today_get_external_stories_url() {
+	$page = get_page_by_title( 'UCF in the News' );
+	return ( $page ) ? get_permalink( $page ) : false;
+}
