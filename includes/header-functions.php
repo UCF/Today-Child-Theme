@@ -4,25 +4,6 @@
  **/
 
 /**
- * Modifies the returned h1 text for a given object/view.
- *
- * @author Jo Dickson
- * @since 1.0.0
- * @param string $title The title text
- * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
- * @return string Modified header title text
- */
-function today_get_header_title_after( $title, $obj ) {
-	if ( is_post_type_archive( 'ucf_resource_link' ) ) {
-		$title = 'UCF In The News';
-	}
-
-	return $title;
-}
-
-add_filter( 'ucfwp_get_header_title_after', 'today_get_header_title_after', 11, 2 );
-
-/**
  * Modifies what header type is returned for a given object.
  *
  * @since 1.0.0
