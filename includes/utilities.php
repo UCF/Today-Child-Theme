@@ -5,15 +5,19 @@
 
 /**
  * Returns an attachment ID for the desired thumbnail
- * image of a given post.  Returns a fallback if no image
- * is available.
+ * image of a given post.  Optionally returns a fallback
+ * if no image is available.
  *
  * @since 1.0.0
  * @author Jo Dickson
- * @param object $post WP_Post object
+ * @param mixed $post WP_Post object or post ID
+ * @param bool $use_fallback Whether or not a fallback image should be returned if a thumbnail isn't set
  * @return mixed Attachment ID (int) or null on failure
  */
-function today_get_thumbnail_id( $post ) {
+function today_get_thumbnail_id( $post, $use_fallback=true ) {
+	if ( is_numeric( $post ) ) {
+		$post = get_post( $post );
+	}
 	if ( ! $post instanceof WP_Post ) return null;
 
 	$attachment_id = null;
@@ -29,7 +33,7 @@ function today_get_thumbnail_id( $post ) {
 	}
 
 	// Get fallback if necessary
-	if ( ! $attachment_id ) {
+	if ( ! $attachment_id && $use_fallback ) {
 		// Use the UCF Post List Shortcode plugin's
 		// fallback thumbnail, if one is available
 		if ( method_exists( 'UCF_Post_List_Config', 'get_option_or_default' ) ) {
@@ -39,6 +43,60 @@ function today_get_thumbnail_id( $post ) {
 	}
 
 	return $attachment_id;
+}
+
+
+/**
+ * Returns a URL for the desired thumbnail + size
+ * of a given post.  Optionally returns a fallback
+ * if no image is available.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param mixed $post WP_Post object or post ID
+ * @param string $thumbnail_size Image size to retrieve
+ * @param bool $use_fallback Whether or not a fallback image should be returned if a thumbnail isn't set
+ * @return mixed Attachment ID (int) or null on failure
+ */
+function today_get_thumbnail_url( $post, $thumbnail_size='thumbnail', $use_fallback=true ) {
+	if ( is_numeric( $post ) ) {
+		$post = get_post( $post );
+	}
+	if ( ! $post instanceof WP_Post ) return null;
+
+	$thumbnail_url     = '';
+	$header_media_type = get_field( 'header_media_type', $post );
+
+	switch ( $header_media_type ) {
+		case 'video':
+			// Get video url (prevent ACF oEmbed processing)
+			$video_url           = get_field( 'post_header_video_url', $post, false );
+			$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
+			$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
+			$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
+
+			if ( $video_thumbnail_url ) {
+				$thumbnail_url = $video_thumbnail_url;
+			}
+			break;
+		case 'image':
+			$thumbnail_id = today_get_thumbnail_id( $post, $use_fallback );
+
+			if ( $thumbnail_id ) {
+				$thumbnail_url = ucfwp_get_attachment_src_by_size( $thumbnail_id, $thumbnail_size );
+			}
+			break;
+		default:
+			break;
+	}
+
+	// Use a fallback if the user requested a thumbnail, but
+	// one isn't available for the post
+	if ( ! $thumbnail_url && $use_fallback ) {
+		$thumbnail_url = TODAY_THEME_IMG_URL . '/default-thumb.jpg';
+	}
+
+	return $thumbnail_url;
 }
 
 
