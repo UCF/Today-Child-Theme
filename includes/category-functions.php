@@ -32,12 +32,18 @@ function today_get_category_sidebar_events( $feed_url, $layout, $num_posts, $vie
  * @return string HTML markup for the sidebar news section.
  **/
 function today_get_category_sidebar_news( $layout, $num_posts ) {
+	$in_the_news_url = today_get_external_stories_url();
 	ob_start();
 	?>
 	<div class="mb-5">
 		<h2 class="h6 text-uppercase text-default-aw mb-3">UCF In the News</h2>
 		<?php echo do_shortcode( '[ucf-post-list layout="' . $layout . '" post_type="ucf_resource_link" numberposts="' . $num_posts . '"]' ); ?>
-		<p class="text-right"><a href="<?php echo get_permalink( get_page_by_title( 'UCF in the News' ) ); ?>">View All UCF In The News</a></p>
+
+		<?php if ( $in_the_news_url ): ?>
+		<p class="text-right">
+			<a href="<?php echo $in_the_news_url; ?>">View All UCF In The News</a>
+		</p>
+		<?php endif; ?>
 	</div>
 	<?php
 	return ob_get_clean();

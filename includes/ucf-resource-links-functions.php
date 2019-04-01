@@ -82,3 +82,20 @@ function today_resource_link_redirect() {
 }
 
 add_filter( 'template_redirect', 'today_resource_link_redirect' );
+
+
+/**
+ * Modifies post type registration arguments for the UCF Resource Link CPT.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param array $args Array of post type registration arguments
+ * @return array Array of post type registration arguments
+ */
+function today_resource_link_post_type_args( $args ) {
+	$args['has_archive'] = false;
+
+	return $args;
+}
+
+add_filter( 'ucf_resource_link_post_type_args', 'today_resource_link_post_type_args' );
