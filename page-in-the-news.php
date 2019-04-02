@@ -44,13 +44,7 @@ $ext_stories_query = new WP_Query( array(
 			<?php endif; ?>
 		</div>
 		<div class="col-lg-4 pl-lg-5 mt-4 mt-lg-0">
-			<h2 class="h6 text-uppercase text-default-aw mb-4">Resources</h2>
-			<?php
-			wp_nav_menu( array(
-				'menu'       => 'Resources',
-				'menu_class' => 'list-unstyled'
-			) );
-			?>
+			<?php echo today_display_sidebar_menu(); ?>
 		</div>
 	</div>
 </div>

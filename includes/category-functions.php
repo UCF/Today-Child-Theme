@@ -12,15 +12,12 @@
  * @return string HTML markup for the sidebar events section.
  **/
 function today_get_category_sidebar_events( $feed_url, $layout, $num_posts, $view_link ) {
-	ob_start();
-	?>
-		<div class="mb-5">
-			<h2 class="h6 text-uppercase text-default-aw mb-3">Events at UCF</h2>
-			<?php echo do_shortcode( '[ucf-events feed_url="' . $feed_url . '" layout="' . $layout . '" limit="' . $num_posts . '" title=""]' ); ?>
-			<p class="text-right"><a href="<?php echo $view_link; ?>">View All Events</a></p>
-		</div>
-	<?php
-	return ob_get_clean();
+	return today_display_sidebar_events( array(
+		'feed_url' => $feed_url,
+		'layout'   => $layout,
+		'limit'    => $num_posts,
+		'more_url' => $view_link
+	) );
 }
 
 
@@ -32,21 +29,10 @@ function today_get_category_sidebar_events( $feed_url, $layout, $num_posts, $vie
  * @return string HTML markup for the sidebar news section.
  **/
 function today_get_category_sidebar_news( $layout, $num_posts ) {
-	$in_the_news_url = today_get_external_stories_url();
-	ob_start();
-	?>
-	<div class="mb-5">
-		<h2 class="h6 text-uppercase text-default-aw mb-3">UCF In the News</h2>
-		<?php echo do_shortcode( '[ucf-post-list layout="' . $layout . '" post_type="ucf_resource_link" numberposts="' . $num_posts . '"]' ); ?>
-
-		<?php if ( $in_the_news_url ): ?>
-		<p class="text-right">
-			<a href="<?php echo $in_the_news_url; ?>">View All UCF In The News</a>
-		</p>
-		<?php endif; ?>
-	</div>
-	<?php
-	return ob_get_clean();
+	return today_display_sidebar_external_stories( array(
+		'layout' => $layout,
+		'limit'  => $num_posts
+	) );
 }
 
 
@@ -58,19 +44,9 @@ function today_get_category_sidebar_news( $layout, $num_posts ) {
  * @return string HTML markup for the sidebar resources menu.
  **/
 function today_get_category_sidebar_resources_menu( $menu ) {
-	ob_start();
-	?>
-	<div class="mb-5">
-		<h2 class="h6 text-uppercase text-default-aw mb-3">Resources</h2>
-		<?php
-			wp_nav_menu( array(
-				'menu'       => $menu,
-				'menu_class' => 'list-unstyled'
-			) );
-		?>
-	</div>
-	<?php
-	return ob_get_clean();
+	return today_display_sidebar_menu( array(
+		'menu' => $menu
+	) );
 }
 
 
@@ -83,13 +59,10 @@ function today_get_category_sidebar_resources_menu( $menu ) {
  * @return string HTML markup for the sidebar spotlight.
  **/
 function today_get_category_sidebar_spotlight( $spotlight_slug ) {
-	ob_start();
-	?>
-	<div class="mb-5">
-		<?php echo do_shortcode( '[ucf-spotlight slug="' . $spotlight_slug . '"]' ); ?>
-	</div>
-	<?php
-	return ob_get_clean();
+	$title = '';
+	$content = do_shortcode( '[ucf-spotlight slug="' . $spotlight_slug . '"]' );
+
+	return today_display_sidebar_content( $title, $content );
 }
 
 
@@ -102,13 +75,7 @@ function today_get_category_sidebar_spotlight( $spotlight_slug ) {
  * @return string HTML markup for the sidebar custom content section.
  **/
 function today_get_category_sidebar_custom_content( $custom_content ) {
-	ob_start();
-	?>
-	<div class="mb-5">
-		<?php echo $custom_content; ?>
-	</div>
-	<?php
-	return ob_get_clean();
+	return today_display_sidebar_content( null, $custom_content );
 }
 
 
