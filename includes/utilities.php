@@ -58,7 +58,7 @@ function today_get_thumbnail_id( $post, $use_fallback=true ) {
  * @param bool $use_fallback Whether or not a fallback image should be returned if a thumbnail isn't set
  * @return mixed Attachment ID (int) or null on failure
  */
-function today_get_thumbnail_url( $post, $thumbnail_size='thumbnail', $use_fallback=true ) {
+function today_get_thumbnail_url( $post, $thumbnail_size='medium', $use_fallback=true ) {
 	if ( is_numeric( $post ) ) {
 		$post = get_post( $post );
 	}
