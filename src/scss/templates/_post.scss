@@ -139,6 +139,12 @@
         }
       }
     }
+
+    .figure-caption {
+      @include media-breakpoint-up(md) {
+        font-size: 70%;
+      }
+    }
   }
 }
 
@@ -152,56 +158,5 @@
   @include media-breakpoint-down(sm) {
     max-height: 340px; // 1200x800 aspect ratio at -sm breakpoint (510x340)
     width: auto;
-  }
-}
-
-// sass-lint:disable no-qualifying-elements
-.figure,
-img[class*='wp-image-']:not(.figure-img) {
-  margin-bottom: 1.5rem;
-  margin-top: 0;
-
-  &.float-left,
-  &.float-right {
-    p + & {
-      margin-top: 1.5rem;
-    }
-
-    @include media-breakpoint-only(xs) {
-      display: block;
-      float: none !important; // sass-lint:disable-line no-important
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @include media-breakpoint-between(sm, md) {
-      max-width: 50% !important; // sass-lint:disable-line no-important
-    }
-  }
-
-  &.float-left {
-    @include media-breakpoint-up(sm) {
-      margin-right: $grid-gutter-width-base;
-    }
-  }
-
-  &.float-right {
-    @include media-breakpoint-up(sm) {
-      margin-left: $grid-gutter-width-base;
-    }
-  }
-}
-// sass-lint:enable no-qualifying-elements
-
-.figure-img {
-  width: 100%;
-}
-
-.figure-caption {
-  font-family: $font-family-sans-serif;
-  font-size: $small-font-size;
-
-  @include media-breakpoint-up(md) {
-    font-size: 70%;
   }
 }
