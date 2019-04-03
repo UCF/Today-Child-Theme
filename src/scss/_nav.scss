@@ -10,9 +10,10 @@
 
   &:hover,
   &:focus,
-  &:active {
-    background-color: $ucf-gold;
-    border-color: $ucf-gold;
+  &:active,
+  &.active {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
     color: $black;
   }
 }
@@ -116,7 +117,7 @@
     }
 
     &.active::after {
-      border-color: $ucf-gold;
+      border-color: $brand-primary;
       opacity: 1;
     }
 
@@ -130,6 +131,10 @@
     &:focus {
       text-decoration: underline;
     }
+  }
+
+  &:active {
+    text-decoration: none;
   }
 }
 
