@@ -71,7 +71,7 @@
     * + .h4,
     * + .h5,
     * + .h6 {
-      margin-top: 1.5rem;
+      margin-top: 1em;
     }
 
     blockquote:not(.blockquote) {
@@ -87,6 +87,7 @@
       @include media-breakpoint-up(sm) {
         clear: both;
         float: left;
+        margin-bottom: 1.25rem;
         margin-right: $grid-gutter-width-base;
         margin-top: .75rem;
         text-align: left;
@@ -94,7 +95,6 @@
       }
 
       @include media-breakpoint-up(md) {
-        margin-bottom: 1.75rem;
         margin-right: $grid-gutter-width-base * 1.5;
         width: 40%;
       }

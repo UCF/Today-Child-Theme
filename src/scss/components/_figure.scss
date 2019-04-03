@@ -22,6 +22,7 @@ img[class*='wp-image-']:not(.figure-img) {
       margin-top: 1.5rem;
 
       @include media-breakpoint-up(sm) {
+        margin-bottom: 1.25rem;
         margin-top: .75rem;
       }
     }
@@ -34,7 +35,7 @@ img[class*='wp-image-']:not(.figure-img) {
     }
 
     @include media-breakpoint-between(sm, md) {
-      max-width: 50% !important; // sass-lint:disable-line no-important
+      max-width: 40% !important; // sass-lint:disable-line no-important
     }
   }
 
@@ -42,11 +43,19 @@ img[class*='wp-image-']:not(.figure-img) {
     @include media-breakpoint-up(sm) {
       margin-right: $grid-gutter-width-base;
     }
+
+    @include media-breakpoint-up(md) {
+      margin-right: $grid-gutter-width-base * 1.5;
+    }
   }
 
   &.float-right {
     @include media-breakpoint-up(sm) {
       margin-left: $grid-gutter-width-base;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-left: $grid-gutter-width-base * 1.5;
     }
   }
 }
