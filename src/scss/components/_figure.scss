@@ -18,6 +18,21 @@ img[class*='wp-image-']:not(.figure-img) {
 
   &.float-left,
   &.float-right {
+    @include media-breakpoint-only(xs) {
+      display: block;
+      float: none !important; // sass-lint:disable-line no-important
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include media-breakpoint-up(sm) {
+      margin-top: .5rem;
+    }
+
+    @include media-breakpoint-between(sm, md) {
+      max-width: 40% !important; // sass-lint:disable-line no-important
+    }
+
     * + & {
       margin-top: 1.5rem;
 
@@ -31,17 +46,6 @@ img[class*='wp-image-']:not(.figure-img) {
       @include media-breakpoint-up(sm) {
         margin-top: 1.5rem;
       }
-    }
-
-    @include media-breakpoint-only(xs) {
-      display: block;
-      float: none !important; // sass-lint:disable-line no-important
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @include media-breakpoint-between(sm, md) {
-      max-width: 40% !important; // sass-lint:disable-line no-important
     }
   }
 
