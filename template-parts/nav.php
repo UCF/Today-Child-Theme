@@ -19,7 +19,7 @@ $menu = wp_nav_menu( array(
 
 <div class="site-nav-overlay fade" id="nav-overlay"></div>
 <div class="today-nav-wrapper">
-	<div class="container today-nav-inner d-flex flex-row py-2">
+	<div class="container today-nav-inner d-flex flex-row py-md-2">
 		<div class="today-nav-info d-flex flex-row align-items-center">
 			<<?php echo $title_elem; ?> class="mb-0">
 				<a class="navbar-brand mr-lg-3 d-flex" href="<?php echo get_home_url(); ?>">
