@@ -27,6 +27,12 @@ img[class*='wp-image-']:not(.figure-img) {
       }
     }
 
+    br + & {
+      @include media-breakpoint-up(sm) {
+        margin-top: 1.5rem;
+      }
+    }
+
     @include media-breakpoint-only(xs) {
       display: block;
       float: none !important; // sass-lint:disable-line no-important
