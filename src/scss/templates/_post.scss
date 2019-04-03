@@ -87,7 +87,7 @@
       @include media-breakpoint-up(sm) {
         clear: both;
         float: left;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
         margin-right: $grid-gutter-width-base;
         margin-top: .75rem;
         text-align: left;
@@ -137,6 +137,12 @@
         em {
           font-style: normal;
         }
+      }
+    }
+
+    br ~ blockquote:not(.blockquote) {
+      @include media-breakpoint-up(sm) {
+        margin-top: 1.5rem;
       }
     }
 
