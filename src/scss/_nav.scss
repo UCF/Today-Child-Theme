@@ -6,6 +6,12 @@
   }
 }
 
+.navbar-brand {
+  @include media-breakpoint-down(sm) {
+    max-width: 130px;
+  }
+}
+
 .navbar-toggler {
   border-color: $black;
   color: $black;
