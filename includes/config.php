@@ -108,6 +108,19 @@ add_action( 'template_redirect', 'today_kill_unused_templates' );
 
 
 /**
+ * Remove old blogroll Links admin menu item.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ **/
+function today_kill_blogroll_links() {
+	remove_menu_page( 'link-manager.php' );
+}
+
+add_action( 'admin_menu', 'today_kill_blogroll_links' );
+
+
+/**
  * Prevent Wordpress from trying to redirect to a "loose match" post when
  * an invalid URL is requested. WordPress will redirect to 404.php instead.
  *
