@@ -161,7 +161,6 @@ function today_get_legacy_rewrite_rules() {
 		'nursing-colleges'                => 'ucf-college-of-nursing',
 		'optics-photonics'                => 'optics-photonics',
 		'sciences'                        => 'sciences',
-		'main-site-stories'               => 'main-site-stories',
 		'on-campus'                       => 'on-campus',
 		'events'                          => 'events',
 		'research'                        => 'research'
