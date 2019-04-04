@@ -308,3 +308,58 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 }
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
+
+
+/**
+ *
+ */
+function today_pre_get_posts( $query ) {
+	$q_post_type     = isset( $query->query_vars['post_type'] ) ? $query->query_vars['post_type'] : null;
+	$q_orderby       = isset( $query->query_vars['orderby'] ) ? $query->query_vars['orderby'] : null;
+	$q_orderby_array = $q_orderby ? explode( ' ', $q_orderby ) : array();
+
+	if ( ! is_array( $q_post_type ) ) {
+		$q_post_type = array( $q_post_type );
+	}
+
+	if (
+		// No post_type query var is set (default 'post'),
+		// OR post_type is explicitly set and contains 'post'
+		(
+			! $q_post_type
+			|| (
+				$q_post_type
+				&& in_array( 'post', $q_post_type )
+			)
+		)
+		&&
+		// No orderby query var is set (default 'post_date'),
+		// or orderby is explicitly set and contains 'post_date'
+		(
+			! $q_orderby
+			|| (
+				$q_orderby
+				&& in_array( 'date', $q_orderby_array )
+			)
+		)
+		&&
+		(
+			! isset( $query->query_vars['meta_key'] )
+			|| (
+				isset( $query->query_vars['meta_key'] )
+				&& $query->query_vars['meta_key'] === ''
+			)
+		)
+	) {
+		$q_orderby_array_datepos = array_search( 'date', $q_orderby_array );
+		array_splice( $q_orderby_array, $q_orderby_array_datepos, 0, 'meta_value_num' );
+		$q_orderby = implode( ' ', $q_orderby_array );
+		$query->set( 'meta_key', 'post_header_updated_date' );
+		$query->set( 'orderby', $q_orderby );
+	}
+
+	// return
+	return $query;
+}
+
+add_filter( 'pre_get_posts', 'today_pre_get_posts' );
