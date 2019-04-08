@@ -225,7 +225,7 @@
                                 "post_type": [
                                     "ucf_spotlight"
                                 ],
-                                "taxonomy": "",
+                                "taxonomy": [],
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "return_format": "object",
@@ -291,6 +291,83 @@
         "instruction_placement": "label",
         "hide_on_screen": "",
         "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5cabb0229b4e9",
+        "title": "Homepage Fields",
+        "fields": [
+            {
+                "key": "field_5cabb1174f264",
+                "label": "sghsfghd",
+                "name": "sghsfghd",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "administrator"
+                },
+                {
+                    "param": "page_type",
+                    "operator": "==",
+                    "value": "front_page"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "super_admin"
+                },
+                {
+                    "param": "page_type",
+                    "operator": "==",
+                    "value": "front_page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
+        "active": 1,
         "description": ""
     },
     {
@@ -497,6 +574,11 @@
                     "param": "post_template",
                     "operator": "!=",
                     "value": "template-category.php"
+                },
+                {
+                    "param": "page_type",
+                    "operator": "!=",
+                    "value": "front_page"
                 }
             ]
         ],
