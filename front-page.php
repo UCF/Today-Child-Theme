@@ -12,7 +12,7 @@ $content = today_get_homepage_content( $post->ID );
 			<div class="col-lg-8">
 				<?php echo $content; ?>
 			</div>
-			<div class="col-lg-4 pl-lg-5">
+			<div class="col-lg-4 pl-lg-5 mt-5 mt-lg-0">
 				<?php echo today_get_sidebar_markup( $post->ID ); ?>
 			</div>
 		</div>
