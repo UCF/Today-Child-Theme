@@ -4,37 +4,6 @@
  **/
 
 /**
- * Modifies what header type is returned for a given object.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param string $header_type The determined header type
- * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
- * @return string The determined header type
- */
-function today_get_header_type( $header_type, $obj ) {
-	if ( $obj instanceof WP_Post ) {
-		$post_type     = $obj->post_type;
-		$post_template = get_page_template_slug( $obj->ID );
-
-		if ( $post_type === 'post' ) {
-			$header_type = 'post';
-		} elseif ( $post_type === 'page' && $post_template === 'template-category.php' ) {
-			$header_type = 'category';
-		}
-	}
-
-	if ( is_archive() ) {
-		$header_type = 'archive';
-	}
-
-	return $header_type;
-}
-
-add_filter( 'ucfwp_get_header_type', 'today_get_header_type', 11, 2 );
-
-
-/**
  * Modifies what header content type is returned for a given object.
  *
  * @since 1.0.0
