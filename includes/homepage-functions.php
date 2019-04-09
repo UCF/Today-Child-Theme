@@ -133,7 +133,7 @@ function today_get_homepage_content( $post_id ) {
 	$content_type = get_field( 'home_content_type', $post_id );
 	$expiration   = get_field( 'curated_list_expiration', $post_id );
 	$expiration   = $expiration ? new DateTime( $expiration ) : null;
-	$today        = new DateTime('now');
+	$today        = new DateTime( current_time( 'mysql' ) );
 
 	// Update content type value and flush the existing
 	// expiration date if a curated list is set, but has expired:
