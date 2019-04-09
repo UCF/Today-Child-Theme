@@ -307,3 +307,32 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 }
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
+
+
+/**
+ * Moves the page WYSIWYG editor to a placeholder field within the
+ * Homepage Fields group.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_acf_homepage_wysiwyg_position() {
+?>
+<script type="text/javascript">
+	(function($) {
+		$(document).ready(function(){
+			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder)
+			$('.acf-field-5cac9ecc97b7c .acf-input').append( $('#postdivrich') );
+		});
+	})(jQuery);
+</script>
+<style type="text/css">
+	.acf-field #wp-content-editor-tools {
+		background: transparent;
+		padding-top: 0;
+	}
+</style>
+<?php
+}
+
+add_action( 'acf/input/admin_head', 'today_acf_homepage_wysiwyg_position' );
