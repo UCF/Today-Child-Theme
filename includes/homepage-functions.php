@@ -129,9 +129,25 @@ function today_get_homepage_curated( $post_id ) {
  * @return string HTML markup
  */
 function today_get_homepage_content( $post_id ) {
-	$content = '';
+	$content      = '';
+	$content_type = get_field( 'home_content_type', $post_id );
+	$expiration   = get_field( 'curated_list_expiration', $post_id );
+	$expiration   = $expiration ? new DateTime( $expiration ) : null;
+	$today        = new DateTime('now');
 
-	switch ( get_field( 'home_content_type' ) ) {
+	// Update content type value and flush the existing
+	// expiration date if a curated list is set, but has expired:
+	if (
+		$content_type === 'curated'
+		&& $expiration
+		&& $today > $expiration
+	) {
+		$content_type = 'latest';
+		update_field( 'home_content_type', $content_type, $post_id );
+		update_field( 'curated_list_expiration', '', $post_id );
+	}
+
+	switch ( $content_type ) {
 		case 'latest':
 			$content = today_get_homepage_latest();
 			break;
