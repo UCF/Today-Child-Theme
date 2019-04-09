@@ -309,81 +309,17 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
 
-
-/**
- *
- */
-function today_pre_get_posts( &$query ) {
-	$q_post_type     = isset( $query->query_vars['post_type'] ) ? $query->query_vars['post_type'] : null;
-	$q_orderby       = isset( $query->query_vars['orderby'] ) ? $query->query_vars['orderby'] : null;
-	$q_orderby_array = $q_orderby ? explode( ' ', $q_orderby ) : array();
-
-	if ( ! is_array( $q_post_type ) ) {
-		$q_post_type = array( $q_post_type );
+function today_post_insert_override( $post_id, $post, $update ) {
+	if ( $post->post_type !== 'post'
+		|| wp_is_post_revision( $post_id ) ) {
+		return;
 	}
 
-	if (
-		// No post_type query var is set (default 'post'),
-		// OR post_type is explicitly set and contains 'post'
-		(
-			! $q_post_type
-			|| (
-				$q_post_type
-				&& in_array( 'post', $q_post_type )
-			)
-		)
-		&&
-		// No orderby query var is set (default 'post_date'),
-		// or orderby is explicitly set and contains 'post_date'
-		(
-			! $q_orderby
-			|| (
-				$q_orderby
-				&& in_array( 'date', $q_orderby_array )
-			)
-		)
-		&&
-		(
-			! isset( $query->query_vars['meta_key'] )
-			|| (
-				isset( $query->query_vars['meta_key'] )
-				&& $query->query_vars['meta_key'] === ''
-			)
-		)
-	) {
-		$q_orderby_array_datepos = array_search( 'date', $q_orderby_array );
-		array_splice( $q_orderby_array, $q_orderby_array_datepos, 0, 'meta_value_datetime' );
-		$q_orderby = implode( ' ', $q_orderby_array );
-		$query->set( 'meta_key', 'post_header_updated_date' );
-		$query->set( 'meta_type', 'DATETIME' );
-		$query->set( 'orderby', $q_orderby);
+	// Get post meta
+	$publish_date = get_post_meta( $post_id, 'page_header_publish_date', true );
+	if ( ! $publish_date ) {
+		update_post_meta( $post_id, 'page_header_publish_date', date( 'Y-m-d' ) );
 	}
 }
 
-// add_filter( 'pre_get_posts', 'today_pre_get_posts' );
-
-function today_post_orderby( $orderby ) {
-	global $wp_query, $wpdb;
-
-	// Short curcuit if even one of these query_vars is not set
-	if ( ! isset( $wp_query->query_vars['post_type'] )
-		|| ! isset( $wp_query->query_vars['meta_key'] )
-		|| ! isset( $wp_query->query_vars['meta_type'] )
-		|| ! isset( $wp_query->query_vars['orderby'] ) ) {
-			return $orderby;
-		}
-
-	// Only modify the query if all the query_vars match up
-	// with what we set as the default.
-	if ( $wp_query->query_vars['post_type'] === 'post'
-		&& $wp_query->query_vars['meta_key'] === 'post_header_updated_date'
-		&& $wp_query->query_vars['meta_type'] === 'DATETIME'
-		&& in_array( 'meta_value_datetime', explode( ' ', $wp_query->query_vars['orderby'] ) ) ) {
-
-		$orderby = " COALESCE(CAST($wpdb->postmeta.meta_value as DATETIME), $wpdb->posts.post_date) DESC";
-	}
-
-	return $orderby;
-}
-
-// add_filter( 'posts_orderby', 'today_post_orderby', 10, 1 );
+add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
