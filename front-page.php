@@ -5,7 +5,7 @@ $content = today_get_homepage_content( $post->ID );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
-	<div class="container mt-2 mt-md-3 mb-5 pb-sm-4">
+	<div class="container mt-4 mt-md-5 mb-5 pb-sm-4">
 
 		<?php if ( get_field( 'enable_sidebar' ) ) : ?>
 		<div class="row">
