@@ -360,7 +360,7 @@ function today_pre_get_posts( &$query ) {
 	}
 }
 
-add_filter( 'pre_get_posts', 'today_pre_get_posts' );
+// add_filter( 'pre_get_posts', 'today_pre_get_posts' );
 
 function today_post_orderby( $orderby ) {
 	global $wp_query, $wpdb;
@@ -386,4 +386,4 @@ function today_post_orderby( $orderby ) {
 	return $orderby;
 }
 
-add_filter( 'posts_orderby', 'today_post_orderby', 10, 1 );
+// add_filter( 'posts_orderby', 'today_post_orderby', 10, 1 );
