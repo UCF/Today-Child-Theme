@@ -142,3 +142,69 @@ function today_display_sidebar_menu( $args=array() ) {
 
 	return today_display_sidebar_content( $title, $content );
 }
+
+
+/**
+ * Returns the sidebar markup for pages that utilize a customizable sidebar.
+ *
+ * @since 1.0.0
+ * @author Cadie Brown
+ * @param integer $post_id WP Post ID
+ * @return string HTML markup for the sidebar
+ **/
+function today_get_sidebar_markup( $post_id ) {
+	$markup = '';
+
+	if ( have_rows( 'sidebar_content', $post_id ) ) {
+		while ( have_rows( 'sidebar_content', $post_id ) ) : the_row();
+			switch ( get_row_layout() ) {
+				case 'sidebar_events' :
+					$feed_url  = get_sub_field( 'events_feed_url' ) ?: 'https://events.ucf.edu/upcoming/feed.json';
+					$layout    = get_sub_field( 'events_layout' ) ?: 'classic';
+					$num_posts = get_sub_field( 'events_number_of_posts' ) ?: 4;
+					$view_link = get_sub_field( 'events_view_all_link' ) ?: 'https://events.ucf.edu/upcoming/';
+
+					$markup .= today_display_sidebar_events( array(
+						'feed_url' => $feed_url,
+						'layout'   => $layout,
+						'limit'    => $num_posts,
+						'more_url' => $view_link
+					) );
+					break;
+				case 'sidebar_in_the_news' :
+					$layout    = get_sub_field( 'news_layout' ) ?: 'condensed';
+					$num_posts = get_sub_field( 'news_number_of_posts' ) ?: 4;
+
+					$markup .= today_display_sidebar_external_stories( array(
+						'layout' => $layout,
+						'limit'  => $num_posts
+					) );
+					break;
+				case 'sidebar_resources_menu' :
+					$menu = get_sub_field( 'resources_menu' ) ?: 'Resources';
+
+					$markup .= today_display_sidebar_menu( array(
+						'menu' => $menu
+					) );
+					break;
+				case 'sidebar_spotlight' :
+					if ( $spotlight = get_sub_field( 'spotlight_object' ) ) {
+						$title = '';
+						$content = do_shortcode( '[ucf-spotlight slug="' . $spotlight->post_name . '"]' );
+
+						$markup .= today_display_sidebar_content( $title, $content );
+					}
+					break;
+				case 'sidebar_custom_content' :
+					if ( $custom_content = get_sub_field( 'custom_content' ) ) {
+						$markup .= today_display_sidebar_content( null, $custom_content );
+					}
+					break;
+				default :
+					break;
+			}
+		endwhile;
+	}
+
+	return $markup;
+}
