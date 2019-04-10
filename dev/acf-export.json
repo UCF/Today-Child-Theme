@@ -531,10 +531,10 @@
             },
             {
                 "key": "field_5c813a34c81af",
-                "label": "Updated Date",
-                "name": "post_header_updated_date",
-                "type": "date_picker",
-                "instructions": "The updated date displays under the publish date when set. Leave blank to exclude story updated date.",
+                "label": "Published Date",
+                "name": "post_header_publish_date",
+                "type": "read_only",
+                "instructions": "The date the post was originally published.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -542,9 +542,8 @@
                     "class": "",
                     "id": ""
                 },
-                "display_format": "F j, Y",
-                "return_format": "F j, Y",
-                "first_day": 1
+                "copy_to_clipboard": 0,
+                "display_type": "text"
             },
             {
                 "key": "field_5c813eaac81b1",

@@ -307,3 +307,19 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 }
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
+
+function today_post_insert_override( $post_id, $post, $update ) {
+	if ( $post->post_type !== 'post'
+		|| wp_is_post_revision( $post_id )
+		|| $post->post_status !== 'publish' ) {
+		return;
+	}
+
+	// Get post meta
+	$publish_date = get_post_meta( $post_id, 'post_header_publish_date', true );
+	if ( ! $publish_date ) {
+		update_post_meta( $post_id, 'post_header_publish_date', date( 'Y-m-d' ) );
+	}
+}
+
+add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
