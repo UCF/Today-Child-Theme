@@ -49,7 +49,7 @@ function today_display_sidebar_events( $args=array() ) {
 	$more_text = isset( $args['more_text'] ) ? $args['more_text'] : 'View All Events';
 	$content   = '';
 
-	if ( isset( $args['more_url'] ) ) {
+	if ( isset( $args['more_url'] ) && !empty( $args['more_url'] ) ) {
 		$more_url = $args['more_url'];
 	}
 	else if ( class_exists( 'UCF_Events_Config' ) ) {
