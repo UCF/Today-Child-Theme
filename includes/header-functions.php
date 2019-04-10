@@ -4,6 +4,28 @@
  **/
 
 /**
+ * Modifies the h1 text for the given object.
+ *
+ * Adds "News" to the end of category and tag titles.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param string $title The object's determined title
+ * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
+ * @return string The modified title
+ */
+function today_get_header_title_after( $title, $obj ) {
+	if ( is_category() || is_tag() ) {
+		$title .= ' News';
+	}
+
+	return $title;
+}
+
+add_filter( 'ucfwp_get_header_title_after', 'today_get_header_title_after', 10, 2 );
+
+
+/**
  * Modifies header markup for the given object.
  *
  * Returns an empty string on the homepage, which
