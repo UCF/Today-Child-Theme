@@ -6,7 +6,7 @@
             {
                 "key": "field_5cabb1174f264",
                 "label": "What type of content should be displayed on the homepage?",
-                "name": "home_content_type",
+                "name": "page_content_type",
                 "type": "radio",
                 "instructions": "",
                 "required": 1,
@@ -56,7 +56,7 @@
             {
                 "key": "field_5cac9fb846af9",
                 "label": "Curated Stories",
-                "name": "home_curated_stories",
+                "name": "curated_stories",
                 "type": "flexible_content",
                 "instructions": "",
                 "required": 0,

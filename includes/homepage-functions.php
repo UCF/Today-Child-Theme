@@ -56,8 +56,8 @@ function today_get_homepage_latest() {
 function today_get_homepage_curated( $post_id ) {
 	$markup = '';
 
-	if ( have_rows( 'home_curated_stories', $post_id ) ) {
-		while ( have_rows( 'home_curated_stories', $post_id ) ) : the_row();
+	if ( have_rows( 'curated_stories', $post_id ) ) {
+		while ( have_rows( 'curated_stories', $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'primary_row' :
 					$posts = array( get_sub_field( 'post' ) );
@@ -130,7 +130,7 @@ function today_get_homepage_curated( $post_id ) {
  */
 function today_get_homepage_content( $post_id ) {
 	$content      = '';
-	$content_type = get_field( 'home_content_type', $post_id );
+	$content_type = get_field( 'page_content_type', $post_id );
 	$expiration   = get_field( 'curated_list_expiration', $post_id );
 	$expiration   = $expiration ? new DateTime( $expiration ) : null;
 	$today        = new DateTime( current_time( 'mysql' ) );
@@ -143,7 +143,7 @@ function today_get_homepage_content( $post_id ) {
 		&& $today > $expiration
 	) {
 		$content_type = 'latest';
-		update_field( 'home_content_type', $content_type, $post_id );
+		update_field( 'page_content_type', $content_type, $post_id );
 		update_field( 'curated_list_expiration', '', $post_id );
 	}
 
