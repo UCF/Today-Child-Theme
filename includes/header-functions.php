@@ -4,6 +4,29 @@
  **/
 
 /**
+ * Modifies header markup for the given object.
+ *
+ * Returns an empty string on the homepage, which
+ * prevents a <header> tag from being printed entirely.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param string $markup Determined header markup
+ * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
+ * @return string Modified header markup
+ */
+function today_get_header_markup( $markup, $obj ) {
+	if ( is_front_page() ) {
+		$markup = '';
+	}
+
+	return $markup;
+}
+
+add_filter( 'ucfwp_get_header_markup', 'today_get_header_markup', 10, 2 );
+
+
+/**
  * Modifies what header content type is returned for a given object.
  *
  * @since 1.0.0
