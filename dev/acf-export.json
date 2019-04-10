@@ -1193,7 +1193,7 @@
                                 "label": "Feed URL",
                                 "name": "events_feed_url",
                                 "type": "url",
-                                "instructions": "UCF Events feed. Defaults to https:\/\/events.ucf.edu\/upcoming\/feed.json.",
+                                "instructions": "UCF Events feed URL. Defaults to the \"UCF Events JSON Feed URL\" value in the UCF Events plugin.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -1201,7 +1201,7 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/feed.json",
+                                "default_value": "",
                                 "placeholder": ""
                             },
                             {
@@ -1249,7 +1249,7 @@
                                 "label": "'View All' Link",
                                 "name": "events_view_all_link",
                                 "type": "url",
-                                "instructions": "The URL assigned to the 'View All Events' link. Defaults to https:\/\/events.ucf.edu\/upcoming\/.",
+                                "instructions": "The URL assigned to the 'View All Events' link. Defaults to a front-end view URL based on the \"UCF Events JSON Feed URL\" value in the UCF Events plugin.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -1257,7 +1257,7 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "default_value": "https:\/\/events.ucf.edu\/upcoming\/",
+                                "default_value": "",
                                 "placeholder": ""
                             }
                         ],

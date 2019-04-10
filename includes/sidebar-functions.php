@@ -159,10 +159,10 @@ function today_get_sidebar_markup( $post_id ) {
 		while ( have_rows( 'sidebar_content', $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'sidebar_events' :
-					$feed_url  = get_sub_field( 'events_feed_url' ) ?: 'https://events.ucf.edu/upcoming/feed.json';
+					$feed_url  = get_sub_field( 'events_feed_url' );
 					$layout    = get_sub_field( 'events_layout' ) ?: 'classic';
 					$num_posts = get_sub_field( 'events_number_of_posts' ) ?: 4;
-					$view_link = get_sub_field( 'events_view_all_link' ) ?: 'https://events.ucf.edu/upcoming/';
+					$view_link = get_sub_field( 'events_view_all_link' );
 
 					$markup .= today_display_sidebar_events( array(
 						'feed_url' => $feed_url,
