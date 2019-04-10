@@ -336,3 +336,26 @@ function today_acf_homepage_wysiwyg_position() {
 }
 
 add_action( 'acf/input/admin_head', 'today_acf_homepage_wysiwyg_position' );
+
+
+/**
+ * Sets a post's original publish date meta value when the post is published.
+ *
+ * @since 1.0.0
+ * @author Jim Barnes
+ */
+function today_post_insert_override( $post_id, $post, $update ) {
+	if ( $post->post_type !== 'post'
+		|| wp_is_post_revision( $post_id )
+		|| $post->post_status !== 'publish' ) {
+		return;
+	}
+
+	// Get post meta
+	$publish_date = get_post_meta( $post_id, 'post_header_publish_date', true );
+	if ( ! $publish_date ) {
+		update_post_meta( $post_id, 'post_header_publish_date', date( 'Y-m-d' ) );
+	}
+}
+
+add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
