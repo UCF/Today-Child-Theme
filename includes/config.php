@@ -14,6 +14,30 @@ define( 'TODAY_SHORT_EXCERPT_LENGTH', 25 );
 
 
 /**
+ * Initialization functions to be fired early when WordPress loads the theme.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_init() {
+	// Remove page header image sizes, since the UCF WP Theme's
+	// media header logic isn't utilized in this theme.
+	remove_image_size( 'header-img' );
+	remove_image_size( 'header-img-sm' );
+	remove_image_size( 'header-img-md' );
+	remove_image_size( 'header-img-lg' );
+	remove_image_size( 'header-img-xl' );
+	remove_image_size( 'bg-img' );
+	remove_image_size( 'bg-img-sm' );
+	remove_image_size( 'bg-img-md' );
+	remove_image_size( 'bg-img-lg' );
+	remove_image_size( 'bg-img-xl' );
+}
+
+add_action( 'after_setup_theme', 'today_init', 11 );
+
+
+/**
  * Defines sections used in the WordPress Customizer.
  *
  * @author Jo Dickson
