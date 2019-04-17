@@ -494,6 +494,65 @@
         "description": ""
     },
     {
+        "key": "group_5c9e1c1417520",
+        "title": "Main Site News",
+        "fields": [
+            {
+                "key": "field_5c9e1c1c15df3",
+                "label": "Promote on Main Site",
+                "name": "post_main_site_story",
+                "type": "true_false",
+                "instructions": "When checked, the story will appear in the news feed on UCF.edu.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "administrator"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "super_admin"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
         "key": "group_58f7a73f5fecc",
         "title": "Page Header Fields",
         "fields": [
@@ -1435,53 +1494,6 @@
         ],
         "menu_order": 0,
         "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    },
-    {
-        "key": "group_5c9e1c1417520",
-        "title": "Syndication Fields",
-        "fields": [
-            {
-                "key": "field_5c9e1c1c15df3",
-                "label": "Promote on Main Site",
-                "name": "post_main_site_story",
-                "type": "true_false",
-                "instructions": "When checked, the story will appear in the news feed on UCF.edu.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "",
-                "default_value": 0,
-                "ui": 1,
-                "ui_on_text": "",
-                "ui_off_text": ""
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "post"
-                },
-                {
-                    "param": "current_user_role",
-                    "operator": "==",
-                    "value": "administrator"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "side",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
