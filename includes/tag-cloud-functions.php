@@ -18,7 +18,7 @@ add_filter( 'wp_generate_tag_cloud', 'today_remove_tag_cloud_inline_style', 10, 
 
 /**
  * Formats and displays the wp_tag_cloud. We intentionally exclude the
- * 'Main Site Stories' and 'Pegasus Briefs' tags from displaying.
+ * 'Pegasus Briefs' tag from displaying.
  *
  * @author Cadie Brown
  * @since 1.0.0
@@ -28,17 +28,20 @@ add_filter( 'wp_generate_tag_cloud', 'today_remove_tag_cloud_inline_style', 10, 
  **/
 function today_get_tag_cloud( $post, $classes = '' ) {
 	$display_tag_cloud = get_field( 'post_display_tag_cloud', $post );
+	$display_tag_cloud = ( $display_tag_cloud === null ) ? true : $display_tag_cloud; // Enable by default
 	$tag_cloud_count   = get_field( 'post_tag_cloud_count', $post ) ?: 5;
 
-	$main_site_stories_tag_id = get_term_by( 'slug', 'main-site-stories', 'post_tag' )->term_id;
-	$pegasus_briefs_tag_id    = get_term_by( 'slug', 'pegasus-briefs', 'post_tag' )->term_id;
+	$pegasus_briefs_tag       = get_term_by( 'slug', 'pegasus-briefs', 'post_tag' );
+	$pegasus_briefs_tag_id    = $pegasus_briefs_tag ? $pegasus_briefs_tag->term_id : null;
 	$post_tag_ids             = wp_get_post_tags( $post->ID, array(
-		'fields'  => 'ids',
-		'exclude' => array(
-			$main_site_stories_tag_id,
-			$pegasus_briefs_tag_id,
-		),
+		'fields'  => 'ids'
 	) );
+
+	if ( $pegasus_briefs_tag_id ) {
+		$post_tag_ids['exclude'] = array(
+			$pegasus_briefs_tag_id
+		);
+	}
 
 	$args = array(
 		'format'  => 'flat',

@@ -4,34 +4,48 @@
  **/
 
 /**
- * Modifies what header type is returned for a given object.
+ * Modifies the h1 text for the given object.
+ *
+ * Adds "News" to the end of category and tag titles.
  *
  * @since 1.0.0
  * @author Jo Dickson
- * @param string $header_type The determined header type
+ * @param string $title The object's determined title
  * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
- * @return string The determined header type
+ * @return string The modified title
  */
-function today_get_header_type( $header_type, $obj ) {
-	if ( $obj instanceof WP_Post ) {
-		$post_type     = $obj->post_type;
-		$post_template = get_page_template_slug( $obj->ID );
-
-		if ( $post_type === 'post' ) {
-			$header_type = 'post';
-		} elseif ( $post_type === 'page' && $post_template === 'template-category.php' ) {
-			$header_type = 'category';
-		}
+function today_get_header_title_after( $title, $obj ) {
+	if ( is_category() || is_tag() ) {
+		$title .= ' News';
 	}
 
-	if ( is_archive() ) {
-		$header_type = 'archive';
-	}
-
-	return $header_type;
+	return $title;
 }
 
-add_filter( 'ucfwp_get_header_type', 'today_get_header_type', 11, 2 );
+add_filter( 'ucfwp_get_header_title_after', 'today_get_header_title_after', 10, 2 );
+
+
+/**
+ * Modifies header markup for the given object.
+ *
+ * Returns an empty string on the homepage, which
+ * prevents a <header> tag from being printed entirely.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param string $markup Determined header markup
+ * @param mixed $obj A queried object (e.g. WP_Post, WP_Term), or null
+ * @return string Modified header markup
+ */
+function today_get_header_markup( $markup, $obj ) {
+	if ( is_front_page() ) {
+		$markup = '';
+	}
+
+	return $markup;
+}
+
+add_filter( 'ucfwp_get_header_markup', 'today_get_header_markup', 10, 2 );
 
 
 /**

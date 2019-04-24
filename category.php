@@ -3,7 +3,7 @@
 <?php
 $posts = get_posts( array(
 	'numberposts' => 10,
-	'tag'         => get_queried_object()->slug
+	'cat'         => get_queried_object()->term_id
 ) );
 
 if ( isset( $posts ) ) {

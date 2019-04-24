@@ -137,9 +137,11 @@ function today_get_post_header_media( $post ) {
  * @return string HTML markup for the metadata content
  */
 function today_get_post_meta_info( $post ) {
-	$date_format  = 'F j, Y';
-	$byline       = get_field( 'post_author_byline', $post ) ?: wptexturize( get_the_author() );
-	$updated_date = get_field( 'post_header_updated_date', $post );
+	$date_format   = 'F j, Y';
+	$byline        = get_field( 'post_author_byline', $post ) ?: wptexturize( get_the_author() );
+	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
+	$orig_date_val = get_field( 'post_header_publish_date', $post );
+	$original_date = isset( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
 
 	ob_start();
 ?>
@@ -147,10 +149,10 @@ function today_get_post_meta_info( $post ) {
 		<p class="mb-0">
 			<span>By <?php echo $byline; ?></span>
 			<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
-			<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $post->post_date ) ); ?></span>
+			<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
 		</p>
 
-		<?php if ( $updated_date ) : ?>
+		<?php if ( $updated_date !== $original_date ) : ?>
 		<p class="mt-1 mb-0">
 			<strong>Updated</strong> <?php echo date( $date_format, strtotime( $updated_date ) ); ?>
 		</p>

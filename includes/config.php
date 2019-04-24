@@ -14,6 +14,30 @@ define( 'TODAY_SHORT_EXCERPT_LENGTH', 25 );
 
 
 /**
+ * Initialization functions to be fired early when WordPress loads the theme.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_init() {
+	// Remove page header image sizes, since the UCF WP Theme's
+	// media header logic isn't utilized in this theme.
+	remove_image_size( 'header-img' );
+	remove_image_size( 'header-img-sm' );
+	remove_image_size( 'header-img-md' );
+	remove_image_size( 'header-img-lg' );
+	remove_image_size( 'header-img-xl' );
+	remove_image_size( 'bg-img' );
+	remove_image_size( 'bg-img-sm' );
+	remove_image_size( 'bg-img-md' );
+	remove_image_size( 'bg-img-lg' );
+	remove_image_size( 'bg-img-xl' );
+}
+
+add_action( 'after_setup_theme', 'today_init', 11 );
+
+
+/**
  * Defines sections used in the WordPress Customizer.
  *
  * @author Jo Dickson
@@ -156,9 +180,10 @@ add_action( 'after_setup_theme', 'today_reenable_templates' );
 function today_kill_unused_templates() {
 	global $wp_query, $post;
 
-	// NOTE: we only disable day-specific date archives (is_day()).
-	// Month + year archives are still enabled.
-	if ( is_author() || is_attachment() || is_day() || is_search() || is_comment_feed() ) {
+	// NOTE: we only disable day-specific date and year archives
+	// (is_day(), is_year()).
+	// Month archives are still enabled.
+	if ( is_author() || is_attachment() || is_day() || is_year() || is_search() || is_comment_feed() ) {
 		wp_redirect( home_url() );
 		exit();
 	}
@@ -179,6 +204,19 @@ function today_kill_unused_templates() {
 }
 
 add_action( 'template_redirect', 'today_kill_unused_templates' );
+
+
+/**
+ * Remove old blogroll Links admin menu item.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ **/
+function today_kill_blogroll_links() {
+	remove_menu_page( 'link-manager.php' );
+}
+
+add_action( 'admin_menu', 'today_kill_blogroll_links' );
 
 
 /**
@@ -203,91 +241,6 @@ function today_no_redirect_on_404( $redirect_url ) {
 }
 
 add_filter( 'redirect_canonical', 'today_no_redirect_on_404' );
-
-
-/**
- * Returns legacy rewrite rules for the transition from
- * pre-Today theme to Today theme (https://github.com/UCF/Today)
- *
- * Retained for backward compatibility
- *
- * Ported from Today-Bootstrap
- *
- * @since 1.0.0
- * @author Chris Conover
- * @return array
- **/
-function today_get_legacy_rewrite_rules() {
-	global $wp_rewrite;
-
-	$cats = array(
-		'music'                           => 'music',
-		'theatre'                         => 'theatre',
-		'visual-arts'                     => 'visual-arts',
-		'arts-humanities'                 => 'arts-humanities',
-		'education'                       => 'education',
-		'engineering-computer-science'    => 'engineering-computer-science',
-		'graduate-studies'                => 'graduate-studies',
-		'health-public-affairs'           => 'health-public-affairs',
-		'honors'                          => 'honors',
-		'hospitality-managment'           => 'hospitality-management',
-		'medicine-colleges'               => 'medicine-colleges',
-		'nursing-colleges'                => 'ucf-college-of-nursing',
-		'optics-photonics'                => 'optics-photonics',
-		'sciences'                        => 'sciences',
-		'main-site-stories'               => 'main-site-stories',
-		'on-campus'                       => 'on-campus',
-		'events'                          => 'events',
-		'research'                        => 'research'
-	);
-
-	$custom = array();
-
-	foreach ( $cats as $before => $after ) {
-		// Rewrite category pages
-		$custom['section/(?:[^/]+/)?' . $before.'/?$'] = 'index.php?tag=' . $after;
-		$custom['category/(?:[^/]+/)?' . $before.'/?$'] = 'index.php?tag=' . $after;
-
-		// Rewrite feed pages
-		$custom['section/(?:[^/]+/)?' . $before.'/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=' . $after . '&feed=$matches[1]';
-		$custom['section/(?:[^/]+/)?' . $before.'/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=' . $after . '&feed=$matches[1]';
-		$custom['category/(?:[^/]+/)?' . $before.'/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=' . $after . '&feed=$matches[1]';
-		$custom['category/(?:[^/]+/)?' . $before.'/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=' . $after . '&feed=$matches[1]';
-	}
-
-	// Rewrite old category and tag pages
-	$custom['category/(?:[^/]+/)?(.+?)/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?category_name=$matches[1]&feed=$matches[2]';
-	$custom['category/(?:[^/]+/)?(.+?)/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?category_name=$matches[1]&feed=$matches[2]';
-	$custom['category/(?:[^/]+/)?(.+?)/?$'] = 'index.php?category_name=$matches[1]';
-
-	$custom['section/(?:[^/]+/)?(.+?)/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?category_name=$matches[1]&feed=$matches[2]';
-	$custom['section/(?:[^/]+/)?(.+?)/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?category_name=$matches[1]&feed=$matches[2]';
-	$custom['section/(?:[^/]+/)?(.+?)/?$'] = 'index.php?category_name=$matches[1]';
-
-	$custom['tag/(?:[^/]+/)?(.+?)/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
-	$custom['tag/(?:[^/]+/)?(.+?)/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
-	$custom['tag/(?:[^/]+/)?(.+?)/?$'] = 'index.php?tag=$matches[1]';
-
-	$custom['topic/(?:[^/]+/)?(.+?)/feed/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
-	$custom['topic/(?:[^/]+/)?(.+?)/(feed|rdf|rss|rss2|atom|json)/?$'] = 'index.php?tag=$matches[1]&feed=$matches[2]';
-	$custom['topic/(?:[^/]+/)?(.+?)/?$'] = 'index.php?tag=$matches[1]';
-
-	return $custom;
-}
-
-
-/**
- * Applies all custom rewrite rules for this theme.
- *
- * @since 1.0.0
- * @author Jo Dickson
- */
-function today_rewrite_rules( $rules ) {
-	$legacy = today_get_legacy_rewrite_rules();
-	return $legacy + $rules;
-}
-
-add_filter( 'rewrite_rules_array', 'today_rewrite_rules' );
 
 
 /**
@@ -369,3 +322,55 @@ function today_acf_inline_text_toolbar( $toolbars ) {
 }
 
 add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
+
+
+/**
+ * Moves the page WYSIWYG editor to a placeholder field within the
+ * Homepage Fields group.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_acf_homepage_wysiwyg_position() {
+?>
+<script type="text/javascript">
+	(function($) {
+		$(document).ready(function(){
+			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder)
+			$('.acf-field-5cac9ecc97b7c .acf-input').append( $('#postdivrich') );
+		});
+	})(jQuery);
+</script>
+<style type="text/css">
+	.acf-field #wp-content-editor-tools {
+		background: transparent;
+		padding-top: 0;
+	}
+</style>
+<?php
+}
+
+add_action( 'acf/input/admin_head', 'today_acf_homepage_wysiwyg_position' );
+
+
+/**
+ * Sets a post's original publish date meta value when the post is published.
+ *
+ * @since 1.0.0
+ * @author Jim Barnes
+ */
+function today_post_insert_override( $post_id, $post, $update ) {
+	if ( $post->post_type !== 'post'
+		|| wp_is_post_revision( $post_id )
+		|| $post->post_status !== 'publish' ) {
+		return;
+	}
+
+	// Get post meta
+	$publish_date = get_post_meta( $post_id, 'post_header_publish_date', true );
+	if ( ! $publish_date ) {
+		update_post_meta( $post_id, 'post_header_publish_date', date( 'Y-m-d' ) );
+	}
+}
+
+add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
