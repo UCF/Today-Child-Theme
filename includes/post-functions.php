@@ -35,8 +35,8 @@ function today_get_post_header_media( $post ) {
 			$thumb_size  = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
 			$img_html    = '';
 			$min_width   = 730;  // Minimum acceptable, non-fluid width of a <figure>.
-								     // Loosely based on maximum size of post content column in default and two-col templates.
-								     // Should be a width that comfortably fits one or more lines of an image caption.
+								 // Loosely based on maximum size of post content column in default and two-col templates.
+								 // Should be a width that comfortably fits one or more lines of an image caption.
 			$max_width   = 1140; // Default max-width value for <figure>
 			$thumb_width = 0;    // Default calculated width of the thumbnail at $thumb_size.
 			$caption     = '';
