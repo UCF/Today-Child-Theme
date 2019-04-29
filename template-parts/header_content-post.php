@@ -40,7 +40,7 @@ $post_template    = get_page_template_slug( $post->ID );
 				<?php echo $meta; ?>
 			</div>
 			<?php endif; ?>
-	<?php if ( $post_template === 'single.php' ) : ?>
+	<?php if ( $post_template === '' ) : ?>
 		</div>
 	</div>
 	<?php endif; ?>
