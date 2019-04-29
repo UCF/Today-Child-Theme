@@ -17,7 +17,7 @@ $post_template    = get_page_template_slug( $post->ID );
 
 <?php if ( $title ): ?>
 <div class="container mt-4 mt-md-5">
-	<?php if ( $post_template === 'single.php' ) : ?>
+	<?php if ( $post_template === '' ) : ?>
 	<div class="row">
 		<div class="col-xl-10 offset-xl-1">
 	<?php endif; ?>
