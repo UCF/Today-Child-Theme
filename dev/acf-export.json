@@ -873,7 +873,7 @@
                 "label": "Header Image",
                 "name": "post_header_image",
                 "type": "image",
-                "instructions": "Select or upload the header image for this story.",
+                "instructions": "Select or upload a header image with dimensions of 1200x800 for this story. The image file size must be less than 800KB.",
                 "required": 0,
                 "conditional_logic": [
                     [

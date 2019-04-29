@@ -11,7 +11,11 @@ $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
 
 <article class="<?php echo $post->post_status; ?> post-list-item">
 	<div class="container mt-3 mt-sm-4">
-		<?php echo $header_media; ?>
+		<div class="row">
+			<div class="col-xl-10 offset-xl-1">
+				<?php echo $header_media; ?>
+			</div>
+		</div>
 	</div>
 	<div class="container mb-5 pb-sm-4">
 		<div class="row mb-4">
