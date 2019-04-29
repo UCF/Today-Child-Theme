@@ -16,24 +16,28 @@ $meta             = today_get_post_meta_info( $post );
 
 <?php if ( $title ): ?>
 <div class="container mt-4 mt-md-5">
-	<?php if ( $primary_category ): ?>
-	<span class="d-block mb-3 text-default-aw font-weight-bold text-uppercase"><?php echo $primary_category; ?></span>
-	<?php endif; ?>
+	<div class="row">
+		<div class="col-xl-10 offset-xl-1">
+			<?php if ( $primary_category ): ?>
+			<span class="d-block mb-3 text-default-aw font-weight-bold text-uppercase"><?php echo $primary_category; ?></span>
+			<?php endif; ?>
 
-	<h1 class="mb-3">
-		<?php echo $title; ?>
-	</h1>
+			<h1 class="mb-3">
+				<?php echo $title; ?>
+			</h1>
 
-	<?php if ( $deck ): ?>
-	<div class="lead mb-3">
-		<?php echo $deck; ?>
+			<?php if ( $deck ): ?>
+			<div class="lead mb-3">
+				<?php echo $deck; ?>
+			</div>
+			<?php endif; ?>
+
+			<?php if ( $meta ): ?>
+			<div class="mb-3">
+				<?php echo $meta; ?>
+			</div>
+			<?php endif; ?>
+		</div>
 	</div>
-	<?php endif; ?>
-
-	<?php if ( $meta ): ?>
-	<div class="mb-3">
-		<?php echo $meta; ?>
-	</div>
-	<?php endif; ?>
 </div>
 <?php endif; ?>
