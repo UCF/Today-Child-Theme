@@ -108,15 +108,19 @@ function today_get_post_meta_info( $post ) {
 	<div class="small text-uppercase letter-spacing-3">
 		<p class="mb-0">
 			<span>By <?php echo $byline; ?></span>
-			<?php if ( $updated_date !== $original_date ) : ?>
 				<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
-				<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
-			<?php endif; ?>
+				<?php if ( $original_date === $updated_date ) : ?>
+					<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
+				<?php else : ?>
+					<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
+				<?php endif; ?>
 		</p>
 
-		<p class="mt-1 mb-0">
-			<strong>Originally Published</strong> <?php echo $original_date; ?>
-		</p>
+		<?php if ( $original_date !== $updated_date ) : ?>
+			<p class="mt-1 mb-0">
+				<strong>Originally Published</strong> <?php echo $original_date; ?>
+			</p>
+		<?php endif; ?>
 	</div>
 <?php
 	$html = ob_get_clean();
