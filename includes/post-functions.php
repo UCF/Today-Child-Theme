@@ -31,49 +31,20 @@ function today_get_post_header_media( $post ) {
 			break;
 		case 'image':
 		default:
-			$thumb_dims_medium_large = array(
-				intval( get_option( 'medium_large_size_w' ) ),
-				intval( get_option( 'medium_large_size_h' ) )
-			);
-			$thumb_dims_large = array(
-				intval( get_option( 'large_size_w' ) ),
-				intval( get_option( 'large_size_h' ) )
-			);
-
-			$img             = get_field( 'post_header_image', $post );
-			$thumb_size      = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
-			$thumb_size_dims = ( $thumb_size === 'large' ) ? $thumb_dims_large : $thumb_dims_medium_large;
-			$img_html        = '';
-			$min_width       = 730;  // Minimum acceptable, non-fluid width of a <figure>.
-								     // Loosely based on maximum size of post content column in default and two-col templates.
-								     // Should be a width that comfortably fits one or more lines of an image caption.
-			$max_width       = 1140; // Default max-width value for <figure>
-			$thumb_width     = 0;    // Default calculated width of the thumbnail at $thumb_size.
-			$caption         = '';
+			$img         = get_field( 'post_header_image', $post );
+			$thumb_size  = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
+			$img_html    = '';
+			$min_width   = 730;  // Minimum acceptable, non-fluid width of a <figure>.
+								 // Loosely based on maximum size of post content column in default and two-col templates.
+								 // Should be a width that comfortably fits one or more lines of an image caption.
+			$max_width   = 1140; // Default max-width value for <figure>
+			$thumb_width = 0;    // Default calculated width of the thumbnail at $thumb_size.
+			$caption     = '';
 
 			if ( $img ) {
-				// NOTE: we pass in an array of dimensions ($thumb_size_dims),
-				// instead of a thumbnail size, to ensure that this theme's
-				// updated 'medium_large' and 'large' dimensions are respected
-				// on images generated using the Today-Bootstrap theme.
-				$img_html  = ucfwp_get_attachment_image( $img['ID'], $thumb_size_dims, false, array(
+				$img_html  = ucfwp_get_attachment_image( $img['ID'], $thumb_size, false, array(
 					'class' => 'img-fluid post-header-image'
 				) );
-
-				// Modify $thumb_size for quick reference below when
-				// determining $thumb_width.
-				if ( $thumb_size === 'large' ) {
-					// If the 'full' width image's width doesn't exceed the new
-					// 'large' maximum width, set $thumb_size to 'full'.
-					// Useful for images uploaded using the old Today-Bootstrap
-					// theme, where the 'large' size was only 1024px wide.
-					if (
-						isset( $img['width'] )
-						&& intval( $img['width'] ) <= $thumb_dims_large[0]
-					) {
-						$thumb_size = 'full';
-					}
-				}
 
 				// Calculate a max-width for the <figure> here so that
 				// an included image caption doesn't exceed the width
@@ -84,19 +55,8 @@ function today_get_post_header_media( $post ) {
 				// background.
 				// For smaller images, display them centered within a
 				// full-width div with a gray bg.
-				switch ( $thumb_size ) {
-					case 'full':
-						// Set $thumb_width to the full-size img width
-						if ( isset( $img['width'] ) ) {
-							$thumb_width = intval( $img['width'] );
-						}
-						break;
-					default:
-						// Set $thumb_width to the specific thumbnail size width
-						if ( isset( $img['sizes'][$thumb_size . '-width'] ) ) {
-							$thumb_width = intval( $img['sizes'][$thumb_size . '-width'] );
-						}
-						break;
+				if ( isset( $img['sizes'][$thumb_size . '-width'] ) ) {
+					$thumb_width = intval( $img['sizes'][$thumb_size . '-width'] );
 				}
 				if ( $thumb_width >= $min_width ) {
 					$max_width = $thumb_width;
