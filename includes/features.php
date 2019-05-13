@@ -31,6 +31,7 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 			}
 			break;
 		case 'image':
+		default:
 			$thumbnail_id = today_get_thumbnail_id( $post );
 
 			if ( $thumbnail_id ) {
@@ -40,12 +41,10 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 				) );
 			}
 			break;
-		default:
-			break;
 	}
 
-	// Use a fallback if the user requested a thumbnail, but
-	// one isn't available for the post
+	// Use an absolute fallback if a thumbnail couldn't be retrieved
+	// for the given post
 	if ( ! $thumbnail ) {
 		$thumbnail = '<img class="' . $thumbnail_class . '" src="' . TODAY_THEME_IMG_URL . '/default-thumb.jpg" alt="">';
 	}

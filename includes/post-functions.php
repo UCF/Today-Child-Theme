@@ -35,8 +35,8 @@ function today_get_post_header_media( $post ) {
 			$thumb_size  = get_page_template_slug( $post ) === '' ? 'large' : 'medium_large';
 			$img_html    = '';
 			$min_width   = 730;  // Minimum acceptable, non-fluid width of a <figure>.
-								     // Loosely based on maximum size of post content column in default and two-col templates.
-								     // Should be a width that comfortably fits one or more lines of an image caption.
+								 // Loosely based on maximum size of post content column in default and two-col templates.
+								 // Should be a width that comfortably fits one or more lines of an image caption.
 			$max_width   = 1140; // Default max-width value for <figure>
 			$thumb_width = 0;    // Default calculated width of the thumbnail at $thumb_size.
 			$caption     = '';
@@ -110,16 +110,16 @@ function today_get_post_meta_info( $post ) {
 			<span>By <?php echo $byline; ?></span>
 				<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
 				<?php if ( $original_date === $updated_date ) : ?>
-					<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
+				<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
 				<?php else : ?>
-					<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
+				<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
 				<?php endif; ?>
 		</p>
 
 		<?php if ( $original_date !== $updated_date ) : ?>
-			<p class="mt-1 mb-0">
-				<strong>Originally Published</strong> <?php echo $original_date; ?>
-			</p>
+		<p class="mt-1 mb-0">
+			<strong>Originally Published</strong> <?php echo $original_date; ?>
+		</p>
 		<?php endif; ?>
 	</div>
 <?php
