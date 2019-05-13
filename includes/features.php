@@ -18,29 +18,33 @@ function today_get_feature_thumbnail( $post, $thumbnail_size='medium_large' ) {
 	$thumbnail_class   = 'media-background object-fit-cover feature-thumbnail';
 	$header_media_type = get_field( 'header_media_type', $post );
 
-	switch ( $header_media_type ) {
-		case 'video':
-			// Get video url (prevent ACF oEmbed processing)
-			$video_url           = get_field( 'post_header_video_url', $post, false );
-			$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
-			$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
-			$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
+	// Fetch a thumbnail ID for the post.
+	//
+	// Only have `today_get_thumbnail_id()` return a fallback
+	// thumbnail ID if this is NOT a post with a video header.
+	//
+	// We will fetch a video poster to use as a fallback instead
+	// for video header posts, if necessary.
+	$use_fallback = ( $header_media_type === 'video' ) ? false : true;
+	$thumbnail_id = today_get_thumbnail_id( $post, $use_fallback );
 
-			if ( $video_thumbnail_url ) {
-				$thumbnail = '<img class="' . $thumbnail_class . '" src="' . $video_thumbnail_url . '" alt="">';
-			}
-			break;
-		case 'image':
-		default:
-			$thumbnail_id = today_get_thumbnail_id( $post );
+	// Generate thumbnail HTML based on the thumbnail ID
+	if ( $thumbnail_id ) {
+		$thumbnail = ucfwp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
+			'class' => $thumbnail_class,
+			'alt' => ''
+		) );
+	}
+	else if ( $header_media_type === 'video' ) {
+		// Get video url (prevent ACF oEmbed processing)
+		$video_url           = get_field( 'post_header_video_url', $post, false );
+		$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
+		$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
+		$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
 
-			if ( $thumbnail_id ) {
-				$thumbnail = ucfwp_get_attachment_image( $thumbnail_id, $thumbnail_size, false, array(
-					'class' => $thumbnail_class,
-					'alt' => ''
-				) );
-			}
-			break;
+		if ( $video_thumbnail_url ) {
+			$thumbnail = '<img class="' . $thumbnail_class . '" src="' . $video_thumbnail_url . '" alt="">';
+		}
 	}
 
 	// Use an absolute fallback if a thumbnail couldn't be retrieved
