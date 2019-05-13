@@ -23,7 +23,7 @@ function today_get_thumbnail_id( $post, $use_fallback=true ) {
 	$attachment_id = null;
 
 	// Return the post's header image on posts
-	if ( $post->post_type === 'post' && get_field( 'header_media_type', $post ) === 'image' ) {
+	if ( $post->post_type === 'post' ) {
 		$attachment    = get_field( 'post_header_image', $post );
 		$attachment_id = isset( $attachment['id'] ) ? $attachment['id'] : null;
 	}
