@@ -869,38 +869,6 @@
                 "return_format": "value"
             },
             {
-                "key": "field_5c813f8ac81b8",
-                "label": "Header Image",
-                "name": "post_header_image",
-                "type": "image",
-                "instructions": "Select or upload a header image with dimensions of 1200x800 for this story. The image file size must be less than 800KB.",
-                "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5c813fb7c81b9",
-                            "operator": "==",
-                            "value": "image"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "array",
-                "preview_size": "thumbnail",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": 1200,
-                "max_height": 800,
-                "max_size": "0.5",
-                "mime_types": "jpg, jpeg"
-            },
-            {
                 "key": "field_5c814048c81bb",
                 "label": "Header Video",
                 "name": "post_header_video_url",
@@ -923,6 +891,30 @@
                 },
                 "width": "",
                 "height": ""
+            },
+            {
+                "key": "field_5c813f8ac81b8",
+                "label": "Header\/Thumbnail Image",
+                "name": "post_header_image",
+                "type": "image",
+                "instructions": "Select or upload an image with dimensions of 1200x800 for this story. The image file size must be less than 800KB.\r\n<br><br>\r\nWhen the \"Header Media Type\" value is set to \"Image\", this image will be used as the header image on the story, as well as the thumbnail image when this story is displayed in lists of stories.\r\n<br><br>\r\nWhen the \"Header Media Type\" value is set to \"Video\", if an image is provided, the image will be used as the thumbnail when this story is displayed in lists of stories.  If no image is provided, WordPress will attempt to fetch and use a poster image dynamically based on the \"Header Video\" URL provided.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": 1200,
+                "max_height": 800,
+                "max_size": "",
+                "mime_types": "jpg, jpeg"
             },
             {
                 "key": "field_5c813f04c81b3",
