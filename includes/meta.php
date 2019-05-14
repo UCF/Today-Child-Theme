@@ -33,25 +33,37 @@ function today_enqueue_admin_assets() {
 	// so sniff the request URI instead when is_admin() is true
 	if ( is_admin() ) {
 
+		// If debug mode is enabled, force editor stylesheets to
+		// reload on every page refresh.  Caching of these stylesheets
+		// is very aggressive
+		$cache_bust = '';
+		if ( WP_DEBUG === true ) {
+			$cache_bust = date( 'YmdHis' );
+		}
+		else {
+			$theme = wp_get_theme();
+			$cache_bust = $theme->get( 'Version' );
+		}
+
 		// Enqueue assets on New Post screen
 		if ( stristr( $_SERVER['REQUEST_URI'], 'post-new.php' ) !== false ) {
 			// Enqueue global editor styles
-			add_editor_style( TODAY_THEME_CSS_URL . '/editor.min.css' );
+			add_editor_style( TODAY_THEME_CSS_URL . '/editor.min.css?v=' . $cache_bust );
 
 			// Enqueue post-specific editor styles
 			if ( ! isset( $_GET['post_type'] ) ) {
-				add_editor_style( TODAY_THEME_CSS_URL . '/editor-post.min.css' );
+				add_editor_style( TODAY_THEME_CSS_URL . '/editor-post.min.css?v=' . $cache_bust );
 			}
 		}
 		// Enqueue assets on Edit Post screen
 		else if ( stristr( $_SERVER['REQUEST_URI'], 'post.php' ) !== false ) {
 			// Enqueue global editor styles
-			add_editor_style( TODAY_THEME_CSS_URL . '/editor.min.css' );
+			add_editor_style( TODAY_THEME_CSS_URL . '/editor.min.css?v=' . $cache_bust );
 
 			// Enqueue post-specific editor styles
 			global $post;
 			if ( is_object( $post ) && get_post_type( $post->ID ) === 'post' ) {
-				add_editor_style( TODAY_THEME_CSS_URL . '/editor-post.min.css' );
+				add_editor_style( TODAY_THEME_CSS_URL . '/editor-post.min.css?v=' . $cache_bust );
 			}
 		}
 
