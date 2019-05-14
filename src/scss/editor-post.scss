@@ -23,7 +23,7 @@
 
 
 // sass-lint:disable no-ids
-#tinymce {
+#tinymce.content {
   max-width: 730px;
   @include single-post-content();
 }
