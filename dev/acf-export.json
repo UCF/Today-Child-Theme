@@ -795,10 +795,10 @@
             },
             {
                 "key": "field_5c813a34c81af",
-                "label": "Published Date",
+                "label": "Original Publish Date",
                 "name": "post_header_publish_date",
                 "type": "read_only",
-                "instructions": "The date the post was originally published.",
+                "instructions": "The date the post was originally published. Changing the <a href=\"#submitdiv\">'Published on' date<\/a> above will bump this story to the top of pages where it's referenced.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
