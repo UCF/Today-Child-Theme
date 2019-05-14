@@ -12,6 +12,7 @@
 
   // Generic post content styles
   .post-content {
+    @include clearfix();
     font-family: $font-family-serif;
 
     @include media-breakpoint-up(md) {
