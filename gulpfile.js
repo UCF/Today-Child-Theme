@@ -120,23 +120,6 @@ function serverServe(done) {
 
 
 //
-// Installation of components/dependencies
-//
-
-// Athena Framework web font processing
-gulp.task('move-components-athena-fonts', (done) => {
-  gulp.src([`${config.packagesPath}/ucf-athena-framework/dist/fonts/**/*`])
-    .pipe(gulp.dest(config.dist.fontPath));
-  done();
-});
-
-// Run all component-related tasks
-gulp.task('components', gulp.parallel(
-  'move-components-athena-fonts'
-));
-
-
-//
 // CSS
 //
 
@@ -197,4 +180,4 @@ gulp.task('watch', (done) => {
 //
 // Default task
 //
-gulp.task('default', gulp.series('components', 'css', 'js'));
+gulp.task('default', gulp.series('css', 'js'));
