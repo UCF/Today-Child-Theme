@@ -8,9 +8,10 @@
  *
  * @since 1.0.0
  * @author Jo Dickson
+ * @param bool $primary Whether this is pulling the primary row.
  * @return string HTML markup
  */
-function today_get_homepage_latest() {
+function today_get_homepage_latest( $primary=false ) {
 	$posts = get_posts( array(
 		'numberposts' => 10
 	) );
@@ -21,11 +22,13 @@ function today_get_homepage_latest() {
 
 	ob_start();
 ?>
-	<?php if ( $first_post ): ?>
+	<?php if ( $first_post && $primary ): ?>
 		<div class="pb-4">
-			<?php echo today_display_feature_vertical( $first_post, array( 'layout__type' => 'primary' ) ); ?>
+			<?php echo today_display_feature_horizontal( $first_post, array( 'layout__type' => 'primary' ) ); ?>
 		</div>
 	<?php endif; ?>
+
+	<?php if ( $primary ) return ob_get_clean(); ?>
 
 	<?php if ( $posts ): ?>
 		<div class="row">
@@ -44,7 +47,6 @@ function today_get_homepage_latest() {
 	return ob_get_clean();
 }
 
-
 /**
  * Returns curated posts markup for the homepage.
  *
@@ -53,22 +55,27 @@ function today_get_homepage_latest() {
  * @param int $post_id ID of the homepage post
  * @return string HTML markup
  */
-function today_get_homepage_curated( $post_id ) {
+function today_get_homepage_curated( $post_id, $primary=false ) {
+	$field_name = $primary ? 'primary_content_curated_stories' : 'curated_stories';
+
 	$markup = '';
 
-	if ( have_rows( 'curated_stories', $post_id ) ) {
-		while ( have_rows( 'curated_stories', $post_id ) ) : the_row();
+	if ( have_rows( $field_name, $post_id ) ) {
+		while ( have_rows( $field_name, $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'primary_row' :
 					$posts = array( get_sub_field( 'post' ) );
 					$atts  = array_filter( array(
-						'layout'        => get_sub_field( 'layout' ),
-						'layout__type'  => 'primary',
-						'show_image'    => get_sub_field( 'show_image' ),
-						'show_excerpt'  => get_sub_field( 'show_excerpt' ),
-						'show_subhead'  => get_sub_field( 'show_subhead' ),
-						'posts_per_row' => 1
+						'layout'         => get_sub_field( 'layout' ),
+						'layout__type'   => 'primary',
+						'show_image'     => get_sub_field( 'show_image' ),
+						'show_excerpt'   => get_sub_field( 'show_excerpt' ),
+						'show_subhead'   => get_sub_field( 'show_subhead' ),
+						'posts_per_row'  => 1
 					) );
+
+					// Explicitly set excerpt length on primary rows when it's the first row.
+					$atts['excerpt_length'] = $primary ? TODAY_DEFAULT_EXCERPT_LENGTH : TODAY_SHORT_EXCERPT_LENGTH;
 
 					$markup .= today_post_list_display_feature( null, $posts, $atts );
 					break;
@@ -128,7 +135,7 @@ function today_get_homepage_curated( $post_id ) {
  * @param int $post_id ID of the homepage post
  * @return string HTML markup
  */
-function today_get_homepage_content( $post_id ) {
+function today_get_homepage_content( $post_id, $primary=false ) {
 	$content      = '';
 	$content_type = get_field( 'page_content_type', $post_id );
 	$expiration   = get_field( 'curated_list_expiration', $post_id );
@@ -149,10 +156,10 @@ function today_get_homepage_content( $post_id ) {
 
 	switch ( $content_type ) {
 		case 'latest':
-			$content = today_get_homepage_latest();
+			$content = today_get_homepage_latest( $primary );
 			break;
 		case 'curated':
-			$content = today_get_homepage_curated( $post_id );
+			$content = today_get_homepage_curated( $post_id, $primary );
 			break;
 		case 'custom':
 		default:
