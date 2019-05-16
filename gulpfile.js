@@ -120,23 +120,6 @@ function serverServe(done) {
 
 
 //
-// Installation of components/dependencies
-//
-
-// Athena Framework web font processing
-gulp.task('move-components-athena-fonts', (done) => {
-  gulp.src([`${config.packagesPath}/ucf-athena-framework/dist/fonts/**/*`])
-    .pipe(gulp.dest(config.dist.fontPath));
-  done();
-});
-
-// Run all component-related tasks
-gulp.task('components', gulp.parallel(
-  'move-components-athena-fonts'
-));
-
-
-//
 // CSS
 //
 
@@ -150,8 +133,18 @@ gulp.task('scss-build-theme', () => {
   return buildCSS(`${config.src.scssPath}/style.scss`);
 });
 
+// Compile global editor stylesheet
+gulp.task('scss-build-editor', () => {
+  return buildCSS(`${config.src.scssPath}/editor.scss`);
+});
+
+// Compile post-specific editor stylesheet
+gulp.task('scss-build-editor-post', () => {
+  return buildCSS(`${config.src.scssPath}/editor-post.scss`);
+});
+
 // All theme css-related tasks
-gulp.task('css', gulp.series('scss-lint-theme', 'scss-build-theme'));
+gulp.task('css', gulp.series('scss-lint-theme', 'scss-build-theme', 'scss-build-editor', 'scss-build-editor-post'));
 
 
 //
@@ -187,4 +180,4 @@ gulp.task('watch', (done) => {
 //
 // Default task
 //
-gulp.task('default', gulp.series('components', 'css', 'js'));
+gulp.task('default', gulp.series('css', 'js'));
