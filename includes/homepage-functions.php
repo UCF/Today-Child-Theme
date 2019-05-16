@@ -54,23 +54,32 @@ function today_get_homepage_latest() {
  * @return string HTML markup
  */
 function today_get_homepage_curated( $post_id ) {
-	$markup = '';
+	$content = array(
+		'primary'   => '',
+		'secondary' => '',
+		'custom'    => ''
+	);
 
 	if ( have_rows( 'curated_stories', $post_id ) ) {
 		while ( have_rows( 'curated_stories', $post_id ) ) : the_row();
+			$markup = '';
+
 			switch ( get_row_layout() ) {
 				case 'primary_row' :
 					$posts = array( get_sub_field( 'post' ) );
 					$atts  = array_filter( array(
-						'layout'        => get_sub_field( 'layout' ),
-						'layout__type'  => 'primary',
-						'show_image'    => get_sub_field( 'show_image' ),
-						'show_excerpt'  => get_sub_field( 'show_excerpt' ),
-						'show_subhead'  => get_sub_field( 'show_subhead' ),
-						'posts_per_row' => 1
+						'layout'         => get_sub_field( 'layout' ),
+						'layout__type'   => 'primary',
+						'show_image'     => get_sub_field( 'show_image' ),
+						'show_excerpt'   => get_sub_field( 'show_excerpt' ),
+						'show_subhead'   => get_sub_field( 'show_subhead' ),
+						'posts_per_row'  => 1
 					) );
 
-					$markup .= today_post_list_display_feature( null, $posts, $atts );
+					// Explicitly set excerpt length on primary rows when it's the first row.
+					$atts['excerpt_length'] = ( $content['primary'] === '' ) ? TODAY_DEFAULT_EXCERPT_LENGTH : TODAY_SHORT_EXCERPT_LENGTH;
+
+					$markup = today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'secondary_row' :
 					$posts = array();
@@ -89,7 +98,7 @@ function today_get_homepage_curated( $post_id ) {
 						'posts_per_row' => count( $posts )
 					) );
 
-					$markup .= today_post_list_display_feature( null, $posts, $atts );
+					$markup = today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'condensed_row' :
 					$posts = array();
@@ -104,18 +113,24 @@ function today_get_homepage_curated( $post_id ) {
 						'posts_per_row' => 1
 					) );
 
-					$markup .= today_post_list_display_feature( null, $posts, $atts );
+					$markup = today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'custom' :
-					$markup .= get_sub_field( 'custom_content' );
+					$markup = get_sub_field( 'custom_content' );
 					break;
 				default :
 					break;
 			}
+
+			if ( $content['primary'] === '' ) {
+				$content['primary'] .= $markup;
+			} else {
+				$content['secondary'] .= $markup;
+			}
 		endwhile;
 	}
 
-	return $markup;
+	return $content;
 }
 
 
