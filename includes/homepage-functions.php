@@ -44,7 +44,6 @@ function today_get_homepage_latest() {
 	return ob_get_clean();
 }
 
-
 /**
  * Returns curated posts markup for the homepage.
  *
@@ -53,17 +52,13 @@ function today_get_homepage_latest() {
  * @param int $post_id ID of the homepage post
  * @return string HTML markup
  */
-function today_get_homepage_curated( $post_id ) {
-	$content = array(
-		'primary'   => '',
-		'secondary' => '',
-		'custom'    => ''
-	);
+function today_get_homepage_curated( $post_id, $primary=false ) {
+	$field_name = $primary ? 'primary_content_curated_stories' : 'curated_stories';
 
-	if ( have_rows( 'curated_stories', $post_id ) ) {
-		while ( have_rows( 'curated_stories', $post_id ) ) : the_row();
-			$markup = '';
+	$markup = '';
 
+	if ( have_rows( $field_name, $post_id ) ) {
+		while ( have_rows( $field_name, $post_id ) ) : the_row();
 			switch ( get_row_layout() ) {
 				case 'primary_row' :
 					$posts = array( get_sub_field( 'post' ) );
@@ -77,9 +72,9 @@ function today_get_homepage_curated( $post_id ) {
 					) );
 
 					// Explicitly set excerpt length on primary rows when it's the first row.
-					$atts['excerpt_length'] = ( $content['primary'] === '' ) ? TODAY_DEFAULT_EXCERPT_LENGTH : TODAY_SHORT_EXCERPT_LENGTH;
+					$atts['excerpt_length'] = $primary ? TODAY_DEFAULT_EXCERPT_LENGTH : TODAY_SHORT_EXCERPT_LENGTH;
 
-					$markup = today_post_list_display_feature( null, $posts, $atts );
+					$markup .= today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'secondary_row' :
 					$posts = array();
@@ -98,7 +93,7 @@ function today_get_homepage_curated( $post_id ) {
 						'posts_per_row' => count( $posts )
 					) );
 
-					$markup = today_post_list_display_feature( null, $posts, $atts );
+					$markup .= today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'condensed_row' :
 					$posts = array();
@@ -113,24 +108,18 @@ function today_get_homepage_curated( $post_id ) {
 						'posts_per_row' => 1
 					) );
 
-					$markup = today_post_list_display_feature( null, $posts, $atts );
+					$markup .= today_post_list_display_feature( null, $posts, $atts );
 					break;
 				case 'custom' :
-					$markup = get_sub_field( 'custom_content' );
+					$markup .= get_sub_field( 'custom_content' );
 					break;
 				default :
 					break;
 			}
-
-			if ( $content['primary'] === '' ) {
-				$content['primary'] .= $markup;
-			} else {
-				$content['secondary'] .= $markup;
-			}
 		endwhile;
 	}
 
-	return $content;
+	return $markup;
 }
 
 
@@ -143,7 +132,7 @@ function today_get_homepage_curated( $post_id ) {
  * @param int $post_id ID of the homepage post
  * @return string HTML markup
  */
-function today_get_homepage_content( $post_id ) {
+function today_get_homepage_content( $post_id, $primary=false ) {
 	$content      = '';
 	$content_type = get_field( 'page_content_type', $post_id );
 	$expiration   = get_field( 'curated_list_expiration', $post_id );
@@ -164,10 +153,11 @@ function today_get_homepage_content( $post_id ) {
 
 	switch ( $content_type ) {
 		case 'latest':
+			if ( $primary ) return '';
 			$content = today_get_homepage_latest();
 			break;
 		case 'curated':
-			$content = today_get_homepage_curated( $post_id );
+			$content = today_get_homepage_curated( $post_id, $primary );
 			break;
 		case 'custom':
 		default:
