@@ -2,10 +2,6 @@
 // Mixin that defines base style overrides for single post content.
 //
 @mixin single-post-content() {
-  @include media-breakpoint-up(md) {
-    font-size: 1.125rem;
-  }
-
   > p:first-of-type {
     &::first-letter {
       display: block;
