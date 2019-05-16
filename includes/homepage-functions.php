@@ -8,9 +8,10 @@
  *
  * @since 1.0.0
  * @author Jo Dickson
+ * @param bool $primary Whether this is pulling the primary row.
  * @return string HTML markup
  */
-function today_get_homepage_latest() {
+function today_get_homepage_latest( $primary=false ) {
 	$posts = get_posts( array(
 		'numberposts' => 10
 	) );
@@ -21,11 +22,13 @@ function today_get_homepage_latest() {
 
 	ob_start();
 ?>
-	<?php if ( $first_post ): ?>
+	<?php if ( $first_post && $primary ): ?>
 		<div class="pb-4">
-			<?php echo today_display_feature_vertical( $first_post, array( 'layout__type' => 'primary' ) ); ?>
+			<?php echo today_display_feature_horizontal( $first_post, array( 'layout__type' => 'primary' ) ); ?>
 		</div>
 	<?php endif; ?>
+
+	<?php if ( $primary ) return ob_get_clean(); ?>
 
 	<?php if ( $posts ): ?>
 		<div class="row">
@@ -153,8 +156,7 @@ function today_get_homepage_content( $post_id, $primary=false ) {
 
 	switch ( $content_type ) {
 		case 'latest':
-			if ( $primary ) return '';
-			$content = today_get_homepage_latest();
+			$content = today_get_homepage_latest( $primary );
 			break;
 		case 'curated':
 			$content = today_get_homepage_curated( $post_id, $primary );
