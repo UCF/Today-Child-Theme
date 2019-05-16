@@ -13,7 +13,6 @@
   // Generic post content styles
   .post-content {
     @include clearfix();
-    font-family: $font-family-serif;
 
     @include media-breakpoint-up(md) {
       font-size: 1.125rem;
@@ -23,7 +22,6 @@
       &::first-letter {
         display: block;
         float: left;
-        font-family: $font-family-sans-serif;
         font-size: 3rem;
         font-weight: 700;
         // Chrome requires an explicit unit on the line height for whatever reason
@@ -43,21 +41,6 @@
           display: block;
         }
       }
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .h1,
-    .h2,
-    .h3,
-    .h4,
-    .h5,
-    .h6 {
-      font-family: $font-family-sans-serif;
     }
 
     * + h1,
