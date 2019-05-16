@@ -13,6 +13,7 @@
   // Generic post content styles
   .post-content {
     @include single-post-content();
+    @include clearfix();
   }
 }
 
