@@ -985,7 +985,7 @@
                 "label": "Author Title",
                 "name": "post_author_title",
                 "type": "text",
-                "instructions": "Appears below the author's name.",
+                "instructions": "Appears under the author's name\/byline below the story's content, <b>only if the Author Bio is set<\/b>.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -1004,7 +1004,7 @@
                 "label": "Author Bio",
                 "name": "post_author_bio",
                 "type": "wysiwyg",
-                "instructions": "Appears below the story content.",
+                "instructions": "Appears below the story's content.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title and Bio) below the story's content.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
