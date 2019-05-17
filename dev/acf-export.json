@@ -60,7 +60,15 @@
                 "type": "clone",
                 "instructions": "Content block that appears full width above the two column layout when the sidebar is enabled. Place the primary story here.",
                 "required": 0,
-                "conditional_logic": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5cabb1174f264",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
                 "wrapper": {
                     "width": "",
                     "class": "",
