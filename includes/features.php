@@ -136,6 +136,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail      = '';
 	$thumbnail_col_class = 'col-4 col-sm-3'; // classes for assumed default $type of 'secondary'
+	$content_col_class   = 'col'; // classes for assumed default $type of 'secondary'
 
 	if ( $use_thumbnail ) {
 		$thumbnail = today_get_feature_thumbnail( $post );
@@ -143,9 +144,11 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 
 	switch ( $type ) {
 		case 'primary':
-			$thumbnail_col_class = 'col-md-6 col-xl-7 mb-3 mb-md-0';
+			$thumbnail_col_class = 'col-md-6 col-xl-7 mb-3 mb-md-0 pr-lg-4';
+			$content_col_class .= ' pt-lg-4';
 			break;
 		default:
+			$content_col_class .= ' pl-2';
 			break;
 	}
 
@@ -163,7 +166,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 				</div>
 				<?php endif; ?>
 
-				<div class="col">
+				<div class="<?php echo $content_col_class; ?>">
 					<h2 class="feature-title"><?php echo $title; ?></h2>
 
 					<?php if ( $use_excerpt && $excerpt ): ?>
