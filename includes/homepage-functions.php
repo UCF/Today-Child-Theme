@@ -163,6 +163,7 @@ function today_get_homepage_content( $post_id, $primary=false ) {
 			break;
 		case 'custom':
 		default:
+			if ( $primary ) return '';
 			ob_start();
 			the_content();
 			$content = ob_get_clean();
