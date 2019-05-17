@@ -119,11 +119,11 @@ function today_is_feature_linkable( $post ) {
 function today_display_feature_horizontal( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$type          = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
-	$excerpt_len   = isset( $args['excerpt_length'] ) ? $args['excerpt_length'] : null;
-	$use_thumbnail = isset( $args['show_image'] ) ? filter_var( $args['show_image'], FILTER_VALIDATE_BOOLEAN ) : true;
-	$use_excerpt   = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
-	$use_subhead   = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
+	$type                  = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
+	$custom_excerpt_length = isset( $args['excerpt_length'] ) ? $args['excerpt_length'] : null;
+	$use_thumbnail         = isset( $args['show_image'] ) ? filter_var( $args['show_image'], FILTER_VALIDATE_BOOLEAN ) : true;
+	$use_excerpt           = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
+	$use_subhead           = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
@@ -131,7 +131,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	// Explicitly overrwrite excerpt length if it's provided as an arg.
-	$excerpt_length = isset( $excerpt_len ) ? $excerpt_len : $excerpt_length;
+	$excerpt_length = isset( $custom_excerpt_length ) ? $custom_excerpt_length : $excerpt_length;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
 	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail      = '';
@@ -196,10 +196,10 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 function today_display_feature_vertical( $post, $args=array() ) {
 	if ( ! $post instanceof WP_Post ) return;
 
-	$type           = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
-	$excerpt_len    = isset( $args['excerpt_length'] ) ? $args['excerpt_length'] : null;
-	$use_excerpt    = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
-	$use_subhead    = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
+	$type                  = isset( $args['layout__type'] ) ? $args['layout__type'] : 'secondary';
+	$custom_excerpt_length = isset( $args['excerpt_length'] ) ? $args['excerpt_length'] : null;
+	$use_excerpt           = isset( $args['show_excerpt'] ) ? filter_var( $args['show_excerpt'], FILTER_VALIDATE_BOOLEAN ) : true;
+	$use_subhead           = isset( $args['show_subhead'] ) ? filter_var( $args['show_subhead'], FILTER_VALIDATE_BOOLEAN ) : false;
 
 	$type_class     = 'feature-' . sanitize_html_class( $type );
 	$permalink      = get_permalink( $post );
@@ -207,7 +207,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 	$title          = wptexturize( $post->post_title );
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	// Explicitly overrwrite excerpt length if it's provided as an arg.
-	$excerpt_length = isset( $excerpt_len ) ? $excerpt_len : $excerpt_length;
+	$excerpt_length = isset( $custom_excerpt_length ) ? $custom_excerpt_length : $excerpt_length;
 	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
 	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail_size = ( $type === 'primary' ) ? 'large' : 'medium_large';
