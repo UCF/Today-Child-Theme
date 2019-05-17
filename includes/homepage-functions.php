@@ -53,6 +53,7 @@ function today_get_homepage_latest( $primary=false ) {
  * @since 1.0.0
  * @author Jo Dickson
  * @param int $post_id ID of the homepage post
+ * @param bool $primary If the content being returned is intended for the primary content area
  * @return string HTML markup
  */
 function today_get_homepage_curated( $post_id, $primary=false ) {
@@ -133,6 +134,7 @@ function today_get_homepage_curated( $post_id, $primary=false ) {
  * @since 1.0.0
  * @author Jo Dickson
  * @param int $post_id ID of the homepage post
+ * @param bool $primary If the content being returned is intended for the primary content area
  * @return string HTML markup
  */
 function today_get_homepage_content( $post_id, $primary=false ) {
