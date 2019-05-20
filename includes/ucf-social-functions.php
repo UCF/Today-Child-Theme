@@ -14,7 +14,7 @@ if ( ! function_exists( 'ucf_social_links_display_affixed_before' ) ) {
 	function ucf_social_links_display_affixed_before( $content='', $atts ) {
 		ob_start();
 	?>
-		<aside class="ucf-social-links ucf-social-links-affixed">
+		<aside class="ucf-social-links ucf-social-links-affixed" role="note">
 	<?php
 		return ob_get_clean();
 	}
