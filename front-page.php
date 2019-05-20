@@ -8,7 +8,7 @@ $resources = wp_nav_menu( array(
 	'depth'       => 1,
 	'echo'        => false,
 	'fallback_cb' => 'bs4Navwalker::fallback',
-	'menu_class'  => 'nav flex-column flex-lg-row justify-content-lg-center',
+	'menu_class'  => 'nav flex-column flex-xl-row justify-content-xl-center home-footer-nav',
 	'menu'        => 'Resources',
 	'walker'      => new bs4Navwalker()
 ) );
