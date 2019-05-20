@@ -14,7 +14,7 @@ $menu          = wp_nav_menu( array(
 ?>
 
 <div class="site-nav-overlay fade" id="nav-overlay"></div>
-<div class="today-nav-wrapper">
+<nav class="today-nav-wrapper" role="navigation">
 	<div class="container today-nav-inner d-flex flex-row py-md-2">
 		<div class="today-nav-info d-flex flex-row align-items-center">
 			<<?php echo $title_elem; ?> class="mb-0">
@@ -40,7 +40,7 @@ $menu          = wp_nav_menu( array(
 			</button>
 		</div>
 	</div>
-	<nav class="today-site-nav navbar navbar-light d-block p-0" id="header-menu" role="navigation">
+	<div class="today-site-nav navbar navbar-light d-block p-0" id="header-menu">
 		<div class="container">
 			<button type="button" class="close p-3 hidden-lg-up" aria-label="Close Menu">
 				<span aria-hidden="true">&times;</span>
@@ -62,5 +62,5 @@ $menu          = wp_nav_menu( array(
 				<?php echo today_output_nav_weather_data(); ?>
 			</div>
 		</div>
-	</nav>
-</div>
+	</div>
+</nav>
