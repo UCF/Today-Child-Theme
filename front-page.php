@@ -3,11 +3,15 @@
 <?php
 $primary   = today_get_homepage_content( $post->ID, true );
 $secondary = today_get_homepage_content( $post->ID );
-$resources = trim( wp_nav_menu( array(
-	'menu'       => 'Resources',
-	'menu_class' => 'list-unstyled d-flex flex-column flex-lg-row align-items-center justify-content-lg-between',
-	'echo'       => false
-) ) );
+$resources = wp_nav_menu( array(
+	'container'   => 'false',
+	'depth'       => 1,
+	'echo'        => false,
+	'fallback_cb' => 'bs4Navwalker::fallback',
+	'menu_class'  => 'nav flex-column flex-lg-row justify-content-lg-center',
+	'menu'        => 'Resources',
+	'walker'      => new bs4Navwalker()
+) );
 ?>
 
 <div class="container mt-4 mt-md-5 mb-5 pb-sm-4">
