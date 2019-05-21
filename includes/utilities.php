@@ -4,6 +4,57 @@
  */
 
 /**
+ * Filters requests for WordPress's built-in `get_post_thumbnail_id()`
+ * to return the Header Image/Thumbnail field for posts.
+ *
+ * Useful for third-party plugins that reference thumbnails.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param mixed $value A determined thumbnail ID, or null
+ * @param int $object_id Object ID (in this case, a post object ID)
+ * @param string $meta_key The meta key name
+ * @param bool $single Whether to return only the first value of the specified $meta_key
+ * @return mixed The thumbnail ID, or null
+ */
+function today_filter_thumbnail_ids( $value, $object_id, $meta_key, $single ) {
+    if ( $meta_key === '_thumbnail_id' ) {
+		$post = get_post( $object_id );
+		if ( $post instanceof WP_Post && $post->post_type === 'post' ) {
+			$attachment = get_field( 'post_header_image', $post );
+			$value      = isset( $attachment['id'] ) ? $attachment['id'] : null;
+		}
+    }
+
+    return $value;
+}
+
+add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
+
+
+/**
+ * Filters requests for WordPress's built-in author name retrieval functions.
+ *
+ * Useful for feeds and third-party plugins that reference basic post
+ * author information.
+ */
+function today_filter_post_author_name( $author_name ) {
+	if ( ! is_admin() ) {
+		global $post;
+		$author_byline = get_field( 'post_author_byline', $post );
+		if ( $author_byline ) {
+			$author_name = $author_byline;
+		}
+	}
+
+	return $author_name;
+}
+
+add_filter( 'the_author', 'today_filter_post_author_name', 10 );
+add_filter( 'the_author_display_name', 'today_filter_post_author_name', 10 );
+
+
+/**
  * Returns an attachment ID for the desired thumbnail
  * image of a given post.  Optionally returns a fallback
  * if no image is available.
@@ -44,35 +95,6 @@ function today_get_thumbnail_id( $post, $use_fallback=true ) {
 
 	return $attachment_id;
 }
-
-
-/**
- * Filters requests for WordPress's built-in `get_post_thumbnail_id()`
- * to return the Header Image/Thumbnail field for posts.
- *
- * Useful for third-party plugins that reference thumbnails.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param mixed $value A determined thumbnail ID, or null
- * @param int $object_id Object ID (in this case, a post object ID)
- * @param string $meta_key The meta key name
- * @param bool $single Whether to return only the first value of the specified $meta_key
- * @return mixed The thumbnail ID, or null
- */
-function today_filter_thumbnail_ids( $value, $object_id, $meta_key, $single ) {
-    if ( $meta_key === '_thumbnail_id' ) {
-		$post = get_post( $object_id );
-		if ( $post instanceof WP_Post && $post->post_type === 'post' ) {
-			$attachment = get_field( 'post_header_image', $post );
-			$value      = isset( $attachment['id'] ) ? $attachment['id'] : null;
-		}
-    }
-
-    return $value;
-}
-
-add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 
 
 /**
