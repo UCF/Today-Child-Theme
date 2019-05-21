@@ -37,6 +37,9 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
  *
  * Useful for feeds and third-party plugins that reference basic post
  * author information.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
  */
 function today_filter_post_author_name( $author_name ) {
 	if ( ! is_admin() ) {
@@ -50,8 +53,82 @@ function today_filter_post_author_name( $author_name ) {
 	return $author_name;
 }
 
-add_filter( 'the_author', 'today_filter_post_author_name', 10 );
-add_filter( 'the_author_display_name', 'today_filter_post_author_name', 10 );
+add_filter( 'the_author', 'today_filter_post_author_name' );
+add_filter( 'the_author_display_name', 'today_filter_post_author_name' );
+
+
+/**
+ * Modifies the post's determined enclosure for use in RSS/Atom feeds.
+ * Ensures post thumbnails in feeds are accurate with what's displayed
+ * on the frontend.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ */
+function today_filter_post_feed_enclosure( $value, $object_id, $meta_key, $single ) {
+	if ( is_feed() ) {
+		// The `get_post_metadata` hook doesn't give us access to the
+		// current metadata value. Fetch it manually here, making sure to
+		// de-register this hook in the process.
+		if ( ! $value && $meta_key === '' ) {
+			remove_filter( 'get_post_metadata', 'today_filter_post_feed_enclosure', 99 );
+        	$value = get_post_meta( $object_id, $meta_key, $single );
+			add_filter( 'get_post_metadata', 'today_filter_post_feed_enclosure', 99, 4 );
+		}
+
+		// If get_post_meta() is fetching *all* of a post's metadata,
+		// OR, if *just* the 'enclosure' value is being fetched:
+		if (
+			( is_array( $value ) && $meta_key === '' )
+			|| $meta_key === 'enclosure'
+		) {
+			$enclosure_url = today_get_thumbnail_url( $object_id );
+
+			// Perform a HEAD request to fetch headers for the thumbnail URL.
+			// Enclosure tags require 'length' and 'type' attributes.
+			$default_stream_options = stream_context_get_options( stream_context_get_default() );
+			stream_context_set_default(
+				array(
+					'http' => array(
+						'method'  => 'HEAD',
+						'timeout' => 3
+					)
+				)
+			);
+			$enclosure_headers = get_headers( $enclosure_url ) ?: array();
+			stream_context_set_default( $default_stream_options );
+
+			$enclosure_size = 0;
+			$enclosure_mime = '';
+			foreach ( $enclosure_headers as $header ) {
+				if ( stripos( $header, 'Content-Length:' ) === 0 ) {
+					$enclosure_size = trim( explode( 'Content-Length:', $header )[1] );
+				}
+				else if ( stripos( $header, 'Content-Type:' ) === 0 ) {
+					$enclosure_mime = trim( explode( 'Content-Type:', $header )[1] );
+				}
+			}
+
+			// This is the format expected by WP's built-in RSS templates *shrug*
+			$enclosure = implode( "\n", array(
+				$enclosure_url,
+				$enclosure_size,
+				$enclosure_mime
+			) );
+
+			if ( $meta_key === 'enclosure' ) {
+				$value = $enclosure;
+			}
+			else if ( is_array( $value ) ) {
+				$value['enclosure'] = $enclosure;
+			}
+		}
+	}
+
+	return $value;
+}
+
+add_filter( 'get_post_metadata', 'today_filter_post_feed_enclosure', 99, 4 );
 
 
 /**
@@ -120,15 +197,40 @@ function today_get_thumbnail_url( $post, $thumbnail_size='medium', $use_fallback
 
 	switch ( $header_media_type ) {
 		case 'video':
-			// Get video url (prevent ACF oEmbed processing)
-			$video_url           = get_field( 'post_header_video_url', $post, false );
-			$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
-			$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
-			$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
+			// Get a thumbnail ID without a fallback.
+			// Try to use a video poster as a fallback if possible
+			$thumbnail_id = today_get_thumbnail_id( $post, false );
 
-			if ( $video_thumbnail_url ) {
-				$thumbnail_url = $video_thumbnail_url;
+			if ( $thumbnail_id ) {
+				$thumbnail_url = ucfwp_get_attachment_src_by_size( $thumbnail_id, $thumbnail_size );
 			}
+			else {
+				// Get video url (prevent ACF oEmbed processing)
+				$video_url           = get_field( 'post_header_video_url', $post, false );
+				$video_thumbnail_w   = intval( get_option( "{$thumbnail_size}_size_w" ) );
+				$video_thumbnail_h   = intval( get_option( "{$thumbnail_size}_size_h" ) );
+				$video_thumbnail_url = today_get_oembed_thumbnail( $video_url, $video_thumbnail_w, $video_thumbnail_h );
+
+				if ( $video_thumbnail_url ) {
+					$thumbnail_url = $video_thumbnail_url;
+				}
+			}
+
+			// If we still don't have anything at this point,
+			// go grab the UCF Post List plugin's fallback image
+			if ( ! $thumbnail_url ) {
+				// Use the UCF Post List Shortcode plugin's
+				// fallback thumbnail, if one is available
+				if ( method_exists( 'UCF_Post_List_Config', 'get_option_or_default' ) ) {
+					$thumbnail_id = UCF_Post_List_Config::get_option_or_default( 'ucf_post_list_fallback_image' );
+					$thumbnail_id = is_numeric( $thumbnail_id ) ? intval( $thumbnail_id ) : null;
+
+					if ( $thumbnail_id ) {
+						$thumbnail_url = ucfwp_get_attachment_src_by_size( $thumbnail_id, $thumbnail_size );
+					}
+				}
+			}
+
 			break;
 		case 'image':
 			$thumbnail_id = today_get_thumbnail_id( $post, $use_fallback );
