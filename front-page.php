@@ -33,10 +33,9 @@ $resources = wp_nav_menu( array(
 </div>
 
 <?php if ( $resources ): ?>
-<div class="card border-left-0 border-right-0 border-bottom-0 text-center">
-	<div class="card-block">
-		<?php echo $resources; ?>
-	</div>
+<hr class="home-hr-lighter my-0">
+<div class="container-fluid p-3 text-center">
+	<?php echo $resources; ?>
 </div>
 <?php endif; ?>
 

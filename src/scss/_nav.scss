@@ -44,10 +44,14 @@
 
 .today-nav-wrapper {
   border-bottom: 1px solid $gray-lighter;
+
+  @include media-breakpoint-up(md) {
+    border-color: $gray-lightest;
+  }
 }
 
 .today-site-nav {
-  background-color: $gray-lighter;
+  background-color: $gray-lightest;
   height: 0;
   opacity: 0;
   overflow: hidden;
@@ -118,7 +122,7 @@
       &:focus,
       &:active {
         @include media-breakpoint-up(lg) {
-          background-color: $gray-lighter;
+          background-color: $gray-lightest;
         }
       }
 
