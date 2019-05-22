@@ -11,6 +11,7 @@ define( 'TODAY_THEME_IMG_URL', TODAY_THEME_STATIC_URL . '/img' );
 define( 'TODAY_THEME_CUSTOMIZER_PREFIX', 'today_' );
 define( 'TODAY_DEFAULT_EXCERPT_LENGTH', 60 );
 define( 'TODAY_SHORT_EXCERPT_LENGTH', 25 );
+define( 'TODAY_THEME_VERSION', 'v0.0.0' );
 
 
 /**

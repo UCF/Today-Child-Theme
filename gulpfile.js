@@ -17,15 +17,18 @@ const merge        = require('merge');
 let config = {
   src: {
     scssPath: './src/scss',
-    jsPath: './src/js'
+    jsPath: './src/js',
+    versionFile: './style.css'
   },
   dist: {
     cssPath: './static/css',
     jsPath: './static/js',
-    fontPath: './static/fonts'
+    fontPath: './static/fonts',
+    versionFile: './includes/config.php'
   },
   packagesPath: './node_modules',
   sync: false,
+  versionConst: 'TODAY_THEME_VERSION',
   syncTarget: 'http://localhost/wordpress/'
 };
 
@@ -164,6 +167,51 @@ gulp.task('js-build-theme', () => {
 // All js-related tasks
 gulp.task('js', gulp.series('es-lint-theme', 'js-build-theme'));
 
+
+//
+// Version/Readme
+//
+
+// Ensure version constant matches style.css version
+gulp.task('version', () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(config.src.versionFile, 'utf8', (err, src) => {
+      if (err) {
+        reject(err); // eslint-disable-line no-console
+      }
+
+      let version = '';
+      const re = /^Version:(\s?v.*\s?)$/gm.exec(src);
+
+      if (re.length > 1) {
+        version = re[1].trim();
+      }
+
+      resolve(new Promise((resolve, reject) => {
+        fs.readFile(config.dist.versionFile, 'utf8', (err, dest) => {
+          if (err) {
+            reject(err);
+          }
+
+          const re = /(['|"]TODAY_THEME_VERSION['|"])\s?,\s?(['|"].*['|"])/gm;
+          const output = dest.replace(re, `$1, '${version}'`);
+
+          resolve(new Promise((resolve, reject) => {
+            fs.writeFile(config.dist.versionFile, output, {
+              encoding: 'utf8'
+            }, (err) => {
+              if (err) {
+                reject(err);
+              }
+
+              resolve(true);
+            });
+          }));
+        });
+      }));
+    });
+  });
+});
 
 //
 // Rerun tasks when files change
