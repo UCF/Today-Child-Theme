@@ -98,7 +98,7 @@ function today_get_post_header_media( $post ) {
  */
 function today_get_post_meta_info( $post ) {
 	$date_format   = 'F j, Y';
-	$byline        = get_field( 'post_author_byline', $post ) ?: wptexturize( get_the_author() );
+	$byline        = wptexturize( get_the_author() );
 	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
 	$orig_date_val = get_field( 'post_header_publish_date', $post );
 	$original_date = isset( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
@@ -139,12 +139,9 @@ function today_get_post_meta_info( $post ) {
  * @return string Author bio markup
  */
 function today_get_post_author_bio( $post ) {
-	$author_title = get_field( 'post_author_title', $post );
-
-	$author_byline = trim( get_field( 'post_author_byline', $post ) );
-	$author_byline = ( $author_byline !== '' ) ? $author_byline : get_the_author();
-
-	$author_bio = trim( get_field( 'post_author_bio', $post ) );
+	$author_byline = get_the_author();
+	$author_title  = get_field( 'post_author_title', $post );
+	$author_bio    = trim( get_field( 'post_author_bio', $post ) );
 
 	ob_start();
 	if ( $author_bio ) :
