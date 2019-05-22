@@ -33,7 +33,6 @@ $resources = wp_nav_menu( array(
 </div>
 
 <?php if ( $resources ): ?>
-<hr class="home-hr-lighter my-0">
 <div class="container-fluid p-3 text-center">
 	<?php echo $resources; ?>
 </div>
