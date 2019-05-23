@@ -12,9 +12,8 @@ $title = wptexturize( $post->post_title );
 
 <?php if ( $title ): ?>
 <div class="container mt-4 mt-md-5">
-	<h1 class="mb-3">
+	<h1 class="mb-4">
 		<?php echo $title; ?>
 	</h1>
-	<hr>
 </div>
 <?php endif; ?>

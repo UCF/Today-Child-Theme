@@ -43,7 +43,7 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 
 		ob_start();
 	?>
-		<div class="bg-faded mt-2 mb-3 p-3">
+		<div class="bg-faded my-4 p-3">
 			<div class="row justify-content-between align-items-center">
 				<?php if ( $title ) : ?>
 				<div class="col-sm-auto col-12 mb-3 mb-sm-0 text-center">
