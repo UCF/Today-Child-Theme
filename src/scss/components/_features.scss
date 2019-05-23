@@ -1,0 +1,84 @@
+//
+// Features
+//
+
+// Base
+
+.feature {
+  display: flex;
+}
+
+// Inner components
+
+.feature-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+
+  .feature-horizontal &,
+  .feature-vertical & {
+    width: 100%;
+  }
+
+  @include hover-focus-active {
+    color: inherit;
+    text-decoration: none;
+
+    .feature-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.feature-thumbnail-wrap {
+  // Adjust height via padding-bottom per layout
+  height: 0;
+  width: 100%;
+
+  .feature-horizontal & {
+    padding-bottom: 100%;
+  }
+
+  .feature-horizontal.feature-primary &,
+  .feature-vertical & {
+    padding-bottom: 65%;
+  }
+
+  .feature-vertical.feature-secondary & {
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 45%;
+    }
+  }
+}
+
+.feature-title {
+  line-height: 1.4;
+
+  .feature-primary & {
+    font-size: 1.4rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.75rem;
+    }
+  }
+
+  // NOTE: a more specific selector is necessary here to
+  // override Athena's selector specificity for h2/.h2's
+  .feature-secondary &,
+  .feature-condensed & {
+    font-size: 1rem;
+  }
+}
+
+.feature-subhead {
+  color: $brand-default-aw;
+  font-size: .85rem;
+}
+
+.feature-excerpt {
+  line-height: 1.5;
+
+  .feature-secondary & {
+    font-size: .85rem;
+  }
+}

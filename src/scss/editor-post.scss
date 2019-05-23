@@ -1,0 +1,30 @@
+//
+// Theme variables and variable overrides
+//
+@import 'variables';
+
+
+//
+// Third-party assets
+//
+
+// Athena Framework variables, mixins
+@import './ucf-athena-framework/src/scss/variables';
+@import './ucf-athena-framework/src/scss/mixins';
+
+// import any other third-party styles here
+// ...
+
+
+//
+// Project-specific editor styles and overrides
+//
+@import 'mixins/single-post-content';
+
+
+// sass-lint:disable no-ids
+#tinymce.content {
+  max-width: 730px;
+  @include single-post-content();
+}
+// sass-lint:enable no-ids

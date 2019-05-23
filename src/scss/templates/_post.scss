@@ -1,0 +1,31 @@
+.single-post {
+  // Styles unique to the default ("featured") template
+  &.post-template-default {
+    .post-content {
+      blockquote:not(.blockquote) {
+        @include media-breakpoint-up(lg) {
+          margin-left: calc(#{$grid-gutter-width-base * 1.5} * -1);
+        }
+      }
+    }
+  }
+
+  // Generic post content styles
+  .post-content {
+    @include single-post-content();
+    @include clearfix();
+  }
+}
+
+.post-template-template-twocol {
+  .ucf-social-links-affixed {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.post-header-image {
+  @include media-breakpoint-down(sm) {
+    max-height: 340px; // 1200x800 aspect ratio at -sm breakpoint (510x340)
+    width: auto;
+  }
+}
