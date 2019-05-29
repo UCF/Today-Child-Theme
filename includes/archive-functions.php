@@ -16,8 +16,6 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 
 		$current_date = date_create_from_format( 'm/d/Y', "$current_month/1/$current_year" );
 
-		var_dump( $current_date );
-
 		$prev_month = $current_date->sub( new DateInterval( 'P1M' ) );
 		$prev_url = get_month_link( $prev_month->format('Y'), $prev_month->format('m') );
 
