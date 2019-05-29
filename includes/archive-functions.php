@@ -14,7 +14,9 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 		$current_year  = isset( $wp_query->query['year'] ) ? $wp_query->query['year'] : null;
 		$current_month = isset( $wp_query->query['monthnum'] ) ? $wp_query->query['monthnum'] : null;
 
-		$current_date = date_create_from_format( 'm/Y', "$current_month/$current_year" );
+		$current_date = date_create_from_format( 'm/d/Y', "$current_month/1/$current_year" );
+
+		var_dump( $current_date );
 
 		$prev_month = $current_date->sub( new DateInterval( 'P1M' ) );
 		$prev_url = get_month_link( $prev_month->format('Y'), $prev_month->format('m') );
@@ -28,7 +30,7 @@ if ( ! function_exists( 'today_archive_pagination' ) ) {
 		$prev_have_posts = $posts->post_count > 0 ? true : false;
 
 		// Reset $current_date as it's effected by ->sub
-		$current_date = date_create_from_format( 'm/Y', "$current_month/$current_year" );
+		$current_date = date_create_from_format( 'm/d/Y', "$current_month/1/$current_year" );
 
 		$next_month = $current_date->add( new DateInterval( 'P1M' ) );
 		$next_url = get_month_link( $next_month->format('Y'), $next_month->format('m') );
