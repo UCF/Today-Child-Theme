@@ -299,3 +299,25 @@ function today_post_insert_override( $post_id, $post, $update ) {
 }
 
 add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
+
+
+/**
+ * Sets a Resource Link's default Resource Link Type
+ * when the post is published, if a unique Resource Link Type
+ * wasn't provided.
+ *
+ * @since 1.0.2
+ * @author Jo Dickson
+ */
+function today_default_resource_link_type( $post_id, $post, $update ) {
+	if ( $post->post_type !== 'ucf_resource_link' ) {
+		return;
+	}
+
+	$terms = wp_get_post_terms( $post_id, 'resource_link_types' );
+	if ( empty( $terms ) ) {
+		wp_set_object_terms( $post_id, 'external-story', 'resource_link_types' );
+	}
+}
+
+add_action( 'wp_insert_post', 'today_default_resource_link_type', 10, 3 );
