@@ -381,7 +381,7 @@ add_action( 'wp_insert_post', 'today_post_insert_override', 10, 3 );
  * when the post is published, if a unique Resource Link Type
  * wasn't provided.
  *
- * @since 1.0.2
+ * @since 1.0.0
  * @author Jo Dickson
  */
 function today_default_resource_link_type( $post_id, $post, $update ) {

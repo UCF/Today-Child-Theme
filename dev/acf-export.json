@@ -823,6 +823,22 @@
                 "endpoint": 0
             },
             {
+                "key": "field_5c813a34c81af",
+                "label": "Original Publish Date",
+                "name": "post_header_publish_date",
+                "type": "read_only",
+                "instructions": "The date the post was originally published. Changing the <a href=\"#submitdiv\">'Published on' date<\/a> above will update the dates listed in the story’s header and bump this story to the top of lists where it's referenced.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "copy_to_clipboard": 0,
+                "display_type": "text"
+            },
+            {
                 "key": "field_5c813eaac81b1",
                 "label": "Deck",
                 "name": "post_header_deck",
@@ -1151,50 +1167,6 @@
         ],
         "menu_order": 0,
         "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    },
-    {
-        "key": "group_5cf01abf3195d",
-        "title": "Post Publish Details",
-        "fields": [
-            {
-                "key": "field_5c813a34c81af",
-                "label": "Original Publish Date",
-                "name": "post_header_publish_date",
-                "type": "read_only",
-                "instructions": "The date the post was originally published. Changing the <a href=\"#submitdiv\">'Published on' date<\/a> above will update the dates listed in the story’s header and bump this story to the top of lists where it's referenced.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "copy_to_clipboard": 0,
-                "display_type": "text"
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "post"
-                },
-                {
-                    "param": "post_status",
-                    "operator": "==",
-                    "value": "publish"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "side",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
