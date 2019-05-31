@@ -101,7 +101,7 @@ function today_get_post_meta_info( $post ) {
 	$byline        = wptexturize( get_the_author() );
 	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
 	$orig_date_val = get_field( 'post_header_publish_date', $post );
-	$original_date = isset( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
+	$original_date = ! empty( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
 
 	ob_start();
 ?>
