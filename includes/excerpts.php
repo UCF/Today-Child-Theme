@@ -24,15 +24,7 @@ function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
 		$excerpt = wp_strip_all_tags( $resource_link_desc );
 	}
 	else {
-		setup_postdata( $post );
-
-		$custom_filter = function( $l ) use ( $length ) {
-			return $length;
-		};
-
-		add_filter( 'excerpt_length', $custom_filter, 99 );
-		$excerpt = wp_strip_all_tags( get_the_excerpt( $post ) );
-		remove_filter( 'excerpt_length', $custom_filter, 99 );
+		$excerpt = ucfwp_get_excerpt( $post, $length );
 	}
 
 	return $excerpt;
@@ -50,16 +42,3 @@ function today_default_excerpt_length( $length ) {
 }
 
 add_filter( 'excerpt_length', 'today_default_excerpt_length', 98 );
-
-
-/**
- * Modifies the string printed at the end of excerpts.
- *
- * @since 1.0.0
- * @author Jo Dickson
- */
-function today_excerpt_more( $more ) {
-	return '&hellip;';
-}
-
-add_filter( 'excerpt_more', 'today_excerpt_more' );

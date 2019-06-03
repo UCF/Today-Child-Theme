@@ -100,7 +100,9 @@ function today_display_sidebar_external_stories( $args=array() ) {
 	$sc_attr     = array_filter( array(
 		'layout'      => $layout,
 		'numberposts' => $limit,
-		'post_type'   => 'ucf_resource_link'
+		'post_type'   => 'ucf_resource_link',
+		'tax_resource_link_types'        => 'external-story',
+		'tax_resource_link_types__field' => 'slug'
 	) );
 	$sc_attr_str = '';
 
