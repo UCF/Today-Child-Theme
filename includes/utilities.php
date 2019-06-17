@@ -426,6 +426,11 @@ function today_responsive_embeds( $html, $data, $url ) {
 		$html = '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
 	}
 
+	if ( $data->provider_name === 'Knight Lab' && strpos( $html, '/juxtapose/' ) !== false ) {
+		$html = str_replace( 'width=\'500\'', 'width=\'728\'', str_replace( 'height=\'500\'', 'height=\'410\'', $html ) );
+		$html = '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+	}
+
 	return '<div class="embed oembed ' . $oembed_class . ' d-flex flex-column align-items-center">' . $html . '</div>';
 }
 
