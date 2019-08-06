@@ -86,28 +86,12 @@ function today_filter_post_feed_enclosure( $value, $object_id, $meta_key, $singl
 
 			// Perform a HEAD request to fetch headers for the thumbnail URL.
 			// Enclosure tags require 'length' and 'type' attributes.
-			$default_stream_options = stream_context_get_options( stream_context_get_default() );
-			stream_context_set_default(
-				array(
-					'http' => array(
-						'method'  => 'HEAD',
-						'timeout' => 3
-					)
-				)
-			);
-			$enclosure_headers = get_headers( $enclosure_url ) ?: array();
-			stream_context_set_default( $default_stream_options );
+			$response = wp_remote_head( $enclosure_url );
 
-			$enclosure_size = 0;
-			$enclosure_mime = '';
-			foreach ( $enclosure_headers as $header ) {
-				if ( stripos( $header, 'Content-Length:' ) === 0 ) {
-					$enclosure_size = trim( explode( 'Content-Length:', $header )[1] );
-				}
-				else if ( stripos( $header, 'Content-Type:' ) === 0 ) {
-					$enclosure_mime = trim( explode( 'Content-Type:', $header )[1] );
-				}
-			}
+			$enclosure_size = 'Content-Length:';
+			$enclosure_size .= wp_remote_retrieve_header( $response, 'Content-Length' ) ?: 0;
+			$enclosure_mime = 'Content-Type:';
+			$enclosure_mime .= wp_remote_retrieve_header( $response, 'Content-Type' ) ?: '';
 
 			// This is the format expected by WP's built-in RSS templates *shrug*
 			$enclosure = implode( "\n", array(
