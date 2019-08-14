@@ -14,7 +14,7 @@ $menu          = wp_nav_menu( array(
 ?>
 
 <div class="site-nav-overlay fade" id="nav-overlay"></div>
-<nav class="today-nav-wrapper" role="navigation">
+<nav class="today-nav-wrapper" aria-label="Site navigation">
 	<div class="container today-nav-inner d-flex flex-row py-md-2">
 		<div class="today-nav-info d-flex flex-row align-items-center">
 			<<?php echo $title_elem; ?> class="mb-0">
