@@ -429,7 +429,7 @@ function today_get_embed_responsive_class( $width, $height ) {
 		case $aspect_ratio <= 1:
 			$class = 'embed-responsive-1by1';
 			break;
-		case $aspect_ratio >= 1 && $aspect_ratio <= round( ( 4 / 3 ), 2 ):
+		case $aspect_ratio > 1 && $aspect_ratio <= round( ( 4 / 3 ), 2 ):
 			$class = 'embed-responsive-4by3';
 			break;
 		case $aspect_ratio > round( ( 16 / 9 ), 2 ):
