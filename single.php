@@ -9,7 +9,7 @@ $related      = today_get_post_related( $post );
 $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
 ?>
 
-<article class="<?php echo $post->post_status; ?> post-list-item">
+<article class="<?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
 	<div class="container mt-3 mt-sm-4">
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
