@@ -1,5 +1,4 @@
-/* global $ */
-(function () {
+(function ($) {
 
   let menuSelector;
   let menuTriggerSelector;
@@ -66,4 +65,4 @@
   }
 
   $(init);
-}());
+}(jQuery));
