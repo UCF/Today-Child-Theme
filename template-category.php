@@ -6,7 +6,7 @@
 ?>
 <?php get_header(); the_post(); ?>
 
-<article class="<?php echo $post->post_status; ?> post-list-item">
+<article class="<?php echo $post->post_status; ?> post-list-item" aria-label="<?php echo esc_attr( get_the_title() ); ?>">
 	<div class="container mt-2 mt-md-3 mb-5 pb-sm-4">
 
 	<?php if ( get_field( 'enable_sidebar' ) ) : ?>

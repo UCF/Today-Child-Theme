@@ -155,7 +155,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	ob_start();
 	if ( $is_linkable ):
 ?>
-	<article class="feature feature-horizontal <?php echo $type_class; ?> mb-4">
+	<article class="feature feature-horizontal <?php echo $type_class; ?> mb-4" aria-label="<?php echo esc_attr( $title ); ?>">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
 			<div class="row">
 				<?php if ( $use_thumbnail ): ?>
@@ -219,7 +219,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 	ob_start();
 	if ( $is_linkable ):
 ?>
-	<article class="feature feature-vertical <?php echo $type_class; ?> mb-4">
+	<article class="feature feature-vertical <?php echo $type_class; ?> mb-4" aria-label="<?php echo esc_attr( $title ); ?>">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
 			<div class="media-background-container mb-3 feature-thumbnail-wrap">
 				<?php echo $thumbnail; ?>
@@ -262,7 +262,7 @@ function today_display_feature_condensed( $post, $args=array() ) {
 	ob_start();
 	if ( $is_linkable ):
 ?>
-	<article class="d-flex flex-column align-items-start feature feature-condensed mb-3">
+	<article class="d-flex flex-column align-items-start feature feature-condensed mb-3" aria-label="<?php echo esc_attr( $title ); ?>">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
 			<h2 class="feature-title mb-1"><?php echo $title; ?></h2>
 		</a>

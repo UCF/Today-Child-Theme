@@ -18,7 +18,7 @@ $tag_headlines  = today_get_post_tag_headlines( $post );
 $tag_cloud      = today_get_tag_cloud( $post, 'mb-5' );
 ?>
 
-<article class="<?php echo $post->post_status; ?> post-list-item">
+<article class="<?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
 	<div class="container mt-3 mt-sm-4 mb-5 pb-sm-4">
 		<div class="row">
 			<div class="col-lg-8">
