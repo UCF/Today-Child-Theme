@@ -229,27 +229,89 @@ function today_get_post_related( $post ) {
 
 
 /**
- * Returns a stylized list of additional headlines, excluding
- * the given post.
+ * Returns an array of post objects to use when displaying
+ * a single post's additional headlines.
+ *
+ * @since 1.0.6
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @return array list of WP_Post objects
+ */
+function today_get_post_more_headlines_posts( $post ) {
+	return get_posts( array(
+		'numberposts'  => 4,
+		'post__not_in' => array( $post->ID )
+	) );
+}
+
+
+/**
+ * Returns an array of post objects to use when displaying
+ * a single post's related posts by primary category.
+ *
+ * @since 1.0.6
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @param array $exclude array of post IDs to exclude from the returned list
+ * @return array list of WP_Post objects
+ */
+function today_get_post_cat_headlines_posts( $post, $exclude=array() ) {
+	$primary_cat = today_get_primary_category( $post );
+	if ( ! $primary_cat ) return array();
+
+	$exclude = array_merge( array( $post->ID ), $exclude );
+
+	return get_posts( array(
+		'numberposts'  => 3,
+		'post__not_in' => $exclude,
+		'cat'          => $primary_cat->term_id
+	) );
+}
+
+
+/**
+ * Returns an array of post objects to use when displaying
+ * a single post's related posts by primary tag.
+ *
+ * @since 1.0.6
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @param array $exclude array of post IDs to exclude from the returned list
+ * @return array list of WP_Post objects
+ */
+function today_get_post_tag_headlines_posts( $post, $exclude=array() ) {
+	$primary_tag = today_get_primary_tag( $post );
+	if ( ! $primary_tag ) return;
+
+	$exclude = array_merge( array( $post->ID ), $exclude );
+
+	return get_posts( array(
+		'numberposts'  => 3,
+		'post__not_in' => $exclude,
+		'tag_id'       => $primary_tag->term_id
+	) );
+}
+
+
+/**
+ * Returns a stylized list of additional headlines for the given post.
  *
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
+ * @param array $headlines Custom list of WP_Post objects to use as headlines
  * @return string HTML for the headlines list
  */
-function today_get_post_more_headlines( $post ) {
-	$posts = get_posts( array(
-		'numberposts'  => 4,
-		'post__not_in' => array( $post->ID )
-	) );
+function today_get_post_more_headlines( $post, $headlines=array() ) {
+	$headlines = $headlines ?: today_get_post_more_headlines_posts( $post );
 
 	ob_start();
-	if ( $posts ):
+	if ( $headlines ):
 ?>
 	<h2 class="h6 text-uppercase text-default-aw mb-4">More Headlines</h2>
 	<?php
-	foreach ( $posts as $p ) {
-		echo today_display_feature_condensed( $p );
+	foreach ( $headlines as $h ) {
+		echo today_display_feature_condensed( $h );
 	}
 	?>
 <?php
@@ -265,27 +327,24 @@ function today_get_post_more_headlines( $post ) {
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
+ * @param array $headlines Custom list of WP_Post objects to use as headlines
  * @return string HTML for the posts list
  */
-function today_get_post_cat_headlines( $post ) {
+function today_get_post_cat_headlines( $post, $headlines=array() ) {
 	$primary_cat = today_get_primary_category( $post );
 	if ( ! $primary_cat ) return;
 
-	$posts = get_posts( array(
-		'numberposts'  => 3,
-		'post__not_in' => array( $post->ID ),
-		'cat'          => $primary_cat->term_id
-	) );
+	$headlines = $headlines ?: today_get_post_cat_headlines_posts( $post );
 
 	ob_start();
-	if ( $posts ):
+	if ( $headlines ):
 ?>
 	<h2 class="h6 text-uppercase text-default-aw mb-4">
 		More About <?php echo wptexturize( $primary_cat->name ); ?>
 	</h2>
 	<?php
-	foreach ( $posts as $p ) {
-		echo today_display_feature_condensed( $p );
+	foreach ( $headlines as $h ) {
+		echo today_display_feature_condensed( $h );
 	}
 	?>
 <?php
@@ -301,27 +360,24 @@ function today_get_post_cat_headlines( $post ) {
  * @since 1.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
+ * @param array $headlines Custom list of WP_Post objects to use as headlines
  * @return string HTML for the posts list
  */
-function today_get_post_tag_headlines( $post ) {
+function today_get_post_tag_headlines( $post, $headlines=array() ) {
 	$primary_tag = today_get_primary_tag( $post );
 	if ( ! $primary_tag ) return;
 
-	$posts = get_posts( array(
-		'numberposts'  => 3,
-		'post__not_in' => array( $post->ID ),
-		'tag_id'       => $primary_tag->term_id
-	) );
+	$headlines = $headlines ?: today_get_post_tag_headlines_posts( $post );
 
 	ob_start();
-	if ( $posts ):
+	if ( $headlines ):
 ?>
 	<h2 class="h6 text-uppercase text-default-aw mb-4">
 		More About <?php echo wptexturize( $primary_tag->name ); ?>
 	</h2>
 	<?php
-	foreach ( $posts as $p ) {
-		echo today_display_feature_condensed( $p );
+	foreach ( $headlines as $h ) {
+		echo today_display_feature_condensed( $h );
 	}
 	?>
 <?php
