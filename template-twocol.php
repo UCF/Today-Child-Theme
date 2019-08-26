@@ -15,9 +15,9 @@ $social                  = ( shortcode_exists( 'ucf-social-links' ) ) ? do_short
 
 $more_headlines_posts    = today_get_post_more_headlines_posts( $post );
 $more_headlines_post_ids = ! empty( $more_headlines_posts ) ? array_map( function( $p ) { return $p->ID; }, $more_headlines_posts ) : array();
-$cat_headlines_posts     = today_get_post_cat_headlines_posts( $post, $more_headlines_post_ids );
-$cat_headlines_post_ids  = ! empty( $cat_headlines_posts ) ? array_map( function( $p ) { return $p->ID; }, $cat_headlines_posts ) : array();
-$tag_headlines_posts     = today_get_post_tag_headlines_posts( $post, array_unique( array_merge( $more_headlines_post_ids, $cat_headlines_post_ids ) ) );
+$tag_headlines_posts     = today_get_post_tag_headlines_posts( $post, $more_headlines_post_ids );
+$tag_headlines_post_ids  = ! empty( $tag_headlines_posts ) ? array_map( function( $p ) { return $p->ID; }, $tag_headlines_posts ) : array();
+$cat_headlines_posts     = today_get_post_cat_headlines_posts( $post, array_unique( array_merge( $more_headlines_post_ids, $tag_headlines_post_ids ) ) );
 
 $more_headlines          = today_get_post_more_headlines( $post, $more_headlines_posts );
 $cat_headlines           = today_get_post_cat_headlines( $post, $cat_headlines_posts );
