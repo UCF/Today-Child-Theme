@@ -8,14 +8,22 @@
 <?php get_header(); the_post(); ?>
 
 <?php
-$header_media   = today_get_post_header_media( $post );
-$source         = today_get_post_source( $post );
-$author_bio     = today_get_post_author_bio( $post );
-$social         = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
-$more_headlines = today_get_post_more_headlines( $post );
-$cat_headlines  = today_get_post_cat_headlines( $post );
-$tag_headlines  = today_get_post_tag_headlines( $post );
-$tag_cloud      = today_get_tag_cloud( $post, 'mb-5' );
+$header_media            = today_get_post_header_media( $post );
+$source                  = today_get_post_source( $post );
+$author_bio              = today_get_post_author_bio( $post );
+$social                  = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
+
+$more_headlines_posts    = today_get_post_more_headlines_posts( $post );
+$more_headlines_post_ids = ! empty( $more_headlines_posts ) ? array_map( function( $p ) { return $p->ID; }, $more_headlines_posts ) : array();
+$tag_headlines_posts     = today_get_post_tag_headlines_posts( $post, $more_headlines_post_ids );
+$tag_headlines_post_ids  = ! empty( $tag_headlines_posts ) ? array_map( function( $p ) { return $p->ID; }, $tag_headlines_posts ) : array();
+$cat_headlines_posts     = today_get_post_cat_headlines_posts( $post, array_unique( array_merge( $more_headlines_post_ids, $tag_headlines_post_ids ) ) );
+
+$more_headlines          = today_get_post_more_headlines( $post, $more_headlines_posts );
+$tag_headlines           = today_get_post_tag_headlines( $post, $tag_headlines_posts );
+$cat_headlines           = today_get_post_cat_headlines( $post, $cat_headlines_posts );
+
+$tag_cloud               = today_get_tag_cloud( $post, 'mb-5' );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
