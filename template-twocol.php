@@ -20,8 +20,8 @@ $tag_headlines_post_ids  = ! empty( $tag_headlines_posts ) ? array_map( function
 $cat_headlines_posts     = today_get_post_cat_headlines_posts( $post, array_unique( array_merge( $more_headlines_post_ids, $tag_headlines_post_ids ) ) );
 
 $more_headlines          = today_get_post_more_headlines( $post, $more_headlines_posts );
-$cat_headlines           = today_get_post_cat_headlines( $post, $cat_headlines_posts );
 $tag_headlines           = today_get_post_tag_headlines( $post, $tag_headlines_posts );
+$cat_headlines           = today_get_post_cat_headlines( $post, $cat_headlines_posts );
 
 $tag_cloud               = today_get_tag_cloud( $post, 'mb-5' );
 ?>
