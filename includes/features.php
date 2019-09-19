@@ -132,7 +132,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	// Explicitly overrwrite excerpt length if it's provided as an arg.
 	$excerpt_length = isset( $custom_excerpt_length ) ? $custom_excerpt_length : $excerpt_length;
-	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
+	$excerpt        = ( $use_excerpt ) ? ucfwp_get_excerpt( $post, $excerpt_length ) : '';
 	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail      = '';
 	$thumbnail_col_class = 'col-4 col-sm-3'; // classes for assumed default $type of 'secondary'
@@ -211,7 +211,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 	$excerpt_length = ( $type === 'secondary' ) ? TODAY_SHORT_EXCERPT_LENGTH : TODAY_DEFAULT_EXCERPT_LENGTH;
 	// Explicitly overrwrite excerpt length if it's provided as an arg.
 	$excerpt_length = isset( $custom_excerpt_length ) ? $custom_excerpt_length : $excerpt_length;
-	$excerpt        = ( $use_excerpt ) ? today_get_excerpt( $post, $excerpt_length ) : '';
+	$excerpt        = ( $use_excerpt ) ? ucfwp_get_excerpt( $post, $excerpt_length ) : '';
 	$subhead        = ( $use_subhead ) ? today_get_feature_subhead( $post ) : '';
 	$thumbnail_size = ( $type === 'primary' ) ? 'large' : 'medium_large';
 	$thumbnail      = today_get_feature_thumbnail( $post, $thumbnail_size );
