@@ -4,31 +4,27 @@
  */
 
 /**
- * Returns the post excerpt. Handles necessary postdata setup.
+ * Overrides the returned value for post excerpts retrieved using
+ * `get_the_excerpt()`.
  *
- * @since 1.0.0
+ * @since 1.0.7
  * @author Jo Dickson
- * @param object $post A WP_Post object
- * @param int $length Specify a custom length for the excerpt.
- * @return string Sanitized post excerpt
+ * @param string $excerpt The post excerpt
+ * @param object $post WP_Post object
+ * @return string Modified excerpt
  */
-function today_get_excerpt( $post, $length=TODAY_DEFAULT_EXCERPT_LENGTH ) {
-	if ( ! ( $post instanceof WP_Post ) ) return '';
-
-	$excerpt = '';
-
+function today_get_the_excerpt( $excerpt, $post ) {
 	if ( $deck = get_field( 'post_header_deck', $post ) ) {
-		$excerpt = wp_strip_all_tags( $deck );
+		$excerpt = $deck;
 	}
 	else if ( $resource_link_desc = get_field( 'ucf_resource_link_description', $post ) ) {
-		$excerpt = wp_strip_all_tags( $resource_link_desc );
-	}
-	else {
-		$excerpt = ucfwp_get_excerpt( $post, $length );
+		$excerpt = $resource_link_desc;
 	}
 
 	return $excerpt;
 }
+
+add_filter( 'get_the_excerpt', 'today_get_the_excerpt', 10, 2 );
 
 
 /**
