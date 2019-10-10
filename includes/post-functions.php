@@ -397,10 +397,9 @@ function today_add_tags_to_data_layer() {
 ?>
 <script>
 document.onload = function() {
-	console.log("Events being pushed.");
 	<?php foreach( $terms as $term ) : ?>
 	window.dataLayer.push({
-		'event': 'tagPushed'
+		'event': 'tagPushed',
 		'tag': '<?php echo json_encode( $term ); ?>'
 	});
 	<?php endforeach; ?>
