@@ -396,12 +396,14 @@ function today_add_tags_to_data_layer() {
 		$terms = wp_get_post_terms( $post->ID, 'post_tag', array( 'fields' => 'names') );
 ?>
 <script>
+document.onload = function() {
 	<?php foreach( $terms as $term ) : ?>
-dataLayer.push({
-	'event': 'tagPushed'
-	'tag': '<?php echo json_encode( $term ); ?>'
-});
+	window.dataLayer.push({
+		'event': 'tagPushed',
+		'tag': '<?php echo json_encode( $term ); ?>'
+	});
 	<?php endforeach; ?>
+};
 </script>
 <?php
 	endif;
