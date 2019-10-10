@@ -396,15 +396,18 @@ function today_add_tags_to_data_layer() {
 		$terms = wp_get_post_terms( $post->ID, 'post_tag', array( 'fields' => 'names') );
 ?>
 <script>
+
+document.addEventListener('load', function() {
 	<?php foreach( $terms as $term ) : ?>
-dataLayer.push({
-	'event': 'tagPushed'
-	'tag': '<?php echo json_encode( $term ); ?>'
+	dataLayer.push({
+		'event': 'tagPushed'
+		'tag': '<?php echo json_encode( $term ); ?>'
+	});
+		<?php endforeach; ?>
 });
-	<?php endforeach; ?>
 </script>
 <?php
 	endif;
 }
 
-add_action( 'wp_head', 'today_add_tags_to_data_layer', 3 );
+add_action( 'wp_head', 'today_add_tags_to_data_layer', 10 );
