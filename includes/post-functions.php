@@ -397,7 +397,7 @@ function today_add_tags_to_data_layer() {
 ?>
 <script>
 <?php foreach( $terms as $term ) : ?>
-dataLayer.push({
+window.dataLayer.push({
 	'event': 'tagPushed'
 	'tag': '<?php echo json_encode( $term ); ?>'
 });
