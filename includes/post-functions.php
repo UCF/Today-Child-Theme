@@ -396,7 +396,7 @@ function today_add_tags_to_data_layer() {
 		$terms = wp_get_post_terms( $post->ID, 'post_tag', array( 'fields' => 'names') );
 ?>
 <script>
-document.onload = function() {
+window.onload = function() {
 	setTimeout( function() {
 		console.log("Running");
 		<?php foreach( $terms as $term ) : ?>
