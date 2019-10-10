@@ -397,12 +397,15 @@ function today_add_tags_to_data_layer() {
 ?>
 <script>
 document.onload = function() {
-	<?php foreach( $terms as $term ) : ?>
-	window.dataLayer.push({
-		'event': 'tagPushed',
-		'tag': '<?php echo json_encode( $term ); ?>'
-	});
-	<?php endforeach; ?>
+	setTimeout( function() {
+		console.log("Running");
+		<?php foreach( $terms as $term ) : ?>
+		window.dataLayer.push({
+			'event': 'tagPushed',
+			'tag': '<?php echo json_encode( $term ); ?>'
+		});
+		<?php endforeach; ?>
+	}, 500);
 };
 </script>
 <?php
