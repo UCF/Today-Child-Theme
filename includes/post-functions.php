@@ -384,3 +384,24 @@ function today_get_post_tag_headlines( $post, $headlines=array() ) {
 	endif;
 	return ob_get_clean();
 }
+
+function today_add_tags_to_data_layer() {
+	// If this isn't a single post, return.
+	if ( ! is_singular( 'post' ) ) return;
+
+	global $post;
+
+	$gtm_id = get_theme_mod( 'gtm_id' );
+	if ( $gtm_id ) :
+		$terms = wp_get_post_terms( $post->ID, 'post_tag', array( 'fields' => 'names') );
+?>
+<script>
+		dataLayer.push({
+			'tags': <?php echo json_encode( $terms ); ?>
+		});
+</script>
+<?php
+	endif;
+}
+
+add_action( 'wp_head', 'today_add_tags_to_data_layer', 3 );
