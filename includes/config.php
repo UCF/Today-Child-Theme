@@ -293,8 +293,9 @@ function today_post_insert_override( $post_id, $post, $update ) {
 
 	// Get post meta
 	$publish_date = get_post_meta( $post_id, 'post_header_publish_date', true );
+
 	if ( ! $publish_date ) {
-		update_post_meta( $post_id, 'post_header_publish_date', date( 'Y-m-d' ) );
+		update_post_meta( $post_id, 'post_header_publish_date', current_time( 'Y-m-d', false ) );
 	}
 }
 
