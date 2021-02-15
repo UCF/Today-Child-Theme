@@ -33,12 +33,14 @@ function today_weather_default_today_nav( $data, $output ) {
 	if ( ! is_object( $data ) || ! property_exists( $data, 'condition' ) ) return;
 
 	ob_start();
-	$icon = UCF_Weather_Common::get_weather_icon( $data->condition );
+	$icon = UCF_Weather_Common::get_weather_icon_svg( $data->condition );
 ?>
 	<div class="weather weather-today-nav py-4 mb-4 py-lg-0 my-lg-0">
 		<span class="weather-date hidden-lg-up d-block mb-3 text-uppercase letter-spacing-1"><?php echo date( 'l, F j, Y' ); ?></span>
 		<span class="weather-status d-flex flex-row">
-			<span class="weather-icon text-primary mr-3 mr-lg-2 <?php echo $icon; ?>" aria-hidden="true"></span>
+			<span class="wi weather-icon text-primary mr-3 mr-lg-2" aria-hidden="true">
+				<?php echo $icon; ?>
+			</span>
 			<span class="weather-text d-flex flex-column align-items-start flex-lg-row align-items-lg-center">
 				<span class="weather-temp font-weight-bold mr-0 mr-lg-2"><?php echo $data->temp; ?>F</span>
 				<span class="weather-condition"><?php echo $data->condition; ?></span>
