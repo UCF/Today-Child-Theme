@@ -519,7 +519,7 @@
             "tags",
             "send-trackbacks"
         ],
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -578,7 +578,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -799,7 +799,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -1000,15 +1000,39 @@
                 "maxlength": ""
             },
             {
+                "key": "field_602fef6061511",
+                "label": "Author Photo",
+                "name": "post_author_photo",
+                "type": "image",
+                "instructions": "Appears below the story's content.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
                 "key": "field_5c813f22c81b5",
                 "label": "Author Bio",
                 "name": "post_author_bio",
                 "type": "wysiwyg",
-                "instructions": "Appears below the story's content.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title and Bio) below the story's content.",
+                "instructions": "Appears below the story's content.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title, Bio, Photo) below the story's content.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "",
+                    "width": "65",
                     "class": "",
                     "id": ""
                 },
@@ -1077,7 +1101,7 @@
                 "label": "Source",
                 "name": "post_source",
                 "type": "textarea",
-                "instructions": "Appears below the story content (and below the Author Bio if set).",
+                "instructions": "Appears below the story content (and above the Author Bio if set).",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -1171,7 +1195,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -1213,7 +1237,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     },
     {
@@ -1519,7 +1543,7 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
-        "active": 1,
+        "active": true,
         "description": ""
     }
 ]
