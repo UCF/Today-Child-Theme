@@ -33,7 +33,7 @@ function today_get_homepage_latest( $primary=false ) {
 	<?php if ( $posts ): ?>
 		<div class="row">
 			<?php foreach ( $posts as $post ): ?>
-				<div class="col-lg-4 mb-4">
+				<div class="col-md-4 mb-4">
 					<?php echo today_display_feature_vertical( $post ); ?>
 				</div>
 			<?php endforeach; ?>
@@ -94,7 +94,7 @@ function today_get_homepage_curated( $post_id, $primary=false ) {
 						'show_image'    => get_sub_field( 'show_image' ),
 						'show_excerpt'  => get_sub_field( 'show_excerpt' ),
 						'show_subhead'  => get_sub_field( 'show_subhead' ),
-						'posts_per_row' => count( $posts )
+						'posts_per_row' => get_sub_field( 'posts_per_row' ) ?: 3
 					) );
 
 					$markup .= today_post_list_display_feature( null, $posts, $atts );

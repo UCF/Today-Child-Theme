@@ -107,7 +107,7 @@
                     "5cac9fc2da26b": {
                         "key": "5cac9fc2da26b",
                         "name": "primary_row",
-                        "label": "Primary Story Row",
+                        "label": "Primary Story",
                         "display": "block",
                         "sub_fields": [
                             {
@@ -223,7 +223,7 @@
                     "5caca77046afc": {
                         "key": "5caca77046afc",
                         "name": "secondary_row",
-                        "label": "Secondary Stories Row",
+                        "label": "Secondary Stories",
                         "display": "block",
                         "sub_fields": [
                             {
@@ -241,7 +241,7 @@
                                 },
                                 "collapsed": "field_5caca86a46b00",
                                 "min": 1,
-                                "max": 4,
+                                "max": 0,
                                 "layout": "block",
                                 "button_label": "Add Story",
                                 "sub_fields": [
@@ -305,7 +305,7 @@
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "20",
+                                    "width": "15",
                                     "class": "",
                                     "id": ""
                                 },
@@ -324,7 +324,7 @@
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "20",
+                                    "width": "15",
                                     "class": "",
                                     "id": ""
                                 },
@@ -343,7 +343,7 @@
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "20",
+                                    "width": "15",
                                     "class": "",
                                     "id": ""
                                 },
@@ -352,6 +352,34 @@
                                 "ui": 0,
                                 "ui_on_text": "",
                                 "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_60301395830a5",
+                                "label": "Posts per Row",
+                                "name": "posts_per_row",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "6": "6"
+                                },
+                                "default_value": 3,
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 0,
+                                "return_format": "value",
+                                "ajax": 0,
+                                "placeholder": ""
                             }
                         ],
                         "min": "",
@@ -360,7 +388,7 @@
                     "5caca9ae46b03": {
                         "key": "5caca9ae46b03",
                         "name": "condensed_row",
-                        "label": "Condensed Stories Row",
+                        "label": "Condensed Stories",
                         "display": "block",
                         "sub_fields": [
                             {
