@@ -1101,7 +1101,7 @@
                 "label": "Source",
                 "name": "post_source",
                 "type": "textarea",
-                "instructions": "Appears below the story content (and below the Author Bio if set).",
+                "instructions": "Appears below the story content (and above the Author Bio if set).",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
