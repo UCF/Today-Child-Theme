@@ -139,28 +139,42 @@ function today_get_post_meta_info( $post ) {
  * @return string Author bio markup
  */
 function today_get_post_author_bio( $post ) {
-	$author_byline = get_the_author();
-	$author_title  = get_field( 'post_author_title', $post );
-	$author_bio    = trim( get_field( 'post_author_bio', $post ) );
+	$author_bio = trim( get_field( 'post_author_bio', $post ) );
 
 	ob_start();
 	if ( $author_bio ) :
+		$author_byline     = get_the_author();
+		$author_title      = get_field( 'post_author_title', $post );
+		$author_photo_data = get_field( 'post_author_photo', $post );
+		$author_photo      = $author_photo_data['sizes']['medium'] ?? null;
 ?>
-	<address class="text-default-aw">
-		<span class="d-block font-weight-bold">
-			<?php echo $author_byline; ?>
-		</span>
+		<address>
+			<div class="row">
+				<?php if ( $author_photo ) : ?>
+				<div class="col-auto" style="max-width: 25%;">
+					<img class="img-fluid" src="<?php echo $author_photo; ?>" alt="">
+				</div>
+				<?php endif; ?>
 
-		<?php if ( $author_title ) : ?>
-		<span class="d-block">
-			<?php echo $author_title; ?>
-		</span>
-		<?php endif; ?>
+				<div class="col pl-2 pl-md-3">
+					<?php if ( $author_byline ): ?>
+					<span class="d-block font-weight-bold">
+						<?php echo $author_byline; ?>
+					</span>
+					<?php endif; ?>
 
-		<div class="font-italic mt-3">
-			<?php echo $author_bio; ?>
-		</div>
-	</address>
+					<?php if ( $author_title ) : ?>
+					<span class="d-block">
+						<?php echo $author_title; ?>
+					</span>
+					<?php endif; ?>
+
+					<div class="font-italic mt-3" style="font-size: .9em;">
+						<?php echo $author_bio; ?>
+					</div>
+				</div>
+			</div>
+		</address>
 <?php
 	endif;
 	return ob_get_clean();
