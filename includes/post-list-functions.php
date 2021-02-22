@@ -125,7 +125,7 @@ add_filter( 'ucf_post_list_display_condensed_before', 'today_post_list_display_c
 function today_post_list_display_feature( $content, $posts, $atts ) {
 	if ( $posts && ! is_array( $posts ) ) { $posts = array( $posts ); }
 
-	$item_col = 'col-lg';
+	$item_col = 'col-md';
 	if ( $atts['posts_per_row'] > 0 && ( 12 % $atts['posts_per_row'] ) === 0 ) {
 		// Use specific column size class if posts_per_row equates
 		// to a valid grid size
