@@ -90,10 +90,10 @@
         "fields": [
             {
                 "key": "field_60351738e9e93",
-                "label": "Author",
+                "label": "Author Type",
                 "name": "post_author_type",
                 "type": "select",
-                "instructions": "",
+                "instructions": "Choose whether to reference an existing Author's information, or define one-off custom information for this post.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -231,7 +231,7 @@
                 "label": "Existing Author",
                 "name": "post_author_term",
                 "type": "taxonomy",
-                "instructions": "",
+                "instructions": "Choose an existing Author to assign to this post.  Name, title, photo and bio information will be referenced from the Author that's selected.",
                 "required": 0,
                 "conditional_logic": [
                     [
