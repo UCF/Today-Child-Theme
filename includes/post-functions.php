@@ -139,13 +139,14 @@ function today_get_post_meta_info( $post ) {
  * @return string Author bio markup
  */
 function today_get_post_author_bio( $post ) {
-	$author_bio = trim( get_field( 'post_author_bio', $post ) );
+	$author_data = today_get_post_author_data( $post );
+	$author_bio  = $author_data['bio'] ?? null;
 
 	ob_start();
 	if ( $author_bio ) :
-		$author_byline     = get_the_author();
-		$author_title      = get_field( 'post_author_title', $post );
-		$author_photo_data = get_field( 'post_author_photo', $post );
+		$author_byline     = $author_data['name'];
+		$author_title      = $author_data['title'];
+		$author_photo_data = $author_data['photo'];
 		$author_photo      = $author_photo_data['sizes']['medium'] ?? null;
 ?>
 		<address>
