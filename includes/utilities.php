@@ -33,6 +33,57 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 
 
 /**
+ * Returns existing author term information, or custom
+ * author data (for posts, if set).
+ *
+ * @since 1.1.0
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @return array Array of author data; expected format:
+ *                 (
+ *                     'term'  => {}|null,
+ *                     'name'  => '',
+ *                     'title' => '',
+ *                     'photo' => []|null,
+ *                     'bio'   => ''
+ *                 )
+ */
+function today_get_post_author_data( $post ) {
+	if ( is_numeric( $post ) ) {
+		$post = get_post( $post );
+	}
+	if ( ! $post || ! in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) return array();
+	$author_data = array();
+
+	if ( get_field( 'post_author_type', $post ) !== 'term' ) {
+		$custom_author_name = get_field( 'post_author_byline', $post );
+		// Require at least a name to proceed
+		if ( $custom_author_name ) {
+			$author_data['term']  = null;
+			$author_data['name']  = $custom_author_name;
+			$author_data['title'] = get_field( 'post_author_title', $post );
+			$author_data['photo'] = get_field( 'post_author_photo', $post );
+			$author_data['bio']   = get_field( 'post_author_bio', $post );
+		}
+	} else {
+		$author_terms = wp_get_post_terms( $post->ID, 'tu_authors' );
+		if ( ! is_wp_error( $author_terms ) ) {
+			$author_term = $author_terms[0] ?? null;
+			if ( $author_term && $author_term->name ) {
+				$author_data['term']  = $author_term;
+				$author_data['name']  = $author_term->name;
+				$author_data['title'] = get_field( 'author_title', $author_term );
+				$author_data['photo'] = get_field( 'author_photo', $author_term );
+				$author_data['bio']   = get_field( 'author_bio', $author_term );
+			}
+		}
+	}
+
+	return $author_data;
+}
+
+
+/**
  * Filters requests for WordPress's built-in author name retrieval functions.
  *
  * Useful for feeds and third-party plugins that reference basic post
@@ -44,9 +95,11 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 function today_filter_post_author_name( $author_name ) {
 	if ( ! is_admin() ) {
 		global $post;
-		$author_byline = get_field( 'post_author_byline', $post );
-		if ( $author_byline ) {
-			$author_name = $author_byline;
+		if ( $post && in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) {
+			$author_data = today_get_post_author_data( $post );
+			if ( isset( $author_data['name'] ) ) {
+				$author_name = $author_data['name'];
+			}
 		}
 	}
 
