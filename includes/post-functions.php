@@ -144,9 +144,9 @@ function today_get_post_author_bio( $post ) {
 
 	ob_start();
 	if ( $author_bio ) :
-		$author_byline     = $author_data['name'];
-		$author_title      = $author_data['title'];
-		$author_photo_data = $author_data['photo'];
+		$author_byline     = $author_data['name'] ?? null;
+		$author_title      = $author_data['title'] ?? null;
+		$author_photo_data = $author_data['photo'] ?? null;
 		$author_photo      = $author_photo_data['sizes']['medium'] ?? null;
 		$author_photo_w    = $author_photo_data['sizes']['medium-width'] ?? null;
 		$author_photo_h    = $author_photo_data['sizes']['medium-height'] ?? null;
