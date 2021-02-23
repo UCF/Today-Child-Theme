@@ -148,12 +148,21 @@ function today_get_post_author_bio( $post ) {
 		$author_title      = $author_data['title'];
 		$author_photo_data = $author_data['photo'];
 		$author_photo      = $author_photo_data['sizes']['medium'] ?? null;
+		$author_photo_w    = $author_photo_data['sizes']['medium-width'] ?? null;
+		$author_photo_h    = $author_photo_data['sizes']['medium-height'] ?? null;
+		$author_photo_dims = '';
+		if ( $author_photo_w ) {
+			$author_photo_dims .= 'width="' . $author_photo_w . '" ';
+		}
+		if ( $author_photo_h ) {
+			$author_photo_dims .= 'height="' . $author_photo_h . '"';
+		}
 ?>
 		<address>
 			<div class="row">
 				<?php if ( $author_photo ) : ?>
 				<div class="col-auto" style="max-width: 25%;">
-					<img class="img-fluid" src="<?php echo $author_photo; ?>" alt="">
+					<img class="img-fluid" src="<?php echo $author_photo; ?>" alt="" <?php echo $author_photo_dims; ?>>
 				</div>
 				<?php endif; ?>
 
