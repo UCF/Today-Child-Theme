@@ -1,5 +1,288 @@
 [
     {
+        "key": "group_60351a1a8f796",
+        "title": "Author Fields",
+        "fields": [
+            {
+                "key": "field_60351b469550e",
+                "label": "Title",
+                "name": "author_title",
+                "type": "text",
+                "instructions": "A title for this author, e.g. \"Director of [department]\".",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_60351b549550f",
+                "label": "Photo",
+                "name": "author_photo",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_60351b5895510",
+                "label": "Bio",
+                "name": "author_bio",
+                "type": "wysiwyg",
+                "instructions": "A brief bio or description for this author.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title, Bio, Photo) below post\/statement content.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "text",
+                "media_upload": 0,
+                "toolbar": "full",
+                "delay": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "tu_authors"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_603515ea9e110",
+        "title": "Author Select Fields",
+        "fields": [
+            {
+                "key": "field_60351738e9e93",
+                "label": "Author",
+                "name": "post_author_type",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "term": "Existing Author",
+                    "custom": "Custom"
+                },
+                "default_value": false,
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_5c813f0fc81b4",
+                "label": "Author Byline",
+                "name": "post_author_byline",
+                "type": "text",
+                "instructions": "Appears in place of post author's name.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60351738e9e93",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5c813ebec81b2",
+                "label": "Author Title",
+                "name": "post_author_title",
+                "type": "text",
+                "instructions": "Appears under the author's name\/byline below the story's content, <b>only if the Author Bio is set<\/b>.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60351738e9e93",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_602fef6061511",
+                "label": "Author Photo",
+                "name": "post_author_photo",
+                "type": "image",
+                "instructions": "Appears below the story's content.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60351738e9e93",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5c813f22c81b5",
+                "label": "Author Bio",
+                "name": "post_author_bio",
+                "type": "wysiwyg",
+                "instructions": "Appears below the story's content.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title, Bio, Photo) below the story's content.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60351738e9e93",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "65",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "text",
+                "media_upload": 0,
+                "toolbar": "full",
+                "delay": 0
+            },
+            {
+                "key": "field_6035185de9e94",
+                "label": "Existing Author",
+                "name": "post_author_term",
+                "type": "taxonomy",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60351738e9e93",
+                            "operator": "==",
+                            "value": "term"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "tu_authors",
+                "field_type": "multi_select",
+                "allow_null": 0,
+                "add_term": 1,
+                "save_terms": 1,
+                "load_terms": 1,
+                "return_format": "object",
+                "multiple": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ucf_statement"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": ""
+    },
+    {
         "key": "group_5cabb0229b4e9",
         "title": "Homepage Fields",
         "fields": [
@@ -990,11 +1273,11 @@
                 "endpoint": 0
             },
             {
-                "key": "field_5c813f0fc81b4",
-                "label": "Author Byline",
-                "name": "post_author_byline",
-                "type": "text",
-                "instructions": "Appears in place of post author's name.",
+                "key": "field_603516687cf4b",
+                "label": "Author Fields",
+                "name": "author_fields",
+                "type": "clone",
+                "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -1002,73 +1285,13 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5c813ebec81b2",
-                "label": "Author Title",
-                "name": "post_author_title",
-                "type": "text",
-                "instructions": "Appears under the author's name\/byline below the story's content, <b>only if the Author Bio is set<\/b>.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_602fef6061511",
-                "label": "Author Photo",
-                "name": "post_author_photo",
-                "type": "image",
-                "instructions": "Appears below the story's content.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "35",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "array",
-                "preview_size": "thumbnail",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": ""
-            },
-            {
-                "key": "field_5c813f22c81b5",
-                "label": "Author Bio",
-                "name": "post_author_bio",
-                "type": "wysiwyg",
-                "instructions": "Appears below the story's content.\r\n<br><br>\r\nThis field must be set in order to display any author information (Author Name, Title, Bio, Photo) below the story's content.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "65",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "tabs": "text",
-                "toolbar": "basic",
-                "media_upload": 0,
-                "delay": 0
+                "clone": [
+                    "group_603515ea9e110"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 0
             },
             {
                 "key": "field_5c814082c81bc",
@@ -1129,7 +1352,7 @@
                 "label": "Source",
                 "name": "post_source",
                 "type": "textarea",
-                "instructions": "Appears below the story content (and above the Author Bio if set).",
+                "instructions": "Appears below the story content (and below the Author Bio if set).",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -1562,6 +1785,50 @@
                     "param": "page_type",
                     "operator": "==",
                     "value": "front_page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_603516b56f247",
+        "title": "Statements Fields",
+        "fields": [
+            {
+                "key": "field_603516bd38926",
+                "label": "Author Fields",
+                "name": "author_fields",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "group_603515ea9e110"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ucf_statement"
                 }
             ]
         ],
