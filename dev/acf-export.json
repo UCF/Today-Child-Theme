@@ -102,8 +102,8 @@
                     "id": ""
                 },
                 "choices": {
-                    "term": "Existing Author",
-                    "custom": "Custom"
+                    "custom": "Custom",
+                    "term": "Existing Author"
                 },
                 "default_value": false,
                 "allow_null": 0,
@@ -248,7 +248,7 @@
                     "id": ""
                 },
                 "taxonomy": "tu_authors",
-                "field_type": "multi_select",
+                "field_type": "select",
                 "allow_null": 0,
                 "add_term": 1,
                 "save_terms": 1,
