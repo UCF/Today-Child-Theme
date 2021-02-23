@@ -71,7 +71,7 @@
                 {
                     "param": "taxonomy",
                     "operator": "==",
-                    "value": "tu_authors"
+                    "value": "tu_author"
                 }
             ]
         ],
@@ -247,7 +247,7 @@
                     "class": "",
                     "id": ""
                 },
-                "taxonomy": "tu_authors",
+                "taxonomy": "tu_author",
                 "field_type": "select",
                 "allow_null": 0,
                 "add_term": 1,

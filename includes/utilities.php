@@ -66,7 +66,7 @@ function today_get_post_author_data( $post ) {
 			$author_data['bio']   = get_field( 'post_author_bio', $post );
 		}
 	} else {
-		$author_terms = wp_get_post_terms( $post->ID, 'tu_authors' );
+		$author_terms = wp_get_post_terms( $post->ID, 'tu_author' );
 		if ( ! is_wp_error( $author_terms ) ) {
 			$author_term = $author_terms[0] ?? null;
 			if ( $author_term && $author_term->name ) {
