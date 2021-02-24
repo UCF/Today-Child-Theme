@@ -110,9 +110,8 @@ function today_get_post_meta_info( $post ) {
 		<p class="mb-0">
 			<?php if ( $byline ) : ?>
 			<span>By <?php echo $byline; ?></span>
-			<?php endif; ?>
-
 			<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
+			<?php endif; ?>
 
 			<?php if ( $original_date === $updated_date ) : ?>
 			<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
