@@ -6,38 +6,6 @@
   }
 }
 
-.navbar-brand {
-  @include media-breakpoint-down(sm) {
-    max-width: 130px;
-  }
-}
-
-.navbar-toggler {
-  border-color: $black;
-  color: $black;
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.active {
-    background-color: $brand-primary;
-    border-color: $brand-primary;
-    color: $black;
-  }
-
-  .disable-md-navbar-toggle & {
-    display: flex;
-
-    @include media-breakpoint-up(lg) {
-      display: none;
-    }
-  }
-}
-
-.navbar-toggler-icon {
-  background-image: $navbar-light-toggler-bg;
-}
-
 .today-nav-desc {
   font-size: 80%;
 }
@@ -47,6 +15,38 @@
 
   @include media-breakpoint-up(md) {
     border-color: $gray-lightest;
+  }
+
+  .navbar-brand {
+    @include media-breakpoint-down(sm) {
+      max-width: 130px;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $black;
+    color: $black;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $brand-primary;
+      border-color: $brand-primary;
+      color: $black;
+    }
+
+    .disable-md-navbar-toggle & {
+      display: flex;
+
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+    }
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-light-toggler-bg;
   }
 }
 
