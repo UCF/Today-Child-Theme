@@ -98,7 +98,8 @@ function today_get_post_header_media( $post ) {
  */
 function today_get_post_meta_info( $post ) {
 	$date_format   = 'F j, Y';
-	$byline        = wptexturize( get_the_author() );
+	$author_data   = today_get_post_author_data( $post );
+	$byline        = $author_data['name'] ?? null;
 	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
 	$orig_date_val = get_field( 'post_header_publish_date', $post );
 	$original_date = ! empty( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
@@ -107,13 +108,17 @@ function today_get_post_meta_info( $post ) {
 ?>
 	<div class="small text-uppercase letter-spacing-3">
 		<p class="mb-0">
+			<?php if ( $byline ) : ?>
 			<span>By <?php echo $byline; ?></span>
-				<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
-				<?php if ( $original_date === $updated_date ) : ?>
-				<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
-				<?php else : ?>
-				<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
-				<?php endif; ?>
+			<?php endif; ?>
+
+			<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
+
+			<?php if ( $original_date === $updated_date ) : ?>
+			<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
+			<?php else : ?>
+			<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
+			<?php endif; ?>
 		</p>
 
 		<?php if ( $original_date !== $updated_date ) : ?>
