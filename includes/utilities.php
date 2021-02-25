@@ -60,8 +60,8 @@ function today_get_post_author_data( $post ) {
 		// Require at least a name to proceed
 		if ( $custom_author_name ) {
 			$author_data['term']  = null;
-			$author_data['name']  = $custom_author_name;
-			$author_data['title'] = get_field( 'post_author_title', $post );
+			$author_data['name']  = wptexturize( $custom_author_name );
+			$author_data['title'] = wptexturize( get_field( 'post_author_title', $post ) );
 			$author_data['photo'] = get_field( 'post_author_photo', $post );
 			$author_data['bio']   = get_field( 'post_author_bio', $post );
 		}
@@ -71,8 +71,8 @@ function today_get_post_author_data( $post ) {
 			$author_term = $author_terms[0] ?? null;
 			if ( $author_term && $author_term->name ) {
 				$author_data['term']  = $author_term;
-				$author_data['name']  = $author_term->name;
-				$author_data['title'] = get_field( 'author_title', $author_term );
+				$author_data['name']  = wptexturize( $author_term->name );
+				$author_data['title'] = wptexturize( get_field( 'author_title', $author_term ) );
 				$author_data['photo'] = get_field( 'author_photo', $author_term );
 				$author_data['bio']   = get_field( 'author_bio', $author_term );
 			}

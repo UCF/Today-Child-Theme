@@ -62,7 +62,7 @@ function today_get_header_content_type( $content_type, $obj ) {
 		$post_type     = $obj->post_type;
 		$post_template = get_page_template_slug( $obj->ID );
 
-		if ( $post_type === 'post' ) {
+		if ( in_array( $post_type, array( 'post', 'ucf_statement' ) ) ) {
 			$content_type = 'post';
 		} elseif ( $post_type === 'page' &&	$post_template === 'template-category.php' ) {
 			$content_type = 'category';
