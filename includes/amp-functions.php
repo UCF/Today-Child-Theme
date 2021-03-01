@@ -18,23 +18,15 @@ function amp_add_author_after_content() {
         $author_byline     = get_field( 'post_author_byline', $post );
         $author_title      = get_field( 'post_author_title', $post );
         $author_photo_data = get_field( 'post_author_photo', $post );
-        $author_photo      = $author_photo_data['sizes']['medium'] ?? null;
+        $author_photo      = $author_photo_data['sizes']['medium'] ?? null;        
 ?>
-
         <div class="sp-athr">
             <div class="sp-rl">
 
                 <?php if ( $author_photo ) : ?>
                     <div class="sp-lt">
-                        <amp-img src="<?php echo $author_photo; ?>" alt="<?php echo $author_byline; ?>" width="200" height="300" layout="responsive"
-                            class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" i-amphtml-layout="responsive">
-                            <i-amphtml-sizer slot="i-amphtml-svc" style="padding-top: 150%;"></i-amphtml-sizer>
-                            <amp-img fallback="" src="<?php echo $author_photo; ?>" alt="<?php echo $author_byline; ?>" width="200" height="300" layout="responsive"
-                                class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-built" i-amphtml-layout="responsive">
-                                <i-amphtml-sizer slot="i-amphtml-svc" style="padding-top: 150%;"></i-amphtml-sizer>
-                            </amp-img>
-                            <img decoding="async" alt="<?php echo $author_byline; ?>" src="<?php echo $author_photo; ?>" class="i-amphtml-fill-content i-amphtml-replaced-content">
-                        </amp-img>
+                        <amp-img src="<?php echo $author_photo; ?>" width="<?php echo $author_photo_data['sizes']['medium-width']; ?>"
+                            height="<?php echo $author_photo_data['sizes']['medium-height']; ?>" layout="responsive" alt="<?php echo $author_byline; ?>"></amp-img>
                     </div>
                 <?php endif; ?>
 
