@@ -14,6 +14,9 @@ include_once 'includes/post-functions.php';
 include_once 'includes/archive-functions.php';
 include_once 'includes/tag-cloud-functions.php';
 
+// AMP
+include_once 'includes/amp-functions.php';
+
 
 // Required plugin extras/overrides
 include_once 'includes/weather-functions.php';
