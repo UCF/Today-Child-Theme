@@ -10,15 +10,19 @@
 function amp_add_author_after_content() {
 
     global $post;
-    $author_bio = trim( get_field( 'post_author_bio', $post ) );
 
-    ob_start();
+    $author_bio        = trim( get_field( 'post_author_bio', $post ) );
+    $author_title      = get_field( 'post_author_title', $post );
+    $author_photo_data = get_field( 'post_author_photo', $post );
+    $author_photo      = $author_photo_data['sizes']['medium'] ?? null; 
+    $author_name       = "By " . get_the_author_meta( 'display_name', $post->post_author );
+    $author_byline     = get_field( 'post_author_byline', $post );
 
-    if ($author_bio) :
-        $author_byline     = get_field( 'post_author_byline', $post );
-        $author_title      = get_field( 'post_author_title', $post );
-        $author_photo_data = get_field( 'post_author_photo', $post );
-        $author_photo      = $author_photo_data['sizes']['medium'] ?? null;        
+	if ( $author_byline ) {
+		$author_name = $author_byline;
+	}
+
+    ob_start();       
 ?>
         <div class="sp-athr">
             <div class="sp-rl">
@@ -31,9 +35,9 @@ function amp_add_author_after_content() {
                 <?php endif; ?>
 
                 <div class="sp-rt">
-                    <?php if ( $author_byline ) : ?>
+                    <?php if ( $author_name ) : ?>
                         <div class="srp">
-                            <strong><?php echo $author_byline; ?></strong>
+                            <strong><?php echo $author_name; ?></strong>
                         </div>
                     <?php endif; ?>
 
@@ -43,15 +47,16 @@ function amp_add_author_after_content() {
                         </div>
                     <?php endif; ?>
 
-                    <div class="srp" style="font-style: italic; font-size: .9em;">
-                        <?php echo $author_bio; ?>
-                    </div>
+                    <?php if ( $author_bio ) : ?>
+                        <div class="srp" style="font-style: italic; font-size: .9em;">
+                            <?php echo $author_bio; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
             </div>
         </div>
 <?php
-    endif;
     echo ob_get_clean();
 }
 
