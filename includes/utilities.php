@@ -35,7 +35,7 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 /**
  * Returns existing author term information, or custom
  * author data (for posts, if set).  Optionally returns original
- * publisher information as an absolute fallback.
+ * publisher information as an absolute fallback for posts.
  *
  * Intended for use only with post types that support Author terms
  * and/or custom author meta (posts, Statements)
@@ -45,7 +45,8 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
  * @param object $post WP_Post object
  * @param bool $publisher_fallback Whether or not the original publisher's
                 info should be returned as fallback data if no author term
-                or custom author data are set
+                or custom author data are set. Only standard posts can return
+                original publisher fallback data.
  * @return array Array of author data; expected format:
  *                 (
  *                     'term'  => {}|null,
@@ -69,6 +70,9 @@ function today_get_post_author_data( $post, $publisher_fallback=false ) {
 	if ( ! $post ) return $author_data;
 
 	if ( in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) {
+		// Only standard posts have the `post_author_type` field and are able
+		// to utilize custom author meta; Statements will always skip to
+		// using Author term meta here:
 		if ( get_field( 'post_author_type', $post ) !== 'term' ) {
 			$custom_author_name = get_field( 'post_author_byline', $post );
 			// Require at least a name to proceed
@@ -95,7 +99,7 @@ function today_get_post_author_data( $post, $publisher_fallback=false ) {
 		}
 	}
 
-	if ( $publisher_fallback && ! $author_data['name'] ) {
+	if ( $publisher_fallback && ! $author_data['name'] && $post->post_type === 'post' ) {
 		$original_publisher_name = get_the_author_meta( 'display_name', $post->post_author );
 		if ( $original_publisher_name ) {
 			$author_data['name'] = wptexturize( $original_publisher_name );
