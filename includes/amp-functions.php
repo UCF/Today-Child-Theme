@@ -11,7 +11,7 @@ function amp_add_author_after_content() {
 
     global $post;
 
-    $author_data = today_get_post_author_data( $post );
+    $author_data       = today_get_post_author_data( $post, true );
     $author_byline     = $author_data['name'] ?? null;
 
     ob_start();      
