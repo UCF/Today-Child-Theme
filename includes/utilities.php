@@ -71,9 +71,14 @@ function today_get_post_author_data( $post, $publisher_fallback=false ) {
 
 	if ( in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) {
 		// Only standard posts have the `post_author_type` field and are able
-		// to utilize custom author meta; Statements will always skip to
+		// to utilize custom author meta; Statements should always skip to
 		// using Author term meta here:
-		if ( get_field( 'post_author_type', $post ) !== 'term' ) {
+		$post_author_type = 'term';
+		if ( $post->post_type === 'post' ) {
+			$post_author_type = get_field( 'post_author_type', $post ) ?: 'custom';
+		}
+
+		if ( $post_author_type === 'custom' ) {
 			$custom_author_name = get_field( 'post_author_byline', $post );
 			// Require at least a name to proceed
 			if ( $custom_author_name ) {
