@@ -1755,8 +1755,8 @@
                 "label": "Author",
                 "name": "post_author_term",
                 "type": "taxonomy",
-                "instructions": "Choose an existing Author to assign to this post.  Name, title, photo and bio information will be referenced from the Author that's selected.",
-                "required": 0,
+                "instructions": "Choose an existing Author to assign to this Statement.  Name, title, photo and bio information will be referenced from the Author that's selected.",
+                "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
