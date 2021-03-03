@@ -97,9 +97,11 @@ function today_get_post_header_media( $post ) {
  * @return string HTML markup for the metadata content
  */
 function today_get_post_meta_info( $post ) {
+	// Use custom author byline or Author term name, or fall back to original publisher
+	$author_data   = today_get_post_author_data( $post, true );
+	$byline        = $author_data['name'] ?? '';
+
 	$date_format   = 'F j, Y';
-	$author_data   = today_get_post_author_data( $post );
-	$byline        = $author_data['name'] ?? null;
 	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
 	$orig_date_val = get_field( 'post_header_publish_date', $post );
 	$original_date = ! empty( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
