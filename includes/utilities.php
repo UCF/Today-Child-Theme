@@ -33,6 +33,89 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 
 
 /**
+ * Returns existing author term information, or custom
+ * author data (for posts, if set).  Optionally returns original
+ * publisher information as an absolute fallback for posts.
+ *
+ * Intended for use only with post types that support Author terms
+ * and/or custom author meta (posts, Statements)
+ *
+ * @since 1.1.0
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @param bool $publisher_fallback Whether or not the original publisher's
+                info should be returned as fallback data if no author term
+                or custom author data are set. Only standard posts can return
+                original publisher fallback data.
+ * @return array Array of author data; expected format:
+ *                 (
+ *                     'term'  => {}|null,
+ *                     'name'  => '',
+ *                     'title' => '',
+ *                     'photo' => []|null,
+ *                     'bio'   => ''
+ *                 )
+ */
+function today_get_post_author_data( $post, $publisher_fallback=false ) {
+	$author_data = array(
+		'term'  => null,
+		'name'  => '',
+		'title' => '',
+		'photo' => null,
+		'bio'   => ''
+	);
+	if ( is_numeric( $post ) ) {
+		$post = get_post( $post );
+	}
+	if ( ! $post ) return $author_data;
+
+	if ( in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) {
+		// Only standard posts have the `post_author_type` field and are able
+		// to utilize custom author meta; Statements should always skip to
+		// using Author term meta here:
+		$post_author_type = 'term';
+		if ( $post->post_type === 'post' ) {
+			$post_author_type = get_field( 'post_author_type', $post ) ?: 'custom';
+		}
+
+		if ( $post_author_type === 'custom' ) {
+			$custom_author_name = get_field( 'post_author_byline', $post );
+			// Require at least a name to proceed
+			if ( $custom_author_name ) {
+				$author_data['term']  = null;
+				$author_data['name']  = wptexturize( $custom_author_name );
+				$author_data['title'] = wptexturize( get_field( 'post_author_title', $post ) );
+				$author_data['photo'] = get_field( 'post_author_photo', $post );
+				$author_data['bio']   = get_field( 'post_author_bio', $post );
+			}
+		} else {
+			$author_terms = wp_get_post_terms( $post->ID, 'tu_author' );
+			if ( ! is_wp_error( $author_terms ) ) {
+				$author_term = $author_terms[0] ?? null;
+				// Require at least a name to proceed
+				if ( $author_term && $author_term->name ) {
+					$author_data['term']  = $author_term;
+					$author_data['name']  = wptexturize( $author_term->name );
+					$author_data['title'] = wptexturize( get_field( 'author_title', $author_term ) );
+					$author_data['photo'] = get_field( 'author_photo', $author_term );
+					$author_data['bio']   = get_field( 'author_bio', $author_term );
+				}
+			}
+		}
+	}
+
+	if ( $publisher_fallback && ! $author_data['name'] && $post->post_type === 'post' ) {
+		$original_publisher_name = get_the_author_meta( 'display_name', $post->post_author );
+		if ( $original_publisher_name ) {
+			$author_data['name'] = wptexturize( $original_publisher_name );
+		}
+	}
+
+	return $author_data;
+}
+
+
+/**
  * Filters requests for WordPress's built-in author name retrieval functions.
  *
  * Useful for feeds and third-party plugins that reference basic post
@@ -44,9 +127,11 @@ add_filter( 'get_post_metadata', 'today_filter_thumbnail_ids', 20, 4 );
 function today_filter_post_author_name( $author_name ) {
 	if ( ! is_admin() ) {
 		global $post;
-		$author_byline = get_field( 'post_author_byline', $post );
-		if ( $author_byline ) {
-			$author_name = $author_byline;
+		if ( $post && in_array( $post->post_type, array( 'post', 'ucf_statement' ) ) ) {
+			$author_data = today_get_post_author_data( $post );
+			if ( isset( $author_data['name'] ) ) {
+				$author_name = $author_data['name'];
+			}
 		}
 	}
 

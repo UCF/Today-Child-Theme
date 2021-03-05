@@ -97,8 +97,11 @@ function today_get_post_header_media( $post ) {
  * @return string HTML markup for the metadata content
  */
 function today_get_post_meta_info( $post ) {
+	// Use custom author byline or Author term name, or fall back to original publisher
+	$author_data   = today_get_post_author_data( $post, true );
+	$byline        = $author_data['name'] ?? '';
+
 	$date_format   = 'F j, Y';
-	$byline        = wptexturize( get_the_author() );
 	$updated_date  = date( $date_format, strtotime( $post->post_date ) );
 	$orig_date_val = get_field( 'post_header_publish_date', $post );
 	$original_date = ! empty( $orig_date_val ) ? date( $date_format, strtotime( $orig_date_val ) ) : $updated_date;
@@ -107,13 +110,16 @@ function today_get_post_meta_info( $post ) {
 ?>
 	<div class="small text-uppercase letter-spacing-3">
 		<p class="mb-0">
+			<?php if ( $byline ) : ?>
 			<span>By <?php echo $byline; ?></span>
-				<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
-				<?php if ( $original_date === $updated_date ) : ?>
-				<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
-				<?php else : ?>
-				<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
-				<?php endif; ?>
+			<span class="hidden-xs-down px-1" aria-hidden="true">|</span>
+			<?php endif; ?>
+
+			<?php if ( $original_date === $updated_date ) : ?>
+			<span class="d-block d-sm-inline"><?php echo $original_date; ?></span>
+			<?php else : ?>
+			<span class="d-block d-sm-inline"><?php echo date( $date_format, strtotime( $updated_date ) ); ?></span>
+			<?php endif; ?>
 		</p>
 
 		<?php if ( $original_date !== $updated_date ) : ?>
@@ -139,20 +145,30 @@ function today_get_post_meta_info( $post ) {
  * @return string Author bio markup
  */
 function today_get_post_author_bio( $post ) {
-	$author_bio = trim( get_field( 'post_author_bio', $post ) );
+	$author_data = today_get_post_author_data( $post );
+	$author_bio  = $author_data['bio'] ?? null;
 
 	ob_start();
 	if ( $author_bio ) :
-		$author_byline     = get_the_author();
-		$author_title      = get_field( 'post_author_title', $post );
-		$author_photo_data = get_field( 'post_author_photo', $post );
+		$author_byline     = $author_data['name'] ?? null;
+		$author_title      = $author_data['title'] ?? null;
+		$author_photo_data = $author_data['photo'] ?? null;
 		$author_photo      = $author_photo_data['sizes']['medium'] ?? null;
+		$author_photo_w    = $author_photo_data['sizes']['medium-width'] ?? null;
+		$author_photo_h    = $author_photo_data['sizes']['medium-height'] ?? null;
+		$author_photo_dims = '';
+		if ( $author_photo_w ) {
+			$author_photo_dims .= 'width="' . $author_photo_w . '" ';
+		}
+		if ( $author_photo_h ) {
+			$author_photo_dims .= 'height="' . $author_photo_h . '"';
+		}
 ?>
 		<address>
 			<div class="row">
 				<?php if ( $author_photo ) : ?>
 				<div class="col-auto" style="max-width: 25%;">
-					<img class="img-fluid" src="<?php echo $author_photo; ?>" alt="">
+					<img class="img-fluid" src="<?php echo $author_photo; ?>" alt="" <?php echo $author_photo_dims; ?>>
 				</div>
 				<?php endif; ?>
 
