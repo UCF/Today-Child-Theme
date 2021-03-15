@@ -603,3 +603,30 @@ function today_get_external_stories_url() {
 	$page = get_page_by_title( 'UCF in the News' );
 	return ( $page ) ? get_permalink( $page ) : false;
 }
+
+
+/**
+ * Returns a theme mod's default value.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param string $theme_mod The name of the theme mod
+ * @return mixed
+ */
+function today_get_theme_mod_default( $theme_mod ) {
+	return ucfwp_get_theme_mod_default( $theme_mod, TODAY_THEME_CUSTOMIZER_DEFAULTS );
+}
+
+
+/**
+ * Returns a theme mod value or a default value if
+ * the theme mod value hasn't been set yet.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param string $theme_mod The name of the theme mod
+ * @return mixed Theme mod value or its default
+ */
+function today_get_theme_mod_or_default( $theme_mod ) {
+	return ucfwp_get_theme_mod_or_default( $theme_mod, TODAY_THEME_CUSTOMIZER_DEFAULTS );
+}
