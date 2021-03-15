@@ -1,4 +1,12 @@
-.pegasus-header-logo {
-  // Make it gray!
+.pegasus-logo-default {
   filter: contrast(0%);
+}
+
+.pegasus-logo-primary {
+  // https://codepen.io/sosuke/pen/Pjoqqp
+  filter: invert(77%) sepia(12%) saturate(4032%) hue-rotate(1deg) brightness(103%) contrast(109%);
+}
+
+.pegasus-logo-inverse {
+  filter: invert(100%);
 }

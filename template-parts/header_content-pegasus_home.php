@@ -14,7 +14,7 @@ $share_links  = ucfwp_is_content_empty( $share_links ) ? '' : $share_links;
 	<div class="row align-items-center">
 		<div class="col-8 offset-2 col-sm-8 offset-sm-0 col-lg-7 col-xl-6 flex-last flex-sm-unordered px-4 px-sm-5">
 			<h1 class="display-3 font-weight-normal text-uppercase text-default mb-3 px-md-5">
-				<img class="pegasus-header-logo img-fluid" src="<?php echo TODAY_THEME_IMG_URL; ?>/pegasus-logo.svg" alt="Pegasus" width="769" height="109">
+				<img class="pegasus-logo-default img-fluid" src="<?php echo TODAY_THEME_IMG_URL; ?>/pegasus-logo.svg" alt="Pegasus" width="769" height="109">
 			</h1>
 			<?php if ( $subtitle && $about_url ) : ?>
 			<a class="font-slab-serif text-uppercase text-secondary letter-spacing-2" href="<?php echo $about_url; ?>">
