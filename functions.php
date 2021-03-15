@@ -13,6 +13,7 @@ include_once TODAY_THEME_DIR . 'includes/header-functions.php';
 include_once TODAY_THEME_DIR . 'includes/sidebar-functions.php';
 include_once TODAY_THEME_DIR . 'includes/homepage-functions.php';
 include_once TODAY_THEME_DIR . 'includes/post-functions.php';
+include_once TODAY_THEME_DIR . 'includes/pegasus-functions.php';
 include_once TODAY_THEME_DIR . 'includes/archive-functions.php';
 include_once TODAY_THEME_DIR . 'includes/tag-cloud-functions.php';
 

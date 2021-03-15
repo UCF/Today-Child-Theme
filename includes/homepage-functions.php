@@ -166,9 +166,7 @@ function today_get_homepage_content( $post_id, $primary=false ) {
 		case 'custom':
 		default:
 			if ( $primary ) return '';
-			ob_start();
-			the_content();
-			$content = ob_get_clean();
+			$content = get_the_content( null, false, $post_id );
 			break;
 	}
 

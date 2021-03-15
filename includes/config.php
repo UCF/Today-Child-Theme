@@ -256,13 +256,15 @@ add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
  * @since 1.0.0
  * @author Jo Dickson
  */
-function today_acf_homepage_wysiwyg_position() {
+function today_acf_reposition_wysiwyg() {
 ?>
 <script type="text/javascript">
 	(function($) {
 		$(document).ready(function(){
-			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder)
-			$('.acf-field-5cac9ecc97b7c .acf-input').append( $('#postdivrich') );
+			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder) on Homepage Fields group
+			// field_604905e816fab = "Custom Page Content" Message field (placeholder) on Pegasus Homepage Fields group
+			$('.acf-field-5cac9ecc97b7c .acf-input, .acf-field-604905e816fab .acf-input')
+				.append( $('#postdivrich') );
 		});
 	})(jQuery);
 </script>
@@ -275,7 +277,7 @@ function today_acf_homepage_wysiwyg_position() {
 <?php
 }
 
-add_action( 'acf/input/admin_head', 'today_acf_homepage_wysiwyg_position' );
+add_action( 'acf/input/admin_head', 'today_acf_reposition_wysiwyg' );
 
 
 /**

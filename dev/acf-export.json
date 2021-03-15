@@ -903,6 +903,11 @@
                     "param": "page_type",
                     "operator": "!=",
                     "value": "front_page"
+                },
+                {
+                    "param": "post_template",
+                    "operator": "!=",
+                    "value": "template-pegasus_home.php"
                 }
             ]
         ],
@@ -912,6 +917,693 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_604905e80fbff",
+        "title": "Pegasus Homepage Content",
+        "fields": [
+            {
+                "key": "field_604905e816f87",
+                "label": "What type of content should be displayed on the Pegasus homepage?",
+                "name": "page_content_type",
+                "type": "radio",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "curated": "Curated content",
+                    "custom": "Custom markup"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": "curated",
+                "layout": "vertical",
+                "return_format": "value",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_604905e816fab",
+                "label": "Custom Page Content",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_604905e816f87",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_604a706de57a9",
+                "label": "Featured Stories",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_604905e816f87",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_604a7155e57ad",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<em>Content block displayed at the top of the page.<\/em>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_604905e816f9d",
+                "label": "Featured Stories",
+                "name": "primary_content",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_604905e816f87",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "field_5cac9fb846af9"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 1
+            },
+            {
+                "key": "field_604924a5f3b33",
+                "label": "What's Trending",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_604905e816f87",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_604a7131e57ac",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<em>Section for promoting trending social content.<\/em>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_60493cc0f3b34",
+                "label": "Content",
+                "name": "trending_content",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "basic",
+                "media_upload": 0,
+                "delay": 1
+            },
+            {
+                "key": "field_604a70a8e57aa",
+                "label": "In This Issue",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_604905e816f87",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_604a7102e57ab",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<em>Section that displays a link to the latest active issue and a list of stories in the issue.<\/em>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_60493d35f3b35",
+                "label": "How should these stories be displayed?",
+                "name": "issue_content_type",
+                "type": "radio",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "latest": "Latest stories in the current active issue",
+                    "curated": "Curated story list"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": "latest",
+                "layout": "vertical",
+                "return_format": "value",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_604905e816fa5",
+                "label": "Curated Stories",
+                "name": "curated_stories",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60493d35f3b35",
+                            "operator": "==",
+                            "value": "curated"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "5cac9fc2da26b": {
+                        "key": "5cac9fc2da26b",
+                        "name": "primary_row",
+                        "label": "Primary Story",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_604905e827c8d",
+                                "label": "Select a Story",
+                                "name": "post",
+                                "type": "post_object",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "post_type": [
+                                    "post"
+                                ],
+                                "taxonomy": [],
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "return_format": "object",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_604905e827c97",
+                                "label": "Orientation",
+                                "name": "layout",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "40",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "horizontal": "Horizontal",
+                                    "vertical": "Vertical"
+                                },
+                                "default_value": "vertical",
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "return_format": "value",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_604905e827c9f",
+                                "label": "Show Thumbnail",
+                                "name": "show_image",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "20",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 1,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_604905e827ca7",
+                                "label": "Show Excerpt",
+                                "name": "show_excerpt",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "20",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 1,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_604905e827cae",
+                                "label": "Show Subhead",
+                                "name": "show_subhead",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "20",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "5caca77046afc": {
+                        "key": "5caca77046afc",
+                        "name": "secondary_row",
+                        "label": "Secondary Stories",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_604905e827cb5",
+                                "label": "Select Stories",
+                                "name": "posts",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "collapsed": "field_5caca86a46b00",
+                                "min": 1,
+                                "max": 0,
+                                "layout": "block",
+                                "button_label": "Add Story",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_604905e841734",
+                                        "label": "Story",
+                                        "name": "post",
+                                        "type": "post_object",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "post_type": [
+                                            "post"
+                                        ],
+                                        "taxonomy": [],
+                                        "allow_null": 0,
+                                        "multiple": 0,
+                                        "return_format": "object",
+                                        "ui": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "field_604905e827cbc",
+                                "label": "Orientation",
+                                "name": "layout",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "40",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "horizontal": "Horizontal",
+                                    "vertical": "Vertical"
+                                },
+                                "default_value": "vertical",
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "return_format": "value",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_604905e827cc3",
+                                "label": "Show Thumbnails",
+                                "name": "show_thumbnail",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 1,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_604905e827ccb",
+                                "label": "Show Excerpts",
+                                "name": "show_excerpt",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 1,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_604905e827cd2",
+                                "label": "Show Subheads",
+                                "name": "show_subhead",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_604905e827cd9",
+                                "label": "Posts per Row",
+                                "name": "posts_per_row",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "6": "6"
+                                },
+                                "default_value": 3,
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 0,
+                                "return_format": "value",
+                                "ajax": 0,
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "5caca9ae46b03": {
+                        "key": "5caca9ae46b03",
+                        "name": "condensed_row",
+                        "label": "Condensed Stories",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_604905e827ce1",
+                                "label": "Select Stories",
+                                "name": "posts",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "collapsed": "",
+                                "min": 1,
+                                "max": 0,
+                                "layout": "block",
+                                "button_label": "Add Story",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_604905e863171",
+                                        "label": "Story",
+                                        "name": "post",
+                                        "type": "post_object",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "post_type": [
+                                            "post"
+                                        ],
+                                        "taxonomy": [],
+                                        "allow_null": 0,
+                                        "multiple": 0,
+                                        "return_format": "object",
+                                        "ui": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "5caca93746b01": {
+                        "key": "5caca93746b01",
+                        "name": "custom",
+                        "label": "Custom",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_604905e827ce8",
+                                "label": "Custom Content",
+                                "name": "custom_content",
+                                "type": "wysiwyg",
+                                "instructions": "Specify arbitrary, custom content to add to this row.",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Row",
+                "min": "",
+                "max": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "administrator"
+                },
+                {
+                    "param": "post_template",
+                    "operator": "==",
+                    "value": "template-pegasus_home.php"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "super_admin"
+                },
+                {
+                    "param": "post_template",
+                    "operator": "==",
+                    "value": "template-pegasus_home.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "excerpt",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
         "active": true,
         "description": ""
     },
