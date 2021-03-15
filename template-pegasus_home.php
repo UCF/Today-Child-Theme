@@ -16,10 +16,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-lg-7 mb-5 mb-md-0 pt-md-4">
+				<!-- TODO configuration options? -->
 				<h2 class="font-weight-black mb-4">The Feed</h2>
 				TODO
 			</div>
 			<div class="col">
+				<!-- TODO pull content from ACF field -->
 				<div class="card border-0 bg-faded h-100">
 					<div class="card-block p-4">
 						<h2 class="h6 heading-underline letter-spacing-2 mb-4">What's Trending</h2>
@@ -41,11 +43,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg pt-lg-4 pr-lg-5 mb-5 mb-lg-0">
+				<!-- TODO configuration options -->
 				<h2 class="font-weight-black">Events</h2>
 				<hr role="presentation">
 				<?php echo do_shortcode( '[ucf-events title="" layout="classic"]' ); ?>
 			</div>
 			<div class="col-lg">
+				<!-- TODO configuration options -->
 				<div class="card border-0 bg-faded mx-auto">
 					<div class="card-block p-4">
 						<a href="#TODO">

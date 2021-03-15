@@ -5,31 +5,27 @@
  */
 ?>
 
-<?php
-global $post;
-
-$title = wptexturize( $post->post_title );
-?>
-
-<?php if ( $title ): ?>
 <div class="container d-flex flex-column text-center mt-4 mt-md-5">
 	<div class="row align-items-center">
-		<div class="col mb-4 mb-sm-0">
+		<div class="col-12 col-sm-8 flex-last flex-sm-unordered">
+			<!-- TODO svg logo instead of hard-coded text here -->
+			<h1 class="display-3 font-weight-normal text-uppercase text-default mb-2">
+				Pegasus
+			</h1>
+			<a class="font-slab-serif text-uppercase text-secondary letter-spacing-2" href="#TODO">
+				<!-- TODO retrieve from Customizer option -->
+				TODO about blurb
+			</a>
+		</div>
+		<div class="col mb-4 mb-sm-0 flex-sm-first">
 			<a class="text-secondary font-weight-bold text-uppercase letter-spacing-2" style="font-size: .8em;" href="#TODO">
+				<!-- TODO retrieve latest issue, once issues are implemented -->
 				TODO latest issue
 			</a>
 		</div>
-		<div class="col-12 col-sm-8 flex-last flex-sm-unordered">
-			<!-- TODO svg logo instead of text here -->
-			<h1 class="display-3 font-weight-normal text-uppercase text-default mb-2">
-				<?php echo $title; ?>
-			</h1>
-			<a class="font-slab-serif text-uppercase text-secondary letter-spacing-2" href="#TODO">
-				TODO about blurb
-			</span>
-		</div>
 		<div class="col mb-4 mb-sm-0">
 			<a class="text-secondary font-weight-bold text-uppercase letter-spacing-2" style="font-size: .8em;" href="#TODO">
+				<!-- TODO retrieve from Customizer option -->
 				Archives
 			</a>
 		</div>
@@ -50,4 +46,3 @@ $title = wptexturize( $post->post_title );
 		</div>
 	</div>
 </div>
-<?php endif; ?>

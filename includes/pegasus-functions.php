@@ -6,7 +6,11 @@
 
 
 /**
- * TODO
+ * TODO Returns the latest active Pegasus issue.
+ *
+ * @since TODO
+ * @author TODO
+ * @return TODO
  */
 function today_get_pegasus_current_issue() {
 	return true;
@@ -27,7 +31,12 @@ function today_get_pegasus_home_featured( $post_id ) {
 
 
 /**
- * TODO
+ * TODO Returns markup for the "In This Issue" portion
+ * of the Pegasus homepage.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @return string HTML markup
  */
 function today_get_pegasus_home_in_this_issue( $post_id ) {
 	$issue        = today_get_pegasus_current_issue();
