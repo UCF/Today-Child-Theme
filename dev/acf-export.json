@@ -925,55 +925,6 @@
         "title": "Pegasus Homepage Content",
         "fields": [
             {
-                "key": "field_604905e816f87",
-                "label": "What type of content should be displayed on the Pegasus homepage?",
-                "name": "page_content_type",
-                "type": "radio",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": {
-                    "curated": "Curated content",
-                    "custom": "Custom markup"
-                },
-                "allow_null": 0,
-                "other_choice": 0,
-                "default_value": "curated",
-                "layout": "vertical",
-                "return_format": "value",
-                "save_other_choice": 0
-            },
-            {
-                "key": "field_604905e816fab",
-                "label": "Custom Page Content",
-                "name": "",
-                "type": "message",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_604905e816f87",
-                            "operator": "==",
-                            "value": "custom"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "",
-                "new_lines": "wpautop",
-                "esc_html": 0
-            },
-            {
                 "key": "field_604a706de57a9",
                 "label": "Featured Stories",
                 "name": "",
@@ -1597,8 +1548,8 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": [
+            "the_content",
             "excerpt",
-            "page_attributes",
             "featured_image",
             "categories",
             "tags",

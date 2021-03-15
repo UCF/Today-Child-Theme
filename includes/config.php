@@ -262,8 +262,7 @@ function today_acf_reposition_wysiwyg() {
 	(function($) {
 		$(document).ready(function(){
 			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder) on Homepage Fields group
-			// field_604905e816fab = "Custom Page Content" Message field (placeholder) on Pegasus Homepage Fields group
-			$('.acf-field-5cac9ecc97b7c .acf-input, .acf-field-604905e816fab .acf-input')
+			$('.acf-field-5cac9ecc97b7c .acf-input')
 				.append( $('#postdivrich') );
 		});
 	})(jQuery);
