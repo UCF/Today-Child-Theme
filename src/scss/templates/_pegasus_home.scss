@@ -1,0 +1,19 @@
+.pegasus-inline-logo {
+  // Padding-bottom hacks required for IE11 :(
+  height: 0;
+  padding: 0 0 14.174%; // NOTE: this percentage must be changed if the logo dimensions ever change
+  position: relative;
+  width: 100%;
+
+  svg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  path {
+    fill: currentColor;
+  }
+}
