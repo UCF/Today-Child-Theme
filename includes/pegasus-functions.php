@@ -93,3 +93,27 @@ function today_get_pegasus_home_in_this_issue( $post_id ) {
 
 	return $content;
 }
+
+
+/**
+ * Returns HTML for an inlined SVG Pegasus logo.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @return string HTML markup
+ */
+function today_get_pegasus_logo() {
+	$svg      = '';
+	$filename = TODAY_THEME_DIR . 'static/img/pegasus-logo.svg';
+
+	if ( file_exists( $filename ) ) {
+		$file_contents = file_get_contents( $filename );
+		if ( $file_contents ) {
+			// Strip XML header tag for inlining the SVG:
+			$file_contents = str_ireplace( '<?xml version="1.0" encoding="utf-8"?>', '', $file_contents );
+			$svg = '<div class="pegasus-inline-logo">' . $file_contents . '</div>';
+		}
+	}
+
+	return $svg;
+}

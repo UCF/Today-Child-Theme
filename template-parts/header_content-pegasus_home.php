@@ -13,8 +13,8 @@ $share_links  = ucfwp_is_content_empty( $share_links ) ? '' : $share_links;
 <div class="container d-flex flex-column text-center mt-4">
 	<div class="row align-items-center pb-4 pb-md-0 pt-md-4">
 		<div class="col-12 col-md-8 col-xl-6 flex-last flex-md-unordered px-4 px-sm-5">
-			<h1 class="display-3 font-weight-normal text-uppercase text-default mb-3 mb-md-1 mb-lg-2 px-4 px-md-5 mx-lg-5 mx-xl-0">
-				<img class="pegasus-logo-default img-fluid" src="<?php echo TODAY_THEME_IMG_URL; ?>/pegasus-logo.svg" alt="Pegasus" width="769" height="109">
+			<h1 class="text-default mb-3 px-4 px-md-5 mx-lg-5 mx-xl-0">
+				<?php echo today_get_pegasus_logo(); ?>
 			</h1>
 			<?php if ( $subtitle && $about_url ) : ?>
 			<a class="nav-link px-0 font-slab-serif text-uppercase text-secondary letter-spacing-2" href="<?php echo $about_url; ?>">
@@ -38,9 +38,9 @@ $share_links  = ucfwp_is_content_empty( $share_links ) ? '' : $share_links;
 	</div>
 
 	<?php if ( $share_links ) : ?>
-	<div class="row flex-md-first align-self-center align-self-md-end">
-		<div class="col d-flex flex-row align-items-center">
-			<strong class="small font-weight-bold letter-spacing-2 text-default text-uppercase mr-2">
+	<div class="flex-md-first align-self-center align-self-md-end">
+		<div class="d-flex flex-row align-items-center">
+			<strong class="d-block small font-weight-bold letter-spacing-2 text-default text-uppercase mr-2">
 				Share
 			</strong>
 			<?php echo $share_links; ?>
