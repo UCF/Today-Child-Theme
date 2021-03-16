@@ -64,8 +64,17 @@ function today_get_header_content_type( $content_type, $obj ) {
 
 		if ( in_array( $post_type, array( 'post', 'ucf_statement' ) ) ) {
 			$content_type = 'post';
-		} elseif ( $post_type === 'page' &&	$post_template === 'template-category.php' ) {
-			$content_type = 'category';
+		} elseif ( $post_type === 'page' ) {
+			switch ( $post_template ) {
+				case 'template-category.php':
+					$content_type = 'category';
+					break;
+				case 'template-pegasus_home.php':
+					$content_type = 'pegasus_home';
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
