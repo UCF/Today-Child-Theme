@@ -12,7 +12,7 @@ define( 'TODAY_DEFAULT_EXCERPT_LENGTH', 60 );
 define( 'TODAY_SHORT_EXCERPT_LENGTH', 25 );
 define( 'TODAY_THEME_CUSTOMIZER_PREFIX', 'today_' );
 define( 'TODAY_THEME_CUSTOMIZER_DEFAULTS', serialize( array(
-	'pegasus_subtitle'     => 'The magazine of the University of Central Florida',
+	'pegasus_subtitle'     => 'The magazine of <br class="hidden-lg-up">the University of Central Florida',
 	'pegasus_archives_url' => 'https://www.ucf.edu/pegasus/archives/',
 	'pegasus_about_url'    => 'https://www.ucf.edu/pegasus/about/'
 ) ) );
