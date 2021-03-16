@@ -3,6 +3,7 @@
  * Header content template for the 'Pegasus Home' page template
  */
 
+$logo         = today_get_pegasus_logo() ?: 'Pegasus';
 $subtitle     = today_get_theme_mod_or_default( 'pegasus_subtitle' );
 $about_url    = today_get_theme_mod_or_default( 'pegasus_about_url' );
 $archives_url = today_get_theme_mod_or_default( 'pegasus_archives_url' );
@@ -13,8 +14,8 @@ $share_links  = ucfwp_is_content_empty( $share_links ) ? '' : $share_links;
 <div class="container d-flex flex-column text-center mt-4">
 	<div class="row align-items-center pb-4 pb-md-0 pt-md-4">
 		<div class="col-12 col-md-8 col-xl-6 flex-last flex-md-unordered px-4 px-sm-5">
-			<h1 class="text-default mb-3 px-4 px-md-5 mx-lg-5 mx-xl-0">
-				<?php echo today_get_pegasus_logo(); ?>
+			<h1 class="text-default text-uppercase font-weight-normal letter-spacing-2 mb-3 px-4 px-md-5 mx-lg-5 mx-xl-0">
+				<?php echo $logo; ?>
 			</h1>
 			<?php if ( $subtitle && $about_url ) : ?>
 			<a class="nav-link px-0 font-slab-serif text-uppercase text-secondary letter-spacing-2" href="<?php echo $about_url; ?>">
