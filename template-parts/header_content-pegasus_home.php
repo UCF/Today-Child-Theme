@@ -38,7 +38,7 @@ $share_links  = ucfwp_is_content_empty( $share_links ) ? '' : $share_links;
 	</div>
 
 	<?php if ( $share_links ) : ?>
-	<div class="flex-md-first align-self-center align-self-md-end">
+	<div class="flex-md-first align-self-center align-self-md-end mb-2 mb-md-0">
 		<div class="d-flex flex-row align-items-center">
 			<strong class="d-block small font-weight-bold letter-spacing-2 text-default text-uppercase mr-2">
 				Share
