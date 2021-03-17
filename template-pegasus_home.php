@@ -4,38 +4,49 @@
  * Template Post Type: page
  */
 ?>
-<?php get_header(); the_post(); ?>
+<?php
+get_header(); the_post();
+
+$featured      = today_get_pegasus_home_featured( $post->ID, true );
+$the_feed      = today_get_pegasus_home_feed( $post->ID );
+$trending      = today_get_pegasus_home_trending( $post->ID );
+$in_this_issue = today_get_pegasus_home_in_this_issue( $post->ID );
+$events        = do_shortcode( '[ucf-events title="" layout="classic"]' );
+?>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
-		<?php echo today_get_pegasus_home_featured( $post->ID, true ); ?>
+		<?php echo $featured; ?>
 	</div>
 </div>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-lg-8 d-md-flex flex-md-column mb-5 mb-md-0 pt-md-4">
+			<div class="col d-md-flex flex-md-column mb-5 mb-md-0 <?php if ( $trending ) { ?>pt-md-4<?php } ?>">
 				<h2 class="font-weight-black mb-4 ml-sm-2">
 					The Feed<span class="fa fa-caret-right text-primary ml-2" aria-hidden="true"></span>
 				</h2>
-				<?php echo today_get_pegasus_home_feed( $post->ID ); ?>
+				<?php echo $the_feed; ?>
 			</div>
+
+			<?php if ( $trending ) : ?>
 			<div class="col-md-6 col-lg-4">
 				<div class="card border-0 bg-faded h-100">
 					<div class="card-block px-4 pt-4 pb-2">
 						<h2 class="h6 heading-underline letter-spacing-2 mb-4">What's Trending</h2>
-						<?php echo today_get_pegasus_home_trending( $post->ID ); ?>
+						<?php echo $trending; ?>
 					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
-		<?php echo today_get_pegasus_home_in_this_issue( $post->ID ); ?>
+		<?php echo $in_this_issue; ?>
 	</div>
 </div>
 
@@ -52,7 +63,7 @@
 				<!-- TODO configuration options -->
 				<h2 class="font-weight-black">Events</h2>
 				<hr role="presentation">
-				<?php echo do_shortcode( '[ucf-events title="" layout="classic"]' ); ?>
+				<?php echo $events; ?>
 			</div>
 			<div class="col-lg">
 				<!-- TODO configuration options -->
