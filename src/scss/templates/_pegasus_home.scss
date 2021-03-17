@@ -62,7 +62,7 @@
     left: $grid-gutter-width-base / 2;
     position: absolute;
     right: $grid-gutter-width-base / 2;
-    top: 0;
+    top: -$border-width-thickest / 2;
   }
 
   // thick bottom "border", for use on bottom row cols
@@ -105,6 +105,7 @@
   }
 
   @include media-breakpoint-up(md) {
+    min-height: 50%;
     padding-bottom: 1.75rem;
     padding-top: 1.75rem;
   }
