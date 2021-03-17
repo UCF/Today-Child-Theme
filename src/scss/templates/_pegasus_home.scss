@@ -22,6 +22,7 @@
   // sass-lint:disable-block indentation
   @include make-row();
   background: $pegasus-feed-row-bg-top;
+  position: relative;
 
   @include media-breakpoint-up(sm) {
     margin-left: 0;
@@ -31,6 +32,18 @@
   @include media-breakpoint-up(md) {
     background: #eee;
     height: 100%;
+
+    &::after {
+      background: $brand-primary;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 12px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+    }
   }
 }
 
@@ -62,6 +75,7 @@
     left: 0;
     position: absolute;
     right: 0;
+    z-index: 2;
   }
 
   // show "divider"s between each article from -xs-sm
