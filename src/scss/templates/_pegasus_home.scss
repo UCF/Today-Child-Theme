@@ -18,13 +18,6 @@
   }
 }
 
-@mixin pegasus-feed-row-bg-bottom-border() {
-  background: $pegasus-feed-row-bg-bottom-border;
-  height: 12px;
-  left: 0;
-  right: 0;
-}
-
 .pegasus-feed-row {
   // sass-lint:disable-block indentation
   @include make-row();
@@ -47,22 +40,35 @@
   padding-bottom: 1.25rem;
   padding-top: 1.25rem;
 
-  &::after {
+  // "divider" between cols
+  &::before {
     background-color: $brand-primary;
-    bottom: 0;
     content: '';
-    display: block;
+    display: none;
     height: $border-width-thickest;
     left: $grid-gutter-width-base / 2;
     position: absolute;
     right: $grid-gutter-width-base / 2;
+    top: 0;
   }
 
-  // hide last "divider" between cols from -xs to -sm:
+  // thick bottom "border", for use on bottom row cols
+  &::after {
+    background: $pegasus-feed-row-bg-bottom-border;
+    bottom: 0;
+    content: '';
+    display: none;
+    height: 12px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  // show "divider"s between each article from -xs-sm
   @include media-breakpoint-between(xs, sm) {
-    &:nth-child(n+4) {
-      &::after {
-        display: none;
+    &:not(:first-child) {
+      &::before {
+        display: block;
       }
     }
   }
@@ -78,7 +84,7 @@
     padding-left: $grid-gutter-width-base / 1.5;
     padding-right: $grid-gutter-width-base / 1.5;
 
-    &::after {
+    &::before {
       left: $grid-gutter-width-base / 1.5;
       right: $grid-gutter-width-base / 1.5;
     }
@@ -93,21 +99,24 @@
     // sass-lint:disable-block indentation
     @include make-col(6);
 
+    // top row:
     &:nth-child(-n+2) {
       background: $pegasus-feed-row-bg-top;
       padding-top: 2.5rem;
-
-      &::after {
-        right: 65%;
-      }
     }
 
+    // bottom row:
     &:nth-child(n+3) {
       background: $pegasus-feed-row-bg-bottom;
       padding-bottom: 3rem;
 
+      &::before {
+        display: block;
+        right: 65%;
+      }
+
       &::after {
-        @include pegasus-feed-row-bg-bottom-border();
+        display: block;
       }
     }
   }
@@ -120,21 +129,24 @@
       display: none;
     }
 
+    // top row:
     &:nth-child(-n+4) {
       background: $pegasus-feed-row-bg-top;
       padding-top: 2.5rem;
-
-      &::after {
-        right: 60%;
-      }
     }
 
+    // bottom row:
     &:nth-child(n+5) {
       background: $pegasus-feed-row-bg-bottom;
       padding-bottom: 3rem;
 
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
       &::after {
-        @include pegasus-feed-row-bg-bottom-border();
+        display: block;
       }
     }
   }
@@ -142,21 +154,24 @@
   @include media-breakpoint-up(xl) {
     @include make-col(2, 10);
 
+    // top row:
     &:nth-child(-n+5) {
       background: $pegasus-feed-row-bg-top;
       padding-top: 2.5rem;
-
-      &::after {
-        right: 60%;
-      }
     }
 
+    // bottom row:
     &:nth-child(n+6) {
       background: $pegasus-feed-row-bg-bottom;
       padding-bottom: 3rem;
 
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
       &::after {
-        @include pegasus-feed-row-bg-bottom-border();
+        display: block;
       }
     }
   }
