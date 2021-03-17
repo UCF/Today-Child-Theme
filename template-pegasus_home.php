@@ -15,17 +15,17 @@
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-lg-7 mb-5 mb-md-0 pt-md-4">
-				<!-- TODO configuration options? -->
-				<h2 class="font-weight-black mb-4">The Feed</h2>
-				TODO
+			<div class="col-md-6 col-lg-8 d-md-flex flex-md-column mb-5 mb-md-0 pt-md-4">
+				<h2 class="font-weight-black mb-4 ml-sm-2">
+					The Feed<span class="fa fa-caret-right text-primary ml-2" aria-hidden="true"></span>
+				</h2>
+				<?php echo today_get_pegasus_home_feed( $post->ID ); ?>
 			</div>
-			<div class="col">
-				<!-- TODO pull content from ACF field -->
+			<div class="col-md-6 col-lg-4">
 				<div class="card border-0 bg-faded h-100">
-					<div class="card-block p-4">
+					<div class="card-block px-4 pt-4 pb-2">
 						<h2 class="h6 heading-underline letter-spacing-2 mb-4">What's Trending</h2>
-						TODO
+						<?php echo today_get_pegasus_home_trending( $post->ID ); ?>
 					</div>
 				</div>
 			</div>
