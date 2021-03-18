@@ -11,6 +11,7 @@ $featured         = today_get_pegasus_home_featured( $post->ID, true );
 $the_feed         = today_get_pegasus_home_feed( $post->ID );
 $trending         = today_get_pegasus_home_trending( $post->ID );
 $in_this_issue    = today_get_pegasus_home_in_this_issue( $post->ID );
+$banner           = get_field( 'banner_content', $post );
 $events           = today_get_pegasus_home_events( $post->ID );
 $featured_gallery = today_get_pegasus_home_gallery( $post->ID );
 ?>
@@ -51,11 +52,11 @@ $featured_gallery = today_get_pegasus_home_gallery( $post->ID );
 	</div>
 </div>
 
+<?php if ( $banner ) : ?>
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
-	<div class="container">
-		TODO banner content here
-	</div>
+	<?php echo $banner; ?>
 </div>
+<?php endif; ?>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
