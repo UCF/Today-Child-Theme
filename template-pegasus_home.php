@@ -7,11 +7,12 @@
 <?php
 get_header(); the_post();
 
-$featured      = today_get_pegasus_home_featured( $post->ID, true );
-$the_feed      = today_get_pegasus_home_feed( $post->ID );
-$trending      = today_get_pegasus_home_trending( $post->ID );
-$in_this_issue = today_get_pegasus_home_in_this_issue( $post->ID );
-$events        = today_get_pegasus_home_events( $post->ID );
+$featured         = today_get_pegasus_home_featured( $post->ID, true );
+$the_feed         = today_get_pegasus_home_feed( $post->ID );
+$trending         = today_get_pegasus_home_trending( $post->ID );
+$in_this_issue    = today_get_pegasus_home_in_this_issue( $post->ID );
+$events           = today_get_pegasus_home_events( $post->ID );
+$featured_gallery = today_get_pegasus_home_gallery( $post->ID );
 ?>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
@@ -59,23 +60,17 @@ $events        = today_get_pegasus_home_events( $post->ID );
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg pt-lg-4 pr-lg-5 mb-5 mb-lg-0">
+			<div class="col-lg pt-lg-4 mb-5 mb-lg-0 <?php if ( $featured_gallery ) { ?>pr-lg-5<?php } ?>">
 				<h2 class="font-weight-black">Events</h2>
 				<hr role="presentation">
 				<?php echo $events; ?>
 			</div>
+
+			<?php if ( $featured_gallery ) : ?>
 			<div class="col-lg">
-				<!-- TODO configuration options -->
-				<div class="card border-0 bg-faded mx-auto">
-					<div class="card-block p-4">
-						<a href="#TODO">
-							<h2 class="text-secondary">TODO Featured Gallery Name</h2>
-							<span class="badge badge-primary">TODO Category Name</span>
-							<img class="mt-3 img-fluid" src="https://placehold.it/767x600" alt="TODO">
-						</a>
-					</div>
-				</div>
+				<?php echo $featured_gallery; ?>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>

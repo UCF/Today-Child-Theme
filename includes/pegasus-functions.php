@@ -239,3 +239,54 @@ function today_get_pegasus_home_events( $post_id ) {
 
 	return $content;
 }
+
+
+/**
+ * Displays Featured Gallery markup for the Pegasus homepage.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
+ * @return string HTML markup for the featured gallery
+ */
+function today_get_pegasus_home_gallery( $post_id ) {
+	$gallery  = get_field( 'featured_gallery', $post_id );
+
+	ob_start();
+?>
+	<?php
+	if ( $gallery ) :
+		$category     = today_get_primary_category( $gallery );
+		$thumbnail    = '';
+		$thumbnail_id = today_get_thumbnail_id( $gallery, true );
+
+		if ( $thumbnail_id ) {
+			$thumbnail = ucfwp_get_attachment_image( $thumbnail_id, 'medium_large', false, array(
+				'class' => 'img-fluid mt-3',
+				'alt' => ''
+			) );
+		}
+
+		// Use an absolute fallback if a thumbnail couldn't be retrieved
+		// for the given post
+		if ( ! $thumbnail ) {
+			$thumbnail = '<img class="img-fluid mt-3" src="' . TODAY_THEME_IMG_URL . '/default-thumb.jpg" alt="">';
+		}
+	?>
+	<div class="card border-0 bg-faded mx-auto">
+		<div class="card-block p-4">
+			<a href="<?php echo get_permalink( $gallery ); ?>">
+				<h2 class="text-secondary"><?php echo $gallery->post_title; ?></h2>
+
+				<?php if ( $category ) : ?>
+				<span class="badge badge-primary"><?php echo $category->name; ?></span>
+				<?php endif; ?>
+
+				<?php echo $thumbnail; ?>
+			</a>
+		</div>
+	</div>
+	<?php endif; ?>
+<?php
+	return trim( ob_get_clean() );
+}
