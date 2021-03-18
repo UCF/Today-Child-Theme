@@ -18,6 +18,30 @@ function today_get_pegasus_current_issue() {
 
 
 /**
+ * Returns HTML for an inlined SVG Pegasus logo.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @return string HTML markup
+ */
+function today_get_pegasus_logo() {
+	$svg      = '';
+	$filename = TODAY_THEME_DIR . 'static/img/pegasus-logo.svg';
+
+	if ( file_exists( $filename ) ) {
+		$file_contents = file_get_contents( $filename );
+		if ( $file_contents ) {
+			// Strip XML header tag for inlining the SVG:
+			$file_contents = str_ireplace( '<?xml version="1.0" encoding="utf-8"?>', '', $file_contents );
+			$svg = '<div class="pegasus-inline-logo">' . $file_contents . '</div>';
+		}
+	}
+
+	return $svg;
+}
+
+
+/**
  * Returns featured posts markup for the Pegasus homepage.
  *
  * @since 1.2.0
@@ -36,6 +60,7 @@ function today_get_pegasus_home_featured( $post_id ) {
  *
  * @since 1.2.0
  * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
  * @return string HTML markup
  */
 function today_get_pegasus_home_in_this_issue( $post_id ) {
@@ -96,24 +121,92 @@ function today_get_pegasus_home_in_this_issue( $post_id ) {
 
 
 /**
- * Returns HTML for an inlined SVG Pegasus logo.
+ * Returns markup for "The Feed" portion of the Pegasus homepage.
+ *
+ * TODO this function needs to _exclude_ Pegasus stories
  *
  * @since 1.2.0
  * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
  * @return string HTML markup
  */
-function today_get_pegasus_logo() {
-	$svg      = '';
-	$filename = TODAY_THEME_DIR . 'static/img/pegasus-logo.svg';
+function today_get_pegasus_home_feed( $post_id ) {
+	$feed_tags         = get_field( 'the_feed_tags', $post_id );
+	$feed_tags_include = get_field( 'the_feed_tag_include', $post_id ) ?: 'tag__in';
 
-	if ( file_exists( $filename ) ) {
-		$file_contents = file_get_contents( $filename );
-		if ( $file_contents ) {
-			// Strip XML header tag for inlining the SVG:
-			$file_contents = str_ireplace( '<?xml version="1.0" encoding="utf-8"?>', '', $file_contents );
-			$svg = '<div class="pegasus-inline-logo">' . $file_contents . '</div>';
-		}
+	$args = array(
+		'numberposts' => 10
+	);
+	if ( $feed_tags ) {
+		$args[$feed_tags_include] = $feed_tags;
 	}
 
-	return $svg;
+	$posts = get_posts( $args );
+
+	ob_start();
+?>
+	<?php if ( $posts ) : ?>
+	<div class="pegasus-feed-row">
+		<?php foreach ( $posts as $p ) : ?>
+		<div class="pegasus-feed-col">
+			<article aria-label="<?php echo esc_attr( $p->post_title ); ?>">
+				<a href="<?php echo get_permalink( $p ); ?>">
+					<time class="pegasus-feed-item-date" datetime="<?php echo $p->post_date; ?>">
+						<?php echo date( 'm/d', strtotime( $p->post_date ) ); ?>
+					</time>
+					<strong class="pegasus-feed-item-title">
+						<?php echo $p->post_title; ?>
+					</strong>
+				</a>
+			</article>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<?php else: ?>
+	<p>No stories found.</p>
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Modifies query args passed to oEmbed providers for the
+ * What's Trending section on the Pegasus homepage.
+ *
+ * Intended for use in `today_get_pegasus_home_trending()` via
+ * the `oembed_fetch_url` filter hook.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param string $provider URL of the oEmbed provider
+ * @param string $url URL of the content to be embedded
+ * @param array $args Additional arguments for retrieving embed HTML
+ * @return string Modified provider URL
+ */
+function today_pegasus_trending_embed_args( $provider, $url, $args ) {
+	// If this looks like a URL for a Twitter timeline,
+	// add extra params to make it less ugly:
+	if ( strpos( $url, 'https://twitter.com' ) !== false ) {
+		$provider = add_query_arg( 'chrome', 'nofooter noborders', $provider );
+	}
+
+	return $provider;
+}
+
+
+/**
+ * Returns What's Trending markup for the Pegasus homepage.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
+ * @return string HTML markup
+ */
+function today_get_pegasus_home_trending( $post_id ) {
+	add_filter( 'oembed_fetch_url', 'today_pegasus_trending_embed_args', 10, 3 );
+	$trending = get_field( 'trending_content', $post_id );
+	remove_filter( 'oembed_fetch_url', 'today_pegasus_trending_embed_args' );
+
+	return $trending;
 }

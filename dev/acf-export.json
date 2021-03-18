@@ -1028,6 +1028,60 @@
                 "esc_html": 0
             },
             {
+                "key": "field_60510dfe21be1",
+                "label": "Filter Posts by Tag",
+                "name": "the_feed_tags",
+                "type": "taxonomy",
+                "instructions": "Specify one or more tags to filter posts in The Feed section by.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "post_tag",
+                "field_type": "multi_select",
+                "allow_null": 0,
+                "add_term": 0,
+                "save_terms": 0,
+                "load_terms": 0,
+                "return_format": "id",
+                "multiple": 0
+            },
+            {
+                "key": "field_60510ea621be2",
+                "label": "Tag Filtering By",
+                "name": "the_feed_tag_include",
+                "type": "select",
+                "instructions": "Posts included in The Feed section must have:",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_60510dfe21be1",
+                            "operator": "!=empty"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "tag__in": "Any of these tags",
+                    "tag__and": "All of these tags"
+                },
+                "default_value": false,
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
                 "key": "field_604924a5f3b33",
                 "label": "What's Trending",
                 "name": "",
@@ -1084,7 +1138,7 @@
                 "default_value": "",
                 "tabs": "all",
                 "toolbar": "basic",
-                "media_upload": 0,
+                "media_upload": 1,
                 "delay": 1
             },
             {
