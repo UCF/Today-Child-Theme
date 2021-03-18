@@ -210,3 +210,32 @@ function today_get_pegasus_home_trending( $post_id ) {
 
 	return $trending;
 }
+
+
+/**
+ * Displays events markup for the Pegasus homepage.
+ *
+ * @since 1.2.0
+ * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
+ * @return string HTML markup for the events list
+ */
+function today_get_pegasus_home_events( $post_id ) {
+	$content   = '';
+	$attrs     = array_filter( array(
+		'feed_url' => get_field( 'events_feed_url', $post_id ),
+		'layout'   => 'modern_date',
+		'limit'    => get_field( 'events_number_of_posts', $post_id ) ?: 3
+	) );
+	$attr_str  = '';
+
+	$attrs['title'] = '';
+
+	foreach ( $attrs as $key => $val ) {
+		$attr_str .= ' ' . $key . '="' . $val . '"';
+	}
+
+	$content = do_shortcode( '[ucf-events' . $attr_str . ']No events found.[/ucf-events]' );
+
+	return $content;
+}

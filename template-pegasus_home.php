@@ -11,7 +11,7 @@ $featured      = today_get_pegasus_home_featured( $post->ID, true );
 $the_feed      = today_get_pegasus_home_feed( $post->ID );
 $trending      = today_get_pegasus_home_trending( $post->ID );
 $in_this_issue = today_get_pegasus_home_in_this_issue( $post->ID );
-$events        = do_shortcode( '[ucf-events title="" layout="classic"]' );
+$events        = today_get_pegasus_home_events( $post->ID );
 ?>
 
 <div class="jumbotron jumbotron-fluid bg-secondary py-4 mb-0">
@@ -60,7 +60,6 @@ $events        = do_shortcode( '[ucf-events title="" layout="classic"]' );
 	<div class="container">
 		<div class="row">
 			<div class="col-lg pt-lg-4 pr-lg-5 mb-5 mb-lg-0">
-				<!-- TODO configuration options -->
 				<h2 class="font-weight-black">Events</h2>
 				<hr role="presentation">
 				<?php echo $events; ?>
