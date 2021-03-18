@@ -32,3 +32,7 @@ include_once TODAY_THEME_DIR . 'includes/ucf-resource-links-functions.php';
 if ( class_exists( 'UCF_Social_Common' ) ) {
 	include_once TODAY_THEME_DIR . 'includes/ucf-social-functions.php';
 }
+
+if ( class_exists( 'UCF_Events_Common' ) ) {
+	include_once TODAY_THEME_DIR . 'includes/ucf-events-functions.php';
+}
