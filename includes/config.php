@@ -45,7 +45,7 @@ function today_init() {
 		'description'   => 'First column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
@@ -54,7 +54,7 @@ function today_init() {
 		'description'   => 'Second column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
@@ -63,7 +63,7 @@ function today_init() {
 		'description'   => 'Third column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
@@ -72,7 +72,7 @@ function today_init() {
 		'description'   => 'Last column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
 		'after_title'   => '</h2>',
 	) );
 }

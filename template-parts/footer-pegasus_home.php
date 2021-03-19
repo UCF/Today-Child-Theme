@@ -6,36 +6,36 @@ if (
 	|| is_active_sidebar( 'pegasus_home-footer-col-4' )
 ):
 ?>
-<footer class="site-footer bg-inverse pt-4 py-md-5" aria-label="Site footer">
+<footer class="site-footer pegasus-footer bg-inverse pt-4 py-md-5" aria-label="Site footer">
 	<div class="container mt-4">
 		<div class="row">
 
-		<?php if ( is_active_sidebar( 'pegasus_home-footer-col-1' ) ): ?>
+			<?php if ( is_active_sidebar( 'pegasus_home-footer-col-1' ) ): ?>
 			<div class="col-12 col-lg">
 				<a class="d-block text-primary" href="#TODO" style="max-width: 14rem;">
 					<?php echo today_get_pegasus_logo(); ?>
 				</a>
 				<?php dynamic_sidebar( 'pegasus_home-footer-col-1' ); ?>
 			</div>
-		<?php endif; ?>
+			<?php endif; ?>
 
-		<?php if ( is_active_sidebar( 'pegasus_home-footer-col-2' ) ): ?>
+			<?php if ( is_active_sidebar( 'pegasus_home-footer-col-2' ) ): ?>
 			<div class="col-12 col-lg">
 				<?php dynamic_sidebar( 'pegasus_home-footer-col-2' ); ?>
 			</div>
-		<?php endif; ?>
+			<?php endif; ?>
 
-		<?php if ( is_active_sidebar( 'pegasus_home-footer-col-3' ) ): ?>
+			<?php if ( is_active_sidebar( 'pegasus_home-footer-col-3' ) ): ?>
 			<div class="col-12 col-lg">
 				<?php dynamic_sidebar( 'pegasus_home-footer-col-3' ); ?>
 			</div>
-		<?php endif; ?>
+			<?php endif; ?>
 
-		<?php if ( is_active_sidebar( 'pegasus_home-footer-col-4' ) ): ?>
+			<?php if ( is_active_sidebar( 'pegasus_home-footer-col-4' ) ): ?>
 			<div class="col-12 col-lg">
 				<?php dynamic_sidebar( 'pegasus_home-footer-col-4' ); ?>
 			</div>
-		<?php endif; ?>
+			<?php endif; ?>
 
 		</div>
 	</div>
