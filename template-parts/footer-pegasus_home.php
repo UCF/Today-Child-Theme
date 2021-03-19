@@ -6,7 +6,7 @@ if (
 	|| is_active_sidebar( 'pegasus_home-footer-col-4' )
 ):
 ?>
-<footer class="site-footer pegasus-footer bg-inverse pt-4 py-md-5" aria-label="Site footer">
+<footer class="site-footer pegasus-footer bg-inverse pt-4 py-md-5 mt-4" aria-label="Site footer">
 	<div class="container mt-4">
 		<div class="row">
 
