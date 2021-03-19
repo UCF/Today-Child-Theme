@@ -1678,6 +1678,43 @@
                 "esc_html": 0
             },
             {
+                "key": "field_6053695300fdd",
+                "label": "Feed URL",
+                "name": "events_feed_url",
+                "type": "url",
+                "instructions": "UCF Events feed URL. Defaults to the \"UCF Events JSON Feed URL\" value in the UCF Events plugin.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "65",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_6053696000fde",
+                "label": "Number of Events",
+                "name": "events_number_of_posts",
+                "type": "number",
+                "instructions": "The number of events to be displayed. Defaults to 3.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 3,
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": 1,
+                "max": "",
+                "step": 1
+            },
+            {
                 "key": "field_604f8998b6ad4",
                 "label": "Featured Gallery",
                 "name": "",
@@ -2398,7 +2435,7 @@
                             },
                             {
                                 "key": "field_5c9e17cb455c9",
-                                "label": "Number of Posts",
+                                "label": "Number of Events",
                                 "name": "events_number_of_posts",
                                 "type": "number",
                                 "instructions": "The number of events to be displayed. Defaults to 4.",
