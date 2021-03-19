@@ -14,6 +14,8 @@
   color: inherit;
   display: block;
   max-width: 100%;
+  overflow: hidden;
+  position: relative;
 
   .feature-horizontal &,
   .feature-vertical & {
@@ -44,9 +46,28 @@
     padding-bottom: 65%;
   }
 
+  .feature-vertical.feature-primary & {
+    @include media-breakpoint-up(md) {
+      padding-bottom: 50%;
+    }
+  }
+
   .feature-vertical.feature-secondary & {
     @include media-breakpoint-down(sm) {
       padding-bottom: 45%;
+    }
+  }
+}
+
+.feature-details {
+  .feature-vertical.feature-primary & {
+    @include media-breakpoint-up(md) {
+      background-color: transparentize($brand-secondary, .4);
+      bottom: 0;
+      color: $brand-inverse;
+      padding: 2rem;
+      position: absolute;
+      text-align: center;
     }
   }
 }
