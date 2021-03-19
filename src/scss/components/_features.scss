@@ -65,8 +65,10 @@
       background-color: transparentize($brand-secondary, .4);
       bottom: 0;
       color: $brand-inverse;
+      left: 0;
       padding: 2rem;
       position: absolute;
+      right: 0;
       text-align: center;
     }
   }
