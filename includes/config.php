@@ -37,6 +37,44 @@ function today_init() {
 	remove_image_size( 'bg-img-md' );
 	remove_image_size( 'bg-img-lg' );
 	remove_image_size( 'bg-img-xl' );
+
+	// Register sidebars for Pegasus homepage footer
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 1' ),
+		'id'            => 'pegasus_home-footer-col-1',
+		'description'   => 'First column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 2' ),
+		'id'            => 'pegasus_home-footer-col-2',
+		'description'   => 'Second column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 3' ),
+		'id'            => 'pegasus_home-footer-col-3',
+		'description'   => 'Third column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 4' ),
+		'id'            => 'pegasus_home-footer-col-4',
+		'description'   => 'Last column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h6 heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
 }
 
 add_action( 'after_setup_theme', 'today_init', 11 );

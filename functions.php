@@ -10,6 +10,7 @@ include_once TODAY_THEME_DIR . 'includes/excerpts.php';
 include_once TODAY_THEME_DIR . 'includes/features.php';
 include_once TODAY_THEME_DIR . 'includes/nav-functions.php';
 include_once TODAY_THEME_DIR . 'includes/header-functions.php';
+include_once TODAY_THEME_DIR . 'includes/footer-functions.php';
 include_once TODAY_THEME_DIR . 'includes/sidebar-functions.php';
 include_once TODAY_THEME_DIR . 'includes/homepage-functions.php';
 include_once TODAY_THEME_DIR . 'includes/post-functions.php';
