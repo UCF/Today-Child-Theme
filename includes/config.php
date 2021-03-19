@@ -41,7 +41,7 @@ function today_init() {
 	// Register sidebars for Pegasus homepage footer
 	register_sidebar( array(
 		'name'          => __( 'Pegasus Homepage Footer - Column 1' ),
-		'id'            => 'pegasus_home-footer-col-1',
+		'id'            => 'footer-pegasus_home-col-1',
 		'description'   => 'First column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
@@ -50,7 +50,7 @@ function today_init() {
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Pegasus Homepage Footer - Column 2' ),
-		'id'            => 'pegasus_home-footer-col-2',
+		'id'            => 'footer-pegasus_home-col-2',
 		'description'   => 'Second column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
@@ -59,7 +59,7 @@ function today_init() {
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Pegasus Homepage Footer - Column 3' ),
-		'id'            => 'pegasus_home-footer-col-3',
+		'id'            => 'footer-pegasus_home-col-3',
 		'description'   => 'Third column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
@@ -68,7 +68,7 @@ function today_init() {
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Pegasus Homepage Footer - Column 4' ),
-		'id'            => 'pegasus_home-footer-col-4',
+		'id'            => 'footer-pegasus_home-col-4',
 		'description'   => 'Last column in the Pegasus homepage footer.',
 		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
