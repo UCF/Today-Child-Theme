@@ -12,9 +12,9 @@ if (
 
 			<?php if ( is_active_sidebar( 'pegasus_home-footer-col-1' ) ): ?>
 			<div class="col-12 col-lg">
-				<a class="d-block text-primary" href="#TODO" style="max-width: 14rem;">
+				<div class="text-primary" style="max-width: 14rem;">
 					<?php echo today_get_pegasus_logo(); ?>
-				</a>
+				</div>
 				<?php dynamic_sidebar( 'pegasus_home-footer-col-1' ); ?>
 			</div>
 			<?php endif; ?>
