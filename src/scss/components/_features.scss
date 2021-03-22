@@ -46,7 +46,8 @@
     padding-bottom: 65%;
   }
 
-  .feature-vertical.feature-primary & {
+  // sass-lint:disable-block class-name-format
+  .page-template-template-pegasus_home .feature-vertical.feature-primary & {
     @include media-breakpoint-up(md) {
       padding-bottom: 50%;
     }
