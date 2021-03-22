@@ -60,7 +60,8 @@
 }
 
 .feature-details {
-  .feature-vertical.feature-primary & {
+  // sass-lint:disable-block class-name-format
+  .page-template-template-pegasus_home .feature-vertical.feature-primary & {
     @include media-breakpoint-up(md) {
       background-color: transparentize($brand-secondary, .4);
       bottom: 0;
