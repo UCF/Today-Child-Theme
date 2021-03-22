@@ -23,6 +23,35 @@
 
 
 //
+// Feature style overrides
+//
+// sass-lint:disable-block class-name-format
+//
+.page-template-template-pegasus_home {
+  .feature-vertical.feature-primary {
+    .feature-thumbnail-wrap {
+      @include media-breakpoint-up(md) {
+        padding-bottom: 50%;
+      }
+    }
+
+    .feature-details {
+      @include media-breakpoint-up(md) {
+        background-color: transparentize($brand-secondary, .4);
+        bottom: 0;
+        color: $brand-inverse;
+        left: 0;
+        padding: 2rem;
+        position: absolute;
+        right: 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+//
 // "The Feed"
 //
 .pegasus-feed-row {
