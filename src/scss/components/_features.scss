@@ -46,32 +46,9 @@
     padding-bottom: 65%;
   }
 
-  // sass-lint:disable-block class-name-format
-  .page-template-template-pegasus_home .feature-vertical.feature-primary & {
-    @include media-breakpoint-up(md) {
-      padding-bottom: 50%;
-    }
-  }
-
   .feature-vertical.feature-secondary & {
     @include media-breakpoint-down(sm) {
       padding-bottom: 45%;
-    }
-  }
-}
-
-.feature-details {
-  // sass-lint:disable-block class-name-format
-  .page-template-template-pegasus_home .feature-vertical.feature-primary & {
-    @include media-breakpoint-up(md) {
-      background-color: transparentize($brand-secondary, .4);
-      bottom: 0;
-      color: $brand-inverse;
-      left: 0;
-      padding: 2rem;
-      position: absolute;
-      right: 0;
-      text-align: center;
     }
   }
 }
