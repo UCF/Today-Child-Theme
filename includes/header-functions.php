@@ -6,7 +6,7 @@
 /**
  * Modifies the h1 text for the given object.
  *
- * Adds "News" to the end of category and tag titles.
+ * Adds "News" to the end of tag titles.
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -15,7 +15,7 @@
  * @return string The modified title
  */
 function today_get_header_title_after( $title, $obj ) {
-	if ( is_category() || is_tag() ) {
+	if ( is_tag() ) {
 		$title .= ' News';
 	}
 
