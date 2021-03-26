@@ -446,9 +446,7 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": [
-                                    "vertical"
-                                ],
+                                "default_value": "vertical",
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
@@ -583,9 +581,7 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": [
-                                    "vertical"
-                                ],
+                                "default_value": "vertical",
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
@@ -1105,11 +1101,6 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "page"
-                },
-                {
-                    "param": "post_template",
-                    "operator": "!=",
-                    "value": "template-category.php"
                 },
                 {
                     "param": "page_type",
@@ -1924,18 +1915,6 @@
             }
         ],
         "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "page"
-                },
-                {
-                    "param": "post_template",
-                    "operator": "==",
-                    "value": "template-category.php"
-                }
-            ],
             [
                 {
                     "param": "post_type",
