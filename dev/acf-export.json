@@ -85,6 +85,218 @@
         "description": ""
     },
     {
+        "key": "group_605a2f2f7ff27",
+        "title": "Category Fields",
+        "fields": [
+            {
+                "key": "field_605a2f972160a",
+                "label": "Page Headline",
+                "name": "category_page_headline",
+                "type": "text",
+                "instructions": "The H1 headline to be used for this category's page. Defaults to the category name + \"News\" (e.g. for a category named \"Community\" the default headline would be \"Community News\").",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_605a366fcfa31",
+                "label": "Page Content",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_605a38a791640",
+                "label": "Page Content Info",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "By default, the category page's content consists of a single story displayed in the primary vertical layout at the top, followed by 9 posts displayed 3 per-row in the vertical layout. With the sidebar enabled, this content is displayed in a <code>.col-lg-8<\/code>. If the sidebar is disabled, the content will be displayed in a <code>.col-12<\/code>.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_605a36f2cfa32",
+                "label": "Customize Page Content",
+                "name": "category_customize_page_content",
+                "type": "true_false",
+                "instructions": "Turn on in order to customize this page's content.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_605a37e3cfa33",
+                "label": "Custom Page Content",
+                "name": "category_custom_page_content",
+                "type": "wysiwyg",
+                "instructions": "Custom content for this category page.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_605a36f2cfa32",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 1
+            },
+            {
+                "key": "field_605a34c3cfa2f",
+                "label": "Sidebar",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_605a35f5cfa30",
+                "label": "Enable Sidebar",
+                "name": "category_enable_sidebar",
+                "type": "true_false",
+                "instructions": "Enables a sidebar on this category page with default sidebar content (UCF In The News, Events at UCF, Resources menu). Options are also available below to customize sidebar contents.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_605a3333e53f0",
+                "label": "Customize Sidebar",
+                "name": "category_customize_sidebar",
+                "type": "true_false",
+                "instructions": "Turn on in order to customize the content and sections in the sidebar.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_605a35f5cfa30",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_605a328ea7992",
+                "label": "Sidebar Fields",
+                "name": "category_sidebar_fields",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_605a3333e53f0",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "100",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "field_5c9cdf7861887"
+                ],
+                "display": "group",
+                "layout": "table",
+                "prefix_label": 0,
+                "prefix_name": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "category"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
         "key": "group_5cabb0229b4e9",
         "title": "Homepage Fields",
         "fields": [
@@ -234,9 +446,7 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": [
-                                    "vertical"
-                                ],
+                                "default_value": "vertical",
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
@@ -371,9 +581,7 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": [
-                                    "vertical"
-                                ],
+                                "default_value": "vertical",
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
@@ -893,11 +1101,6 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "page"
-                },
-                {
-                    "param": "post_template",
-                    "operator": "!=",
-                    "value": "template-category.php"
                 },
                 {
                     "param": "page_type",
@@ -2619,18 +2822,6 @@
             }
         ],
         "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "page"
-                },
-                {
-                    "param": "post_template",
-                    "operator": "==",
-                    "value": "template-category.php"
-                }
-            ],
             [
                 {
                     "param": "post_type",
