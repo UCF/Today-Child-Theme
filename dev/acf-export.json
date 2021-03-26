@@ -184,7 +184,7 @@
                 "tabs": "all",
                 "toolbar": "full",
                 "media_upload": 1,
-                "delay": 1
+                "delay": 0
             },
             {
                 "key": "field_605a34c3cfa2f",
