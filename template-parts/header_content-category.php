@@ -1,13 +1,13 @@
 <?php
 /**
- * Header content template for the 'Category' page template
+ * Header content template for Category archive pages
  */
 ?>
 
 <?php
-global $post;
+$term = get_queried_object();
 
-$title = wptexturize( $post->post_title );
+$title = get_field( 'category_page_headline', $term ) ?: ucfwp_get_header_title( null ) . ' News';
 ?>
 
 <?php if ( $title ): ?>
