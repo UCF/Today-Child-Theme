@@ -93,7 +93,7 @@
                 "label": "Page Headline",
                 "name": "category_page_headline",
                 "type": "text",
-                "instructions": "The H1 headline to be used for this category's page. Defaults to the category name + \"News\" (e.g. for a category named \"Community\" the default headline would be \"Community News\").",
+                "instructions": "The H1 headline to be used for this category page. Defaults to the category name + \"News\" (e.g. for a category named \"Community\" the default headline would be \"Community News\").",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -184,7 +184,7 @@
                 "tabs": "all",
                 "toolbar": "full",
                 "media_upload": 1,
-                "delay": 1
+                "delay": 0
             },
             {
                 "key": "field_605a34c3cfa2f",
@@ -446,7 +446,9 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": "vertical",
+                                "default_value": [
+                                    "vertical"
+                                ],
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
@@ -581,7 +583,9 @@
                                     "horizontal": "Horizontal",
                                     "vertical": "Vertical"
                                 },
-                                "default_value": "vertical",
+                                "default_value": [
+                                    "vertical"
+                                ],
                                 "allow_null": 0,
                                 "multiple": 0,
                                 "ui": 0,
