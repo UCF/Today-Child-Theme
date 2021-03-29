@@ -27,18 +27,18 @@ if ( isset( $posts ) ) {
 		<?php else : ?>
 		<div class="col-12">
 		<?php endif; ?>
-			<?php if ( $enable_custom_page_content ):
-				echo $custom_page_content;
-			else : ?>
-				<?php if ( $first_post ): ?>
+			<?php if ( $enable_custom_page_content ) : ?>
+				<?php echo $custom_page_content; ?>
+			<?php else : ?>
+				<?php if ( $first_post ) : ?>
 					<div class="pb-4">
 						<?php echo today_display_feature_vertical( $first_post, array( 'layout__type' => 'primary' ) ); ?>
 					</div>
 				<?php endif; ?>
 
-				<?php if ( $posts ): ?>
+				<?php if ( $posts ) : ?>
 					<div class="row">
-						<?php foreach ( $posts as $post ): ?>
+						<?php foreach ( $posts as $post ) : ?>
 							<div class="col-lg-4 mb-4">
 								<?php echo today_display_feature_vertical( $post ); ?>
 							</div>
@@ -46,14 +46,14 @@ if ( isset( $posts ) ) {
 					</div>
 				<?php endif; ?>
 
-				<?php if ( ! $first_post && ! $posts ): ?>
+				<?php if ( ! $first_post && ! $posts ) : ?>
 					<p>No results found.</p>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>
-		<?php if ( $enable_sidebar ): ?>
+		<?php if ( $enable_sidebar ) : ?>
 		<div class="col-lg-4 pl-lg-5">
-			<?php if ( $customize_sidebar ): ?>
+			<?php if ( $customize_sidebar ) : ?>
 				<?php echo today_get_sidebar_markup( $term ); ?>
 			<?php else : ?>
 				<?php echo today_display_sidebar_external_stories(); ?>
