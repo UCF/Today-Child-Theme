@@ -12,7 +12,7 @@ $customize_sidebar = ( get_field( 'category_customize_sidebar', $term ) === null
 
 $posts = get_posts( array(
 	'numberposts' => 10,
-	'cat'         => get_queried_object()->term_id
+	'cat'         => $term->term_id
 ) );
 
 if ( isset( $posts ) ) {
