@@ -6,7 +6,7 @@
 /**
  * Modifies the h1 text for the given object.
  *
- * Adds "News" to the end of category and tag titles.
+ * Adds "News" to the end of tag titles.
  *
  * @since 1.0.0
  * @author Jo Dickson
@@ -15,7 +15,7 @@
  * @return string The modified title
  */
 function today_get_header_title_after( $title, $obj ) {
-	if ( is_category() || is_tag() ) {
+	if ( is_tag() ) {
 		$title .= ' News';
 	}
 
@@ -60,17 +60,18 @@ add_filter( 'ucfwp_get_header_markup', 'today_get_header_markup', 10, 2 );
 function today_get_header_content_type( $content_type, $obj ) {
 	if ( $obj instanceof WP_Post ) {
 		$post_type     = $obj->post_type;
-		$post_template = get_page_template_slug( $obj->ID );
 
 		if ( in_array( $post_type, array( 'post', 'ucf_statement' ) ) ) {
 			$content_type = 'post';
-		} elseif ( $post_type === 'page' &&	$post_template === 'template-category.php' ) {
-			$content_type = 'category';
 		}
 	}
 
 	if ( is_archive() ) {
 		$content_type = 'archive';
+	}
+
+	if ( is_category() ) {
+		$content_type = 'category';
 	}
 
 	return $content_type;
