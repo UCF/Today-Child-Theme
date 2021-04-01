@@ -438,3 +438,85 @@ window.dataLayer.push({
 }
 
 add_action( 'wp_head', 'today_add_tags_to_data_layer', 3 );
+
+
+/**
+ * Adds the ACF Main Site News field group
+ * and associated fields.
+ *
+ * @since 1.3.0
+ * @author Cadie Stockman
+ */
+function today_add_main_site_news_fields() {
+	if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+		// Create the array to add the fields to
+		$fields = array();
+
+		// Adds Promote on Main Site field
+		$fields[] = array(
+			'key'               => 'field_5c9e1c1c15df3',
+			'label'             => 'Promote on Main Site',
+			'name'              => 'post_main_site_story',
+			'type'              => 'true_false',
+			'instructions'      => 'When checked, the story will appear in the news feed on UCF.edu.',
+			'required'          => 0,
+			'conditional_logic' => 0,
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'message'           => '',
+			'default_value'     => 0,
+			'ui'                => 1,
+			'ui_on_text'        => '',
+			'ui_off_text'       => '',
+		);
+
+		// Defines Main Site News field group
+		$field_group = array(
+			'key'                   => 'group_5c9e1c1417520',
+			'title'                 => 'Main Site News',
+			'fields'                => $fields,
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'post',
+					),
+					array(
+						'param'    => 'current_user_role',
+						'operator' => '==',
+						'value'    => 'administrator',
+					),
+				),
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'post',
+					),
+					array(
+						'param'    => 'current_user_role',
+						'operator' => '==',
+						'value'    => 'super_admin',
+					),
+				),
+			),
+			'menu_order'            => 0,
+			'position'              => 'side',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'description'           => '',
+		);
+
+		acf_add_local_field_group( $field_group );
+	}
+}
+
+add_action( 'acf/init', 'today_add_main_site_news_fields' );
