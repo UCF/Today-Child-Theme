@@ -172,3 +172,584 @@ function today_get_homepage_content( $post_id, $primary=false ) {
 
 	return $content;
 }
+
+
+/**
+ * Adds the ACF Homepage Fields field group
+ * and associated fields.
+ *
+ * @since 1.3.0
+ * @author Cadie Stockman
+ */
+function today_add_homepage_fields() {
+	if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+		// Create the array to add the fields to
+		$fields = array();
+
+		// Adds type of content field
+		$fields[] = array(
+			'key'               => 'field_5cabb1174f264',
+			'label'             => 'What type of content should be displayed on the homepage?',
+			'name'              => 'page_content_type',
+			'type'              => 'radio',
+			'instructions'      => '',
+			'required'          => 1,
+			'conditional_logic' => 0,
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'choices'           => array(
+				'latest'  => 'Latest stories',
+				'curated' => 'Curated story list',
+				'custom'  => 'Custom page content',
+			),
+			'allow_null'        => 0,
+			'other_choice'      => 0,
+			'save_other_choice' => 0,
+			'default_value'     => '',
+			'layout'            => 'vertical',
+			'return_format'     => 'value',
+		);
+
+		// Adds Curated List Expiration field
+		$fields[] = array(
+			'key'               => 'field_5cacb6511b75e',
+			'label'             => 'Curated List Expiration',
+			'name'              => 'curated_list_expiration',
+			'type'              => 'date_time_picker',
+			'instructions'      => 'Specify how long this curated list should remain on the homepage.	Leave blank to use this curated list indefinitely.<br>When a curated list expires, the homepage will revert to a list of latest stories.',
+			'required'          => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field'    => 'field_5cabb1174f264',
+						'operator' => '==',
+						'value'    => 'curated',
+					),
+				),
+			),
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'display_format'    => 'm/d/Y g:i a',
+			'return_format'     => 'm/d/Y g:i a',
+			'first_day'         => 1,
+		);
+
+		// Adds Primary Content field
+		$fields[] = array(
+			'key'               => 'field_5cdd8f8744eaf',
+			'label'             => 'Primary Content',
+			'name'              => 'primary_content',
+			'type'              => 'clone',
+			'instructions'      => 'Content block that appears full width above the two column layout when the sidebar is enabled. Place the primary story here.',
+			'required'          => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field'    => 'field_5cabb1174f264',
+						'operator' => '==',
+						'value'    => 'curated',
+					),
+				),
+			),
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'clone'             => array(
+				0 => 'field_5cac9fb846af9',
+			),
+			'display'           => 'group',
+			'layout'            => 'block',
+			'prefix_label'      => 1,
+			'prefix_name'       => 1,
+		);
+
+		// Adds Curated Stories fields
+		$fields[] = array(
+			'key'               => 'field_5cac9fb846af9',
+			'label'             => 'Curated Stories',
+			'name'              => 'curated_stories',
+			'type'              => 'flexible_content',
+			'instructions'      => '',
+			'required'          => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field'    => 'field_5cabb1174f264',
+						'operator' => '==',
+						'value'    => 'curated',
+					),
+				),
+			),
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'layouts'           => array(
+				'5cac9fc2da26b' => array(
+					'key'        => '5cac9fc2da26b',
+					'name'       => 'primary_row',
+					'label'      => 'Primary Story',
+					'display'    => 'block',
+					'sub_fields' => array(
+						array(
+							'key'               => 'field_5caca22246afa',
+							'label'             => 'Select a Story',
+							'name'              => 'post',
+							'type'              => 'post_object',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'post_type' => array(
+								0 => 'post',
+							),
+							'taxonomy' => array(
+							),
+							'allow_null'    => 0,
+							'multiple'      => 0,
+							'return_format' => 'object',
+							'ui'            => 1,
+						),
+						array(
+							'key'               => 'field_5caca72a46afb',
+							'label'             => 'Orientation',
+							'name'              => 'layout',
+							'type'              => 'select',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '40',
+								'class' => '',
+								'id'    => '',
+							),
+							'choices' => array(
+								'horizontal' => 'Horizontal',
+								'vertical'   => 'Vertical',
+							),
+							'default_value' => 'vertical',
+							'allow_null'    => 0,
+							'multiple'      => 0,
+							'ui'            => 0,
+							'ajax'          => 0,
+							'return_format' => 'value',
+							'placeholder'   => '',
+						),
+						array(
+							'key'               => 'field_5cacaa2646b07',
+							'label'             => 'Show Thumbnail',
+							'name'              => 'show_image',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '20',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 1,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+						array(
+							'key'               => 'field_5cacaa8246b08',
+							'label'             => 'Show Excerpt',
+							'name'              => 'show_excerpt',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '20',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 1,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+						array(
+							'key'               => 'field_5cacaabf46b09',
+							'label'             => 'Show Subhead',
+							'name'              => 'show_subhead',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '20',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 0,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				'5caca77046afc' => array(
+					'key'        => '5caca77046afc',
+					'name'       => 'secondary_row',
+					'label'      => 'Secondary Stories',
+					'display'    => 'block',
+					'sub_fields' => array(
+						array(
+							'key'               => 'field_5caca77046afd',
+							'label'             => 'Select Stories',
+							'name'              => 'posts',
+							'type'              => 'repeater',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'collapsed'    => 'field_5caca86a46b00',
+							'min'          => 1,
+							'max'          => 0,
+							'layout'       => 'block',
+							'button_label' => 'Add Story',
+							'sub_fields'   => array(
+								array(
+									'key'               => 'field_5caca86a46b00',
+									'label'             => 'Story',
+									'name'              => 'post',
+									'type'              => 'post_object',
+									'instructions'      => '',
+									'required'          => 1,
+									'conditional_logic' => 0,
+									'wrapper'           => array(
+										'width' => '',
+										'class' => '',
+										'id'    => '',
+									),
+									'post_type' => array(
+										0 => 'post',
+									),
+									'taxonomy' => array(
+									),
+									'allow_null'    => 0,
+									'multiple'      => 0,
+									'return_format' => 'object',
+									'ui'            => 1,
+								),
+							),
+						),
+						array(
+							'key'               => 'field_5caca77046afe',
+							'label'             => 'Orientation',
+							'name'              => 'layout',
+							'type'              => 'select',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '40',
+								'class' => '',
+								'id'    => '',
+							),
+							'choices' => array(
+								'horizontal' => 'Horizontal',
+								'vertical'   => 'Vertical',
+							),
+							'default_value' => 'vertical',
+							'allow_null'    => 0,
+							'multiple'      => 0,
+							'ui'            => 0,
+							'ajax'          => 0,
+							'return_format' => 'value',
+							'placeholder'   => '',
+						),
+						array(
+							'key'               => 'field_5cacac028674d',
+							'label'             => 'Show Thumbnails',
+							'name'              => 'show_thumbnail',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '15',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 1,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+						array(
+							'key'               => 'field_5cacac178674e',
+							'label'             => 'Show Excerpts',
+							'name'              => 'show_excerpt',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '15',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 1,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+						array(
+							'key'               => 'field_5cacac278674f',
+							'label'             => 'Show Subheads',
+							'name'              => 'show_subhead',
+							'type'              => 'true_false',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '15',
+								'class' => '',
+								'id'    => '',
+							),
+							'message'       => '',
+							'default_value' => 0,
+							'ui'            => 0,
+							'ui_on_text'    => '',
+							'ui_off_text'   => '',
+						),
+						array(
+							'key'               => 'field_60301395830a5',
+							'label'             => 'Posts per Row',
+							'name'              => 'posts_per_row',
+							'type'              => 'select',
+							'instructions'      => '',
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '15',
+								'class' => '',
+								'id'    => '',
+							),
+							'choices' => array(
+								1 => '1',
+								2 => '2',
+								3 => '3',
+								4 => '4',
+								6 => '6',
+							),
+							'default_value' => 3,
+							'allow_null'    => 0,
+							'multiple'      => 0,
+							'ui'            => 0,
+							'return_format' => 'value',
+							'ajax'          => 0,
+							'placeholder'   => '',
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				'5caca9ae46b03' => array(
+					'key'        => '5caca9ae46b03',
+					'name'       => 'condensed_row',
+					'label'      => 'Condensed Stories',
+					'display'    => 'block',
+					'sub_fields' => array(
+						array(
+							'key'               => 'field_5caca9ae46b04',
+							'label'             => 'Select Stories',
+							'name'              => 'posts',
+							'type'              => 'repeater',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'collapsed'    => '',
+							'min'          => 1,
+							'max'          => 0,
+							'layout'       => 'block',
+							'button_label' => 'Add Story',
+							'sub_fields'   => array(
+								array(
+									'key'               => 'field_5caca9ae46b05',
+									'label'             => 'Story',
+									'name'              => 'post',
+									'type'              => 'post_object',
+									'instructions'      => '',
+									'required'          => 1,
+									'conditional_logic' => 0,
+									'wrapper'           => array(
+										'width' => '',
+										'class' => '',
+										'id'    => '',
+									),
+									'post_type' => array(
+										0 => 'post',
+									),
+									'taxonomy' => array(
+									),
+									'allow_null'    => 0,
+									'multiple'      => 0,
+									'return_format' => 'object',
+									'ui'            => 1,
+								),
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				'5caca93746b01' => array(
+					'key'        => '5caca93746b01',
+					'name'       => 'custom',
+					'label'      => 'Custom',
+					'display'    => 'block',
+					'sub_fields' => array(
+						array(
+							'key'               => 'field_5caca94346b02',
+							'label'             => 'Custom Content',
+							'name'              => 'custom_content',
+							'type'              => 'wysiwyg',
+							'instructions'      => 'Specify arbitrary, custom content to add to this row.',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'default_value' => '',
+							'tabs'          => 'all',
+							'toolbar'       => 'full',
+							'media_upload'  => 1,
+							'delay'         => 0,
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+			),
+			'button_label'      => 'Add Row',
+			'min'               => '',
+			'max'               => '',
+		);
+
+		// Adds Custom Page Content field
+		$fields[] = array(
+			'key'               => 'field_5cac9ecc97b7c',
+			'label'             => 'Custom Page Content',
+			'name'              => '',
+			'type'              => 'message',
+			'instructions'      => '',
+			'required'          => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field'    => 'field_5cabb1174f264',
+						'operator' => '==',
+						'value'    => 'custom',
+					),
+				),
+			),
+			'wrapper'           => array(
+				'width' => '',
+				'class' => '',
+				'id'    => '',
+			),
+			'message'           => '',
+			'new_lines'         => 'wpautop',
+			'esc_html'          => 0,
+		);
+
+		// Defines Homepage Fields field group
+		$field_group = array(
+			'key'                   => 'group_5cabb0229b4e9',
+			'title'                 => 'Homepage Fields',
+			'fields'                => $fields,
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'page',
+					),
+					array(
+						'param'    => 'current_user_role',
+						'operator' => '==',
+						'value'    => 'administrator',
+					),
+					array(
+						'param'    => 'page_type',
+						'operator' => '==',
+						'value'    => 'front_page',
+					),
+				),
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'page',
+					),
+					array(
+						'param'    => 'current_user_role',
+						'operator' => '==',
+						'value'    => 'super_admin',
+					),
+					array(
+						'param'    => 'page_type',
+						'operator' => '==',
+						'value'    => 'front_page',
+					),
+				),
+			),
+			'menu_order'            => 0,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => array(
+				0 => 'excerpt',
+				1 => 'page_attributes',
+				2 => 'featured_image',
+				3 => 'categories',
+				4 => 'tags',
+				5 => 'send-trackbacks',
+			),
+			'active'                => true,
+			'description'           => '',
+		);
+
+		acf_add_local_field_group( $field_group );
+	}
+}
+
+add_action( 'acf/init', 'today_add_homepage_fields' );
