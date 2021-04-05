@@ -731,11 +731,6 @@ function today_add_homepage_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
 			'hide_on_screen'        => array(
 				0 => 'excerpt',
 				1 => 'page_attributes',
@@ -744,8 +739,6 @@ function today_add_homepage_fields() {
 				4 => 'tags',
 				5 => 'send-trackbacks',
 			),
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );

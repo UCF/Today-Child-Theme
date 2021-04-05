@@ -1242,11 +1242,6 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
 			'hide_on_screen'        => array(
 				0 => 'the_content',
 				1 => 'excerpt',
@@ -1255,8 +1250,6 @@ function today_add_pegasus_homepage_content_fields() {
 				4 => 'tags',
 				5 => 'send-trackbacks',
 			),
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );

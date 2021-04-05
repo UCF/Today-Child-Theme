@@ -515,14 +515,6 @@ function today_add_sidebar_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );
