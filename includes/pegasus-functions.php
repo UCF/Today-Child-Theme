@@ -324,20 +324,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7155e57ad',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Content block displayed at the top of the page.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Featured Stories clone field
@@ -381,20 +369,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8bd0b6ad8',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that contains a compact list of UCF Today stories.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Filter Posts by Tag
@@ -474,20 +450,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7131e57ac',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section for promoting trending social content.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Content field
@@ -530,20 +494,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7102e57ab',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that displays a link to the latest active issue and a list of stories in the issue.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds issue_content_type field
@@ -973,20 +925,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8ce5eb43c',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Optional block of content displayed immediately underneath the In This Issue section. Can be used for promotional items/banner ads, or other arbitrary content.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Content field
@@ -1020,20 +960,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8baab6ad7',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Block of content that contains a stylized list of events from the UCF Events system.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Feed URL field
@@ -1087,20 +1015,8 @@ function today_add_pegasus_homepage_content_fields() {
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8b88b6ad6',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that displays a link to a featured gallery story.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Featured Gallery field

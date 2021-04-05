@@ -101,19 +101,8 @@ function today_add_category_fields() {
 		$fields[] = array(
 			'key'               => 'field_605a38a791640',
 			'label'             => 'Page Content Info',
-			'name'              => '',
 			'type'              => 'message',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'message'           => 'By default, the category page\'s content consists of a single story displayed in the primary vertical layout at the top, followed by 9 posts displayed 3 per-row in the vertical layout. With the sidebar enabled, this content is displayed in a <code>.col-lg-8</code>. If the sidebar is disabled, the content will be displayed in a <code>.col-12</code>.',
-			'new_lines'         => 'wpautop',
-			'esc_html'          => 0,
 		);
 
 		// Adds Customize Page Content field

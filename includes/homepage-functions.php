@@ -663,14 +663,11 @@ function today_add_homepage_fields() {
 			'max'               => '',
 		);
 
-		// Adds Custom Page Content field
+		// Adds Custom Page Content message field
 		$fields[] = array(
 			'key'               => 'field_5cac9ecc97b7c',
 			'label'             => 'Custom Page Content',
-			'name'              => '',
 			'type'              => 'message',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -680,14 +677,6 @@ function today_add_homepage_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'new_lines'         => 'wpautop',
-			'esc_html'          => 0,
 		);
 
 		// Defines Homepage Fields field group
