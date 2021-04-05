@@ -121,18 +121,7 @@ function today_add_resource_link_fields() {
 			'name'              => 'ucf_resource_link_description',
 			'type'              => 'textarea',
 			'instructions'      => 'A brief summary of the content being linked to.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'maxlength'         => '',
 			'rows'              => 3,
-			'new_lines'         => '',
 		);
 
 		// Defines Resource Link Custom Fields field group

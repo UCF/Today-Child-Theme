@@ -467,15 +467,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_header_publish_date',
 			'type'              => 'read_only',
 			'instructions'      => 'The date the post was originally published. Changing the <a href="#submitdiv">\'Published on\' date</a> above will update the dates listed in the story’s header and bump this story to the top of lists where it\'s referenced.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'copy_to_clipboard' => 0,
-			'display_type'      => 'text',
 		);
 
 		// Adds Deck field
@@ -517,7 +508,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_header_video_url',
 			'type'              => 'oembed',
 			'instructions'      => 'Paste in a video URL from YouTube, Vimeo, etc. to display in place of a header image.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -527,13 +517,6 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'width'             => '',
-			'height'            => '',
 		);
 
 		// Adds Header/Thumbnail Image field
@@ -543,22 +526,8 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_header_image',
 			'type'              => 'image',
 			'instructions'      => 'Select or upload an image with dimensions of 1200x800 for this story. The image file size must be less than 800KB.<br><br>When the "Header Media Type" value is set to "Image", this image will be used as the header image on the story, as well as the thumbnail image when this story is displayed in lists of stories.<br><br>When the "Header Media Type" value is set to "Video", if an image is provided, the image will be used as the thumbnail when this story is displayed in lists of stories.	If no image is provided, WordPress will attempt to fetch and use a poster image dynamically based on the "Header Video" URL provided.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'return_format'     => 'array',
-			'preview_size'      => 'thumbnail',
-			'library'           => 'all',
-			'min_width'         => '',
-			'min_height'        => '',
-			'min_size'          => '',
 			'max_width'         => 1200,
 			'max_height'        => 800,
-			'max_size'          => '',
 			'mime_types'        => 'jpg, jpeg',
 		);
 
@@ -576,24 +545,11 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_type',
 			'type'              => 'select',
 			'instructions'      => 'Choose whether to reference an existing Author\'s information, or define one-off custom information for this post.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'choices'           => array(
 				'custom' => 'Custom',
 				'term'   => 'Existing Author',
 			),
 			'default_value'     => false,
-			'allow_null'        => 0,
-			'multiple'          => 0,
-			'ui'                => 0,
-			'return_format'     => 'value',
-			'ajax'              => 0,
-			'placeholder'       => '',
 		);
 
 		// Adds Author Byline field
@@ -639,7 +595,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_photo',
 			'type'              => 'image',
 			'instructions'      => 'Appears below the story\'s content.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -651,19 +606,7 @@ function today_add_post_custom_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '35',
-				'class' => '',
-				'id'    => '',
 			),
-			'return_format'     => 'array',
-			'preview_size'      => 'thumbnail',
-			'library'           => 'all',
-			'min_width'         => '',
-			'min_height'        => '',
-			'min_size'          => '',
-			'max_width'         => '',
-			'max_height'        => '',
-			'max_size'          => '',
-			'mime_types'        => '',
 		);
 
 		// Adds Author Bio field
@@ -696,7 +639,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_term',
 			'type'              => 'taxonomy',
 			'instructions'      => 'Choose an existing Author to assign to this post.	Name, title, photo and bio information will be referenced from the Author that\'s selected.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -706,19 +648,10 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'taxonomy'          => 'tu_author',
 			'field_type'        => 'select',
-			'allow_null'        => 0,
-			'add_term'          => 1,
 			'save_terms'        => 1,
 			'load_terms'        => 1,
-			'return_format'     => 'object',
-			'multiple'          => 0,
 		);
 
 		// Adds Primary Tag tab
@@ -735,21 +668,9 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_primary_tag',
 			'type'              => 'taxonomy',
 			'instructions'      => 'Select the primary tag that will be used to populate the Related Stories section.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'taxonomy'          => 'post_tag',
 			'field_type'        => 'select',
-			'allow_null'        => 0,
 			'add_term'          => 0,
-			'save_terms'        => 0,
-			'load_terms'        => 0,
-			'return_format'     => 'object',
-			'multiple'          => 0,
 		);
 
 		// Adds Source tab
@@ -766,18 +687,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_source',
 			'type'              => 'textarea',
 			'instructions'      => 'Appears below the story content (and below the Author Bio if set).',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'maxlength'         => '',
-			'rows'              => '',
-			'new_lines'         => '',
 		);
 
 		// Adds Tag Cloud tab
@@ -805,7 +714,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_tag_cloud_count',
 			'type'              => 'number',
 			'instructions'      => 'The number of tags to show in the tag cloud. Defaults to 5.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -815,17 +723,8 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'default_value'     => 5,
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
 			'min'               => 1,
-			'max'               => '',
 			'step'              => 1,
 		);
 
@@ -843,14 +742,6 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );
