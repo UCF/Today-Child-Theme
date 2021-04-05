@@ -210,8 +210,6 @@ function today_add_page_header_fields() {
 			'label'             => 'Header Custom Contents',
 			'name'              => 'page_header_content',
 			'type'              => 'wysiwyg',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -221,16 +219,6 @@ function today_add_page_header_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'tabs'              => 'all',
-			'toolbar'           => 'full',
-			'media_upload'      => 1,
-			'delay'             => 0,
 		);
 
 		// Adds Navigation tab

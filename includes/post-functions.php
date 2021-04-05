@@ -485,18 +485,8 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_header_deck',
 			'type'              => 'wysiwyg',
 			'instructions'      => 'Appears below the title on a single post.	Is also used as excerpt text within lists of posts.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'tabs'              => 'all',
 			'toolbar'           => 'inline_text',
 			'media_upload'      => 0,
-			'delay'             => 0,
 		);
 
 		// Adds Header Media tab
@@ -695,7 +685,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_bio',
 			'type'              => 'wysiwyg',
 			'instructions'      => 'Appears below the story\'s content.<br><br>This field must be set in order to display any author information (Author Name, Title, Bio, Photo) below the story\'s content.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -707,14 +696,9 @@ function today_add_post_custom_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '65',
-				'class' => '',
-				'id'    => '',
 			),
-			'default_value'     => '',
 			'tabs'              => 'text',
 			'media_upload'      => 0,
-			'toolbar'           => 'full',
-			'delay'             => 0,
 		);
 
 		// Adds Existing Author field

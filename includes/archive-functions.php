@@ -122,7 +122,6 @@ function today_add_category_fields() {
 			'name'              => 'category_custom_page_content',
 			'type'              => 'wysiwyg',
 			'instructions'      => 'Custom content for this category page.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -132,16 +131,6 @@ function today_add_category_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'tabs'              => 'all',
-			'toolbar'           => 'full',
-			'media_upload'      => 1,
-			'delay'             => 0,
 		);
 
 		// Adds Sidebar field
