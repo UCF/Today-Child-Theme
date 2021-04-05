@@ -88,18 +88,6 @@ function today_add_category_fields() {
 			'name'              => 'category_page_headline',
 			'type'              => 'text',
 			'instructions'      => 'The H1 headline to be used for this category page. Defaults to the category name + "News" (e.g. for a category named "Community" the default headline would be "Community News").',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Page Content field

@@ -658,7 +658,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_byline',
 			'type'              => 'text',
 			'instructions'      => 'Appears in place of post author\'s name.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -668,16 +667,6 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Author Title field
@@ -687,7 +676,6 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_author_title',
 			'type'              => 'text',
 			'instructions'      => 'Appears under the author\'s name/byline below the story\'s content, <b>only if the Author Bio is set</b>.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -697,16 +685,6 @@ function today_add_post_custom_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Author Photo field

@@ -153,7 +153,6 @@ function today_add_page_header_fields() {
 			'name'              => 'page_header_title',
 			'type'              => 'text',
 			'instructions'      => 'Overrides the page title.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -163,16 +162,6 @@ function today_add_page_header_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Header Subtitle Text field
@@ -181,8 +170,6 @@ function today_add_page_header_fields() {
 			'label'             => 'Header Subtitle Text',
 			'name'              => 'page_header_subtitle',
 			'type'              => 'text',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -192,16 +179,6 @@ function today_add_page_header_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Page h1 field
