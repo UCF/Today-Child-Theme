@@ -208,7 +208,6 @@ function today_add_homepage_fields() {
 			'name'              => 'curated_list_expiration',
 			'type'              => 'date_time_picker',
 			'instructions'      => 'Specify how long this curated list should remain on the homepage.	Leave blank to use this curated list indefinitely.<br>When a curated list expires, the homepage will revert to a list of latest stories.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -218,14 +217,8 @@ function today_add_homepage_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'display_format'    => 'm/d/Y g:i a',
 			'return_format'     => 'm/d/Y g:i a',
-			'first_day'         => 1,
 		);
 
 		// Adds Primary Content field
