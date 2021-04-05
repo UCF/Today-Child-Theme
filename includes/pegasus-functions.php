@@ -309,10 +309,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key'               => 'field_604a706de57a9',
 			'label'             => 'Featured Stories',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -322,13 +319,6 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds message field
@@ -385,18 +375,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f8975b6ad2',
 			'label' => 'The Feed',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
@@ -480,10 +459,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604924a5f3b33',
 			'label' => 'What\'s Trending',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -493,13 +469,6 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
@@ -546,10 +515,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604a70a8e57aa',
 			'label' => 'In This Issue',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -559,13 +525,6 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
@@ -1008,18 +967,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f8cb0eb43b',
 			'label' => 'Banner Ad',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
@@ -1066,18 +1014,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f898fb6ad3',
 			'label' => 'Events',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
@@ -1144,18 +1081,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f8998b6ad4',
 			'label' => 'Featured Gallery',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field

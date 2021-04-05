@@ -457,18 +457,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c813914b0cd8',
 			'label'             => 'Header Content',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Original Publish Date read only field
@@ -514,18 +503,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c81401dc81ba',
 			'label'             => 'Header Media',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Header Media Type field
@@ -610,18 +588,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c813f04c81b3',
 			'label'             => 'Author',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Author Type field
@@ -786,18 +753,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c814082c81bc',
 			'label'             => 'Primary Tag',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Primary Tag field
@@ -828,18 +784,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c8140dec81be',
 			'label'             => 'Source',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Source field
@@ -867,18 +812,7 @@ function today_add_post_custom_fields() {
 		$fields[] = array(
 			'key'               => 'field_5c98fd5aeb16b',
 			'label'             => 'Tag Cloud',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Display Tag Cloud field

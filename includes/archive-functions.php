@@ -94,18 +94,7 @@ function today_add_category_fields() {
 		$fields[] = array(
 			'key'               => 'field_605a366fcfa31',
 			'label'             => 'Page Content',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Page Content Info field
@@ -181,18 +170,7 @@ function today_add_category_fields() {
 		$fields[] = array(
 			'key'               => 'field_605a34c3cfa2f',
 			'label'             => 'Sidebar',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Enable Sidebar Field

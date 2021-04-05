@@ -106,18 +106,7 @@ function today_add_page_header_fields() {
 		$fields[] = array(
 			'key'               => 'field_590ca423f6654',
 			'label'             => 'Header Content',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Type of Content field
@@ -244,22 +233,11 @@ function today_add_page_header_fields() {
 			'delay'             => 0,
 		);
 
-		// Adds Navigation field
+		// Adds Navigation tab
 		$fields[] = array(
 			'key'               => 'field_5a564fecfb51d',
 			'label'             => 'Navigation',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Include Subnavigation field
