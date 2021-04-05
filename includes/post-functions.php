@@ -467,6 +467,7 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_header_publish_date',
 			'type'              => 'read_only',
 			'instructions'      => 'The date the post was originally published. Changing the <a href="#submitdiv">\'Published on\' date</a> above will update the dates listed in the story’s header and bump this story to the top of lists where it\'s referenced.',
+			'display_type'      => 'text',
 		);
 
 		// Adds Deck field
