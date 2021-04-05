@@ -232,18 +232,11 @@ function today_add_sidebar_fields() {
 			'name'              => 'enable_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Enables a sidebar on this page with customizable drag-and-drop contents.',
-			'required'          => 0,
-			'conditional_logic' => 0,
 			'wrapper'           => array(
 				'width' => '30',
-				'class' => '',
-				'id'    => '',
 			),
-			'message'           => '',
 			'default_value'     => 1,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Sidebar Content fields

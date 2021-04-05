@@ -112,18 +112,7 @@ function today_add_category_fields() {
 			'name'              => 'category_customize_page_content',
 			'type'              => 'true_false',
 			'instructions'      => 'Turn on in order to customize this page\'s content.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'default_value'     => 0,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Custom Page Content field
@@ -169,18 +158,8 @@ function today_add_category_fields() {
 			'name'              => 'category_enable_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Enables a sidebar on this category page with default sidebar content (UCF In The News, Events at UCF, Resources menu). Options are also available below to customize sidebar contents.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
 			'default_value'     => 1,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Customize Sidebar field
@@ -190,7 +169,6 @@ function today_add_category_fields() {
 			'name'              => 'category_customize_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Turn on in order to customize the content and sections in the sidebar.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -200,16 +178,7 @@ function today_add_category_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'default_value'     => 0,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Sidebar Fields clone field

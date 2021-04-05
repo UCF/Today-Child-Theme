@@ -822,18 +822,8 @@ function today_add_post_custom_fields() {
 			'name'              => 'post_display_tag_cloud',
 			'type'              => 'true_false',
 			'instructions'      => 'Display a tag cloud under the post\'s content or source. Defaults to true.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
 			'default_value'     => 1,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Tag Cloud Count field
@@ -918,18 +908,7 @@ function today_add_main_site_news_fields() {
 			'name'              => 'post_main_site_story',
 			'type'              => 'true_false',
 			'instructions'      => 'When checked, the story will appear in the news feed on UCF.edu.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'default_value'     => 0,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Defines Main Site News field group

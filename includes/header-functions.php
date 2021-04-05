@@ -247,18 +247,7 @@ function today_add_page_header_fields() {
 			'name'              => 'page_header_include_subnav',
 			'type'              => 'true_false',
 			'instructions'      => 'Enable this setting to display an affixed subnavigation bar below the page header.	Requires the Automatic Sections Menu plugin to be activated, and for at least one section within the page\'s content to be configured to appear in the navbar.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'message'           => 'Include subnavigation',
-			'default_value'     => 0,
-			'ui'                => 0,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Defines Page Header Fields field group
