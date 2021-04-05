@@ -232,18 +232,11 @@ function today_add_sidebar_fields() {
 			'name'              => 'enable_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Enables a sidebar on this page with customizable drag-and-drop contents.',
-			'required'          => 0,
-			'conditional_logic' => 0,
 			'wrapper'           => array(
 				'width' => '30',
-				'class' => '',
-				'id'    => '',
 			),
-			'message'           => '',
 			'default_value'     => 1,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Sidebar Content fields
@@ -252,8 +245,6 @@ function today_add_sidebar_fields() {
 			'label'             => 'Sidebar Content',
 			'name'              => 'sidebar_content',
 			'type'              => 'flexible_content',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -265,8 +256,6 @@ function today_add_sidebar_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '70',
-				'class' => '',
-				'id'    => '',
 			),
 			'layouts'           => array(
 				'5c9ce0103b79e' => array(
@@ -281,15 +270,9 @@ function today_add_sidebar_fields() {
 							'name' => 'events_feed_url',
 							'type' => 'url',
 							'instructions' => 'UCF Events feed URL. Defaults to the "UCF Events JSON Feed URL" value in the UCF Events plugin.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
-							'default_value' => '',
-							'placeholder' => '',
 						),
 						array(
 							'key' => 'field_5c9e1793455c8',
@@ -297,18 +280,10 @@ function today_add_sidebar_fields() {
 							'name' => 'events_layout',
 							'type' => 'text',
 							'instructions' => 'Layout that will be used for displaying the events. Defaults to classic.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
 							'default_value' => 'classic',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
 						),
 						array(
 							'key' => 'field_5c9e17cb455c9',
@@ -316,19 +291,11 @@ function today_add_sidebar_fields() {
 							'name' => 'events_number_of_posts',
 							'type' => 'number',
 							'instructions' => 'The number of events to be displayed. Defaults to 4.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
 							'default_value' => 4,
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
 							'min' => 1,
-							'max' => '',
 							'step' => 1,
 						),
 						array(
@@ -337,18 +304,11 @@ function today_add_sidebar_fields() {
 							'name' => 'events_view_all_link',
 							'type' => 'url',
 							'instructions' => 'The URL assigned to the \'View All Events\' link. Defaults to a front-end view URL based on the "UCF Events JSON Feed URL" value in the UCF Events plugin.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
-							'default_value' => '',
-							'placeholder' => '',
 						),
 					),
-					'min' => '',
 					'max' => '1',
 				),
 				'layout_5c9ce14d63fdc' => array(
@@ -363,18 +323,10 @@ function today_add_sidebar_fields() {
 							'name' => 'news_layout',
 							'type' => 'text',
 							'instructions' => 'Layout that will be used to display the news stories. Defaults to condensed.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
 							'default_value' => 'condensed',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
 						),
 						array(
 							'key' => 'field_5c9e1900455cc',
@@ -382,23 +334,12 @@ function today_add_sidebar_fields() {
 							'name' => 'news_number_of_posts',
 							'type' => 'number',
 							'instructions' => 'The number of news stories to be displayed. Defaults to 4.',
-							'required' => 0,
-							'conditional_logic' => 0,
 							'wrapper' => array(
 								'width' => '50',
-								'class' => '',
-								'id' => '',
 							),
 							'default_value' => 4,
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'min' => '',
-							'max' => '',
-							'step' => '',
 						),
 					),
-					'min' => '',
 					'max' => '1',
 				),
 				'layout_5c9ce13363fdb' => array(
@@ -413,19 +354,11 @@ function today_add_sidebar_fields() {
 							'name' => 'resources_menu',
 							'type' => 'nav_menu',
 							'instructions' => 'Select the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to \'Resources\'.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
 							'save_format' => 'id',
 							'container' => 'div',
 							'allow_null' => 1,
 						),
 					),
-					'min' => '',
 					'max' => '1',
 				),
 				'layout_5c9ce1de68521' => array(
@@ -440,25 +373,13 @@ function today_add_sidebar_fields() {
 							'name' => 'spotlight_object',
 							'type' => 'post_object',
 							'instructions' => 'Select a spotlight to display in the sidebar.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
 							'post_type' => array(
 								0 => 'ucf_spotlight',
 							),
 							'taxonomy' => array(
 							),
-							'allow_null' => 0,
-							'multiple' => 0,
-							'return_format' => 'object',
-							'ui' => 1,
 						),
 					),
-					'min' => '',
 					'max' => '1',
 				),
 				'layout_5c9ce16b63fdd' => array(
@@ -473,27 +394,11 @@ function today_add_sidebar_fields() {
 							'name' => 'custom_content',
 							'type' => 'wysiwyg',
 							'instructions' => 'Insert custom content to display in the sidebar.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'tabs' => 'all',
-							'toolbar' => 'full',
-							'media_upload' => 1,
-							'delay' => 0,
 						),
 					),
-					'min' => '',
-					'max' => '',
 				),
 			),
 			'button_label'      => 'Add Row',
-			'min'               => '',
-			'max'               => '',
 		);
 
 		// Defines Sidebar Fields field group
@@ -515,14 +420,6 @@ function today_add_sidebar_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );

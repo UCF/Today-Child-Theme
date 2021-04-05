@@ -88,55 +88,21 @@ function today_add_category_fields() {
 			'name'              => 'category_page_headline',
 			'type'              => 'text',
 			'instructions'      => 'The H1 headline to be used for this category page. Defaults to the category name + "News" (e.g. for a category named "Community" the default headline would be "Community News").',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'placeholder'       => '',
-			'prepend'           => '',
-			'append'            => '',
-			'maxlength'         => '',
 		);
 
 		// Adds Page Content field
 		$fields[] = array(
 			'key'               => 'field_605a366fcfa31',
 			'label'             => 'Page Content',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Page Content Info field
 		$fields[] = array(
 			'key'               => 'field_605a38a791640',
 			'label'             => 'Page Content Info',
-			'name'              => '',
 			'type'              => 'message',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'message'           => 'By default, the category page\'s content consists of a single story displayed in the primary vertical layout at the top, followed by 9 posts displayed 3 per-row in the vertical layout. With the sidebar enabled, this content is displayed in a <code>.col-lg-8</code>. If the sidebar is disabled, the content will be displayed in a <code>.col-12</code>.',
-			'new_lines'         => 'wpautop',
-			'esc_html'          => 0,
 		);
 
 		// Adds Customize Page Content field
@@ -146,18 +112,7 @@ function today_add_category_fields() {
 			'name'              => 'category_customize_page_content',
 			'type'              => 'true_false',
 			'instructions'      => 'Turn on in order to customize this page\'s content.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'default_value'     => 0,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Custom Page Content field
@@ -167,7 +122,6 @@ function today_add_category_fields() {
 			'name'              => 'category_custom_page_content',
 			'type'              => 'wysiwyg',
 			'instructions'      => 'Custom content for this category page.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -177,34 +131,13 @@ function today_add_category_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'default_value'     => '',
-			'tabs'              => 'all',
-			'toolbar'           => 'full',
-			'media_upload'      => 1,
-			'delay'             => 0,
 		);
 
 		// Adds Sidebar field
 		$fields[] = array(
 			'key'               => 'field_605a34c3cfa2f',
 			'label'             => 'Sidebar',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds Enable Sidebar Field
@@ -214,18 +147,8 @@ function today_add_category_fields() {
 			'name'              => 'category_enable_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Enables a sidebar on this category page with default sidebar content (UCF In The News, Events at UCF, Resources menu). Options are also available below to customize sidebar contents.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
 			'default_value'     => 1,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Customize Sidebar field
@@ -235,7 +158,6 @@ function today_add_category_fields() {
 			'name'              => 'category_customize_sidebar',
 			'type'              => 'true_false',
 			'instructions'      => 'Turn on in order to customize the content and sections in the sidebar.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -245,16 +167,7 @@ function today_add_category_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'message'           => '',
-			'default_value'     => 0,
 			'ui'                => 1,
-			'ui_on_text'        => '',
-			'ui_off_text'       => '',
 		);
 
 		// Adds Sidebar Fields clone field
@@ -263,8 +176,6 @@ function today_add_category_fields() {
 			'label'             => 'Sidebar Fields',
 			'name'              => 'category_sidebar_fields',
 			'type'              => 'clone',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -276,16 +187,12 @@ function today_add_category_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '100',
-				'class' => '',
-				'id'    => '',
 			),
 			'clone'             => array(
 				0 => 'field_5c9cdf7861887',
 			),
 			'display'           => 'group',
 			'layout'            => 'table',
-			'prefix_label'      => 0,
-			'prefix_name'       => 0,
 		);
 
 		// Defines Category Fields field group
@@ -302,14 +209,6 @@ function today_add_category_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );

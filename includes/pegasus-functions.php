@@ -309,10 +309,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key'               => 'field_604a706de57a9',
 			'label'             => 'Featured Stories',
-			'name'              => '',
 			'type'              => 'tab',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -322,32 +319,13 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
-			'placement'         => 'top',
-			'endpoint'          => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7155e57ad',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Content block displayed at the top of the page.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Featured Stories clone field
@@ -356,8 +334,6 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'Featured Stories',
 			'name' => 'primary_content',
 			'type' => 'clone',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -367,17 +343,9 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'clone' => array(
 				0 => 'field_5cac9fb846af9',
 			),
-			'display' => 'seamless',
-			'layout' => 'block',
-			'prefix_label' => 0,
 			'prefix_name' => 1,
 		);
 
@@ -385,37 +353,14 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f8975b6ad2',
 			'label' => 'The Feed',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8bd0b6ad8',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that contains a compact list of UCF Today stories.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Filter Posts by Tag
@@ -425,21 +370,9 @@ function today_add_pegasus_homepage_content_fields() {
 			'name' => 'the_feed_tags',
 			'type' => 'taxonomy',
 			'instructions' => 'Specify one or more tags to filter posts in The Feed section by.',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'taxonomy' => 'post_tag',
 			'field_type' => 'multi_select',
-			'allow_null' => 0,
 			'add_term' => 0,
-			'save_terms' => 0,
-			'load_terms' => 0,
-			'return_format' => 'id',
-			'multiple' => 0,
 		);
 
 		// Adds Tag Filtering By field
@@ -449,7 +382,6 @@ function today_add_pegasus_homepage_content_fields() {
 			'name' => 'the_feed_tag_include',
 			'type' => 'select',
 			'instructions' => 'Posts included in The Feed section must have:',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -458,32 +390,18 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'choices' => array(
 				'tag__in' => 'Any of these tags',
 				'tag__and' => 'All of these tags',
 			),
 			'default_value' => false,
-			'allow_null' => 0,
-			'multiple' => 0,
-			'ui' => 0,
-			'return_format' => 'value',
-			'ajax' => 0,
-			'placeholder' => '',
 		);
 
 		// Adds What's Trending tab
 		$fields[] = array(
 			'key' => 'field_604924a5f3b33',
 			'label' => 'What\'s Trending',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -493,32 +411,13 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7131e57ac',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section for promoting trending social content.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Content field
@@ -527,18 +426,7 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'Content',
 			'name' => 'trending_content',
 			'type' => 'wysiwyg',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'tabs' => 'all',
 			'toolbar' => 'basic',
-			'media_upload' => 1,
 			'delay' => 1,
 		);
 
@@ -546,10 +434,7 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604a70a8e57aa',
 			'label' => 'In This Issue',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -559,32 +444,13 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604a7102e57ab',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that displays a link to the latest active issue and a list of stories in the issue.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds issue_content_type field
@@ -593,24 +459,12 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'How should these stories be displayed?',
 			'name' => 'issue_content_type',
 			'type' => 'radio',
-			'instructions' => '',
 			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'choices' => array(
 				'latest' => 'Latest stories in the current active issue',
 				'curated' => 'Curated story list',
 			),
-			'allow_null' => 0,
-			'other_choice' => 0,
 			'default_value' => 'latest',
-			'layout' => 'vertical',
-			'return_format' => 'value',
-			'save_other_choice' => 0,
 		);
 
 		// Adds curated stories field
@@ -619,8 +473,6 @@ function today_add_pegasus_homepage_content_fields() {
 			'label'             => 'Curated Stories',
 			'name'              => 'curated_stories',
 			'type'              => 'flexible_content',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -629,11 +481,6 @@ function today_add_pegasus_homepage_content_fields() {
 						'value'    => 'curated',
 					),
 				),
-			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
 			),
 			'layouts'           => array(
 				'5cac9fc2da26b' => array(
@@ -647,109 +494,58 @@ function today_add_pegasus_homepage_content_fields() {
 							'label'             => 'Select a Story',
 							'name'              => 'post',
 							'type'              => 'post_object',
-							'instructions'      => '',
 							'required'          => 1,
-							'conditional_logic' => 0,
-							'wrapper'           => array(
-								'width' => '',
-								'class' => '',
-								'id'    => '',
-							),
 							'post_type' => array(
 								0 => 'post',
 							),
 							'taxonomy' => array(
 							),
-							'allow_null'    => 0,
-							'multiple'      => 0,
-							'return_format' => 'object',
-							'ui'            => 1,
 						),
 						array(
 							'key'               => 'field_604905e827c97',
 							'label'             => 'Orientation',
 							'name'              => 'layout',
 							'type'              => 'select',
-							'instructions'      => '',
 							'required'          => 1,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '40',
-								'class' => '',
-								'id'    => '',
 							),
 							'choices' => array(
 								'horizontal' => 'Horizontal',
 								'vertical'   => 'Vertical',
 							),
 							'default_value' => 'vertical',
-							'allow_null'    => 0,
-							'multiple'      => 0,
-							'ui'            => 0,
-							'ajax'          => 0,
-							'return_format' => 'value',
-							'placeholder'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827c9f',
 							'label'             => 'Show Thumbnail',
 							'name'              => 'show_image',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '20',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
 							'default_value' => 1,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827ca7',
 							'label'             => 'Show Excerpt',
 							'name'              => 'show_excerpt',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '20',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
 							'default_value' => 1,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827cae',
 							'label'             => 'Show Subhead',
 							'name'              => 'show_subhead',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '20',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
-							'default_value' => 0,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 					),
-					'min' => '',
-					'max' => '',
 				),
 				'5caca77046afc' => array(
 					'key'        => '5caca77046afc',
@@ -762,17 +558,9 @@ function today_add_pegasus_homepage_content_fields() {
 							'label'             => 'Select Stories',
 							'name'              => 'posts',
 							'type'              => 'repeater',
-							'instructions'      => '',
 							'required'          => 1,
-							'conditional_logic' => 0,
-							'wrapper'           => array(
-								'width' => '',
-								'class' => '',
-								'id'    => '',
-							),
 							'collapsed'    => 'field_5caca86a46b00',
 							'min'          => 1,
-							'max'          => 0,
 							'layout'       => 'block',
 							'button_label' => 'Add Story',
 							'sub_fields'   => array(
@@ -781,23 +569,12 @@ function today_add_pegasus_homepage_content_fields() {
 									'label'             => 'Story',
 									'name'              => 'post',
 									'type'              => 'post_object',
-									'instructions'      => '',
 									'required'          => 1,
-									'conditional_logic' => 0,
-									'wrapper'           => array(
-										'width' => '',
-										'class' => '',
-										'id'    => '',
-									),
 									'post_type' => array(
 										0 => 'post',
 									),
 									'taxonomy' => array(
 									),
-									'allow_null'    => 0,
-									'multiple'      => 0,
-									'return_format' => 'object',
-									'ui'            => 1,
 								),
 							),
 						),
@@ -806,95 +583,53 @@ function today_add_pegasus_homepage_content_fields() {
 							'label'             => 'Orientation',
 							'name'              => 'layout',
 							'type'              => 'select',
-							'instructions'      => '',
 							'required'          => 1,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '40',
-								'class' => '',
-								'id'    => '',
 							),
 							'choices' => array(
 								'horizontal' => 'Horizontal',
 								'vertical'   => 'Vertical',
 							),
 							'default_value' => 'vertical',
-							'allow_null'    => 0,
-							'multiple'      => 0,
-							'ui'            => 0,
-							'ajax'          => 0,
-							'return_format' => 'value',
-							'placeholder'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827cc3',
 							'label'             => 'Show Thumbnails',
 							'name'              => 'show_thumbnail',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '15',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
 							'default_value' => 1,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827ccb',
 							'label'             => 'Show Excerpts',
 							'name'              => 'show_excerpt',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '15',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
 							'default_value' => 1,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827cd2',
 							'label'             => 'Show Subheads',
 							'name'              => 'show_subhead',
 							'type'              => 'true_false',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '15',
-								'class' => '',
-								'id'    => '',
 							),
-							'message'       => '',
 							'default_value' => 0,
-							'ui'            => 0,
-							'ui_on_text'    => '',
-							'ui_off_text'   => '',
 						),
 						array(
 							'key'               => 'field_604905e827cd9',
 							'label'             => 'Posts per Row',
 							'name'              => 'posts_per_row',
 							'type'              => 'select',
-							'instructions'      => '',
-							'required'          => 0,
-							'conditional_logic' => 0,
 							'wrapper'           => array(
 								'width' => '15',
-								'class' => '',
-								'id'    => '',
 							),
 							'choices' => array(
 								1 => '1',
@@ -904,16 +639,8 @@ function today_add_pegasus_homepage_content_fields() {
 								6 => '6',
 							),
 							'default_value' => 3,
-							'allow_null'    => 0,
-							'multiple'      => 0,
-							'ui'            => 0,
-							'return_format' => 'value',
-							'ajax'          => 0,
-							'placeholder'   => '',
 						),
 					),
-					'min' => '',
-					'max' => '',
 				),
 				'5caca9ae46b03' => array(
 					'key'        => '5caca9ae46b03',
@@ -926,17 +653,8 @@ function today_add_pegasus_homepage_content_fields() {
 							'label'             => 'Select Stories',
 							'name'              => 'posts',
 							'type'              => 'repeater',
-							'instructions'      => '',
 							'required'          => 1,
-							'conditional_logic' => 0,
-							'wrapper'           => array(
-								'width' => '',
-								'class' => '',
-								'id'    => '',
-							),
-							'collapsed'    => '',
 							'min'          => 1,
-							'max'          => 0,
 							'layout'       => 'block',
 							'button_label' => 'Add Story',
 							'sub_fields'   => array(
@@ -945,29 +663,16 @@ function today_add_pegasus_homepage_content_fields() {
 									'label'             => 'Story',
 									'name'              => 'post',
 									'type'              => 'post_object',
-									'instructions'      => '',
 									'required'          => 1,
-									'conditional_logic' => 0,
-									'wrapper'           => array(
-										'width' => '',
-										'class' => '',
-										'id'    => '',
-									),
 									'post_type' => array(
 										0 => 'post',
 									),
 									'taxonomy' => array(
 									),
-									'allow_null'    => 0,
-									'multiple'      => 0,
-									'return_format' => 'object',
-									'ui'            => 1,
 								),
 							),
 						),
 					),
-					'min' => '',
-					'max' => '',
 				),
 				'5caca93746b01' => array(
 					'key'        => '5caca93746b01',
@@ -982,63 +687,25 @@ function today_add_pegasus_homepage_content_fields() {
 							'type'              => 'wysiwyg',
 							'instructions'      => 'Specify arbitrary, custom content to add to this row.',
 							'required'          => 1,
-							'conditional_logic' => 0,
-							'wrapper'           => array(
-								'width' => '',
-								'class' => '',
-								'id'    => '',
-							),
-							'default_value' => '',
-							'tabs'          => 'all',
-							'toolbar'       => 'full',
-							'media_upload'  => 1,
-							'delay'         => 0,
 						),
 					),
-					'min' => '',
-					'max' => '',
 				),
 			),
 			'button_label'      => 'Add Row',
-			'min'               => '',
-			'max'               => '',
 		);
 
 		// Adds Banner Ad tab
 		$fields[] = array(
 			'key' => 'field_604f8cb0eb43b',
 			'label' => 'Banner Ad',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8ce5eb43c',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Optional block of content displayed immediately underneath the In This Issue section. Can be used for promotional items/banner ads, or other arbitrary content.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Content field
@@ -1047,16 +714,6 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'Content',
 			'name' => 'banner_content',
 			'type' => 'wysiwyg',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'tabs' => 'all',
 			'toolbar' => 'basic',
 			'media_upload' => 0,
 			'delay' => 1,
@@ -1066,37 +723,14 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f898fb6ad3',
 			'label' => 'Events',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8baab6ad7',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Block of content that contains a stylized list of events from the UCF Events system.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Feed URL field
@@ -1106,15 +740,9 @@ function today_add_pegasus_homepage_content_fields() {
 			'name' => 'events_feed_url',
 			'type' => 'url',
 			'instructions' => 'UCF Events feed URL. Defaults to the "UCF Events JSON Feed URL" value in the UCF Events plugin.',
-			'required' => 0,
-			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '65',
-				'class' => '',
-				'id' => '',
 			),
-			'default_value' => '',
-			'placeholder' => '',
 		);
 
 		// Adds Number of Events field
@@ -1124,19 +752,11 @@ function today_add_pegasus_homepage_content_fields() {
 			'name' => 'events_number_of_posts',
 			'type' => 'number',
 			'instructions' => 'The number of events to be displayed. Defaults to 3.',
-			'required' => 0,
-			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '35',
-				'class' => '',
-				'id' => '',
 			),
 			'default_value' => 3,
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
 			'min' => 1,
-			'max' => '',
 			'step' => 1,
 		);
 
@@ -1144,37 +764,14 @@ function today_add_pegasus_homepage_content_fields() {
 		$fields[] = array(
 			'key' => 'field_604f8998b6ad4',
 			'label' => 'Featured Gallery',
-			'name' => '',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
-			'endpoint' => 0,
 		);
 
 		// Adds message field
 		$fields[] = array(
 			'key' => 'field_604f8b88b6ad6',
-			'label' => '',
-			'name' => '',
 			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'message' => '<em>Section that displays a link to a featured gallery story.</em>',
-			'new_lines' => 'wpautop',
-			'esc_html' => 0,
 		);
 
 		// Adds Featured Gallery field
@@ -1184,21 +781,9 @@ function today_add_pegasus_homepage_content_fields() {
 			'name' => 'featured_gallery',
 			'type' => 'post_object',
 			'instructions' => 'Choose a post that should be displayed in this section.',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'post_type' => array(
 				0 => 'post',
 			),
-			'taxonomy' => '',
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
 		);
 
 		// Defines Pegasus Homepage Content field group
@@ -1242,11 +827,6 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
 			'hide_on_screen'        => array(
 				0 => 'the_content',
 				1 => 'excerpt',
@@ -1255,8 +835,6 @@ function today_add_pegasus_homepage_content_fields() {
 				4 => 'tags',
 				5 => 'send-trackbacks',
 			),
-			'active'                => true,
-			'description'           => '',
 		);
 
 		acf_add_local_field_group( $field_group );
