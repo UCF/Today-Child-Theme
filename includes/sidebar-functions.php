@@ -245,8 +245,6 @@ function today_add_sidebar_fields() {
 			'label'             => 'Sidebar Content',
 			'name'              => 'sidebar_content',
 			'type'              => 'flexible_content',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -258,8 +256,6 @@ function today_add_sidebar_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '70',
-				'class' => '',
-				'id'    => '',
 			),
 			'layouts'           => array(
 				'5c9ce0103b79e' => array(
@@ -457,8 +453,6 @@ function today_add_sidebar_fields() {
 				),
 			),
 			'button_label'      => 'Add Row',
-			'min'               => '',
-			'max'               => '',
 		);
 
 		// Defines Sidebar Fields field group

@@ -251,8 +251,6 @@ function today_add_homepage_fields() {
 			'label'             => 'Curated Stories',
 			'name'              => 'curated_stories',
 			'type'              => 'flexible_content',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -261,11 +259,6 @@ function today_add_homepage_fields() {
 						'value'    => 'curated',
 					),
 				),
-			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
 			),
 			'layouts'           => array(
 				'5cac9fc2da26b' => array(
@@ -565,8 +558,6 @@ function today_add_homepage_fields() {
 				),
 			),
 			'button_label'      => 'Add Row',
-			'min'               => '',
-			'max'               => '',
 		);
 
 		// Adds Custom Page Content message field
