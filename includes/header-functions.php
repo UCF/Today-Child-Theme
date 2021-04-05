@@ -117,22 +117,11 @@ function today_add_page_header_fields() {
 			'type'              => 'radio',
 			'instructions'      => 'Specify the type of content that should be displayed within the header.	Choose "Title and subtitle" to display a styled page title and optional subtitle, or choose "Custom content" to add any arbitrary content.	If "Custom content" is selected, a page title and subtitle are NOT included by default and should be added manually.',
 			'required'          => 1,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'choices'           => array(
 				'title_subtitle' => 'Title and subtitle',
 				'custom'         => 'Custom content',
 			),
-			'allow_null'        => 0,
-			'other_choice'      => 0,
-			'save_other_choice' => 0,
 			'default_value'     => 'title_subtitle',
-			'layout'            => 'vertical',
-			'return_format'     => 'value',
 		);
 
 		// Adds Header Title Text field
@@ -187,21 +176,11 @@ function today_add_page_header_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'choices'           => array(
 				'title'    => 'Title Text',
 				'subtitle' => 'Subtitle Text',
 			),
-			'allow_null'        => 0,
-			'other_choice'      => 0,
-			'save_other_choice' => 0,
 			'default_value'     => 'title',
-			'layout'            => 'vertical',
-			'return_format'     => 'value',
 		);
 
 		// Adds Header Custom Contents field

@@ -503,23 +503,11 @@ function today_add_post_custom_fields() {
 			'name'              => 'header_media_type',
 			'type'              => 'radio',
 			'instructions'      => 'Select the type of header for this story.',
-			'required'          => 0,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'choices'           => array(
 				'image' => 'Image',
 				'video' => 'Video',
 			),
-			'allow_null'        => 0,
-			'other_choice'      => 0,
-			'save_other_choice' => 0,
 			'default_value'     => 'image',
-			'layout'            => 'vertical',
-			'return_format'     => 'value',
 		);
 
 		// Adds Header Video field

@@ -193,25 +193,12 @@ function today_add_homepage_fields() {
 			'label'             => 'What type of content should be displayed on the homepage?',
 			'name'              => 'page_content_type',
 			'type'              => 'radio',
-			'instructions'      => '',
 			'required'          => 1,
-			'conditional_logic' => 0,
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'choices'           => array(
 				'latest'  => 'Latest stories',
 				'curated' => 'Curated story list',
 				'custom'  => 'Custom page content',
 			),
-			'allow_null'        => 0,
-			'other_choice'      => 0,
-			'save_other_choice' => 0,
-			'default_value'     => '',
-			'layout'            => 'vertical',
-			'return_format'     => 'value',
 		);
 
 		// Adds Curated List Expiration field

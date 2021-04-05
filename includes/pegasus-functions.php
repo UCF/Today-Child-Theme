@@ -483,24 +483,12 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'How should these stories be displayed?',
 			'name' => 'issue_content_type',
 			'type' => 'radio',
-			'instructions' => '',
 			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'choices' => array(
 				'latest' => 'Latest stories in the current active issue',
 				'curated' => 'Curated story list',
 			),
-			'allow_null' => 0,
-			'other_choice' => 0,
 			'default_value' => 'latest',
-			'layout' => 'vertical',
-			'return_format' => 'value',
-			'save_other_choice' => 0,
 		);
 
 		// Adds curated stories field
