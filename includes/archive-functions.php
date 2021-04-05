@@ -176,8 +176,6 @@ function today_add_category_fields() {
 			'label'             => 'Sidebar Fields',
 			'name'              => 'category_sidebar_fields',
 			'type'              => 'clone',
-			'instructions'      => '',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -189,16 +187,12 @@ function today_add_category_fields() {
 			),
 			'wrapper'           => array(
 				'width' => '100',
-				'class' => '',
-				'id'    => '',
 			),
 			'clone'             => array(
 				0 => 'field_5c9cdf7861887',
 			),
 			'display'           => 'group',
 			'layout'            => 'table',
-			'prefix_label'      => 0,
-			'prefix_name'       => 0,
 		);
 
 		// Defines Category Fields field group

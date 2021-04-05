@@ -334,8 +334,6 @@ function today_add_pegasus_homepage_content_fields() {
 			'label' => 'Featured Stories',
 			'name' => 'primary_content',
 			'type' => 'clone',
-			'instructions' => '',
-			'required' => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -345,17 +343,9 @@ function today_add_pegasus_homepage_content_fields() {
 					),
 				),
 			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
 			'clone' => array(
 				0 => 'field_5cac9fb846af9',
 			),
-			'display' => 'seamless',
-			'layout' => 'block',
-			'prefix_label' => 0,
 			'prefix_name' => 1,
 		);
 

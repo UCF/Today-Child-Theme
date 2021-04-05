@@ -248,7 +248,6 @@ function today_add_homepage_fields() {
 			'name'              => 'primary_content',
 			'type'              => 'clone',
 			'instructions'      => 'Content block that appears full width above the two column layout when the sidebar is enabled. Place the primary story here.',
-			'required'          => 0,
 			'conditional_logic' => array(
 				array(
 					array(
@@ -258,16 +257,10 @@ function today_add_homepage_fields() {
 					),
 				),
 			),
-			'wrapper'           => array(
-				'width' => '',
-				'class' => '',
-				'id'    => '',
-			),
 			'clone'             => array(
 				0 => 'field_5cac9fb846af9',
 			),
 			'display'           => 'group',
-			'layout'            => 'block',
 			'prefix_label'      => 1,
 			'prefix_name'       => 1,
 		);
