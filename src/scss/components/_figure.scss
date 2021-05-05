@@ -102,6 +102,12 @@ img[class*='wp-image-']:not(.figure-img) {
   margin-bottom: 1.5rem;
   margin-top: 0;
 
+  &.alignnone {
+    // NOTE: !important and combinator selector necessary
+    // to override .alignnone display reset
+    display: flex !important; // sass-lint:disable-line no-important
+  }
+
   @include media-breakpoint-up(md) {
     margin-bottom: 2rem;
   }
