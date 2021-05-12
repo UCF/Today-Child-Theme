@@ -16,8 +16,10 @@ img[class*='wp-image-']:not(.figure-img) {
     }
   }
 
-  &.float-left,
-  &.float-right {
+  &.float-left:not(.alignnone):not(.aligncenter),
+  &.float-right:not(.alignnone):not(.aligncenter),
+  &.alignleft,
+  &.alignright {
     @include media-breakpoint-only(xs) {
       display: block;
       float: none !important; // sass-lint:disable-line no-important
@@ -49,19 +51,31 @@ img[class*='wp-image-']:not(.figure-img) {
     }
   }
 
-  &.float-left {
+  &.float-left:not(.alignnone):not(.aligncenter):not(.alignright),
+  &.alignleft,
+  &.alignleft.float-right,
+  &.alignleft.mx-auto.d-block {
+    // NOTE: !important necessary to override .mx-auto
+    // sass-lint:disable-block no-important
     @include media-breakpoint-up(sm) {
-      margin-right: $grid-gutter-width-base;
+      margin-left: 0 !important;
+      margin-right: $grid-gutter-width-base !important;
     }
 
     @include media-breakpoint-up(md) {
-      margin-right: $grid-gutter-width-base * 1.5;
+      margin-right: $grid-gutter-width-base * 1.5 !important;
     }
   }
 
-  &.float-right {
+  &.float-right:not(.alignnone):not(.aligncenter):not(.alignleft),
+  &.alignright,
+  &.alignright.float-left,
+  &.alignright.mx-auto.d-block {
+    // NOTE: !important necessary to override .mx-auto
+    // sass-lint:disable-block no-important
     @include media-breakpoint-up(sm) {
-      margin-left: $grid-gutter-width-base;
+      margin-left: $grid-gutter-width-base !important;
+      margin-right: 0 !important;
     }
 
     @include media-breakpoint-up(md) {
