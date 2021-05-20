@@ -25,7 +25,7 @@ $lg-max: breakpoint-max('lg');
     font-size: .8rem;
 
     @include media-breakpoint-only(lg) {
-      font-size: $font-size-xs;
+      font-size: .7rem;
     }
   }
 
