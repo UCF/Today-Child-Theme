@@ -42,12 +42,19 @@ $lg-max: breakpoint-max('lg');
       top: calc(10vh + 200px);
 
       .btn-sm {
+        justify-content: center;
         padding: .5rem .75rem;
       }
 
+      // for UCF-Social-Plugin prior to v4.0.0:
       .fa {
         font-size: 1.4rem;
         vertical-align: middle;
+      }
+
+      // for UCF-Social-Plugin v4.0.0+:
+      .ucf-social-icon {
+        height: 1.5em;
       }
 
       .btn-text {
