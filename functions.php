@@ -17,6 +17,7 @@ include_once TODAY_THEME_DIR . 'includes/post-functions.php';
 include_once TODAY_THEME_DIR . 'includes/pegasus-functions.php';
 include_once TODAY_THEME_DIR . 'includes/archive-functions.php';
 include_once TODAY_THEME_DIR . 'includes/tag-cloud-functions.php';
+include_once TODAY_THEME_DIR . 'includes/pegasus-list-functions.php';
 
 // AMP
 include_once TODAY_THEME_DIR . 'includes/amp-functions.php';
