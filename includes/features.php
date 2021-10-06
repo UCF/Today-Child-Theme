@@ -221,19 +221,21 @@ function today_display_feature_vertical( $post, $args=array() ) {
 ?>
 	<article class="feature feature-vertical <?php echo $type_class; ?> mb-4" aria-label="<?php echo esc_attr( $title ); ?>">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
-			<div class="media-background-container mb-3 feature-thumbnail-wrap">
+			<div class="media-background-container feature-thumbnail-wrap">
 				<?php echo $thumbnail; ?>
 			</div>
 
-			<h2 class="feature-title"><?php echo $title; ?></h2>
+			<div class="feature-details mt-3">
+				<h2 class="feature-title"><?php echo $title; ?></h2>
 
-			<?php if ( $use_excerpt && $excerpt ): ?>
-			<div class="feature-excerpt"><?php echo $excerpt; ?></div>
-			<?php endif; ?>
+				<?php if ( $use_excerpt && $excerpt ): ?>
+				<div class="feature-excerpt"><?php echo $excerpt; ?></div>
+				<?php endif; ?>
 
-			<?php if ( $use_subhead && $subhead ): ?>
-			<div class="feature-subhead mt-2"><?php echo $subhead; ?></div>
-			<?php endif; ?>
+				<?php if ( $use_subhead && $subhead ): ?>
+				<div class="feature-subhead mt-2"><?php echo $subhead; ?></div>
+				<?php endif; ?>
+			</div>
 		</a>
 	</article>
 <?php

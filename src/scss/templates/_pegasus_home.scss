@@ -1,0 +1,251 @@
+//
+// Pegasus SVG logo + wrapper
+//
+.pegasus-inline-logo {
+  // Padding-bottom hacks required for IE11 :(
+  height: 0;
+  padding: 0 0 14.174%; // NOTE: this percentage must be changed if the logo dimensions ever change
+  position: relative;
+  width: 100%;
+
+  svg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  path {
+    fill: currentColor;
+  }
+}
+
+
+//
+// Feature style overrides
+//
+// sass-lint:disable-block class-name-format
+//
+.page-template-template-pegasus_home {
+  .feature-vertical.feature-primary {
+    .feature-thumbnail-wrap {
+      @include media-breakpoint-up(md) {
+        padding-bottom: 50%;
+      }
+    }
+
+    .feature-details {
+      @include media-breakpoint-up(md) {
+        background-color: transparentize($brand-secondary, .4);
+        bottom: 0;
+        color: $brand-inverse;
+        left: 0;
+        padding: 2rem;
+        position: absolute;
+        right: 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+//
+// "The Feed"
+//
+.pegasus-feed-row {
+  // sass-lint:disable-block indentation
+  @include make-row();
+  background: $pegasus-feed-row-bg-top;
+
+  @include media-breakpoint-up(sm) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    background: #eee;
+    height: 100%;
+  }
+}
+
+.pegasus-feed-col {
+  // prep with base .col styles:
+  @include make-col-ready();
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+
+  // "divider" between cols
+  &::before {
+    background-color: $brand-primary;
+    content: '';
+    display: none;
+    height: $border-width-thickest;
+    left: $grid-gutter-width-base / 2;
+    position: absolute;
+    right: $grid-gutter-width-base / 2;
+    top: -$border-width-thickest / 2;
+  }
+
+  // thick bottom "border", for use on bottom row cols
+  &::after {
+    background: $pegasus-feed-row-bg-bottom-border;
+    bottom: 0;
+    content: '';
+    display: none;
+    height: 12px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  // show "divider"s between each article from -xs-sm
+  @include media-breakpoint-between(xs, sm) {
+    &:not(:first-child) {
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  // show a max of 4 columns from -xs to -md:
+  @include media-breakpoint-between(xs, md) {
+    &:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-left: $grid-gutter-width-base / 1.5;
+    padding-right: $grid-gutter-width-base / 1.5;
+
+    &::before {
+      left: $grid-gutter-width-base / 1.5;
+      right: $grid-gutter-width-base / 1.5;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    min-height: 50%;
+    padding-bottom: 1.75rem;
+    padding-top: 1.75rem;
+  }
+
+  @include media-breakpoint-only(md) {
+    // sass-lint:disable-block indentation
+    @include make-col(6);
+
+    // top row:
+    &:nth-child(-n+2) {
+      background: $pegasus-feed-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+3) {
+      background: $pegasus-feed-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 65%;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  @include media-breakpoint-only(lg) {
+    @include make-col(3);
+
+    // show a max of 8 columns at -lg:
+    &:nth-child(n+9) {
+      display: none;
+    }
+
+    // top row:
+    &:nth-child(-n+4) {
+      background: $pegasus-feed-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+5) {
+      background: $pegasus-feed-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include make-col(2, 10);
+
+    // top row:
+    &:nth-child(-n+5) {
+      background: $pegasus-feed-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+6) {
+      background: $pegasus-feed-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+}
+
+.pegasus-feed-item-date {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.pegasus-feed-item-title {
+  color: $brand-secondary;
+  display: block;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: -.0125em;
+  line-height: 1.35;
+}
+
+
+//
+// Pegasus footer
+//
+.pegasus-footer {
+  // sass-lint:disable-block class-name-format
+  .widget_nav_menu li a {
+    font-size: .75em;
+    letter-spacing: .06em;
+    line-height: 1.25;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
+  }
+}
+
+.pegasus-footer-widget-heading {
+  font-size: .9em;
+}

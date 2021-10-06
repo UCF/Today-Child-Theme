@@ -8,9 +8,14 @@ define( 'TODAY_THEME_STATIC_URL', TODAY_THEME_URL . '/static' );
 define( 'TODAY_THEME_CSS_URL', TODAY_THEME_STATIC_URL . '/css' );
 define( 'TODAY_THEME_JS_URL', TODAY_THEME_STATIC_URL . '/js' );
 define( 'TODAY_THEME_IMG_URL', TODAY_THEME_STATIC_URL . '/img' );
-define( 'TODAY_THEME_CUSTOMIZER_PREFIX', 'today_' );
 define( 'TODAY_DEFAULT_EXCERPT_LENGTH', 60 );
 define( 'TODAY_SHORT_EXCERPT_LENGTH', 25 );
+define( 'TODAY_THEME_CUSTOMIZER_PREFIX', 'today_' );
+define( 'TODAY_THEME_CUSTOMIZER_DEFAULTS', serialize( array(
+	'pegasus_subtitle'     => 'The magazine of <br class="hidden-lg-up">the University of Central Florida',
+	'pegasus_archives_url' => 'https://www.ucf.edu/pegasus/archives/',
+	'pegasus_about_url'    => 'https://www.ucf.edu/pegasus/about/'
+) ) );
 
 
 /**
@@ -32,6 +37,44 @@ function today_init() {
 	remove_image_size( 'bg-img-md' );
 	remove_image_size( 'bg-img-lg' );
 	remove_image_size( 'bg-img-xl' );
+
+	// Register sidebars for Pegasus homepage footer
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 1' ),
+		'id'            => 'footer-pegasus_home-col-1',
+		'description'   => 'First column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 2' ),
+		'id'            => 'footer-pegasus_home-col-2',
+		'description'   => 'Second column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 3' ),
+		'id'            => 'footer-pegasus_home-col-3',
+		'description'   => 'Third column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Pegasus Homepage Footer - Column 4' ),
+		'id'            => 'footer-pegasus_home-col-4',
+		'description'   => 'Last column in the Pegasus homepage footer.',
+		'before_widget' => '<div id="%1$s" class="widget mb-5 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="pegasus-footer-widget-heading heading-underline letter-spacing-3">',
+		'after_title'   => '</h2>',
+	) );
 }
 
 add_action( 'after_setup_theme', 'today_init', 11 );
@@ -49,6 +92,13 @@ function today_define_customizer_sections( $wp_customize ) {
 	if ( defined( 'UCFWP_THEME_CUSTOMIZER_PREFIX' ) ) {
 		$wp_customize->remove_section( UCFWP_THEME_CUSTOMIZER_PREFIX . 'nav_settings' );
 	}
+
+	$wp_customize->add_section(
+		TODAY_THEME_CUSTOMIZER_PREFIX . 'pegasus',
+		array(
+			'title' => 'Pegasus Magazine'
+		)
+	);
 }
 
 add_action( 'customize_register', 'today_define_customizer_sections', 11 );
@@ -73,6 +123,58 @@ function today_define_customizer_fields( $wp_customize ) {
 			'label'       => 'Site Subtitle',
 			'description' => 'Descriptive text to display next to the UCF Today logo in the site header.',
 			'section'     => 'title_tagline'
+		)
+	);
+
+	// Pegasus Magazine
+	$wp_customize->add_setting(
+		'pegasus_subtitle',
+		array(
+			'default' => today_get_theme_mod_default( 'pegasus_subtitle' )
+		)
+	);
+
+	$wp_customize->add_control(
+		'pegasus_subtitle',
+		array(
+			'type'        => 'text',
+			'label'       => 'Magazine Subtitle',
+			'description' => 'Short descriptive text that describes the magazine. Displayed on the Pegasus homepage underneath the logo in the header.',
+			'section'     => TODAY_THEME_CUSTOMIZER_PREFIX . 'pegasus'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'pegasus_archives_url',
+		array(
+			'default' => today_get_theme_mod_default( 'pegasus_archives_url' )
+		)
+	);
+
+	$wp_customize->add_control(
+		'pegasus_archives_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Archives URL',
+			'description' => 'Full URL to the Pegasus story archives.',
+			'section'     => TODAY_THEME_CUSTOMIZER_PREFIX . 'pegasus'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'pegasus_about_url',
+		array(
+			'default' => today_get_theme_mod_default( 'pegasus_about_url' )
+		)
+	);
+
+	$wp_customize->add_control(
+		'pegasus_about_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'About Page URL',
+			'description' => 'Full URL to the About page for Pegasus.',
+			'section'     => TODAY_THEME_CUSTOMIZER_PREFIX . 'pegasus'
 		)
 	);
 }
@@ -256,13 +358,14 @@ add_filter( 'acf/fields/wysiwyg/toolbars', 'today_acf_inline_text_toolbar' );
  * @since 1.0.0
  * @author Jo Dickson
  */
-function today_acf_homepage_wysiwyg_position() {
+function today_acf_reposition_wysiwyg() {
 ?>
 <script type="text/javascript">
 	(function($) {
 		$(document).ready(function(){
-			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder)
-			$('.acf-field-5cac9ecc97b7c .acf-input').append( $('#postdivrich') );
+			// field_5cac9ecc97b7c = "Custom Page Content" Message field (placeholder) on Homepage Fields group
+			$('.acf-field-5cac9ecc97b7c .acf-input')
+				.append( $('#postdivrich') );
 		});
 	})(jQuery);
 </script>
@@ -275,7 +378,7 @@ function today_acf_homepage_wysiwyg_position() {
 <?php
 }
 
-add_action( 'acf/input/admin_head', 'today_acf_homepage_wysiwyg_position' );
+add_action( 'acf/input/admin_head', 'today_acf_reposition_wysiwyg' );
 
 
 /**
