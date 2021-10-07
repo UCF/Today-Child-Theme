@@ -210,3 +210,220 @@ function today_get_sidebar_markup( $post_id ) {
 
 	return $markup;
 }
+
+
+/**
+ * Adds the ACF Sidebar Fields field group
+ * and associated fields.
+ *
+ * @since 1.3.0
+ * @author Cadie Stockman
+ */
+function today_add_sidebar_fields() {
+	if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+		// Create the array to add the fields to
+		$fields = array();
+
+		// Adds Enable Sidebar field
+		$fields[] = array(
+			'key'               => 'field_5c9cdf1d61885',
+			'label'             => 'Enable Sidebar',
+			'name'              => 'enable_sidebar',
+			'type'              => 'true_false',
+			'instructions'      => 'Enables a sidebar on this page with customizable drag-and-drop contents.',
+			'wrapper'           => array(
+				'width' => '30',
+			),
+			'default_value'     => 1,
+			'ui'                => 1,
+		);
+
+		// Adds Sidebar Content fields
+		$fields[] = array(
+			'key'               => 'field_5c9cdf7861887',
+			'label'             => 'Sidebar Content',
+			'name'              => 'sidebar_content',
+			'type'              => 'flexible_content',
+			'conditional_logic' => array(
+				array(
+					array(
+						'field'    => 'field_5c9cdf1d61885',
+						'operator' => '==',
+						'value'    => '1',
+					),
+				),
+			),
+			'wrapper'           => array(
+				'width' => '70',
+			),
+			'layouts'           => array(
+				'5c9ce0103b79e' => array(
+					'key' => '5c9ce0103b79e',
+					'name' => 'sidebar_events',
+					'label' => 'Events',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_5c9e1777455c7',
+							'label' => 'Feed URL',
+							'name' => 'events_feed_url',
+							'type' => 'url',
+							'instructions' => 'UCF Events feed URL. Defaults to the "UCF Events JSON Feed URL" value in the UCF Events plugin.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+						),
+						array(
+							'key' => 'field_5c9e1793455c8',
+							'label' => 'Layout',
+							'name' => 'events_layout',
+							'type' => 'text',
+							'instructions' => 'Layout that will be used for displaying the events. Defaults to classic.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+							'default_value' => 'classic',
+						),
+						array(
+							'key' => 'field_5c9e17cb455c9',
+							'label' => 'Number of Events',
+							'name' => 'events_number_of_posts',
+							'type' => 'number',
+							'instructions' => 'The number of events to be displayed. Defaults to 4.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+							'default_value' => 4,
+							'min' => 1,
+							'step' => 1,
+						),
+						array(
+							'key' => 'field_5c9e180b455ca',
+							'label' => '\'View All\' Link',
+							'name' => 'events_view_all_link',
+							'type' => 'url',
+							'instructions' => 'The URL assigned to the \'View All Events\' link. Defaults to a front-end view URL based on the "UCF Events JSON Feed URL" value in the UCF Events plugin.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+						),
+					),
+					'max' => '1',
+				),
+				'layout_5c9ce14d63fdc' => array(
+					'key' => 'layout_5c9ce14d63fdc',
+					'name' => 'sidebar_in_the_news',
+					'label' => 'In The News',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_5c9e1884455cb',
+							'label' => 'Layout',
+							'name' => 'news_layout',
+							'type' => 'text',
+							'instructions' => 'Layout that will be used to display the news stories. Defaults to condensed.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+							'default_value' => 'condensed',
+						),
+						array(
+							'key' => 'field_5c9e1900455cc',
+							'label' => 'Number of Posts',
+							'name' => 'news_number_of_posts',
+							'type' => 'number',
+							'instructions' => 'The number of news stories to be displayed. Defaults to 4.',
+							'wrapper' => array(
+								'width' => '50',
+							),
+							'default_value' => 4,
+						),
+					),
+					'max' => '1',
+				),
+				'layout_5c9ce13363fdb' => array(
+					'key' => 'layout_5c9ce13363fdb',
+					'name' => 'sidebar_resources_menu',
+					'label' => 'Resources Menu',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_5c9e1b14455cf',
+							'label' => 'Resources Menu',
+							'name' => 'resources_menu',
+							'type' => 'nav_menu',
+							'instructions' => 'Select the menu to be displayed. Can be verified by checking the Appearance > Menus page. Defaults to \'Resources\'.',
+							'save_format' => 'id',
+							'container' => 'div',
+							'allow_null' => 1,
+						),
+					),
+					'max' => '1',
+				),
+				'layout_5c9ce1de68521' => array(
+					'key' => 'layout_5c9ce1de68521',
+					'name' => 'sidebar_spotlight',
+					'label' => 'Spotlight',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_5c9ce23ed7f46',
+							'label' => 'Select Spotlight',
+							'name' => 'spotlight_object',
+							'type' => 'post_object',
+							'instructions' => 'Select a spotlight to display in the sidebar.',
+							'post_type' => array(
+								0 => 'ucf_spotlight',
+							),
+							'taxonomy' => array(
+							),
+						),
+					),
+					'max' => '1',
+				),
+				'layout_5c9ce16b63fdd' => array(
+					'key' => 'layout_5c9ce16b63fdd',
+					'name' => 'sidebar_custom_content',
+					'label' => 'Custom Content',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_5c9ce0516188e',
+							'label' => 'Custom Content',
+							'name' => 'custom_content',
+							'type' => 'wysiwyg',
+							'instructions' => 'Insert custom content to display in the sidebar.',
+						),
+					),
+				),
+			),
+			'button_label'      => 'Add Row',
+		);
+
+		// Defines Sidebar Fields field group
+		$field_group = array(
+			'key'                   => '',
+			'title'                 => 'Sidebar Fields',
+			'fields'                => $fields,
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'page',
+					),
+					array(
+						'param'    => 'page_type',
+						'operator' => '==',
+						'value'    => 'front_page',
+					),
+				),
+			),
+		);
+
+		acf_add_local_field_group( $field_group );
+	}
+}
+
+add_action( 'acf/init', 'today_add_sidebar_fields' );

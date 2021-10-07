@@ -99,3 +99,49 @@ function today_resource_link_post_type_args( $args ) {
 }
 
 add_filter( 'ucf_resource_link_post_type_args', 'today_resource_link_post_type_args' );
+
+
+/**
+ * Adds the ACF Resource Link Custom Fields field group
+ * and associated fields.
+ *
+ * @since 1.3.0
+ * @author Cadie Stockman
+ */
+function today_add_resource_link_fields() {
+	if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+		// Create the array to add the fields to
+		$fields = array();
+
+		// Adds Link Description field
+		$fields[] = array(
+			'key'               => 'field_5c9d1e7a9ec0c',
+			'label'             => 'Link Description',
+			'name'              => 'ucf_resource_link_description',
+			'type'              => 'textarea',
+			'instructions'      => 'A brief summary of the content being linked to.',
+			'rows'              => 3,
+		);
+
+		// Defines Resource Link Custom Fields field group
+		$field_group = array(
+			'key'                   => 'group_5c9d1e65c699f',
+			'title'                 => 'Resource Link Custom Fields',
+			'fields'                => $fields,
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'ucf_resource_link',
+					),
+				),
+			),
+		);
+
+		acf_add_local_field_group( $field_group );
+	}
+}
+
+add_action( 'acf/init', 'today_add_resource_link_fields' );
