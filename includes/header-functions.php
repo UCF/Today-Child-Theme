@@ -234,6 +234,11 @@ function today_add_page_header_fields() {
 						'operator' => '!=',
 						'value'    => 'front_page',
 					),
+					array(
+						'param'    => 'post_template',
+						'operator' => '!=',
+						'value'    => 'template-pegasus_home.php',
+					),
 				),
 			),
 		);
