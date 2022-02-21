@@ -12,7 +12,7 @@ class Statements_View {
 	/**
  	 * Returns markup for a list of statements.
 	 *
-	 * @since 3.9.0
+	 * @since 1.4.0
 	 * @author Jo Dickson
 	 * @return string
 	 */
@@ -29,7 +29,7 @@ class Statements_View {
 				$author_name  = ( $author && $author->name ) ? $author->name : '';
 				$author_title = ( $author ) ? get_field( 'author_title', $author ) : null;
 				$author_title = ( $author_title ) ? ', ' . $author_title : '';
-				$datetime     = get_the_date();
+				$datetime     = get_the_date( 'Y-m-d', $post );
 				$date         = date( 'F j, Y', strtotime( $datetime ) );
 			?>
 			<li class="mb-4 pb-md-2 d-block">
