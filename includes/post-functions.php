@@ -672,6 +672,8 @@ function today_add_post_custom_fields() {
 			'taxonomy'          => 'post_tag',
 			'field_type'        => 'select',
 			'add_term'          => 0,
+			'allow_null'        => 1,
+			'return_format'     => 'object',
 		);
 
 		// Adds Source tab
