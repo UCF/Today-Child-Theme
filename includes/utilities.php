@@ -635,7 +635,7 @@ function news_get_remote_response( $url, $timeout=5 ) {
  * Helper function for getting remote json
  *
  * @author Jim Barnes
- * @since 3.4.0
+ * @since 1.4.0
  * @param mixed $remote The URL to retrieve, or a response array from wp_remote_get()
  * @param mixed $default A default value to return if the response is invalid
  * @param int $timeout Timeout for the request, in seconds
