@@ -407,7 +407,7 @@ add_action( 'wp_insert_post', 'today_default_resource_link_type', 10, 3 );
  * @return mixed String, or void if the current page is not the Statements page
  */
 function get_yoast_statements_current_filter_snippet_variable() {
-	$phrase = apply_filters( 'mainsite_yoast_statements_current_filter_snippet_variable', '' );
+	$phrase = apply_filters( 'news_yoast_statements_current_filter_snippet_variable', '' );
 	if ( $phrase ) return $phrase;
 }
 
@@ -421,7 +421,7 @@ function get_yoast_statements_current_filter_snippet_variable() {
  * @return mixed String, or void if the current page is not the Statements page
  */
 function get_yoast_statements_by_filter_snippet_variable() {
-	$phrase = apply_filters( 'mainsite_yoast_statements_by_filter_snippet_variable', '' );
+	$phrase = apply_filters( 'news_yoast_statements_by_filter_snippet_variable', '' );
 	if ( $phrase ) return $phrase;
 }
 

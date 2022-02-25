@@ -634,14 +634,14 @@ add_action( 'wp', function() use( $statements_view ) {
 			$statements_view->statement_redirects();
 		}, 99 );
 
-		add_filter( 'mainsite_statements_view', function() use( $statements_view ) {
+		add_filter( 'news_statements_view', function() use( $statements_view ) {
 			return $statements_view;
 		} );
 
-		add_filter( 'mainsite_yoast_statements_current_filter_snippet_variable', function() use( $statements_view ) {
+		add_filter( 'news_yoast_statements_current_filter_snippet_variable', function() use( $statements_view ) {
 			return $statements_view->get_statements_filter_string();
 		} );
-		add_filter( 'mainsite_yoast_statements_by_filter_snippet_variable', function() use( $statements_view ) {
+		add_filter( 'news_yoast_statements_by_filter_snippet_variable', function() use( $statements_view ) {
 			return $statements_view->get_yoast_by_filter_snippet_variable_string();
 		} );
 	}
