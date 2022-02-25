@@ -609,11 +609,10 @@ function get_yoast_statements_by_filter_snippet_variable() {
  * NOTE: The snippet preview in the backend will show the custom variable markup
  * (i.e. '%%program_type%%') but the variable's output will be utilized on the front-end.
  *
- * @since v3.8.2
+ * @since v1.4.0
  * @author Cadie Stockman
  */
 function yoast_register_variables() {
-	wpseo_register_var_replacement( '%%program_type%%', 'get_yoast_title_degree_program_type', 'advanced', 'Provides a program_type string for usage in degree titles.' );
 	wpseo_register_var_replacement( '%%statements_current_filter%%', 'get_yoast_statements_current_filter_snippet_variable', 'advanced', 'Provides the current filter in use on the Statements page title/meta description.' );
 	wpseo_register_var_replacement( '%%statements_by_filter%%', 'get_yoast_statements_by_filter_snippet_variable', 'advanced', 'Provides a string describing the current view for use on the Statements page title/meta description.' );
 }
