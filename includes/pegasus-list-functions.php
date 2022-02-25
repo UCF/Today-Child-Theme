@@ -53,7 +53,7 @@ function today_sidebar_pegasus_list_content( $content, $items, $args, $fallback_
 		</div>
 
 		<div class="ucf-pegasus-list-featured-story position-relative d-flex flex-column mb-5">
-			<p class="mb-2 text-muted text-uppercase small">Featured Story</p>
+			<span class="mb-2 text-muted text-uppercase small">Featured Story</span>
 			<a class="h4 text-secondary stretched-link mb-2" href="<?php echo $cover_story_url; ?>" target="_blank">
 				<?php echo $cover_story_title; ?>
 			</a>
