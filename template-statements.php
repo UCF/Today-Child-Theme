@@ -8,7 +8,7 @@
 <?php get_header(); the_post(); ?>
 
 <?php
-$statements_view     = apply_filters( 'mainsite_statements_view', null );
+$statements_view     = apply_filters( 'news_statements_view', null );
 $statement_details   = $statements_view->get_statements_details( get_the_content() ) ?? get_the_content();
 $statements          = $statements_view->get_statements_list() ?? '<p>No statements available.</p>';
 $filters             = $statements_view->get_statement_filters() ?? '';
