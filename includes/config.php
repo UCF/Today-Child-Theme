@@ -66,6 +66,13 @@ function today_define_customizer_fields( $wp_customize ) {
 		'site_subtitle'
 	);
 
+	$wp_customize->add_section(
+		UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements',
+		array(
+			'title' => 'Statements Archive'
+		)
+	);
+
 	$wp_customize->add_control(
 		'site_subtitle',
 		array(
@@ -75,6 +82,73 @@ function today_define_customizer_fields( $wp_customize ) {
 			'section'     => 'title_tagline'
 		)
 	);
+
+	// Statements
+	$wp_customize->add_setting(
+		'statements_page_path',
+		array(
+			'default' => 'statements'
+		)
+	);
+
+	$wp_customize->add_control(
+		'statements_page_path',
+		array(
+			'type'        => 'text',
+			'label'       => 'Statements Page Path',
+			'description' => 'Relative path from the main site root that the Statements page lives at.',
+			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'statements_archive_endpoint'
+	);
+
+	$wp_customize->add_control(
+		'statements_archive_endpoint',
+		array(
+			'type'        => 'text',
+			'label'       => 'Statements Archive API Endpoint',
+			'description' => 'URL to the API endpoint that lists Statement data by year and author.',
+			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'statements_archive_transient_expire',
+		array(
+			'default' => '300'
+		)
+	);
+
+	$wp_customize->add_control(
+		'statements_archive_transient_expire',
+		array(
+			'type'        => 'text',
+			'label'       => 'Statements Archive Transient Expiration',
+			'description' => 'Amount of time, in seconds, that Statement archive data should be cached. Set to 0 or an empty value to not utilize transient caching.',
+			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'statements_per_page',
+		array(
+			'default' => '30'
+		)
+	);
+
+	$wp_customize->add_control(
+		'statements_per_page',
+		array(
+			'type'        => 'number',
+			'label'       => 'Statements Per Page',
+			'description' => 'The number of Statements that should be listed on the Statements page at a time.',
+			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements'
+		)
+	);
+
 }
 
 add_action( 'customize_register', 'today_define_customizer_fields' );
@@ -322,3 +396,47 @@ function today_default_resource_link_type( $post_id, $post, $update ) {
 }
 
 add_action( 'wp_insert_post', 'today_default_resource_link_type', 10, 3 );
+
+
+/**
+ * Callback for the %%statements_current_filter%% snippet variable
+ * for use on the Statements page title/meta description.
+ *
+ * @since 1.4.0
+ * @author Jo Dickson
+ * @return mixed String, or void if the current page is not the Statements page
+ */
+function get_yoast_statements_current_filter_snippet_variable() {
+	$phrase = apply_filters( 'news_yoast_statements_current_filter_snippet_variable', '' );
+	if ( $phrase ) return $phrase;
+}
+
+
+/**
+ * Callback for the %%statements_by_filter%% snippet variable
+ * for use on the Statements page title/meta description.
+ *
+ * @since 1.4.0
+ * @author Jo Dickson
+ * @return mixed String, or void if the current page is not the Statements page
+ */
+function get_yoast_statements_by_filter_snippet_variable() {
+	$phrase = apply_filters( 'news_yoast_statements_by_filter_snippet_variable', '' );
+	if ( $phrase ) return $phrase;
+}
+
+
+/**
+ * Registers the Yoast variable additions.
+ * NOTE: The snippet preview in the backend will show the custom variable markup
+ * (i.e. '%%program_type%%') but the variable's output will be utilized on the front-end.
+ *
+ * @since v1.4.0
+ * @author Cadie Stockman
+ */
+function yoast_register_variables() {
+	wpseo_register_var_replacement( '%%statements_current_filter%%', 'get_yoast_statements_current_filter_snippet_variable', 'advanced', 'Provides the current filter in use on the Statements page title/meta description.' );
+	wpseo_register_var_replacement( '%%statements_by_filter%%', 'get_yoast_statements_by_filter_snippet_variable', 'advanced', 'Provides a string describing the current view for use on the Statements page title/meta description.' );
+}
+
+add_action( 'wpseo_register_extra_replacements', 'yoast_register_variables' );

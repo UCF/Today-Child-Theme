@@ -108,7 +108,7 @@ function today_get_post_meta_info( $post ) {
 
 	ob_start();
 ?>
-	<div class="small text-uppercase letter-spacing-3">
+	<div class="small letter-spacing-3">
 		<p class="mb-0">
 			<?php if ( $byline ) : ?>
 			<span>By <?php echo $byline; ?></span>

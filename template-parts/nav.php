@@ -34,9 +34,9 @@ $menu          = wp_nav_menu( array(
 				<?php echo today_output_nav_weather_data(); ?>
 			<?php endif; ?>
 
-			<button class="navbar-toggler ml-auto align-self-start collapsed align-items-center" type="button" aria-controls="header-menu" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler ml-auto align-self-start collapsed align-items-center" type="button" aria-controls="header-menu" aria-expanded="false">
 				<span class="navbar-toggler-text mr-1">Sections</span>
-				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon" aria-hidden="true"></span>
 			</button>
 		</div>
 	</div>
