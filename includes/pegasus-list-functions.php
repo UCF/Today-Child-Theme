@@ -46,7 +46,7 @@ function today_sidebar_pegasus_list_content( $content, $items, $args, $fallback_
 		<div class="ucf-pegasus-list-issue position-relative text-center mb-2 mb-md-3">
 			<img class="img-fluid" src="<?php echo $thumbnail_url; ?>" alt="<?php echo $issue_title; ?>">
 			<div class="ucf-pegasus-list-issue-title">
-				<a class="d-inline-block text-secondary h5 stretched-link my-2" href="<?php echo $issue_url; ?>" target="_blank">
+				<a class="d-inline-block text-secondary h5 stretched-link my-2 text-decoration-none" href="<?php echo $issue_url; ?>" target="_blank">
 					<?php echo $issue_title; ?>
 				</a>
 			</div>
@@ -54,7 +54,7 @@ function today_sidebar_pegasus_list_content( $content, $items, $args, $fallback_
 
 		<div class="ucf-pegasus-list-featured-story position-relative d-flex flex-column mb-5">
 			<span class="mb-2 text-muted text-uppercase small">Featured Story</span>
-			<a class="h4 text-secondary stretched-link mb-2" href="<?php echo $cover_story_url; ?>" target="_blank">
+			<a class="h4 text-secondary stretched-link mb-2 text-decoration-none" href="<?php echo $cover_story_url; ?>" target="_blank">
 				<?php echo $cover_story_title; ?>
 			</a>
 			<p class="mb-3"><?php echo $cover_story_blurb; ?></p>
