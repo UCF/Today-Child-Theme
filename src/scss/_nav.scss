@@ -126,16 +126,6 @@
         }
       }
 
-      &:focus {
-        @include media-breakpoint-up(lg) {
-          text-decoration: underline;
-        }
-      }
-
-      &:active {
-        text-decoration: none;
-      }
-
       &::after {
         @include media-breakpoint-up(lg) {
           border-bottom: 2px solid transparent;
@@ -149,14 +139,16 @@
         }
       }
 
-      &:hover::after {
+      &:hover::after,
+      &:focus::after {
         @include media-breakpoint-up(lg) {
           border-color: $gray-light;
           opacity: 1;
         }
       }
 
-      &.active::after {
+      &.active::after,
+      &:active::after {
         @include media-breakpoint-up(lg) {
           border-color: $brand-primary;
           opacity: 1;
