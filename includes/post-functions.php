@@ -185,7 +185,7 @@ function today_get_post_author_bio( $post ) {
 					</span>
 					<?php endif; ?>
 
-					<div class="font-italic mt-3" style="font-size: .9em;">
+					<div class="font-size-sm mt-3">
 						<?php echo $author_bio; ?>
 					</div>
 				</div>
