@@ -93,6 +93,7 @@ function today_display_sidebar_external_stories( $args=array() ) {
 	$layout   = isset( $args['layout'] ) ? $args['layout'] : 'condensed';
 	$limit    = isset( $args['limit'] ) ? $args['limit'] : 4;
 	$more_url = isset( $args['more_url'] ) ? $args['more_url'] : today_get_external_stories_url();
+	$tag      = isset( $args['tag'] ) ? $args['tag'] : null;
 	$content  = '';
 
 	// Remove empty values from $sc_attr, allowing shortcode defaults
@@ -104,6 +105,12 @@ function today_display_sidebar_external_stories( $args=array() ) {
 		'tax_resource_link_types'        => 'external-story',
 		'tax_resource_link_types__field' => 'slug'
 	) );
+
+	if ( $tag ) {
+		$sc_attr['post_tag'] = $tag;
+		$sc_attr['post_tag__field'] = 'slug';
+	}
+
 	$sc_attr_str = '';
 
 	foreach ( $sc_attr as $key => $val ) {

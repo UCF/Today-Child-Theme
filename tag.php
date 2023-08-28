@@ -35,7 +35,7 @@ if ( isset( $posts ) ) {
 			<?php endif; ?>
 		</div>
 		<div class="col-lg-4 pl-lg-5">
-			<?php echo today_display_sidebar_external_stories(); ?>
+			<?php echo today_display_sidebar_external_stories( array( 'tag' => get_queried_object()->slug ) ); ?>
 			<?php echo today_display_sidebar_events(); ?>
 			<?php echo today_display_sidebar_menu(); ?>
 		</div>
