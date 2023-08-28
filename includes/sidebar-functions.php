@@ -107,8 +107,8 @@ function today_display_sidebar_external_stories( $args=array() ) {
 	) );
 
 	if ( $tag && tu_get_external_stories_count( $tag ) > 0 ) {
-		$sc_attr['post_tag'] = $tag;
-		$sc_attr['post_tag__field'] = 'slug';
+		$sc_attr['tax_post_tag'] = $tag;
+		$sc_attr['tax_post_tag__field'] = 'slug';
 	}
 
 	$sc_attr_str = '';
@@ -142,14 +142,14 @@ function tu_get_external_stories_count( $tag_slug ) {
 		'tax_query' => array(
 			'relation' => 'AND',
 			array(
-				'taxonomy' => 'tax_resource_link_types',
+				'taxonomy' => 'resource_link_types',
 				'field'    => 'slug',
 				'terms'    => array( 'external-story' )
 			),
 			array(
 				'taxonomy' => 'post_tag',
 				'field'    => 'slug',
-				'terms'    => array( $tag )
+				'terms'    => array( $tag_slug )
 			)
 		)
 	);
