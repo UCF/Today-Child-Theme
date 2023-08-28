@@ -106,9 +106,9 @@ function today_display_sidebar_external_stories( $args=array() ) {
 		'tax_resource_link_types__field' => 'slug'
 	) );
 
-	if ( $tag ) {
-		$sc_attr['post_tag'] = $tag;
-		$sc_attr['post_tag__field'] = 'slug';
+	if ( $tag && tu_get_external_stories_count( $tag ) > 0 ) {
+		$sc_attr['tax_post_tag'] = $tag;
+		$sc_attr['tax_post_tag__field'] = 'slug';
 	}
 
 	$sc_attr_str = '';
@@ -126,6 +126,38 @@ function today_display_sidebar_external_stories( $args=array() ) {
 	return today_display_sidebar_content( $title, $content );
 }
 
+/**
+ * Returns the count of posts found given the 
+ * provided arguments.
+ * 
+ * @author Jim Barnes
+ * @since 1.5.0
+ * 
+ * @param string $tag_slug The tag slug to use in the taxonomy filter.
+ * @return int
+ */
+function tu_get_external_stories_count( $tag_slug ) {
+	$args = array(
+		'post_type' => 'ucf_resource_link',
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'resource_link_types',
+				'field'    => 'slug',
+				'terms'    => array( 'external-story' )
+			),
+			array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => array( $tag_slug )
+			)
+		)
+	);
+
+	$query = new WP_Query( $args );
+
+	return $query->post_count;
+}
 
 /**
  * Displays a menu.  Suitable for inclusion within a sidebar.
