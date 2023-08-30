@@ -1,9 +1,11 @@
 <?php get_header(); ?>
 
 <?php
+$tag = get_queried_object()->slug;
+
 $posts = get_posts( array(
 	'numberposts' => 10,
-	'tag'         => get_queried_object()->slug
+	'tag'         => $tag
 ) );
 
 if ( isset( $posts ) ) {
@@ -35,7 +37,7 @@ if ( isset( $posts ) ) {
 			<?php endif; ?>
 		</div>
 		<div class="col-lg-4 pl-lg-5">
-			<?php echo today_display_sidebar_external_stories(); ?>
+			<?php echo today_display_sidebar_external_stories( array( 'tag' => $tag ) ); ?>
 			<?php echo today_display_sidebar_events(); ?>
 			<?php echo today_display_sidebar_menu(); ?>
 		</div>
