@@ -43,7 +43,7 @@ function today_sidebar_pegasus_list_content( $content, $items, $args, $fallback_
 				$cover_story_blurb = $cover_story_subtitle;
 			}
 		?>
-		<div class="ucf-pegasus-list-issue position-relative text-center mb-2 mb-md-3">
+		<div class="ucf-pegasus-list-issue position-relative mb-2 mb-md-3">
 			<img class="img-fluid" src="<?php echo $thumbnail_url; ?>" alt="<?php echo $issue_title; ?>">
 			<div class="ucf-pegasus-list-issue-title">
 				<a class="d-inline-block text-secondary h5 stretched-link my-2 text-decoration-none" href="<?php echo $issue_url; ?>" target="_blank">
