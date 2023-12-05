@@ -453,10 +453,26 @@ function today_add_post_custom_fields() {
 		// Create the array to add the fields to
 		$fields = array();
 
+		// Adds Blurb underneath the related stories
+		$fields[] = array(
+			array(
+				'key' => 'field_656f49bff52a33',
+				'label' => 'Related blurb',
+				'name' => 'rel_st_blurb',
+				'type' => 'textarea',
+			),
+		);
+
 		// Adds Header Content tab
 		$fields[] = array(
 			'key'               => 'field_5c813914b0cd8',
-			'label'             => 'Header Content',
+			'label'             => 'Header Contents',
+			'type'              => 'tab',
+		);
+
+		$fields[] = array(
+			'key'               => 'field_5c813914b0cd8',
+			'label'             => 'Header Contents',
 			'type'              => 'tab',
 		);
 
@@ -698,6 +714,7 @@ function today_add_post_custom_fields() {
 			'label'             => 'Tag Cloud',
 			'type'              => 'tab',
 		);
+
 
 		// Adds Display Tag Cloud field
 		$fields[] = array(
