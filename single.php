@@ -7,6 +7,9 @@ $social       = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf
 $author_bio   = today_get_post_author_bio( $post );
 $related      = today_get_post_related( $post );
 $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
+
+$pegasus_feature = do_shortcode( '[ucf-pegasus-list title="" layout="today_sidebar" limit="1"]No issue found.[/ucf-pegasus-list]' );
+$pegasus_stories = do_shortcode( '[ucf-pegasus-list layout="modern" title="" limit="4" offset="1"]No stories found.[/ucf-pegasus-list]' );
 ?>
 
 <article class="<?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
@@ -49,6 +52,19 @@ $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
 			<?php endif; ?>
 		</footer>
 		<?php endif; ?>
+	</div>
+	<div class="jumbotron bg-faded mb-0">
+		<div class="container">
+			<h2 class="heading-underline">Pegasus Magazine</h2>
+			<div class="row">
+				<div class="col-md-4">
+					<?php echo $pegasus_feature; ?>
+				</div>
+				<div class="col-md-8">
+					<?php echo $pegasus_stories; ?>
+				</div>
+			</div>
+		</div>
 	</div>
 </article>
 
