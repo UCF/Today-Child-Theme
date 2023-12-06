@@ -231,12 +231,12 @@ function today_get_post_source( $post ) {
  */
 function today_get_post_related( $post ) {
 	$primary_tag = today_get_primary_tag( $post );
-	if ( ! $primary_tag ) return;
+	if ( ! $primary_tag ) return null;
 
 	$posts = get_posts( array(
-		'numberposts'  => 8,
-		'post__not_in' => array( $post->ID ),
-		'tag_id'       => $primary_tag->term_id
+		'posts_per_page' => 8,
+		'post__not_in'   => array( $post->ID ),
+		'tag_id'         => $primary_tag->term_id
 	) );
 
 	ob_start();
@@ -257,6 +257,61 @@ function today_get_post_related( $post ) {
 	return ob_get_clean();
 }
 
+/**
+ * Returns the markup to place below the related
+ * stories section on individual stories.
+ *
+ * @author Jim Barnes
+ * @since v1.6.0
+ * @param WP_POST $post The post to pull a section for
+ *
+ * @return string|null
+ */
+function today_get_related_section( $post ) {
+	$primary_tag = get_field( 'post_primary_tag', $post );
+
+	if ( ! $primary_tag ) {
+		return today_get_fallback_section();
+	}
+
+	$sections = get_posts( array(
+		'posts_per_page' => 1,
+		'post_type'      => 'ucf_section',
+		'tag_id'         => $primary_tag->term_id
+	) );
+
+	if ( $sections ) {
+		$section = $sections[0];
+		return $section->post_content;
+	} else {
+		return today_get_fallback_section();
+	}
+
+	return null;
+}
+
+
+/**
+ * Gets the fallback section to display on stories
+ * as defined in the customizer.
+ *
+ * @author Jim Barnes
+ * @since v1.6.0
+ *
+ * @return string|null
+ */
+function today_get_fallback_section() {
+	$fallback_section_id = intval( get_theme_mod( 'pre_footer_section_fallback' ) );
+
+	if ( $fallback_section_id === 0 ) return null;
+
+	$section = get_post( $fallback_section_id ) ?: null;
+	$section = $section->post_content !== '' ?
+		$section->post_content :
+		null;
+
+	return $section;
+}
 
 /**
  * Returns an array of post objects to use when displaying

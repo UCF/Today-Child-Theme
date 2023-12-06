@@ -94,9 +94,16 @@ function today_define_customizer_sections( $wp_customize ) {
 	}
 
 	$wp_customize->add_section(
-		TODAY_THEME_CUSTOMIZER_PREFIX . 'pegasus',
+		UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements',
 		array(
-			'title' => 'Pegasus Magazine'
+			'title' => 'Statements Archive'
+		)
+	);
+
+	$wp_customize->add_section(
+		UCFWP_THEME_CUSTOMIZER_PREFIX . 'story_settings',
+		array(
+			'title' => 'Story Settings'
 		)
 	);
 }
@@ -114,13 +121,6 @@ function today_define_customizer_fields( $wp_customize ) {
 	// Site Subtitle
 	$wp_customize->add_setting(
 		'site_subtitle'
-	);
-
-	$wp_customize->add_section(
-		UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements',
-		array(
-			'title' => 'Statements Archive'
-		)
 	);
 
 	$wp_customize->add_control(
@@ -248,6 +248,40 @@ function today_define_customizer_fields( $wp_customize ) {
 			'label'       => 'Statements Per Page',
 			'description' => 'The number of Statements that should be listed on the Statements page at a time.',
 			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'statements'
+		)
+	);
+
+	/**
+	 * Story Settings Controls
+	 */
+	$wp_customize->add_setting(
+		'pre_footer_section_fallback',
+		array(
+			'default' => 0
+		)
+	);
+
+	$sections = get_posts( array(
+		'posts_per_page' => -1,
+		'post_type'      => 'ucf_section'
+	) );
+
+	$section_options = array(
+		0 => 'Disabled'
+	);
+
+	foreach( $sections as $section ) {
+		$section_options[$section->ID] = $section->post_title;
+	}
+
+	$wp_customize->add_control(
+		'pre_footer_section_fallback',
+		array(
+			'type'        => 'select',
+			'label'       => 'Per Footer Section (Fallback)',
+			'description' => 'This is the fallback section that will be used if there is not a section available to display for a story.',
+			'choices'     => $section_options,
+			'section'     => UCFWP_THEME_CUSTOMIZER_PREFIX . 'story_settings'
 		)
 	);
 

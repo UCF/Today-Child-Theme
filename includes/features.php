@@ -167,7 +167,7 @@ function today_display_feature_horizontal( $post, $args=array() ) {
 				<?php endif; ?>
 
 				<div class="<?php echo $content_col_class; ?>">
-					<h2 class="feature-title"><?php echo $title; ?></h2>
+					<p class="feature-title"><?php echo $title; ?></p>
 
 					<?php if ( $use_excerpt && $excerpt ): ?>
 					<div class="feature-excerpt"><?php echo $excerpt; ?></div>
