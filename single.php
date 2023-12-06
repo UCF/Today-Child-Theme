@@ -8,6 +8,8 @@ $author_bio   = today_get_post_author_bio( $post );
 $related      = today_get_post_related( $post );
 $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
 
+$section      = today_get_related_section( $post );
+
 $pegasus_feature = do_shortcode( '[ucf-pegasus-list title="" layout="today_sidebar" limit="1"]No issue found.[/ucf-pegasus-list]' );
 $pegasus_stories = do_shortcode( '[ucf-pegasus-list layout="modern" title="" limit="4" offset="1"]No stories found.[/ucf-pegasus-list]' );
 ?>
@@ -53,6 +55,9 @@ $pegasus_stories = do_shortcode( '[ucf-pegasus-list layout="modern" title="" lim
 		</footer>
 		<?php endif; ?>
 	</div>
+	<?php if ( $section ) : ?>
+	<?php echo apply_filters( 'the_content', $section ); ?>
+	<?php endif; ?>
 	<div class="jumbotron bg-faded mb-0">
 		<div class="container">
 			<h2 class="heading-underline">Pegasus Magazine</h2>

@@ -231,12 +231,12 @@ function today_get_post_source( $post ) {
  */
 function today_get_post_related( $post ) {
 	$primary_tag = today_get_primary_tag( $post );
-	if ( ! $primary_tag ) return;
+	if ( ! $primary_tag ) return null;
 
 	$posts = get_posts( array(
-		'numberposts'  => 8,
-		'post__not_in' => array( $post->ID ),
-		'tag_id'       => $primary_tag->term_id
+		'posts_per_page' => 8,
+		'post__not_in'   => array( $post->ID ),
+		'tag_id'         => $primary_tag->term_id
 	) );
 
 	ob_start();
@@ -257,6 +257,23 @@ function today_get_post_related( $post ) {
 	return ob_get_clean();
 }
 
+function today_get_related_section( $post ) {
+	$primary_tag = today_get_primary_tag( $post );
+	if ( ! $primary_tag ) return null;
+
+	$posts = get_posts( array(
+		'posts_per_page' => 1,
+		'post_type'      => 'ucf_section',
+		'tag_id'         => $primary_tag->term_id
+	) );
+
+	if ( $posts ) {
+		$post = $posts[0];
+		return $post->post_content;
+	}
+
+	return null;
+}
 
 /**
  * Returns an array of post objects to use when displaying
