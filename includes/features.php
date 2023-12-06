@@ -225,7 +225,7 @@ function today_display_feature_vertical( $post, $args=array() ) {
 				<?php echo $thumbnail; ?>
 			</div>
 
-			<h2 class="feature-title"><?php echo $title; ?></h2>
+			<p class="feature-title"><?php echo $title; ?></p>
 
 			<?php if ( $use_excerpt && $excerpt ): ?>
 			<div class="feature-excerpt"><?php echo $excerpt; ?></div>
@@ -264,7 +264,7 @@ function today_display_feature_condensed( $post, $args=array() ) {
 ?>
 	<article class="d-flex flex-column align-items-start feature feature-condensed mb-3" aria-label="<?php echo esc_attr( $title ); ?>">
 		<a href="<?php echo $permalink; ?>" class="feature-link">
-			<h2 class="feature-title mb-1"><?php echo $title; ?></h2>
+			<p class="feature-title mb-1"><?php echo $title; ?></p>
 		</a>
 
 		<?php if ( $subhead ): ?>
