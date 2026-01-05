@@ -5,6 +5,7 @@ $header_media = today_get_post_header_media( $post );
 $source       = today_get_post_source( $post );
 $social       = ( shortcode_exists( 'ucf-social-links' ) ) ? do_shortcode( '[ucf-social-links layout="affixed"]' ) : '';
 $author_bio   = today_get_post_author_bio( $post );
+$highlights   = today_get_post_highlights( $post );
 $related      = today_get_post_related( $post );
 $tag_cloud    = today_get_tag_cloud( $post, 'mb-4 mb-md-5 mt-4 mt-md-5' );
 
@@ -26,6 +27,7 @@ $pegasus_stories = do_shortcode( '[ucf-pegasus-list layout="modern" title="" lim
 		<div class="row mb-4">
 			<div class="col-lg-10 offset-lg-1 px-lg-5 col-xl-8 offset-xl-2 px-xl-3">
 				<div class="post-content">
+					<?php if ( $highlights ) echo $highlights; ?>
 					<?php the_content(); ?>
 				</div>
 

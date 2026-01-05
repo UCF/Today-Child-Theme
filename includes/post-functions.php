@@ -437,6 +437,34 @@ function today_get_post_cat_headlines( $post, $headlines=array() ) {
 	return ob_get_clean();
 }
 
+/**
+ * Retrieves the highlights markup for the story.
+ *
+ * @author Jim Barnes
+ * @since 1.7.0
+ * @param WP_Post $post The post object
+ * @return null|string Null if no highlights are set, the highlight markup if they are.
+ *
+ */
+function today_get_post_highlights( $post ) {
+	$highlights = get_field( 'post_highlights', $post );
+
+	if ( ! $highlights ) return null;
+
+	ob_start();
+?>
+	<h2 class="highlights-heading">Highlights</h2>
+	<ul class="highlights">
+	<?php foreach( $highlights as $hl ) : ?>
+		<li class="highlight-list-item"><?php echo $hl['highlight_text']; ?></li>
+	<?php endforeach; ?>
+	</ul>
+<?php
+	$retval = ob_get_clean();
+
+	return apply_filters( 'the_content', $retval );
+}
+
 
 /**
  * Returns a stylized list of additional stories with the
@@ -708,6 +736,33 @@ function today_add_post_custom_fields() {
 			'field_type'        => 'select',
 			'save_terms'        => 1,
 			'load_terms'        => 1,
+		);
+
+		$fields[] = array(
+			'key'               => 'field_post_highlights_tab',
+			'label'             => 'Highlights',
+			'type'              => 'tab',
+		);
+
+		$fields[] = array(
+			'key'               => 'field_post_highlights_repeater',
+			'label'             => 'Highlights',
+			'name'              => 'post_highlights',
+			'type'              => 'repeater',
+			'instructions'      => 'Add a series of highlights to be present at the beginning of the story',
+			'required'          => 0,
+			'layout'            => 'row',
+			'button_label'      => 'Add Highlight',
+			'sub_fields'        => array(
+				array(
+					'key'             => 'field_highlight_text',
+					'label'           => 'Highlight Text',
+					'name'            => 'highlight_text',
+					'type'            => 'textarea',
+					'required'        => 0,
+					'parent_repeater' => 'field_post_highlights_repeater'
+				)
+			)
 		);
 
 		// Adds Primary Tag tab
