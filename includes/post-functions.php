@@ -453,14 +453,14 @@ function today_get_post_highlights( $post ) {
 
 	ob_start();
 ?>
-	<h2 class="highlights-heading">Highlights</h2>
+	<h2 class="highlights-heading heading-underline">Highlights</h2>
 	<ul class="highlights">
 	<?php foreach( $highlights as $hl ) : ?>
 		<li class="highlight-list-item"><?php echo $hl['highlight_text']; ?></li>
 	<?php endforeach; ?>
 	</ul>
 <?php
-	$retval = ob_get_clean();
+	$retval = trim( ob_get_clean() );
 
 	return apply_filters( 'the_content', $retval );
 }
@@ -758,7 +758,10 @@ function today_add_post_custom_fields() {
 					'key'             => 'field_highlight_text',
 					'label'           => 'Highlight Text',
 					'name'            => 'highlight_text',
-					'type'            => 'textarea',
+					'type'            => 'wysiwyg',
+					'tabs'            => 'visual',
+					'toolbar'         => 'inline_text',
+					'media_upload'    => 0,
 					'required'        => 0,
 					'parent_repeater' => 'field_post_highlights_repeater'
 				)

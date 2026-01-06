@@ -33,3 +33,11 @@ include_once TODAY_THEME_DIR . 'includes/ucf-resource-links-functions.php';
 if ( class_exists( 'UCF_Social_Common' ) ) {
 	include_once TODAY_THEME_DIR . 'includes/ucf-social-functions.php';
 }
+
+if ( has_filter( 'acf_the_content' ) ) {
+	function remove_acf_wpautop() {
+		remove_filter( 'acf_the_content', 'wpautop' );
+	}
+
+	add_action( 'init', 'remove_acf_wpautop', 10, 0 );
+}
