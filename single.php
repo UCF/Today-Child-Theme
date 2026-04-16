@@ -23,6 +23,11 @@ $pegasus_stories = do_shortcode( '[ucf-pegasus-list layout="modern" title="" lim
 			</div>
 		</div>
 	</div>
+	<div class="story-progress sticky-top my-4">
+		<div class="progress bg-faded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+			<div class="progress-bar bg-primary" style="width: 0%;"></div>
+		</div>
+	</div>
 	<div class="container mb-5 pb-sm-4">
 		<div class="row mb-4">
 			<div class="col-lg-10 offset-lg-1 px-lg-5 col-xl-8 offset-xl-2 px-xl-3">

@@ -9,6 +9,7 @@ $lg-max: breakpoint-max('lg');
 
 .ucf-social-links-affixed {
   margin-bottom: 1.5rem;
+  z-index: 6;
 
   @include media-breakpoint-up(md) {
     margin-bottom: 2rem;
